@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://xfmv132k6qsv"]
+
+[ext_resource type="Script" path="res://Props/Wreckage/Wreckage.gd" id="1_xceeg"]
+[ext_resource type="Texture2D" uid="uid://cq8p3514sr2te" path="res://Props/Sprites/all.png" id="2_cs4rr"]
+[ext_resource type="PackedScene" uid="uid://bjtmtusxv7rne" path="res://GeneralNodes/HitBox/hit_box.tscn" id="3_dxwww"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6uwhc"]
+size = Vector2(43.5, 9.87503)
+
+[node name="Skeleton" type="Node2D"]
+position = Vector2(0, -15)
+scale = Vector2(1.28604, 1.28604)
+script = ExtResource("1_xceeg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 19)
+scale = Vector2(2, 2)
+texture = ExtResource("2_cs4rr")
+offset = Vector2(0.5, -17)
+hframes = 6
+vframes = 4
+frame = 21
+
+[node name="HitBox" parent="." instance=ExtResource("3_dxwww")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+z_index = 1
+position = Vector2(2.33274, 3.11031)
+scale = Vector2(1.00519, 1.88981)
+skew = -0.382227
+shape = SubResource("RectangleShape2D_6uwhc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+z_index = 1
+position = Vector2(2.33274, 3.11031)
+scale = Vector2(1.00519, 1.88981)
+skew = -0.382227
+shape = SubResource("RectangleShape2D_6uwhc")
