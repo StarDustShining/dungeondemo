@@ -14,6 +14,8 @@ var on_cooldown: bool = false  # 记录敌人是否在冷却中
 @onready var idle: EnemyStateIdle = $"../Idle"  # 向闲置状态的引用
 @onready var wander: EnemyStateWander = $"../Wander"  # 向游荡状态的引用
 @onready var track: State_Track = $"../Track"
+@onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
+
 
 func Enter() -> void:
 	if on_cooldown:
@@ -25,6 +27,7 @@ func Enter() -> void:
 	# 计算方向并播放相应动画
 	var direction = enemy.player.global_position - enemy.global_position
 	enemy.SetDirection(direction)
+	animation_player.play("attack_track")
 	if direction.x < 0:
 		enemy.enemy_animated.play("attack_Left")
 	else:

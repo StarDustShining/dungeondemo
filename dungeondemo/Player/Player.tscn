@@ -2760,8 +2760,9 @@ radius = 40.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yh3us"]
 size = Vector2(45.5, 31)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6vl6g"]
-radius = 22.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fx7w0"]
+radius = 16.93
+height = 71.24
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -2778,7 +2779,7 @@ texture_filter = 1
 position = Vector2(1.26218e-29, -34)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_6tkpq")
-animation = &"attack_Spear_Left_Up"
+animation = &"idle_Down"
 autoplay = "idle_Down"
 offset = Vector2(-2.72478e-06, -1.18359)
 
@@ -2846,8 +2847,8 @@ debug_color = Color(0, 0.648119, 0.191015, 0.42)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, -10)
-shape = SubResource("CircleShape2D_6vl6g")
+position = Vector2(1, -26)
+shape = SubResource("CapsuleShape2D_fx7w0")
 debug_color = Color(0.678417, 0.504687, 0, 0.42)
 
 [connection signal="animation_finished" from="Player" to="StateMachine/Run" method="Exit"]

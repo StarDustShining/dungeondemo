@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://drwc2rv2vhr8"]
+[gd_scene load_steps=124 format=3 uid="uid://drwc2rv2vhr8"]
 
 [ext_resource type="Texture2D" uid="uid://y14bdjyqw3l" path="res://Enemy/骷髅/骷髅皮肤/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Idle_right.png" id="1_02csh"]
 [ext_resource type="Texture2D" uid="uid://6aod5b2sm1qd" path="res://Enemy/骷髅/骷髅皮肤/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Attack1_left.png" id="1_8xpbf"]
@@ -725,13 +725,98 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="Animation" id="Animation_cunfh"]
+resource_name = "attack_track"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interaction/HurtBox/CollisionPolygon2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-13, -30), Vector2(-13, -30), Vector2(-33, -31), Vector2(-13, -30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Interaction/HurtBox/CollisionPolygon2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [2.7454, 2.7454, 1.68075, 2.7454]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Interaction/HurtBox/CollisionPolygon2D:shape:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.01, 0.01, 7.76, 0.01]
+}
+
+[sub_resource type="Animation" id="Animation_yriyi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interaction/HurtBox/CollisionPolygon2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-13, -30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Interaction/HurtBox/CollisionPolygon2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Interaction/HurtBox/CollisionPolygon2D:shape:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.41]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lrtxj"]
+_data = {
+"RESET": SubResource("Animation_yriyi"),
+"attack_track": SubResource("Animation_cunfh")
+}
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6hipo"]
 radius = 5.0
 height = 24.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kgc2i"]
-radius = 18.0
-height = 42.0
+radius = 2.41
+height = 34.32
 
 [node name="SkeletonMonster" type="CharacterBody2D"]
 position = Vector2(0, -1)
@@ -750,9 +835,13 @@ position = Vector2(0, -22)
 sprite_frames = SubResource("SpriteFrames_j0iuk")
 animation = &"attack_Left"
 autoplay = "idle_Left"
-frame = 9
-frame_progress = 1.0
+frame = 5
 offset = Vector2(0, -11)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lrtxj")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
@@ -796,7 +885,8 @@ script = ExtResource("21_h66n0")
 monitoring = false
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Interaction/HurtBox"]
-position = Vector2(-13, -22)
+position = Vector2(-13, -30)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_kgc2i")
 debug_color = Color(0.999729, 0, 0.10323, 0.42)
 
