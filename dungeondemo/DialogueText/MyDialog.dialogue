@@ -1,0 +1,17 @@
+~ start
+#对话开始
+玛露希尔: [#portrait=mlxe_happy]hi~法琳，平安夜快乐！
+法琳: hi~玛露希尔，平安夜快乐~
+- 给你一个平安果！
+	=> apple_gave
+- 待会儿见！
+	=> goodbye
+我: 再见！
+
+~ apple_gave
+玛露希尔: 哇！谢谢!
+=> END
+
+~ goodbye
+玛露希尔: 再见咯！
+=>< start

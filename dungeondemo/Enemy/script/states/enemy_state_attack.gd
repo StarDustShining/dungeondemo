@@ -17,10 +17,8 @@ var on_cooldown: bool = false  # 记录敌人是否在冷却中
 
 func Enter() -> void:
 	if on_cooldown:
-		print("敌人攻击冷却中，无法攻击")
 		return
 
-	print("敌人开始攻击")
 	attacking = true
 	hurt_box.monitoring = true  # 确保攻击开始时开启监控
 
@@ -64,11 +62,9 @@ func HandleInput(_event: InputEvent) -> EnemyState:
 	return null  # 处理输入逻辑（如果需要）
 
 func EndAttack() -> void:
-	print("攻击结束，进入冷却状态")
 	attacking = false
 	hurt_box.monitoring = false  # 关闭 hurt_box 的监控
 	on_cooldown = true  # 开启冷却
 	await get_tree().create_timer(cooldown_time).timeout
 	on_cooldown = false  # 冷却结束，可以再次攻击
 	hurt_box.monitoring = true  # 确保攻击开始时开启监控
-	print("冷却结束，敌人可以再次攻击")

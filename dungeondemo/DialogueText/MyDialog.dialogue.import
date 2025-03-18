@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://bemcnwpofpte2"
+path="res://.godot/imported/MyDialog.dialogue-d134ad9268d3be60698a21f39a7bb762.tres"
+
+[deps]
+
+source_file="res://DialogueText/MyDialog.dialogue"
+dest_files=["res://.godot/imported/MyDialog.dialogue-d134ad9268d3be60698a21f39a7bb762.tres"]
+
+[params]
+
+defaults=true

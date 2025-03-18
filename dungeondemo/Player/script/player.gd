@@ -26,7 +26,6 @@ var defense_bonus : int = 0
 @onready var hit_box: HitBox = $HitBox
 
 
-
 func _ready():
 	PlayerManager.player=self
 	state_machine.Initialize(self)
@@ -124,18 +123,17 @@ func TakeDamage( hurt_box : HurtBox ) -> void:
 		# to allow 0 to still be passed by a hurt_box if needed
 		if dmg > 0:
 			dmg = clampi( dmg - defense - defense_bonus, 1, dmg )
+			print("hp:")
 			print(hp)
 		UpdateHp( -dmg )
 		player_damaged.emit( hurt_box )
 	
 	pass
-			
-	
+
 func UpdateHp( delta : int ) -> void:
 	hp = clampi( hp + delta, 0, max_hp )
 	PlayerHud.UpdateHp( hp, max_hp )
 	pass
-
 
 func MakeInvulnerable( _duration : float = 1.0 ) -> void:
 	invulnerable = true

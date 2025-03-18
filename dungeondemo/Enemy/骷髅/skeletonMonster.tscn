@@ -730,8 +730,8 @@ radius = 5.0
 height = 24.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kgc2i"]
-radius = 9.0
-height = 40.0
+radius = 18.0
+height = 42.0
 
 [node name="SkeletonMonster" type="CharacterBody2D"]
 position = Vector2(0, -1)
@@ -796,8 +796,7 @@ script = ExtResource("21_h66n0")
 monitoring = false
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Interaction/HurtBox"]
-position = Vector2(-25, -31)
-rotation = 1.5708
+position = Vector2(-13, -22)
 shape = SubResource("CapsuleShape2D_kgc2i")
 debug_color = Color(0.999729, 0, 0.10323, 0.42)
 

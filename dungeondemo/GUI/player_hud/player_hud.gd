@@ -18,9 +18,6 @@ var hearts : Array[ HeartGUI ] = []
 
 #@onready var notification_ui : NotificationUI = $Control/Notification
 
-
-
-
 func _ready():
 	for child in $Control/HFlowContainer.get_children():
 		if child is HeartGUI:
@@ -38,8 +35,6 @@ func _ready():
 	
 	pass
 
-
-
 func UpdateHp( _hp: int, _max_hp: int ) -> void:
 	UpdateMaxHp( _max_hp )
 	for i in _max_hp:
@@ -47,14 +42,9 @@ func UpdateHp( _hp: int, _max_hp: int ) -> void:
 		pass
 	pass
 
-
-
-func UpdateHeart( _index : int, _hp : int ) -> void:
-	var _value : int = clampi( _hp + _index * 2, 0, 2 )
-	hearts[ _index ].value = _value
-	pass
-
-
+func UpdateHeart(_index: int, _hp: int) -> void:
+	var _value: int = clampi(_hp - _index * 2, 0, 2)  # 计算当前心形图标的状态
+	hearts[_index].value = _value  # 更新心形图标的状态
 
 func UpdateMaxHp( _max_hp : int ) -> void:
 	var _heart_count : int = roundi( _max_hp * 0.5 )

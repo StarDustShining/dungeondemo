@@ -1,52 +1,58 @@
 class_name State_Stun extends State
 
-@export var knockback_speed : float = 800.0
-@export var decelerate_speed : float = 10.0
-@export var invulnerable_duration : float = 1.0
-@export var stun_duration: float = 1.0  # 让stun最多持1s
+@export var knockback_speed: float = 2000.0	# 增加击退速度
+@export var decelerate_speed: float = 2.0	# 降低速度衰减系数，使击退更远
+@export var invulnerable_duration: float = 0.5	# 无敌时间
+@export var stun_duration: float = 0.5	# 击晕持续时间
 
-var hurt_box : HurtBox
-var direction : Vector2
-var stun_timer: float = 0.0  # 记录stun时间
-var _damage_position:Vector2
+var hurt_box: HurtBox	# 伤害来源
+var direction: Vector2	# 击退方向
+var stun_timer: float = 0.0	# 击晕计时器
+var _damage_position: Vector2	# 伤害位置
 var next_state : State = null
 
 @onready var walk: State = $"../Walk"
 @onready var idle: State = $"../Idle"
 @onready var death: State = $"../Death"
 
-
-
+## 初始化
 func Init() -> void:
 	player.player_damaged.connect(PlayerDamaged)
 
-## 进入 Stun 状态
+## 进入击晕状态
 func Enter() -> void:
 	print("玩家进入 stun 状态")
 	player.UpdateAnimation("stun")
 	player.player_animated.animation_finished.connect(AnimationFinished)
 
-	direction = player.global_position.direction_to( _damage_position )
-	player.velocity = direction * -knockback_speed
+	# 计算击退方向（从玩家指向伤害来源，然后取反）
+	direction = player.global_position.direction_to(_damage_position)
+	player.velocity = -direction * knockback_speed	# 取反，确保击退方向正确
 	player.SetDirection()
-	
+
+	# 设置无敌时间
 	player.MakeInvulnerable(invulnerable_duration)
-	
-## 退出 Stun 状态
+
+	# 重置计时器
+	stun_timer = 0.0
+
+## 退出击晕状态
 func Exit() -> void:
 	player.player_animated.animation_finished.disconnect(AnimationFinished)
 	next_state = null
-	pass
 
 ## 处理 _process 更新
 func Process(_delta: float) -> State:
-	stun_timer += _delta  # 更新计时器
-	player.velocity -= player.velocity * decelerate_speed * _delta  # 速度逐渐降低
+	stun_timer += _delta	# 更新计时器
 
-	# **如果计时器超过 stun 持续时间，切换到 idle**
+	# 速度逐渐降低
+	player.velocity -= player.velocity * decelerate_speed * _delta
+
+	# 如果计时器超过击晕持续时间，切换到 idle
 	if stun_timer >= stun_duration:
 		print("Stun 持续时间结束，切换到 idle")
 		return idle
+
 	return next_state
 
 ## 处理 _physics_process 更新
@@ -60,14 +66,19 @@ func HandleInput(_event: InputEvent) -> State:
 ## 处理玩家受伤
 func PlayerDamaged(_hurt_box: HurtBox) -> void:
 	hurt_box = _hurt_box
+	_damage_position = hurt_box.global_position
 	if state_machine.current_state == self:
 		return
-	if state_machine.current_state != death:
-		state_machine.ChangeState(self)
-	
+
+	# 如果玩家已经死亡，不再切换到 stun 状态
+	if state_machine.current_state == death:
+		return
+
+	# 切换到 stun 状态
+	state_machine.ChangeState(self)
 
 ## 动画完成回调
 func AnimationFinished(_a: String) -> void:
-	next_state=null
+	next_state = null
 	if player.hp <= 0:
 		next_state = death

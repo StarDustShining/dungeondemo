@@ -26,6 +26,7 @@ Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 [dialogue_manager]
 
 general/uses_dotnet=true
+general/balloon_path="res://DialogBalloons/Balloon.tscn"
 
 [display]
 
@@ -38,7 +39,7 @@ project/assembly_name="DungeonDemo"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/sprite_painter/plugin.cfg", "res://addons/unidot_importer/unidot_importer-main/plugin.cfg")
+enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/sprite_painter/plugin.cfg", "res://addons/unidot_importer/unidot_importer-main/plugin.cfg")
 
 [input]
 
@@ -82,6 +83,10 @@ shift={
 , Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(81, 19),"global_position":Vector2(90, 65),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://DialogueText/MyDialog.dialogue")
 
 [layer_names]
 
