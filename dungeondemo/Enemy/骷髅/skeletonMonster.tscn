@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dcin08ths2adp" path="res://Enemy/骷髅/骷髅皮肤/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Idle.png" id="8_56mjm"]
 [ext_resource type="Script" path="res://Enemy/script/enemy_state_machine.gd" id="12_q7hhg"]
 [ext_resource type="Script" path="res://Enemy/script/states/enemy_state_idle.gd" id="13_c2xir"]
-[ext_resource type="Script" path="res://GUI/player_hud/enemy_state_wander.gd" id="14_ad7dt"]
+[ext_resource type="Script" path="res://Enemy/script/states/enemy_state_wander.gd" id="14_ad7dt"]
 [ext_resource type="Script" path="res://Enemy/script/states/enemy_state_hurt.gd" id="15_1a5eq"]
 [ext_resource type="PackedScene" uid="uid://cukvcvdk3pe3v" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="15_ey7se"]
 [ext_resource type="AudioStream" uid="uid://cpgf820lfo334" path="res://Enemy/骷髅/hurt.mp3" id="17_52nrt"]
@@ -725,6 +725,46 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="Animation" id="Animation_yriyi"]
+length = 0.001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interaction/HurtBox/CollisionPolygon2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-13, -30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Interaction/HurtBox/CollisionPolygon2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Interaction/HurtBox/CollisionPolygon2D:shape:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.41]
+}
+
 [sub_resource type="Animation" id="Animation_cunfh"]
 resource_name = "attack_track"
 step = 0.1
@@ -763,45 +803,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.01, 0.01, 7.76, 0.01]
-}
-
-[sub_resource type="Animation" id="Animation_yriyi"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Interaction/HurtBox/CollisionPolygon2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-13, -30)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Interaction/HurtBox/CollisionPolygon2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.5708]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Interaction/HurtBox/CollisionPolygon2D:shape:radius")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [2.41]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lrtxj"]

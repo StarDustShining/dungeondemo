@@ -1,9 +1,9 @@
 class_name State_Stun extends State
 
-@export var knockback_speed: float = 2000.0	# 增加击退速度
-@export var decelerate_speed: float = 2.0	# 降低速度衰减系数，使击退更远
-@export var invulnerable_duration: float = 0.5	# 无敌时间
-@export var stun_duration: float = 0.5	# 击晕持续时间
+@export var knockback_speed: float = 1000.0	# 增加击退速度
+@export var decelerate_speed: float = 3	# 降低速度衰减系数，使击退更远
+@export var invulnerable_duration: float = 1.0	# 无敌时间
+@export var stun_duration: float = 1.0	# 击晕持续时间
 
 var hurt_box: HurtBox	# 伤害来源
 var direction: Vector2	# 击退方向

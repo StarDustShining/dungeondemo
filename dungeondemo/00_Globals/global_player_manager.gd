@@ -32,7 +32,7 @@ func add_player_instance() -> void:
 func set_health( hp: int, max_hp: int ) -> void:
 	player.max_hp = max_hp
 	player.hp = hp
-	player.update_hp( 0 )
+	player.UpdateHp( 0 )
 
 
 
@@ -62,7 +62,6 @@ func check_for_level_advance() -> void:
 
 
 func set_player_position( _new_pos : Vector2 ) -> void:
-	
 	player.global_position = _new_pos
 	pass
 

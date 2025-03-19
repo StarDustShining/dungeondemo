@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbp7d8d2ky2q3"]
+
+[ext_resource type="Script" path="res://GUI/pause_menu/pause_menu.gd" id="1_4wujt"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_4wujt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.172833, 0.172833, 0.172833, 0.596078)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -110.0
+offset_right = -72.9999
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.34202, 3.34202)
+
+[node name="Button_Save" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "保存
+"
+
+[node name="Button_Load" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "加载
+"
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -292.0
+offset_right = -99.0
+offset_bottom = -269.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(6.66773, 6.66773)
+text = "[暂停]"
+horizontal_alignment = 1
+vertical_alignment = 1
