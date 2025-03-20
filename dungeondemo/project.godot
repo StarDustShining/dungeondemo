@@ -43,6 +43,10 @@ project/assembly_name="DungeonDemo"
 
 enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/sprite_painter/plugin.cfg", "res://addons/unidot_importer/unidot_importer-main/plugin.cfg")
 
+[gui]
+
+theme/custom_font="res://GUI/UI/font/ark-pixel-10px-monospaced-zh_cn.ttf"
+
 [input]
 
 "左"={

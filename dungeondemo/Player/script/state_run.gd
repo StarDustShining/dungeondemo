@@ -32,7 +32,9 @@ func Process(_delta: float) -> State:
 func Physics(_delta: float) -> State:
 	return null
 
-func HandleInput(_event: InputEvent) -> State:
-	if _event.is_action_pressed("攻击"):
+func HandleInput(_event:InputEvent)->State:
+	if _event.get_action_strength("攻击"):
 		return attack_spear
+	if _event.is_action_pressed("交互"):
+		PlayerManager.interact()
 	return null

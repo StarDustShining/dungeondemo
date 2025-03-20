@@ -24,7 +24,7 @@ var defense_bonus : int = 0
 @onready var player_animated: AnimatedSprite2D = $Player
 @onready var state_machine: PlayerStateMachine = $StateMachine
 @onready var hit_box: HitBox = $HitBox
-
+@onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
 
 func _ready():
 	PlayerManager.player=self
@@ -49,11 +49,6 @@ func _physics_process(_delta):
 	
 func _exit_tree():
 	var time_str = Time.get_ticks_msec()  # 获取当前时间（毫秒）
-	print("Player 已被移除，时间戳:", time_str, " ms")
-
-	# 打印调用栈，看看是从哪里调用了 queue_free()
-	print("调用栈信息:")
-	print_stack()
 
 
 func SetDirection() -> bool:
@@ -117,17 +112,15 @@ func TakeDamage( hurt_box : HurtBox ) -> void:
 	
 	if hp > 0:
 		var dmg : int = hurt_box.damage
-		
 		# Simple damage calculation that subtracts defense value
 		# will keep damage to a minimum of 1, so we will do an if check
 		# to allow 0 to still be passed by a hurt_box if needed
 		if dmg > 0:
 			dmg = clampi( dmg - defense - defense_bonus, 1, dmg )
-			print("hp:")
-			print(hp)
 		UpdateHp( -dmg )
 		player_damaged.emit( hurt_box )
-	
+	print("hp:")
+	print(hp)
 	pass
 
 func UpdateHp( delta : int ) -> void:

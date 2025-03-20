@@ -1,0 +1,91 @@
+[gd_scene load_steps=2 format=3 uid="uid://e80dp6gyniqe"]
+
+[ext_resource type="Script" path="res://Interactables/ChoicePanel/choice_panel.gd" id="1_hbd8t"]
+
+[node name="ChoicePanel" type="CanvasLayer"]
+script = ExtResource("1_hbd8t")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -598.5
+offset_top = 256.0
+offset_right = 598.5
+offset_bottom = 432.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 133
+text = "这是一个选择题界面"
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -472.0
+offset_top = -324.0
+offset_right = -408.0
+offset_bottom = -204.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 111
+text = "A"
+
+[node name="Button2" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -324.0
+offset_right = -128.0
+offset_bottom = -204.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 111
+text = "B"
+
+[node name="Button3" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 112.0
+offset_top = -324.0
+offset_right = 176.0
+offset_bottom = -204.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 111
+text = "C"
+
+[node name="Button4" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 416.0
+offset_top = -324.0
+offset_right = 480.0
+offset_bottom = -204.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 111
+text = "D"

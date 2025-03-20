@@ -26,9 +26,6 @@ func load_new_level(
 		_target_transition : String,
 		_position_offset : Vector2
 ) -> void:
-	print("Loading new level...")
-	print("调用栈信息:")
-	print_stack()
 	#if is_loading:
 		#return
 	#is_loading = true

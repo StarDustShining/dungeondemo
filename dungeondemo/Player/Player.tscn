@@ -1,4 +1,4 @@
-[gd_scene load_steps=353 format=3 uid="uid://ciugelk15lxjx"]
+[gd_scene load_steps=358 format=3 uid="uid://ciugelk15lxjx"]
 
 [ext_resource type="Script" path="res://Player/script/player.gd" id="1_bdolp"]
 [ext_resource type="Texture2D" uid="uid://8fev7y815bdn" path="res://Player/The Female Adventurer - Premium/Attack/Spear/Attack_Spear.png" id="2_k2jx5"]
@@ -16,8 +16,10 @@
 [ext_resource type="Script" path="res://Player/script/player_state_machine.gd" id="15_3e20b"]
 [ext_resource type="Script" path="res://Player/script/state_stun.gd" id="16_23p86"]
 [ext_resource type="Script" path="res://Player/script/state_idle.gd" id="16_clxm0"]
+[ext_resource type="AudioStream" uid="uid://3asnk8s0ocfh" path="res://Player/stun.mp3" id="16_m4v1h"]
 [ext_resource type="Script" path="res://Player/script/state_death.gd" id="17_0toy6"]
 [ext_resource type="Script" path="res://Player/script/state_walk.gd" id="17_eostd"]
+[ext_resource type="AudioStream" uid="uid://becgteayh7wma" path="res://Player/death.mp3" id="18_5pb2m"]
 [ext_resource type="Script" path="res://Player/script/state_run.gd" id="18_arly0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kiv0c"]
@@ -2754,15 +2756,53 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qh627"]
-radius = 40.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fiuvv"]
+radius = 16.0
+height = 78.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yh3us"]
-size = Vector2(45.5, 31)
+size = Vector2(37.75, 43.75)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fx7w0"]
 radius = 16.93
 height = 71.24
+
+[sub_resource type="Animation" id="Animation_otvvs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bcdym"]
+resource_name = "damage"
+step = 0.111111
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.111111, 0.222222, 0.333333, 0.444444, 0.555556, 0.666667, 0.777778, 0.888889, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 0.556863, 0.541176, 1), Color(1, 1, 1, 1), Color(1, 0.556863, 0.541176, 1), Color(1, 1, 1, 1), Color(1, 0.556863, 0.541176, 1), Color(1, 1, 1, 1), Color(1, 0.556863, 0.541176, 1), Color(1, 1, 1, 1), Color(1, 0.556863, 0.541176, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vgrev"]
+_data = {
+"RESET": SubResource("Animation_otvvs"),
+"damage": SubResource("Animation_bcdym")
+}
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -2779,7 +2819,7 @@ texture_filter = 1
 position = Vector2(1.26218e-29, -34)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_6tkpq")
-animation = &"idle_Down"
+animation = &"stun_Up"
 autoplay = "idle_Down"
 offset = Vector2(-2.72478e-06, -1.18359)
 
@@ -2812,9 +2852,11 @@ decelerate_speed = 3.0
 
 [node name="Stun" type="Node" parent="StateMachine"]
 script = ExtResource("16_23p86")
+stun_sound = ExtResource("16_m4v1h")
 
 [node name="Death" type="Node" parent="StateMachine"]
 script = ExtResource("17_0toy6")
+exhaust_audio = ExtResource("18_5pb2m")
 
 [node name="Audio" type="Node2D" parent="."]
 
@@ -2830,8 +2872,8 @@ collision_mask = 256
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction/AttackHurtBox"]
-position = Vector2(0, 23)
-shape = SubResource("CircleShape2D_qh627")
+position = Vector2(0, 36)
+shape = SubResource("CapsuleShape2D_fiuvv")
 debug_color = Color(0.999762, 0, 0.102051, 0.42)
 
 [node name="Area2D" type="Area2D" parent="Interaction"]
@@ -2840,6 +2882,7 @@ collision_mask = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction/Area2D"]
+position = Vector2(0, 10.125)
 shape = SubResource("RectangleShape2D_yh3us")
 debug_color = Color(0, 0.648119, 0.191015, 0.42)
 
@@ -2851,4 +2894,10 @@ position = Vector2(1, -26)
 shape = SubResource("CapsuleShape2D_fx7w0")
 debug_color = Color(0.678417, 0.504687, 0, 0.42)
 
+[node name="EffectAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vgrev")
+}
+
 [connection signal="animation_finished" from="Player" to="StateMachine/Run" method="Exit"]
+[connection signal="animation_finished" from="Player" to="StateMachine/Stun" method="_on_player_animation_finished"]

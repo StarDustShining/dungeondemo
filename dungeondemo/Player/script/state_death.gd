@@ -12,7 +12,8 @@ func Init() -> void:
 
 ## What happens when the player enters this State?
 func Enter() -> void:
-	player.player_animated.play("death")
+	print("玩家死亡")
+	player.UpdateAnimation("death")
 	audio.stream = exhaust_audio
 	audio.play()
 	#PlayerHud.show_game_over_screen()

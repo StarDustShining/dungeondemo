@@ -26,4 +26,6 @@ func HandleInput(_event:InputEvent)->State:
 		return run
 	if _event.get_action_strength("攻击"):
 		return attack_spear
+	if _event.is_action_pressed("交互"):
+		PlayerManager.interact()
 	return null
