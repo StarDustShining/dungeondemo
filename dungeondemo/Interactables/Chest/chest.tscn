@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://ckrtpeusv0a8g"]
+[gd_scene load_steps=14 format=3 uid="uid://ckrtpeusv0a8g"]
 
 [ext_resource type="Script" path="res://Interactables/Chest/chest.gd" id="1_6622b"]
 [ext_resource type="Texture2D" uid="uid://bhiwlowl15vf4" path="res://Interactables/Chest/Fantasy RPG (Toony) 32x32.png" id="1_md408"]
 [ext_resource type="Texture2D" uid="uid://bdqlb4weor8fv" path="res://Interactables/Chest/Items.png" id="2_uvbyd"]
 [ext_resource type="AudioStream" uid="uid://dsrwc02y0mqqo" path="res://Interactables/Chest/chest_open.mp3" id="4_1ermq"]
 [ext_resource type="Script" path="res://GeneralNodes/PersistentDataHandler/persistent-data-handler.gd" id="5_adpj8"]
-[ext_resource type="PackedScene" uid="uid://e80dp6gyniqe" path="res://Interactables/ChoicePanel/choice_panel.tscn" id="6_1i0ac"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_au6wr"]
 atlas = ExtResource("2_uvbyd")
@@ -253,5 +252,3 @@ debug_color = Color(2.16588e-06, 0.635648, 0.414643, 0.42)
 
 [node name="IsOpen" type="Node" parent="."]
 script = ExtResource("5_adpj8")
-
-[node name="ChoicePanel" parent="." instance=ExtResource("6_1i0ac")]

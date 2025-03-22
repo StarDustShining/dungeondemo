@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://e80dp6gyniqe"]
+[gd_scene load_steps=3 format=3 uid="uid://e80dp6gyniqe"]
 
 [ext_resource type="Script" path="res://Interactables/ChoicePanel/choice_panel.gd" id="1_hbd8t"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_evqwm"]
 
 [node name="ChoicePanel" type="CanvasLayer"]
 script = ExtResource("1_hbd8t")
@@ -40,6 +42,7 @@ offset_bottom = -204.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 111
+button_group = SubResource("ButtonGroup_evqwm")
 text = "A"
 
 [node name="Button2" type="Button" parent="Control"]
@@ -56,6 +59,7 @@ offset_bottom = -204.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 111
+button_group = SubResource("ButtonGroup_evqwm")
 text = "B"
 
 [node name="Button3" type="Button" parent="Control"]
@@ -72,6 +76,7 @@ offset_bottom = -204.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 111
+button_group = SubResource("ButtonGroup_evqwm")
 text = "C"
 
 [node name="Button4" type="Button" parent="Control"]
@@ -88,4 +93,5 @@ offset_bottom = -204.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 111
+button_group = SubResource("ButtonGroup_evqwm")
 text = "D"

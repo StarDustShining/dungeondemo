@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cesdw0yg5hg2r"]
+
+[ext_resource type="Script" path="res://Interactables/Bottle/charcoal_bottle.gd" id="1_cxh6e"]
+[ext_resource type="Texture2D" uid="uid://dfugbmawp0fu3" path="res://Interactables/Bottle/Black.png" id="1_wup66"]
+[ext_resource type="PackedScene" uid="uid://cieiat62pywvv" path="res://Interactables/Bottle/BlackBall.tscn" id="2_kcalc"]
+
+[node name="CharcoalBottle" type="Area2D"]
+rotation = 2.0944
+monitorable = false
+script = ExtResource("1_cxh6e")
+ball_scene = ExtResource("2_kcalc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 2.0944
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_wup66")
+offset = Vector2(0, 200)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(-86.5485, -49.6597)
+rotation = 2.0944
+scale = Vector2(7.35703, 11.5724)
+polygon = PackedVector2Array(-3.26219, -9.67817, -3.26219, -8.98688, -5.43698, -8.98688, -5.43698, -8.29558, -6.52437, -8.29558, -6.52437, -7.60428, -7.61177, -7.60428, -7.61177, -6.91298, -6.52437, -6.91298, -6.52437, -4.14779, -7.61177, -4.14779, -7.61177, -3.45649, -8.69916, -3.45649, -8.69916, -2.76519, -9.78656, -2.76519, -9.78656, 8.98688, -8.69916, 8.98688, -8.69916, 9.67817, -7.61177, 9.67817, -7.61177, 10.3695, 7.61177, 10.3695, 7.61177, 9.67817, 8.69916, 9.67817, 8.69916, 8.98688, 9.78656, 8.98688, 9.78656, -2.76519, 8.69916, -2.76519, 8.69916, -3.45649, 7.61177, -3.45649, 7.61177, -4.14779, 6.52437, -4.14779, 6.52437, -6.91298, 7.61177, -6.91298, 7.61177, -7.60428, 6.52437, -7.60428, 6.52437, -8.29558, 5.43698, -8.29558, 5.43698, -8.98688, 4.34958, -8.98688, 3.26219, -8.98688, 3.26219, -9.67817)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Marker" type="Marker2D" parent="."]
+position = Vector2(13.4282, 7.25833)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

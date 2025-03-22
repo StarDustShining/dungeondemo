@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://mv163vat6ujr"]
+
+[ext_resource type="Texture2D" uid="uid://bl7r2av8tus64" path="res://Interactables/Bottle/saltpetre.png" id="1_2ar5u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mj1c7"]
+radius = 25.0799
+
+[node name="BlackBall" type="RigidBody2D"]
+scale = Vector2(0.3, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_2ar5u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 2)
+shape = SubResource("CircleShape2D_mj1c7")
