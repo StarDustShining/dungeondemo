@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bl7r2av8tus64"
-path="res://.godot/imported/saltpetre.png-e5fc758433b5b56bd560f68f3b2a9354.ctex"
+path="res://.godot/imported/saltpetre.png-7f75c051c284dd746d98e4affc8043b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Interactables/Bottle/saltpetre.png"
-dest_files=["res://.godot/imported/saltpetre.png-e5fc758433b5b56bd560f68f3b2a9354.ctex"]
+source_file="res://GUI/Balls/saltpetre.png"
+dest_files=["res://.godot/imported/saltpetre.png-7f75c051c284dd746d98e4affc8043b0.ctex"]
 
 [params]
 

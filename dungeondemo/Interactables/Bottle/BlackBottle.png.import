@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://eoi1g0dqq2x3"
-path="res://.godot/imported/coal.png-4789a72b1e9293616205b3c12346d463.ctex"
+uid="uid://dfugbmawp0fu3"
+path="res://.godot/imported/BlackBottle.png-4b8174a8918cc27fbf4b7b46f6c8db91.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Interactables/Bottle/coal.png"
-dest_files=["res://.godot/imported/coal.png-4789a72b1e9293616205b3c12346d463.ctex"]
+source_file="res://Interactables/Bottle/BlackBottle.png"
+dest_files=["res://.godot/imported/BlackBottle.png-4b8174a8918cc27fbf4b7b46f6c8db91.ctex"]
 
 [params]
 

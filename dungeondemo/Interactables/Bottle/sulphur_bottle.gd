@@ -1,4 +1,5 @@
-class_name CharcoalBottle extends Area2D
+class_name SulphurBottle extends Area2D
+@onready var sulphur_bottle: Area2D = $"."
 
 @export var ball_scene: PackedScene
 @export var sand: AudioStream

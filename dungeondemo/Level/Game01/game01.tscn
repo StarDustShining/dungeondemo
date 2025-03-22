@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://4ai7r0y6r55j"]
+[gd_scene load_steps=8 format=3 uid="uid://4ai7r0y6r55j"]
 
 [ext_resource type="Texture2D" uid="uid://d8id0s21dfaa" path="res://Level/background.png" id="1_r0ouy"]
 [ext_resource type="PackedScene" uid="uid://cesdw0yg5hg2r" path="res://Interactables/Bottle/CharcoalBottle.tscn" id="1_werqc"]
@@ -7,36 +7,45 @@
 [ext_resource type="Texture2D" uid="uid://dxoowmkvqx5vp" path="res://Level/table.png" id="2_lvsca"]
 [ext_resource type="PackedScene" uid="uid://de4dilpg8wedl" path="res://Interactables/Bottle/SaltpetreBottle.tscn" id="5_5mf18"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lvnqv"]
+
 [node name="Game01" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
 
 [node name="Wall" type="Sprite2D" parent="Background"]
-position = Vector2(1240, 709)
+position = Vector2(1240, 710)
 scale = Vector2(-2.32447, -2.32447)
 texture = ExtResource("1_r0ouy")
 
-[node name="Table" type="Sprite2D" parent="Background"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Background"]
+
+[node name="Table" type="Sprite2D" parent="Background/StaticBody2D"]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(807, 1174)
+position = Vector2(807, 1200)
 scale = Vector2(9.73403, 9.73403)
 texture = ExtResource("2_lvsca")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D"]
+position = Vector2(798, 758)
+scale = Vector2(567.31, 2.34419)
+shape = SubResource("WorldBoundaryShape2D_lvnqv")
+
 [node name="CharcoalBottle" parent="." instance=ExtResource("1_werqc")]
-position = Vector2(428, 388)
+position = Vector2(422, 388)
 
 [node name="GlassBottle" parent="." instance=ExtResource("2_dt0oo")]
-position = Vector2(405, 677)
+position = Vector2(405, 640)
 
 [node name="GlassBottle2" parent="." instance=ExtResource("2_dt0oo")]
-position = Vector2(1142, 677)
+position = Vector2(1137, 640)
 
 [node name="GlassBottle3" parent="." instance=ExtResource("2_dt0oo")]
-position = Vector2(769, 677)
+position = Vector2(771, 640)
 
 [node name="SaltpetreBottle" parent="." instance=ExtResource("5_5mf18")]
-position = Vector2(787, 388)
+position = Vector2(789, 388)
 
 [node name="SulphurBottle" parent="." instance=ExtResource("2_ga5j0")]
-position = Vector2(1147, 388)
+position = Vector2(1153, 388)

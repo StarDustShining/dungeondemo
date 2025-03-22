@@ -1,14 +1,79 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbcd2tsqomloe"]
+[gd_scene load_steps=8 format=3 uid="uid://dbcd2tsqomloe"]
 
-[ext_resource type="Script" path="res://Interactables/Bottle/charcoal_bottle.gd" id="1_iylli"]
-[ext_resource type="PackedScene" uid="uid://dsiqwsqvr48f8" path="res://Interactables/Bottle/YellowBall.tscn" id="2_pdulv"]
+[ext_resource type="Script" path="res://Interactables/Bottle/sulphur_bottle.gd" id="1_0o74o"]
+[ext_resource type="PackedScene" uid="uid://dsiqwsqvr48f8" path="res://GUI/Balls/YellowBall.tscn" id="2_pdulv"]
+[ext_resource type="AudioStream" uid="uid://du6jle1dnvpu7" path="res://Interactables/Bottle/sand.mp3" id="3_d37ka"]
 [ext_resource type="Texture2D" uid="uid://brs6xgk1sibpg" path="res://Interactables/Bottle/Yellow_light.png" id="3_j3vqc"]
+
+[sub_resource type="Animation" id="Animation_jj4lx"]
+length = 0.001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(13.4282, 7.25833)]
+}
+
+[sub_resource type="Animation" id="Animation_quljv"]
+resource_name = "shake"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0976743, 0.2, 0.297674, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 10), Vector2(0, 0), Vector2(0, 10), Vector2(0, 0), Vector2(0, 10), Vector2(0, 0), Vector2(0, 10), Vector2(0, 0), Vector2(0, 10), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(13.4282, 7.25833), Vector2(15, 15), Vector2(13.4282, 7.25833), Vector2(15, 15), Vector2(13.4282, 7.25833), Vector2(15, 15), Vector2(13.4282, 7.25833), Vector2(15, 15), Vector2(13.4282, 7.25833), Vector2(15, 15), Vector2(13.4282, 7.25833)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qvqr1"]
+_data = {
+"RESET": SubResource("Animation_jj4lx"),
+"shake": SubResource("Animation_quljv")
+}
 
 [node name="SulphurBottle" type="Area2D"]
 rotation = 2.0944
 monitorable = false
-script = ExtResource("1_iylli")
+script = ExtResource("1_0o74o")
 ball_scene = ExtResource("2_pdulv")
+sand = ExtResource("3_d37ka")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 2.0944
@@ -29,6 +94,14 @@ autostart = true
 
 [node name="Marker" type="Marker2D" parent="."]
 position = Vector2(13.4282, 7.25833)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+max_polyphony = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qvqr1")
+}
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,16 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsiqwsqvr48f8"]
+[gd_scene load_steps=3 format=3 uid="uid://cieiat62pywvv"]
 
-[ext_resource type="Texture2D" uid="uid://bnakadjp3wtuy" path="res://Interactables/Bottle/sulphur.png" id="1_xa3n1"]
+[ext_resource type="Texture2D" uid="uid://eoi1g0dqq2x3" path="res://GUI/Balls/coal.png" id="1_jdc3s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mj1c7"]
 radius = 25.0799
 
 [node name="BlackBall" type="RigidBody2D"]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.1, 0.1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_xa3n1")
+texture = ExtResource("1_jdc3s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 2)

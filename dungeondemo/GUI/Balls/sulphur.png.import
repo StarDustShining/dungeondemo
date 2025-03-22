@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfugbmawp0fu3"
-path="res://.godot/imported/Black.png-79639e5ea0ef2f6bff0e8d93636f85df.ctex"
+uid="uid://bnakadjp3wtuy"
+path="res://.godot/imported/sulphur.png-db1b8ae430591bd8a47e73a5e16e958c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Interactables/Bottle/Black.png"
-dest_files=["res://.godot/imported/Black.png-79639e5ea0ef2f6bff0e8d93636f85df.ctex"]
+source_file="res://GUI/Balls/sulphur.png"
+dest_files=["res://.godot/imported/sulphur.png-db1b8ae430591bd8a47e73a5e16e958c.ctex"]
 
 [params]
 
