@@ -1,4 +1,4 @@
-[gd_scene load_steps=358 format=3 uid="uid://ciugelk15lxjx"]
+[gd_scene load_steps=362 format=3 uid="uid://ciugelk15lxjx"]
 
 [ext_resource type="Script" path="res://Player/script/player.gd" id="1_bdolp"]
 [ext_resource type="Texture2D" uid="uid://8fev7y815bdn" path="res://Player/The Female Adventurer - Premium/Attack/Spear/Attack_Spear.png" id="2_k2jx5"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://Player/script/state_walk.gd" id="17_eostd"]
 [ext_resource type="AudioStream" uid="uid://becgteayh7wma" path="res://Player/death.mp3" id="18_5pb2m"]
 [ext_resource type="Script" path="res://Player/script/state_run.gd" id="18_arly0"]
+[ext_resource type="Texture2D" uid="uid://co8mj33pc1mpu" path="res://GUI/UI/Keyboard Black.png" id="22_fxfwk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kiv0c"]
 radius = 20.0
@@ -2804,6 +2805,28 @@ _data = {
 "damage": SubResource("Animation_bcdym")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvqab"]
+atlas = ExtResource("22_fxfwk")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wos2s"]
+atlas = ExtResource("22_fxfwk")
+region = Rect2(80, 128, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5svom"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvqab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wos2s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 position = Vector2(0, -27)
@@ -2878,8 +2901,7 @@ debug_color = Color(0.999762, 0, 0.102051, 0.42)
 
 [node name="Area2D" type="Area2D" parent="Interaction"]
 collision_layer = 4
-collision_mask = 0
-monitoring = false
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction/Area2D"]
 position = Vector2(0, 10.125)
@@ -2899,5 +2921,14 @@ libraries = {
 "": SubResource("AnimationLibrary_vgrev")
 }
 
+[node name="InteractionIcon" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -117)
+scale = Vector2(1.8028, 1.8028)
+sprite_frames = SubResource("SpriteFrames_5svom")
+autoplay = "default"
+frame_progress = 0.707964
+
 [connection signal="animation_finished" from="Player" to="StateMachine/Run" method="Exit"]
 [connection signal="animation_finished" from="Player" to="StateMachine/Stun" method="_on_player_animation_finished"]
+[connection signal="area_entered" from="Interaction/Area2D" to="." method="OnAreaEnter"]
+[connection signal="area_exited" from="Interaction/Area2D" to="." method="OnAreaExit"]

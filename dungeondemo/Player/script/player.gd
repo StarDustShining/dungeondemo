@@ -25,11 +25,16 @@ var defense_bonus : int = 0
 @onready var state_machine: PlayerStateMachine = $StateMachine
 @onready var hit_box: HitBox = $HitBox
 @onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
+@onready var interact_area: Area2D = $Interaction/Area2D
+@onready var interaction_icon: AnimatedSprite2D = $InteractionIcon
+
+
 
 func _ready():
 	PlayerManager.player=self
 	state_machine.Initialize(self)
 	hit_box.damaged.connect(TakeDamage)
+	interaction_icon.visible=false
 	UpdateHp(99)
 	#update_damage_values()
 	pass
@@ -46,6 +51,7 @@ func _process(_delta):
 
 func _physics_process(_delta):
 	move_and_slide()
+	
 	
 func _exit_tree():
 	var time_str = Time.get_ticks_msec()  # 获取当前时间（毫秒）
@@ -140,3 +146,9 @@ func MakeInvulnerable( _duration : float = 1.0 ) -> void:
 	#var damage_value : int = attack + PlayerManager.INVENTORY_DATA.get_attack_bonus()
 	#%AttackHurtBox.damage = damage_value
 	#%ChargeSpinHurtBox.damage = damage_value * 2
+
+func OnAreaEnter(_a: Area2D) -> void:
+	interaction_icon.visible=true
+
+func OnAreaExit(_a: Area2D) -> void:
+	interaction_icon.visible=false
