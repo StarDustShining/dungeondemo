@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://4ai7r0y6r55j"]
+[gd_scene load_steps=9 format=3 uid="uid://4ai7r0y6r55j"]
 
+[ext_resource type="Script" path="res://Level/scripts/level_game.gd" id="1_ooy2q"]
 [ext_resource type="Texture2D" uid="uid://d8id0s21dfaa" path="res://Level/background.png" id="1_r0ouy"]
 [ext_resource type="PackedScene" uid="uid://cesdw0yg5hg2r" path="res://Interactables/Bottle/CharcoalBottle.tscn" id="1_werqc"]
 [ext_resource type="PackedScene" uid="uid://3h72gsj1b4o4" path="res://Interactables/Bottle/GlassBottle.tscn" id="2_dt0oo"]
@@ -10,6 +11,8 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lvnqv"]
 
 [node name="Game01" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_ooy2q")
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -35,6 +38,12 @@ shape = SubResource("WorldBoundaryShape2D_lvnqv")
 [node name="CharcoalBottle" parent="." instance=ExtResource("1_werqc")]
 position = Vector2(422, 388)
 
+[node name="SaltpetreBottle" parent="." instance=ExtResource("5_5mf18")]
+position = Vector2(789, 388)
+
+[node name="SulphurBottle" parent="." instance=ExtResource("2_ga5j0")]
+position = Vector2(1153, 388)
+
 [node name="GlassBottle" parent="." instance=ExtResource("2_dt0oo")]
 position = Vector2(405, 640)
 
@@ -43,9 +52,3 @@ position = Vector2(1137, 640)
 
 [node name="GlassBottle3" parent="." instance=ExtResource("2_dt0oo")]
 position = Vector2(771, 640)
-
-[node name="SaltpetreBottle" parent="." instance=ExtResource("5_5mf18")]
-position = Vector2(789, 388)
-
-[node name="SulphurBottle" parent="." instance=ExtResource("2_ga5j0")]
-position = Vector2(1153, 388)

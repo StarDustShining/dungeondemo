@@ -5,9 +5,9 @@
 [ext_resource type="AudioStream" uid="uid://dp0l1vedeylr1" path="res://Music/sacred garden.mp3" id="3_8hxsy"]
 [ext_resource type="PackedScene" uid="uid://drwc2rv2vhr8" path="res://Enemy/骷髅/skeletonMonster.tscn" id="4_ojf0f"]
 [ext_resource type="PackedScene" uid="uid://ciju1j1ygnws2" path="res://Level/level_transition.tscn" id="6_om1tq"]
-[ext_resource type="PackedScene" uid="uid://xfmv132k6qsv" path="res://Props/Wreckage/skeleton.tscn" id="6_s58it"]
 [ext_resource type="PackedScene" uid="uid://bmw1cu6qn0dvt" path="res://Level/player_spawn.tscn" id="7_4oyx4"]
 [ext_resource type="PackedScene" uid="uid://ckrtpeusv0a8g" path="res://Interactables/Chest/chest.tscn" id="8_j6dc6"]
+[ext_resource type="PackedScene" uid="uid://buduhuydpnnhe" path="res://Interactables/Table/table.tscn" id="9_iv3cx"]
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -23,38 +23,37 @@ layer_2/tile_data = PackedInt32Array(327700, 393222, 0, 327706, 393222, 0, 32771
 
 [node name="SkeletonMonster" parent="." instance=ExtResource("4_ojf0f")]
 y_sort_enabled = true
-position = Vector2(537, 636)
+position = Vector2(513, 269)
 scale = Vector2(2, 2)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_8hxsy")
 volume_db = -9.449
 
-[node name="Skeleton" parent="." instance=ExtResource("6_s58it")]
-position = Vector2(951, 314)
-
-[node name="Skeleton2" parent="." instance=ExtResource("6_s58it")]
-position = Vector2(328, 426)
-
-[node name="Skeleton3" parent="." instance=ExtResource("6_s58it")]
-position = Vector2(1290, 547)
-
 [node name="LevelTransition" parent="." instance=ExtResource("6_om1tq")]
 position = Vector2(1611, 532)
 level = "res://Level/Area01/01.tscn"
 side = 1
 
-[node name="PlayerSpawn" parent="." instance=ExtResource("7_4oyx4")]
-position = Vector2(484, 523)
-
 [node name="Chest" parent="." instance=ExtResource("8_j6dc6")]
+y_sort_enabled = true
 position = Vector2(447, 310)
 scale = Vector2(2, 2)
 
 [node name="Chest2" parent="." instance=ExtResource("8_j6dc6")]
+y_sort_enabled = true
 position = Vector2(561, 311)
 scale = Vector2(2, 2)
 
 [node name="Chest3" parent="." instance=ExtResource("8_j6dc6")]
+y_sort_enabled = true
 position = Vector2(681, 310)
 scale = Vector2(2, 2)
+
+[node name="Table" parent="." instance=ExtResource("9_iv3cx")]
+y_sort_enabled = true
+position = Vector2(1095, 316)
+scale = Vector2(4, 4)
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("7_4oyx4")]
+position = Vector2(1096, 491)

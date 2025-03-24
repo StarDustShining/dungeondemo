@@ -38,14 +38,11 @@ func ShowPauseMenu() -> void:
 	button_save.grab_focus()
 	#shown.emit()
 
-
-
 func HidePauseMenu() -> void:
 	get_tree().paused = false
 	visible = false
 	is_paused = false
 	#hidden.emit()
-
 
 func _on_save_pressed() -> void:
 	if is_paused == false:
@@ -62,9 +59,7 @@ func _on_load_pressed() -> void:
 	await LevelManager.level_load_started
 	HidePauseMenu()
 	pass
-#
-#
-#
+
 #func _on_quit_pressed() -> void:
 	#get_tree().quit()
 #

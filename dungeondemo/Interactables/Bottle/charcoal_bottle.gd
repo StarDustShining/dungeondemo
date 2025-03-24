@@ -1,4 +1,4 @@
-class_name CharcoalBottle extends Area2D
+extends Area2D
 
 @export var ball_scene: PackedScene
 @export var sand: AudioStream
@@ -23,7 +23,7 @@ func _on_mouse_exited():
 	is_mouse_inside = false  # 记录鼠标不在区域内
 
 # 处理输入事件
-func _input(event):
+func _unhandled_input(event):  # 确保暂停时也能监听输入
 	# 只要交互键松开，禁用实例化，且只针对当前节点
 	if is_mouse_inside and Input.is_action_just_released("交互"):
 		can_instantiate = false  # 禁用当前节点的实例化

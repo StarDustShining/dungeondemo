@@ -2922,11 +2922,12 @@ libraries = {
 }
 
 [node name="InteractionIcon" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -117)
+position = Vector2(0, 27)
 scale = Vector2(1.8028, 1.8028)
 sprite_frames = SubResource("SpriteFrames_5svom")
 autoplay = "default"
 frame_progress = 0.707964
+offset = Vector2(0, -79.8757)
 
 [connection signal="animation_finished" from="Player" to="StateMachine/Run" method="Exit"]
 [connection signal="animation_finished" from="Player" to="StateMachine/Stun" method="_on_player_animation_finished"]

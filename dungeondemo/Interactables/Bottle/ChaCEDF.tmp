@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbcd2tsqomloe"]
+[gd_scene load_steps=8 format=3 uid="uid://cesdw0yg5hg2r"]
 
-[ext_resource type="Script" path="res://Interactables/Bottle/sulphur_bottle.gd" id="1_0o74o"]
-[ext_resource type="PackedScene" uid="uid://dsiqwsqvr48f8" path="res://GUI/Balls/YellowBall.tscn" id="2_pdulv"]
-[ext_resource type="AudioStream" uid="uid://du6jle1dnvpu7" path="res://Interactables/Bottle/sand.mp3" id="3_d37ka"]
-[ext_resource type="Texture2D" uid="uid://brs6xgk1sibpg" path="res://Interactables/Bottle/Yellow_light.png" id="3_j3vqc"]
+[ext_resource type="Script" path="res://Interactables/Bottle/charcoal_bottle.gd" id="1_0hplt"]
+[ext_resource type="Texture2D" uid="uid://dfugbmawp0fu3" path="res://Interactables/Bottle/BlackBottle.png" id="1_wup66"]
+[ext_resource type="PackedScene" uid="uid://cieiat62pywvv" path="res://GUI/Balls/BlackBall.tscn" id="2_kcalc"]
+[ext_resource type="AudioStream" uid="uid://du6jle1dnvpu7" path="res://Interactables/Bottle/sand.mp3" id="3_5ksxy"]
 
 [sub_resource type="Animation" id="Animation_jj4lx"]
 length = 0.001
@@ -68,18 +68,17 @@ _data = {
 "shake": SubResource("Animation_quljv")
 }
 
-[node name="SulphurBottle" type="Area2D"]
-process_mode = 3
+[node name="CharcoalBottle" type="Area2D"]
 rotation = 2.0944
 monitorable = false
-script = ExtResource("1_0o74o")
-ball_scene = ExtResource("2_pdulv")
-sand = ExtResource("3_d37ka")
+script = ExtResource("1_0hplt")
+ball_scene = ExtResource("2_kcalc")
+sand = ExtResource("3_5ksxy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 2.0944
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("3_j3vqc")
+texture = ExtResource("1_wup66")
 offset = Vector2(0, 200)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
