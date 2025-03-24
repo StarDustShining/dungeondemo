@@ -2847,11 +2847,10 @@ autoplay = "idle_Down"
 offset = Vector2(-2.72478e-06, -1.18359)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, -3.06057)
-scale = Vector2(0.269996, 0.270804)
 limit_left = 0
 limit_top = 0
 limit_right = 1600
+limit_bottom = 900
 limit_smoothed = true
 
 [node name="StateMachine" type="Node" parent="."]
