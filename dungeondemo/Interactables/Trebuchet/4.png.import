@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da6bo7mo676hk"
-path="res://.godot/imported/GUI.png-0fab2688e1b3f304c5643f4ecb7447bc.ctex"
+uid="uid://dmiumx6g6hudm"
+path="res://.godot/imported/4.png-36a4104ebb1b8acd0eb229d4f2ab26b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GUI/UI/GUI.png"
-dest_files=["res://.godot/imported/GUI.png-0fab2688e1b3f304c5643f4ecb7447bc.ctex"]
+source_file="res://Interactables/Trebuchet/4.png"
+dest_files=["res://.godot/imported/4.png-36a4104ebb1b8acd0eb229d4f2ab26b6.ctex"]
 
 [params]
 

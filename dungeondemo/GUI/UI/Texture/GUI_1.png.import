@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnakadjp3wtuy"
-path="res://.godot/imported/sulphur.png-db1b8ae430591bd8a47e73a5e16e958c.ctex"
+uid="uid://buo68ma60xtbw"
+path="res://.godot/imported/GUI_1.png-b47dfedfd11d667c7eb53f479643d00c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GUI/Balls/sulphur.png"
-dest_files=["res://.godot/imported/sulphur.png-db1b8ae430591bd8a47e73a5e16e958c.ctex"]
+source_file="res://GUI/UI/Texture/GUI_1.png"
+dest_files=["res://.godot/imported/GUI_1.png-b47dfedfd11d667c7eb53f479643d00c.ctex"]
 
 [params]
 

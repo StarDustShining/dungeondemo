@@ -21,7 +21,7 @@
 [ext_resource type="Script" path="res://Player/script/state_walk.gd" id="17_eostd"]
 [ext_resource type="AudioStream" uid="uid://becgteayh7wma" path="res://Player/death.mp3" id="18_5pb2m"]
 [ext_resource type="Script" path="res://Player/script/state_run.gd" id="18_arly0"]
-[ext_resource type="Texture2D" uid="uid://co8mj33pc1mpu" path="res://GUI/UI/Keyboard Black.png" id="22_fxfwk"]
+[ext_resource type="Texture2D" uid="uid://co8mj33pc1mpu" path="res://GUI/UI/Texture/Keyboard Black.png" id="22_fxfwk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kiv0c"]
 radius = 20.0

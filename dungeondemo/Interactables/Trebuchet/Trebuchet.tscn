@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bilqvuqkq1mcq"]
+
+[ext_resource type="Texture2D" uid="uid://d04o27e3u2kop" path="res://Interactables/Trebuchet/1.png" id="1_tjooj"]
+[ext_resource type="Texture2D" uid="uid://dnvilgee4q7h0" path="res://Interactables/Trebuchet/2.png" id="2_ldppb"]
+[ext_resource type="Texture2D" uid="uid://yl50cs6vt8ms" path="res://Interactables/Trebuchet/3.png" id="3_mjpeb"]
+[ext_resource type="Texture2D" uid="uid://dmiumx6g6hudm" path="res://Interactables/Trebuchet/4.png" id="4_mp80i"]
+[ext_resource type="Texture2D" uid="uid://ckmimyotedfwh" path="res://Interactables/Trebuchet/5.png" id="5_q21n3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0v10c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tjooj")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tjooj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ldppb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mjpeb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mp80i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q21n3")
+}],
+"loop": false,
+"name": &"Throw",
+"speed": 6.0
+}]
+
+[node name="Trebuchet" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -98)
+sprite_frames = SubResource("SpriteFrames_0v10c")
+animation = &"Throw"
+frame = 4
+frame_progress = 1.0

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bl7r2av8tus64"
-path="res://.godot/imported/saltpetre.png-7f75c051c284dd746d98e4affc8043b0.ctex"
+uid="uid://dnvilgee4q7h0"
+path="res://.godot/imported/2.png-9adfe29ea7cf28c31b416674805ca0f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GUI/Balls/saltpetre.png"
-dest_files=["res://.godot/imported/saltpetre.png-7f75c051c284dd746d98e4affc8043b0.ctex"]
+source_file="res://Interactables/Trebuchet/2.png"
+dest_files=["res://.godot/imported/2.png-9adfe29ea7cf28c31b416674805ca0f8.ctex"]
 
 [params]
 

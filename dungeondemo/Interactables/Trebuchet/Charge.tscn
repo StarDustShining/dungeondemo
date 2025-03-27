@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpbx1n0yhheaj"]
+
+[ext_resource type="Texture2D" uid="uid://b8yw3u8jum43p" path="res://Interactables/Trebuchet/炸药(马赛克）.png" id="1_m2c17"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jc0p"]
+size = Vector2(68.828, 117.446)
+
+[node name="Charge" type="RigidBody2D"]
+rotation = -1.47877
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_m2c17")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6.20674, 5.56614)
+rotation = 0.73766
+shape = SubResource("RectangleShape2D_4jc0p")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://co8mj33pc1mpu"
-path="res://.godot/imported/Keyboard Black.png-7055186661fca532b162c83c1da1fe56.ctex"
+uid="uid://d04o27e3u2kop"
+path="res://.godot/imported/1.png-156994780ac705fac0124dce8791dbbf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GUI/UI/Keyboard Black.png"
-dest_files=["res://.godot/imported/Keyboard Black.png-7055186661fca532b162c83c1da1fe56.ctex"]
+source_file="res://Interactables/Trebuchet/1.png"
+dest_files=["res://.godot/imported/1.png-156994780ac705fac0124dce8791dbbf.ctex"]
 
 [params]
 

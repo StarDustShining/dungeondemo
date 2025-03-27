@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://mv163vat6ujr"]
+[gd_scene load_steps=3 format=3 uid="uid://dsiqwsqvr48f8"]
 
-[ext_resource type="Texture2D" uid="uid://bl7r2av8tus64" path="res://GUI/Balls/saltpetre.png" id="1_2ar5u"]
+[ext_resource type="Texture2D" uid="uid://bnakadjp3wtuy" path="res://Interactables/Bottle/Balls/sulphur.png" id="1_xa3n1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mj1c7"]
 radius = 25.0799
@@ -9,9 +9,8 @@ radius = 25.0799
 scale = Vector2(0.1, 0.1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 8)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_2ar5u")
+texture = ExtResource("1_xa3n1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 2)

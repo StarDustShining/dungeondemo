@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Interactables/Bottle/charcoal_bottle.gd" id="1_0hplt"]
 [ext_resource type="Texture2D" uid="uid://dfugbmawp0fu3" path="res://Interactables/Bottle/BlackBottle.png" id="1_wup66"]
-[ext_resource type="PackedScene" uid="uid://cieiat62pywvv" path="res://GUI/Balls/BlackBall.tscn" id="2_kcalc"]
+[ext_resource type="PackedScene" uid="uid://cieiat62pywvv" path="res://Interactables/Bottle/Balls/BlackBall.tscn" id="2_kcalc"]
 [ext_resource type="AudioStream" uid="uid://du6jle1dnvpu7" path="res://Interactables/Bottle/sand.mp3" id="3_5ksxy"]
 
 [sub_resource type="Animation" id="Animation_jj4lx"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://wey6p7o3yajd"]
+
+[ext_resource type="Texture2D" uid="uid://dsermh4jnaf3m" path="res://GUI/UI/Texture/图层 4.png" id="1_d1b34"]
+
+[node name="Slot" type="PanelContainer"]
+offset_right = 128.0
+offset_bottom = 128.0
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_d1b34")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0

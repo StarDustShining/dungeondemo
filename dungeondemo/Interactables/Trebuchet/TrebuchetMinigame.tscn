@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsng0vth5a56m"]
+
+[ext_resource type="PackedScene" uid="uid://c2y06pkc7wspb" path="res://Interactables/Trebuchet/Collimation.tscn" id="1_moare"]
+[ext_resource type="PackedScene" uid="uid://b4qjk72ga7lu0" path="res://Interactables/Trebuchet/ProcessBar.tscn" id="2_04wyy"]
+
+[node name="TrebuchetMinigame" type="Node"]
+
+[node name="PrograssBar" parent="." instance=ExtResource("1_moare")]
+position = Vector2(495, 151)
+scale = Vector2(2.33783, 2.35656)
+
+[node name="ProcessBar" parent="." instance=ExtResource("2_04wyy")]
+offset_left = 607.0
+offset_top = 185.0
+offset_right = 607.0
+offset_bottom = 185.0
+scale = Vector2(1.88463, 1.88463)
+
+[connection signal="on_enemy_process" from="PrograssBar" to="ProcessBar" method="on_enemy_process"]
