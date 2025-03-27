@@ -7,11 +7,15 @@ extends Node2D
 @export var hook_size: float = 0.2
 @export var hook_power: float = 0.1
 @export var hook_bounce_factor: float = 0.5  # 反弹系数（越接近1，反弹越大）
+@export var hook_damping_factor: float = 0.9  # 反弹衰减系数（用于减少反弹次数）
 
 @onready var hook: Sprite2D = $Hook
 @onready var enemy: Sprite2D = $Enemy
 @onready var top_pivot: Node2D = $TopPivot
 @onready var bottom_pivot: Node2D = $BottomPivot
+
+var start_time: float = 0.0  # 记录开始时间
+var end_time: float = 0.0    # 记录完成时间
 
 var enemy_timer: float = 0.0
 var enemy_position: float = 0.5
@@ -61,8 +65,10 @@ func process_hook(time_delta: float):
 	# 反弹逻辑
 	if hook_position == hook_size / 2.0 and hook_velocity < 0.0:
 		hook_velocity = -hook_velocity * hook_bounce_factor  # 触底反弹
+		hook_velocity *= hook_damping_factor  # 减少反弹幅度
 	elif hook_position == 1.0 - hook_size / 2.0 and hook_velocity > 0.0:
 		hook_velocity = -hook_velocity * hook_bounce_factor  # 触顶反弹
+		hook_velocity *= hook_damping_factor  # 减少反弹幅度
 
 	hook.global_position = calculate_position(hook_position)
 
@@ -71,16 +77,22 @@ func detect_progress(time_delta: float):
 	var hook_top_boundary = hook_position + hook_size / 2.0
 	var hook_bottom_boundary = hook_position - hook_size / 2.0
 
+	# 瞄准成功，增加进度
 	if hook_bottom_boundary < enemy_position and enemy_position < hook_top_boundary:
-		add_progress(hook_power * time_delta)  # 瞄准成功，增加进度
+		add_progress(hook_power * time_delta)  
+	# 瞄准失败，进度回退
 	else:
-		add_progress(-hook_power * time_delta * 0.5)  # 瞄准失败，进度回退
+		add_progress(-hook_power * time_delta * 0.5)  # 回退幅度较小
 
 	if hook_progress >= 1.0:
 		aim_enemy()
 
 # 进度调整（确保不低于0）
 func add_progress(amount: float):
+	if hook_progress == 0.0:
+		# 记录开始时间
+		start_time = Time.get_ticks_msec() / 1000.0  # 秒数
+
 	hook_progress = max(0.0, hook_progress + amount)
 	emit_signal("on_enemy_process", hook_progress)
 
@@ -94,6 +106,12 @@ func aim_enemy():
 	is_paused = true
 	enemy_in_sight_count += 1
 	emit_signal("on_enemy_in_sight", enemy_in_sight_count)
+
+	# 记录结束时间
+	end_time = Time.get_ticks_msec() / 1000.0  # 秒数
+	var completion_time = end_time - start_time  # 计算游戏完成的时间
+
+	print("完成时间: ", completion_time)
 
 # 计算挂钩的坐标位置
 func calculate_position(normalized_position: float) -> Vector2:

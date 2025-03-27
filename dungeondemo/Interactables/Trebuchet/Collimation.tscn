@@ -37,7 +37,7 @@ hframes = 10
 vframes = 10
 
 [node name="TopPivot" type="Node2D" parent="."]
-position = Vector2(15.875, 6)
+position = Vector2(15.875, 10)
 
 [node name="BottomPivot" type="Node2D" parent="."]
-position = Vector2(15.875, 261)
+position = Vector2(15.875, 256)

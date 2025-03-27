@@ -1,47 +1,152 @@
-[gd_scene load_steps=7 format=3 uid="uid://bilqvuqkq1mcq"]
+[gd_scene load_steps=10 format=3 uid="uid://bilqvuqkq1mcq"]
 
-[ext_resource type="Texture2D" uid="uid://d04o27e3u2kop" path="res://Interactables/Trebuchet/1.png" id="1_tjooj"]
-[ext_resource type="Texture2D" uid="uid://dnvilgee4q7h0" path="res://Interactables/Trebuchet/2.png" id="2_ldppb"]
-[ext_resource type="Texture2D" uid="uid://yl50cs6vt8ms" path="res://Interactables/Trebuchet/3.png" id="3_mjpeb"]
-[ext_resource type="Texture2D" uid="uid://dmiumx6g6hudm" path="res://Interactables/Trebuchet/4.png" id="4_mp80i"]
-[ext_resource type="Texture2D" uid="uid://ckmimyotedfwh" path="res://Interactables/Trebuchet/5.png" id="5_q21n3"]
+[ext_resource type="Script" path="res://Interactables/Trebuchet/trebuchet.gd" id="1_ekh3u"]
+[ext_resource type="Texture2D" uid="uid://cavv4vfk8o6dx" path="res://Interactables/Trebuchet/投石机.png" id="2_j3ntr"]
+[ext_resource type="PackedScene" uid="uid://dsng0vth5a56m" path="res://Interactables/Trebuchet/TrebuchetMinigame.tscn" id="6_ys3qh"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_0v10c"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_tjooj")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_tjooj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_ldppb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_mjpeb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_mp80i")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_q21n3")
-}],
-"loop": false,
-"name": &"Throw",
-"speed": 6.0
-}]
+[sub_resource type="Animation" id="Animation_oq4f4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionPolygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-71, -27)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionPolygon2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_bu0x3"]
+resource_name = "Throw"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionPolygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-71, -27), Vector2(-71, -27), Vector2(14, -114), Vector2(14, -114), Vector2(61, -102), Vector2(61, -102), Vector2(66, -95), Vector2(4, -117)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionPolygon2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0472, 1.0472, 2.35619, 2.35619, 2.53073, 1.57079]
+}
+
+[sub_resource type="Animation" id="Animation_ubiyw"]
+resource_name = "Idle"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iu0on"]
+_data = {
+"Idle": SubResource("Animation_ubiyw"),
+"RESET": SubResource("Animation_oq4f4"),
+"Throw": SubResource("Animation_bu0x3")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vhoi"]
+size = Vector2(79, 38.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_awpis"]
+size = Vector2(110, 68)
 
 [node name="Trebuchet" type="Node2D"]
+script = ExtResource("1_ekh3u")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -98)
-sprite_frames = SubResource("SpriteFrames_0v10c")
-animation = &"Throw"
-frame = 4
-frame_progress = 1.0
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -81)
+texture = ExtResource("2_j3ntr")
+hframes = 5
+
+[node name="TrebuchetMinigame" parent="." instance=ExtResource("6_ys3qh")]
+position = Vector2(102, -203)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_iu0on")
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1.5, 18.75)
+shape = SubResource("RectangleShape2D_0vhoi")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-84, 32)
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(83, -7)
+shape = SubResource("RectangleShape2D_awpis")
+debug_color = Color(2.16588e-06, 0.635648, 0.414643, 0.42)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-71, -27)
+scale = Vector2(1.6746, 1.6746)
+polygon = PackedVector2Array(-7.76307, -2.9858, -7.76307, 4.77727, -6.56875, 4.77727, -6.56875, 5.97159, -5.37443, 5.97159, -5.37443, 6.56875, -4.77727, 6.56875, -4.77727, 7.76307, 1.19432, 7.76307, 1.19432, 6.56875, 1.79148, 6.56875, 1.79148, 5.97159, 5.97159, 5.97159, 5.97159, 4.77727, 7.76307, 4.77727, 7.76307, 2.9858, 8.95739, 2.9858, 8.95739, -0.59716, 7.76307, -0.59716, 7.76307, 1.79148, 6.56875, 1.79148, 6.56875, 3.58295, 5.37443, 3.58295, 5.37443, 4.77727, 1.19432, 4.77727, 0.59716, 4.77727, 0.59716, 5.97159, 0.59716, 6.56875, -4.18011, 6.56875, -4.18011, 4.77727, -5.97159, 4.77727, -5.97159, 3.58295, -6.56875, 3.58295, -6.56875, -2.9858)
