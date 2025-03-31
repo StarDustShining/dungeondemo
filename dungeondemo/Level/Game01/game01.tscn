@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://4ai7r0y6r55j"]
 
-[ext_resource type="Script" path="res://Level/scripts/level_game.gd" id="1_ooy2q"]
+[ext_resource type="Script" path="res://Level/Game01/game01.gd" id="1_gabea"]
 [ext_resource type="Texture2D" uid="uid://d8id0s21dfaa" path="res://Level/background.png" id="1_r0ouy"]
 [ext_resource type="PackedScene" uid="uid://cesdw0yg5hg2r" path="res://Interactables/Bottle/CharcoalBottle.tscn" id="1_werqc"]
 [ext_resource type="PackedScene" uid="uid://3h72gsj1b4o4" path="res://Interactables/Bottle/GlassBottle.tscn" id="2_dt0oo"]
@@ -12,7 +12,7 @@
 
 [node name="Game01" type="Node2D"]
 process_mode = 3
-script = ExtResource("1_ooy2q")
+script = ExtResource("1_gabea")
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -52,3 +52,7 @@ position = Vector2(1137, 640)
 
 [node name="GlassBottle3" parent="." instance=ExtResource("2_dt0oo")]
 position = Vector2(771, 640)
+
+[connection signal="item_created" from="CharcoalBottle" to="." method="increment_charcoal_count"]
+[connection signal="item_created" from="SaltpetreBottle" to="." method="increment_saltpetre_count"]
+[connection signal="item_created" from="SulphurBottle" to="." method="increment_sulphur_count"]

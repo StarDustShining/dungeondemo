@@ -8,7 +8,8 @@ class_name SaltpetreBottle extends Area2D
 
 var is_mouse_inside: bool = false  # 记录鼠标是否在区域内
 var can_instantiate: bool = true   # 控制是否可以实例化
-var instantiate_num: int = 0
+
+signal item_created
 
 func _ready():
 	# 不再需要计时器，直接处理鼠标事件
@@ -47,4 +48,5 @@ func _on_ball_instance():
 	var ball_instance: Node = ball_scene.instantiate()
 	ball_instance.position = marker.position  # 使用 Marker 的位置
 	add_child(ball_instance)
-	instantiate_num += 1
+	# 发出 item_created 信号
+	emit_signal("item_created")

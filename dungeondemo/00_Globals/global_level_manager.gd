@@ -75,8 +75,11 @@ func load_minigame(minigame_path: String) -> void:
 	await SceneTransition.FadeIn()
 
 	await minigame_scene.minigame_finished
+	
 
-	minigame_scene.queue_free()
+	#minigame_scene.queue_free()
+	# 在小游戏完成后隐藏它，而不是销毁
+	minigame_scene.visible = false
 
 	# 触发加载完成信号
 	minigame_loaded.emit()

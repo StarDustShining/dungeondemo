@@ -1,8 +1,26 @@
-[gd_scene load_steps=10 format=3 uid="uid://bilqvuqkq1mcq"]
+[gd_scene load_steps=12 format=3 uid="uid://bilqvuqkq1mcq"]
 
 [ext_resource type="Script" path="res://Interactables/Trebuchet/trebuchet.gd" id="1_ekh3u"]
-[ext_resource type="Texture2D" uid="uid://cavv4vfk8o6dx" path="res://Interactables/Trebuchet/投石机.png" id="2_j3ntr"]
-[ext_resource type="PackedScene" uid="uid://dsng0vth5a56m" path="res://Interactables/Trebuchet/TrebuchetMinigame.tscn" id="6_ys3qh"]
+[ext_resource type="PackedScene" uid="uid://cpbx1n0yhheaj" path="res://Interactables/Trebuchet/Charge.tscn" id="2_5e2si"]
+[ext_resource type="Texture2D" uid="uid://cavv4vfk8o6dx" path="res://Interactables/Trebuchet/Sprite/投石机.png" id="2_j3ntr"]
+[ext_resource type="PackedScene" uid="uid://dsng0vth5a56m" path="res://Level/Game02/ProgressBarMinigame.tscn" id="3_ukh0i"]
+[ext_resource type="AudioStream" uid="uid://c1h5g186cwqes" path="res://Interactables/Trebuchet/throw.mp3" id="4_33l2b"]
+
+[sub_resource type="Animation" id="Animation_ubiyw"]
+resource_name = "Idle"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_oq4f4"]
 length = 0.001
@@ -82,22 +100,35 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0, 0.0, 1.0472, 1.0472, 2.35619, 2.35619, 2.53073, 1.57079]
 }
-
-[sub_resource type="Animation" id="Animation_ubiyw"]
-resource_name = "Idle"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"values": [{
+"args": [],
+"method": &"_on_animation_frame_4"
+}]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0774292,
+"stream": ExtResource("4_33l2b")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iu0on"]
 _data = {
@@ -114,14 +145,12 @@ size = Vector2(110, 68)
 
 [node name="Trebuchet" type="Node2D"]
 script = ExtResource("1_ekh3u")
+charge = ExtResource("2_5e2si")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -81)
 texture = ExtResource("2_j3ntr")
 hframes = 5
-
-[node name="TrebuchetMinigame" parent="." instance=ExtResource("6_ys3qh")]
-position = Vector2(102, -203)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -147,6 +176,15 @@ shape = SubResource("RectangleShape2D_awpis")
 debug_color = Color(2.16588e-06, 0.635648, 0.414643, 0.42)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2(-71, -27)
 scale = Vector2(1.6746, 1.6746)
 polygon = PackedVector2Array(-7.76307, -2.9858, -7.76307, 4.77727, -6.56875, 4.77727, -6.56875, 5.97159, -5.37443, 5.97159, -5.37443, 6.56875, -4.77727, 6.56875, -4.77727, 7.76307, 1.19432, 7.76307, 1.19432, 6.56875, 1.79148, 6.56875, 1.79148, 5.97159, 5.97159, 5.97159, 5.97159, 4.77727, 7.76307, 4.77727, 7.76307, 2.9858, 8.95739, 2.9858, 8.95739, -0.59716, 7.76307, -0.59716, 7.76307, 1.79148, 6.56875, 1.79148, 6.56875, 3.58295, 5.37443, 3.58295, 5.37443, 4.77727, 1.19432, 4.77727, 0.59716, 4.77727, 0.59716, 5.97159, 0.59716, 6.56875, -4.18011, 6.56875, -4.18011, 4.77727, -5.97159, 4.77727, -5.97159, 3.58295, -6.56875, 3.58295, -6.56875, -2.9858)
+
+[node name="ProgressBarMinigame" parent="." instance=ExtResource("3_ukh0i")]
+position = Vector2(-177, -150)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(17, -117)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

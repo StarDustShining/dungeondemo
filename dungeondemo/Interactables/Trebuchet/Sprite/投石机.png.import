@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8yw3u8jum43p"
-path="res://.godot/imported/炸药(马赛克）.png-cee093474ea96f48638011cc2a45af57.ctex"
+uid="uid://cavv4vfk8o6dx"
+path="res://.godot/imported/投石机.png-5d8006f02ddea8dbd9f65e60daddc6bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Interactables/Trebuchet/炸药(马赛克）.png"
-dest_files=["res://.godot/imported/炸药(马赛克）.png-cee093474ea96f48638011cc2a45af57.ctex"]
+source_file="res://Interactables/Trebuchet/Sprite/投石机.png"
+dest_files=["res://.godot/imported/投石机.png-5d8006f02ddea8dbd9f65e60daddc6bb.ctex"]
 
 [params]
 
