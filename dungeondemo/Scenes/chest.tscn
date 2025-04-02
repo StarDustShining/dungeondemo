@@ -15,7 +15,7 @@ resource_name = "closed"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kevkq"]
 _data = {
-"closed": SubResource("Animation_uqbcv")
+&"closed": SubResource("Animation_uqbcv")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hem0h"]

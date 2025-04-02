@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://cv7ou0mmvgh4e"]
+
+[ext_resource type="Texture2D" uid="uid://0da6vkmfnu5w" path="res://Items/sprites/items.png" id="1_hpxp1"]
+[ext_resource type="Script" uid="uid://ca2qqvf0vqqxd" path="res://GUI/inventory/backpack_menu.gd" id="1_uilv8"]
+[ext_resource type="PackedScene" uid="uid://bx5vkr772ap0q" path="res://GUI/inventory/inventory_slot.tscn" id="2_uilv8"]
+[ext_resource type="Script" uid="uid://cj05ei4gsmgsj" path="res://GUI/inventory/scripts/inventory_ui.gd" id="3_ghdtg"]
+[ext_resource type="Resource" uid="uid://b4nfmmt17np56" path="res://GUI/inventory/player_inventory.tres" id="4_m374d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghdtg"]
+atlas = ExtResource("1_hpxp1")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m374d"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = SubResource("AtlasTexture_ghdtg")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+
+[node name="BackpackMenu" type="CanvasLayer"]
+script = ExtResource("1_uilv8")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemDescription" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 709.0
+offset_top = 822.0
+offset_right = 894.0
+offset_bottom = 845.0
+theme_override_font_sizes/font_size = 15
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -98.0
+offset_top = -52.0
+offset_right = 98.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_m374d")
+
+[node name="GridContainer" type="GridContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+columns = 5
+script = ExtResource("3_ghdtg")
+data = ExtResource("4_m374d")
+
+[node name="InventorySlot" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_uilv8")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_uilv8")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_uilv8")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_uilv8")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_uilv8")]
+layout_mode = 2

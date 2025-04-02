@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://y14bdjyqw3l" path="res://Enemy/骷髅/骷髅皮肤/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Idle_right.png" id="1_02csh"]
 [ext_resource type="Texture2D" uid="uid://6aod5b2sm1qd" path="res://Enemy/骷髅/骷髅皮肤/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Attack1_left.png" id="1_8xpbf"]
-[ext_resource type="Script" path="res://Enemy/script/enemy.gd" id="1_mosfj"]
+[ext_resource type="Script" uid="uid://bamm7okjl3y7s" path="res://Enemy/script/enemy.gd" id="1_mosfj"]
 [ext_resource type="Texture2D" uid="uid://b71afixixqbyt" path="res://Enemy/骷髅/骷髅皮肤/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Attack1.png" id="2_ewww5"]
 [ext_resource type="PackedScene" uid="uid://bjtmtusxv7rne" path="res://GeneralNodes/HitBox/hit_box.tscn" id="2_hqbqi"]
 [ext_resource type="Texture2D" uid="uid://dx5bscjjphveh" path="res://Enemy/骷髅/骷髅皮肤/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Walk_left.png" id="3_oqy1t"]
@@ -12,18 +12,18 @@
 [ext_resource type="Texture2D" uid="uid://bpfjhk57u40wq" path="res://Enemy/骷髅/骷髅皮肤/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Hurt_Left.png" id="5_3waja"]
 [ext_resource type="Texture2D" uid="uid://bn2x5knr3ba3r" path="res://Enemy/骷髅/骷髅皮肤/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Hurt.png" id="6_cmcm1"]
 [ext_resource type="Texture2D" uid="uid://dcin08ths2adp" path="res://Enemy/骷髅/骷髅皮肤/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Idle.png" id="8_56mjm"]
-[ext_resource type="Script" path="res://Enemy/script/enemy_state_machine.gd" id="12_q7hhg"]
-[ext_resource type="Script" path="res://Enemy/script/states/enemy_state_idle.gd" id="13_c2xir"]
-[ext_resource type="Script" path="res://Enemy/script/states/enemy_state_wander.gd" id="14_ad7dt"]
-[ext_resource type="Script" path="res://Enemy/script/states/enemy_state_hurt.gd" id="15_1a5eq"]
+[ext_resource type="Script" uid="uid://dsv7qis5u0chk" path="res://Enemy/script/enemy_state_machine.gd" id="12_q7hhg"]
+[ext_resource type="Script" uid="uid://devwoe0h6rr1m" path="res://Enemy/script/states/enemy_state_idle.gd" id="13_c2xir"]
+[ext_resource type="Script" uid="uid://cxei0drqs1dxs" path="res://Enemy/script/states/enemy_state_wander.gd" id="14_ad7dt"]
+[ext_resource type="Script" uid="uid://chq5jb2pl2q5l" path="res://Enemy/script/states/enemy_state_hurt.gd" id="15_1a5eq"]
 [ext_resource type="PackedScene" uid="uid://cukvcvdk3pe3v" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="15_ey7se"]
 [ext_resource type="AudioStream" uid="uid://cpgf820lfo334" path="res://Enemy/骷髅/hurt.mp3" id="17_52nrt"]
-[ext_resource type="Script" path="res://Enemy/script/states/enemy_state_destroyed.gd" id="18_y2si2"]
+[ext_resource type="Script" uid="uid://bties3maloys7" path="res://Enemy/script/states/enemy_state_destroyed.gd" id="18_y2si2"]
 [ext_resource type="AudioStream" uid="uid://buh2yvturive4" path="res://Enemy/骷髅/die.mp3" id="19_a8lfy"]
-[ext_resource type="Script" path="res://Enemy/script/states/enemy_state_attack.gd" id="19_xteta"]
+[ext_resource type="Script" uid="uid://dnumnm3nvvmic" path="res://Enemy/script/states/enemy_state_attack.gd" id="19_xteta"]
 [ext_resource type="AudioStream" uid="uid://byrex2ylfjkin" path="res://Enemy/骷髅/attack.mp3" id="20_gu27h"]
-[ext_resource type="Script" path="res://Enemy/script/states/enemy_state_track.gd" id="20_jvcay"]
-[ext_resource type="Script" path="res://Enemy/script/states/skeletonMonsterInteraction.gd" id="21_h66n0"]
+[ext_resource type="Script" uid="uid://d1qr6k24knqiv" path="res://Enemy/script/states/enemy_state_track.gd" id="20_jvcay"]
+[ext_resource type="Script" uid="uid://emb030tl55ba" path="res://Enemy/script/states/skeletonMonsterInteraction.gd" id="21_h66n0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7j1my"]
 size = Vector2(23, 27)
@@ -807,8 +807,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lrtxj"]
 _data = {
-"RESET": SubResource("Animation_yriyi"),
-"attack_track": SubResource("Animation_cunfh")
+&"RESET": SubResource("Animation_yriyi"),
+&"attack_track": SubResource("Animation_cunfh")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6hipo"]
