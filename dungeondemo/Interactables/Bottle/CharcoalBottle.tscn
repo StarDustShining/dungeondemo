@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cesdw0yg5hg2r"]
 
-[ext_resource type="Script" path="res://Interactables/Bottle/charcoal_bottle.gd" id="1_0hplt"]
+[ext_resource type="Script" uid="uid://bog0abnsbpr3o" path="res://Interactables/Bottle/charcoal_bottle.gd" id="1_0hplt"]
 [ext_resource type="Texture2D" uid="uid://dfugbmawp0fu3" path="res://Interactables/Bottle/BlackBottle.png" id="1_wup66"]
 [ext_resource type="PackedScene" uid="uid://cieiat62pywvv" path="res://Interactables/Bottle/Balls/BlackBall.tscn" id="2_kcalc"]
 [ext_resource type="AudioStream" uid="uid://du6jle1dnvpu7" path="res://Interactables/Bottle/sand.mp3" id="3_5ksxy"]
@@ -64,8 +64,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qvqr1"]
 _data = {
-"RESET": SubResource("Animation_jj4lx"),
-"shake": SubResource("Animation_quljv")
+&"RESET": SubResource("Animation_jj4lx"),
+&"shake": SubResource("Animation_quljv")
 }
 
 [node name="CharcoalBottle" type="Area2D"]

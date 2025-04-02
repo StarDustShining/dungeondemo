@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cpbx1n0yhheaj"]
 
-[ext_resource type="Script" path="res://Interactables/Trebuchet/charge.gd" id="1_kc0ig"]
+[ext_resource type="Script" uid="uid://b1yqvitcrw0x0" path="res://Interactables/Trebuchet/charge.gd" id="1_kc0ig"]
 [ext_resource type="Texture2D" uid="uid://b8yw3u8jum43p" path="res://Interactables/Trebuchet/Sprite/炸药(马赛克）.png" id="1_m2c17"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4jc0p"]

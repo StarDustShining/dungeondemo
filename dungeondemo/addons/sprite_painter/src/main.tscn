@@ -1,33 +1,33 @@
 [gd_scene load_steps=63 format=3 uid="uid://bc0weyhuhf5di"]
 
-[ext_resource type="Script" path="res://addons/sprite_painter/src/main.gd" id="1_pn6xr"]
-[ext_resource type="Script" path="res://addons/sprite_painter/editor_icon_button.gd" id="2_ahevp"]
+[ext_resource type="Script" uid="uid://boy6nqfqa7cdr" path="res://addons/sprite_painter/src/main.gd" id="1_pn6xr"]
+[ext_resource type="Script" uid="uid://jryny4e8acgt" path="res://addons/sprite_painter/editor_icon_button.gd" id="2_ahevp"]
 [ext_resource type="Texture2D" uid="uid://c7nymhfcdr3hl" path="res://addons/sprite_painter/graphics/diags.png" id="3_kxniu"]
-[ext_resource type="Script" path="res://addons/sprite_painter/src/image_view/image_tool_preview.gd" id="7_47ui8"]
+[ext_resource type="Script" uid="uid://biim4geoe1j7n" path="res://addons/sprite_painter/src/image_view/image_tool_preview.gd" id="7_47ui8"]
 [ext_resource type="Shader" uid="uid://bpswjmm8i01cg" path="res://addons/sprite_painter/shaders/gradient.tres" id="7_nc3ac"]
-[ext_resource type="Script" path="res://addons/sprite_painter/src/image_view/image_grid_view.gd" id="8_af4ys"]
-[ext_resource type="Script" path="res://addons/sprite_painter/src/image_transform_menu.gd" id="9_20sxo"]
-[ext_resource type="Script" path="res://addons/sprite_painter/src/workspace.gd" id="9_gvnc2"]
-[ext_resource type="Script" path="res://addons/sprite_painter/src/image_view/image_view.gd" id="10_etjnr"]
-[ext_resource type="PackedScene" path="res://addons/sprite_painter/src/image_view/resize_rect.tscn" id="11_jhyl6"]
-[ext_resource type="Script" path="res://addons/sprite_painter/src/image_view/image_selection_view.gd" id="13_81c1e"]
-[ext_resource type="Script" path="res://addons/sprite_painter/src/floating/tool_switcher.gd" id="14_ig7f3"]
-[ext_resource type="Script" path="res://addons/sprite_painter/src/editing_tools/tool_select.gd" id="15_2n2l5"]
-[ext_resource type="Script" path="res://addons/sprite_painter/src/editing_tools/tool_brush.gd" id="16_b68p1"]
-[ext_resource type="Script" path="res://addons/sprite_painter/src/editing_tools/tool_gradient.gd" id="16_np2pu"]
-[ext_resource type="Script" path="res://addons/sprite_painter/src/editing_tools/tool_bucket.gd" id="17_4lt5q"]
-[ext_resource type="Script" path="res://addons/sprite_painter/src/editing_tools/tool_brush_clone.gd" id="17_pf4en"]
-[ext_resource type="Script" path="res://addons/sprite_painter/src/editing_tools/tool_brush_normalmap.gd" id="18_dwsmj"]
-[ext_resource type="Script" path="res://addons/sprite_painter/src/editing_tools/tool_brush_shading.gd" id="18_f5yr5"]
+[ext_resource type="Script" uid="uid://dv8dh7oifniam" path="res://addons/sprite_painter/src/image_view/image_grid_view.gd" id="8_af4ys"]
+[ext_resource type="Script" uid="uid://fntjwojovfri" path="res://addons/sprite_painter/src/image_transform_menu.gd" id="9_20sxo"]
+[ext_resource type="Script" uid="uid://dnb18bfrpqsji" path="res://addons/sprite_painter/src/workspace.gd" id="9_gvnc2"]
+[ext_resource type="Script" uid="uid://6bs0jm7tq4ih" path="res://addons/sprite_painter/src/image_view/image_view.gd" id="10_etjnr"]
+[ext_resource type="PackedScene" uid="uid://barbl4mxs3nii" path="res://addons/sprite_painter/src/image_view/resize_rect.tscn" id="11_jhyl6"]
+[ext_resource type="Script" uid="uid://c8ye3n542um7n" path="res://addons/sprite_painter/src/image_view/image_selection_view.gd" id="13_81c1e"]
+[ext_resource type="Script" uid="uid://dkdsr84api3p4" path="res://addons/sprite_painter/src/floating/tool_switcher.gd" id="14_ig7f3"]
+[ext_resource type="Script" uid="uid://b1bfd7tsw2cx1" path="res://addons/sprite_painter/src/editing_tools/tool_select.gd" id="15_2n2l5"]
+[ext_resource type="Script" uid="uid://dmc4krywqi5h6" path="res://addons/sprite_painter/src/editing_tools/tool_brush.gd" id="16_b68p1"]
+[ext_resource type="Script" uid="uid://ql2fh74oriw" path="res://addons/sprite_painter/src/editing_tools/tool_gradient.gd" id="16_np2pu"]
+[ext_resource type="Script" uid="uid://duo4o0u4wxkvp" path="res://addons/sprite_painter/src/editing_tools/tool_bucket.gd" id="17_4lt5q"]
+[ext_resource type="Script" uid="uid://u5lgalwtwfhu" path="res://addons/sprite_painter/src/editing_tools/tool_brush_clone.gd" id="17_pf4en"]
+[ext_resource type="Script" uid="uid://ci8nfh577n2e6" path="res://addons/sprite_painter/src/editing_tools/tool_brush_normalmap.gd" id="18_dwsmj"]
+[ext_resource type="Script" uid="uid://bvsm163c16mxv" path="res://addons/sprite_painter/src/editing_tools/tool_brush_shading.gd" id="18_f5yr5"]
 [ext_resource type="PackedScene" uid="uid://dcc6kewvuomhc" path="res://addons/sprite_painter/src/floating/type_context_settings.tscn" id="18_rmu80"]
-[ext_resource type="Script" path="res://addons/sprite_painter/src/editing_tools/tool_pencil.gd" id="19_76b7g"]
+[ext_resource type="Script" uid="uid://cpmk31j60n3i5" path="res://addons/sprite_painter/src/editing_tools/tool_pencil.gd" id="19_76b7g"]
 [ext_resource type="Shader" uid="uid://clpby1t4s1pvy" path="res://addons/sprite_painter/shaders/shape.tres" id="20_0y2y6"]
-[ext_resource type="Script" path="res://addons/sprite_painter/src/editing_tools/tool_shape.gd" id="20_vwkmd"]
-[ext_resource type="Script" path="res://addons/sprite_painter/src/editing_tools/tool_line.gd" id="21_rp6uq"]
-[ext_resource type="Script" path="res://addons/sprite_painter/src/editing_tools/tool_wand.gd" id="21_xj52d"]
+[ext_resource type="Script" uid="uid://cnfs6sh8gcr1e" path="res://addons/sprite_painter/src/editing_tools/tool_shape.gd" id="20_vwkmd"]
+[ext_resource type="Script" uid="uid://dl7oj5jhqsgrh" path="res://addons/sprite_painter/src/editing_tools/tool_line.gd" id="21_rp6uq"]
+[ext_resource type="Script" uid="uid://dqghypeog3hpp" path="res://addons/sprite_painter/src/editing_tools/tool_wand.gd" id="21_xj52d"]
 [ext_resource type="PackedScene" uid="uid://be21fmb246ubn" path="res://addons/sprite_painter/src/floating/color_picker.tscn" id="22_rhy5h"]
 [ext_resource type="Shader" uid="uid://c84r6o3a8gfo0" path="res://addons/sprite_painter/shaders/line.tres" id="22_sfnac"]
-[ext_resource type="Script" path="res://addons/sprite_painter/src/editing_tools/tool_scripting.gd" id="23_h1454"]
+[ext_resource type="Script" uid="uid://c6tvqfv8fmfnf" path="res://addons/sprite_painter/src/editing_tools/tool_scripting.gd" id="23_h1454"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8skav"]
 content_margin_left = 5.0
@@ -161,28 +161,28 @@ gradient = SubResource("Gradient_jeov6")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xuu2x"]
 shader = ExtResource("7_nc3ac")
+shader_parameter/gradient = SubResource("GradientTexture1D_bmka2")
 shader_parameter/from = Vector2(0.0820313, 0.132813)
 shader_parameter/delta = Vector2(0.0742188, 0.1875)
 shader_parameter/type = 0
-shader_parameter/gradient = SubResource("GradientTexture1D_bmka2")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qmoem"]
 shader = ExtResource("20_0y2y6")
 shader_parameter/shape_index = 0
-shader_parameter/color_border = null
-shader_parameter/color_fill = null
-shader_parameter/origin = null
-shader_parameter/shape_size = null
-shader_parameter/border_width = null
-shader_parameter/drag_delta = null
+shader_parameter/color_border = Vector4(0, 0, 0, 0)
+shader_parameter/color_fill = Vector4(0, 0, 0, 0)
+shader_parameter/origin = Vector2(0, 0)
+shader_parameter/shape_size = Vector2(0, 0)
+shader_parameter/border_width = 0.0
+shader_parameter/drag_delta = Vector2(0, 0)
 shader_parameter/enable_aa = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hi61m"]
 shader = ExtResource("22_sfnac")
-shader_parameter/color = null
+shader_parameter/color = Vector4(0, 0, 0, 0)
 shader_parameter/origin = Vector2(104.5, 114.5)
-shader_parameter/delta = null
-shader_parameter/width = null
+shader_parameter/delta = Vector2(0, 0)
+shader_parameter/width = 0.0
 shader_parameter/enable_aa = false
 
 [node name="Painter" type="MarginContainer"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://de4dilpg8wedl"]
 
-[ext_resource type="Script" path="res://Interactables/Bottle/saltpetre_bottle.gd" id="1_uqcde"]
+[ext_resource type="Script" uid="uid://cc807hjdubl8y" path="res://Interactables/Bottle/saltpetre_bottle.gd" id="1_uqcde"]
 [ext_resource type="PackedScene" uid="uid://mv163vat6ujr" path="res://Interactables/Bottle/Balls/GrayBall.tscn" id="2_66vrd"]
 [ext_resource type="Texture2D" uid="uid://detd6dcmgkcfu" path="res://Interactables/Bottle/Gray.png" id="3_gstu2"]
 [ext_resource type="AudioStream" uid="uid://du6jle1dnvpu7" path="res://Interactables/Bottle/sand.mp3" id="3_o5mtm"]
@@ -64,8 +64,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qvqr1"]
 _data = {
-"RESET": SubResource("Animation_jj4lx"),
-"shake": SubResource("Animation_quljv")
+&"RESET": SubResource("Animation_jj4lx"),
+&"shake": SubResource("Animation_quljv")
 }
 
 [node name="SaltpetreBottle" type="Area2D"]

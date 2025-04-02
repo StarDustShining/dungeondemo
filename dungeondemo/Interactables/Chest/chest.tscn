@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://ckrtpeusv0a8g"]
 
-[ext_resource type="Script" path="res://Interactables/Chest/chest.gd" id="1_6622b"]
+[ext_resource type="Script" uid="uid://c622qpwt11at2" path="res://Interactables/Chest/chest.gd" id="1_6622b"]
 [ext_resource type="Texture2D" uid="uid://bhiwlowl15vf4" path="res://Interactables/Chest/Fantasy RPG (Toony) 32x32.png" id="1_md408"]
 [ext_resource type="Texture2D" uid="uid://bdqlb4weor8fv" path="res://Interactables/Chest/Items.png" id="2_uvbyd"]
 [ext_resource type="AudioStream" uid="uid://dsrwc02y0mqqo" path="res://Interactables/Chest/chest_open.mp3" id="4_1ermq"]
-[ext_resource type="Script" path="res://GeneralNodes/PersistentDataHandler/persistent-data-handler.gd" id="5_adpj8"]
+[ext_resource type="Script" uid="uid://uqrsfoga5e2s" path="res://GeneralNodes/PersistentDataHandler/persistent-data-handler.gd" id="5_adpj8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_au6wr"]
 atlas = ExtResource("2_uvbyd")
@@ -186,10 +186,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b4wx2"]
 _data = {
-"RESET": SubResource("Animation_gehdo"),
-"closed": SubResource("Animation_olepk"),
-"open_chest": SubResource("Animation_s28rp"),
-"opened": SubResource("Animation_rkeu5")
+&"RESET": SubResource("Animation_gehdo"),
+&"closed": SubResource("Animation_olepk"),
+&"open_chest": SubResource("Animation_s28rp"),
+&"opened": SubResource("Animation_rkeu5")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wmca2"]

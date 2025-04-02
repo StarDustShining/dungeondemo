@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://e80dp6gyniqe"]
 
-[ext_resource type="Script" path="res://GUI/ChoicePanel/choice_panel.gd" id="1_hbd8t"]
+[ext_resource type="Script" uid="uid://dmi5ur4crbvty" path="res://GUI/ChoicePanel/choice_panel.gd" id="1_hbd8t"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_evqwm"]
 

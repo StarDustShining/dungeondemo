@@ -1,26 +1,26 @@
 [gd_scene load_steps=362 format=3 uid="uid://ciugelk15lxjx"]
 
-[ext_resource type="Script" path="res://Player/script/player.gd" id="1_bdolp"]
+[ext_resource type="Script" uid="uid://dwawx4cw8g8dq" path="res://Player/script/player.gd" id="1_bdolp"]
 [ext_resource type="Texture2D" uid="uid://8fev7y815bdn" path="res://Player/The Female Adventurer - Premium/Attack/Spear/Attack_Spear.png" id="2_k2jx5"]
 [ext_resource type="Texture2D" uid="uid://c41d2voof8u1p" path="res://Player/The Female Adventurer - Premium/Idle/Spear/Idle_Spear.png" id="2_px7fs"]
 [ext_resource type="Texture2D" uid="uid://bxssjnjnink62" path="res://Player/The Female Adventurer - Premium/Run/Spear/Run_Spear.png" id="3_7dpf0"]
 [ext_resource type="Texture2D" uid="uid://d0uwvdw8xr3c8" path="res://Player/The Female Adventurer - Premium/Walk/Spear/walk_Spear.png" id="4_lchvr"]
 [ext_resource type="Texture2D" uid="uid://dq2aod0y01x8g" path="res://Player/The Female Adventurer - Premium/Death/Spear/death_Spear.png" id="6_7hu6v"]
 [ext_resource type="AudioStream" uid="uid://c0wudyu2ec8va" path="res://Player/walk.mp3" id="10_qn04i"]
-[ext_resource type="Script" path="res://Player/script/state_attack.gd" id="10_wm8th"]
+[ext_resource type="Script" uid="uid://c8ew4gsca7p1" path="res://Player/script/state_attack.gd" id="10_wm8th"]
 [ext_resource type="AudioStream" uid="uid://dlcy5k4n02n2f" path="res://Player/run.mp3" id="11_m8ri1"]
 [ext_resource type="AudioStream" uid="uid://bnrbqia82sb3p" path="res://Player/spear_attack.mp3" id="12_f3lp3"]
-[ext_resource type="Script" path="res://Player/script/playerInteractionHost.gd" id="12_gojsv"]
+[ext_resource type="Script" uid="uid://cvht8rt4i82dl" path="res://Player/script/playerInteractionHost.gd" id="12_gojsv"]
 [ext_resource type="PackedScene" uid="uid://cukvcvdk3pe3v" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="13_m6gdy"]
 [ext_resource type="PackedScene" uid="uid://bjtmtusxv7rne" path="res://GeneralNodes/HitBox/hit_box.tscn" id="14_wtctv"]
-[ext_resource type="Script" path="res://Player/script/player_state_machine.gd" id="15_3e20b"]
-[ext_resource type="Script" path="res://Player/script/state_stun.gd" id="16_23p86"]
-[ext_resource type="Script" path="res://Player/script/state_idle.gd" id="16_clxm0"]
+[ext_resource type="Script" uid="uid://b8tlgq1g36kws" path="res://Player/script/player_state_machine.gd" id="15_3e20b"]
+[ext_resource type="Script" uid="uid://cii2tdyuem38b" path="res://Player/script/state_stun.gd" id="16_23p86"]
+[ext_resource type="Script" uid="uid://blwny6y4knu5v" path="res://Player/script/state_idle.gd" id="16_clxm0"]
 [ext_resource type="AudioStream" uid="uid://3asnk8s0ocfh" path="res://Player/stun.mp3" id="16_m4v1h"]
-[ext_resource type="Script" path="res://Player/script/state_death.gd" id="17_0toy6"]
-[ext_resource type="Script" path="res://Player/script/state_walk.gd" id="17_eostd"]
+[ext_resource type="Script" uid="uid://c345wlf5t8dq4" path="res://Player/script/state_death.gd" id="17_0toy6"]
+[ext_resource type="Script" uid="uid://bqwtbbwefp70n" path="res://Player/script/state_walk.gd" id="17_eostd"]
 [ext_resource type="AudioStream" uid="uid://becgteayh7wma" path="res://Player/death.mp3" id="18_5pb2m"]
-[ext_resource type="Script" path="res://Player/script/state_run.gd" id="18_arly0"]
+[ext_resource type="Script" uid="uid://c7kpyahlhrx2p" path="res://Player/script/state_run.gd" id="18_arly0"]
 [ext_resource type="Texture2D" uid="uid://co8mj33pc1mpu" path="res://GUI/UI/Texture/Keyboard Black.png" id="22_fxfwk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kiv0c"]
@@ -2801,8 +2801,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vgrev"]
 _data = {
-"RESET": SubResource("Animation_otvvs"),
-"damage": SubResource("Animation_bcdym")
+&"RESET": SubResource("Animation_otvvs"),
+&"damage": SubResource("Animation_bcdym")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvqab"]

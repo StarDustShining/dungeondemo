@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://dcc6kewvuomhc"]
 
-[ext_resource type="Script" path="res://addons/sprite_painter/src/floating/type_context_settings.gd" id="1_7q6dr"]
-[ext_resource type="Script" path="res://addons/sprite_painter/editor_icon_button.gd" id="2_l84pr"]
-[ext_resource type="Script" path="res://addons/sprite_painter/src/floating/type_context/context_spriteframes.gd" id="3_jtsht"]
-[ext_resource type="Script" path="res://addons/sprite_painter/src/floating/type_context/context_tileset.gd" id="4_mhrcf"]
+[ext_resource type="Script" uid="uid://b8a2cavoy117y" path="res://addons/sprite_painter/src/floating/type_context_settings.gd" id="1_7q6dr"]
+[ext_resource type="Script" uid="uid://jryny4e8acgt" path="res://addons/sprite_painter/editor_icon_button.gd" id="2_l84pr"]
+[ext_resource type="Script" uid="uid://cw7ugxrtwubtm" path="res://addons/sprite_painter/src/floating/type_context/context_spriteframes.gd" id="3_jtsht"]
+[ext_resource type="Script" uid="uid://4nm3quxwq2ul" path="res://addons/sprite_painter/src/floating/type_context/context_tileset.gd" id="4_mhrcf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2ioo"]
 draw_center = false
