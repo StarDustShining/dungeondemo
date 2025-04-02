@@ -79,10 +79,6 @@ func _on_load_pressed() -> void:
 #
 #
 #
-#func update_item_description( new_text : String ) -> void:
-	#item_description.text = new_text
-#
-#
 #func play_audio( audio : AudioStream ) -> void:
 	#audio_stream_player.stream = audio
 	#audio_stream_player.play()

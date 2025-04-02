@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://yq5epeywinky"]
+[gd_scene load_steps=12 format=3 uid="uid://yq5epeywinky"]
 
 [ext_resource type="Script" uid="uid://cw4m8vch8c66t" path="res://Level/scripts/level.gd" id="1_8kge7"]
 [ext_resource type="PackedScene" uid="uid://vc7qiiqujjjx" path="res://TileMaps/Ground.tscn" id="1_eirx6"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://bmw1cu6qn0dvt" path="res://Level/player_spawn.tscn" id="7_4oyx4"]
 [ext_resource type="PackedScene" uid="uid://ckrtpeusv0a8g" path="res://Interactables/Chest/chest.tscn" id="8_j6dc6"]
 [ext_resource type="PackedScene" uid="uid://buduhuydpnnhe" path="res://Interactables/Table/table.tscn" id="9_iv3cx"]
+[ext_resource type="PackedScene" uid="uid://ci3m03r376tks" path="res://Items/item_pickup/ItemPickup.tscn" id="9_ldgsr"]
+[ext_resource type="Resource" uid="uid://b4nandd1qlwyx" path="res://Items/powder.tres" id="10_o5yvi"]
+[ext_resource type="Resource" uid="uid://c7xocg4emvnlv" path="res://Items/goods1.tres" id="11_o5yvi"]
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -57,3 +60,15 @@ scale = Vector2(4, 4)
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("7_4oyx4")]
 position = Vector2(1096, 491)
+
+[node name="ItemPickup" parent="." instance=ExtResource("9_ldgsr")]
+position = Vector2(928, 635)
+item_data = ExtResource("10_o5yvi")
+
+[node name="ItemPickup2" parent="." instance=ExtResource("9_ldgsr")]
+position = Vector2(1165, 633)
+item_data = ExtResource("11_o5yvi")
+
+[node name="ItemPickup3" parent="." instance=ExtResource("9_ldgsr")]
+position = Vector2(1258, 548)
+item_data = ExtResource("10_o5yvi")
