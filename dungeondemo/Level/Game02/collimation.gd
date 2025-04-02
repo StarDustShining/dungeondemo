@@ -2,10 +2,10 @@ class_name Collimation extends Node2D
 
 @export var enemy_think_time: float = 4.0
 @export var enemy_move_speed: float = 2.0
-@export var hook_pull_power: float = 0.2
-@export var hook_gravity: float = 0.05
+@export var hook_pull_power: float = 0.08
+@export var hook_gravity: float = 0.02
 @export var hook_size: float = 0.2
-@export var hook_power: float = 0.1
+@export var hook_power: float = 0.5
 @export var hook_bounce_factor: float = 0.5  # 反弹系数（越接近1，反弹越大）
 @export var hook_damping_factor: float = 0.9  # 反弹衰减系数（用于减少反弹次数）
 
@@ -59,7 +59,7 @@ func process_hook(time_delta: float):
 		hook_velocity += hook_pull_power * time_delta
 
 	hook_velocity -= hook_gravity * time_delta
-	hook_velocity = clamp(hook_velocity, -3.0, 3.0)  # 限制速度范围
+	hook_velocity = clamp(hook_velocity, -2.0, 2.0)  # 限制速度范围
 	hook_position += hook_velocity
 	hook_position = clamp(hook_position, hook_size / 2.0, 1.0 - hook_size / 2.0)
 

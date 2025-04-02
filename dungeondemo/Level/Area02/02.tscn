@@ -200,6 +200,7 @@ pattern_2 = SubResource("TileMapPattern_uaw6t")
 pattern_3 = SubResource("TileMapPattern_cgo4i")
 
 [node name="02" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_k8auf")
 
 [node name="Ground" parent="." instance=ExtResource("1_go36j")]

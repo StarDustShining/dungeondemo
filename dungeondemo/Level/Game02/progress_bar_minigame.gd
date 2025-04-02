@@ -7,6 +7,7 @@ var start_time: float = 0.0  # 记录开始时间
 var end_time: float = 0.0    # 记录结束时间
 var is_paused: bool = false
 var is_game_active: bool = false  # 控制游戏是否活跃
+var completion_time: float
 
 signal minigame_finished
 
@@ -20,7 +21,7 @@ func _on_enemy_process(progress: float):
 		start_time = Time.get_ticks_msec() / 1000.0  # 秒数
 	elif progress >= 1.0 and not is_paused:
 		end_time = Time.get_ticks_msec() / 1000.0  # 秒数
-		var completion_time = end_time - start_time  # 计算游戏完成的时间
+		completion_time = end_time - start_time  # 计算游戏完成的时间
 		print("完成时间: ", completion_time)
 		emit_signal("minigame_finished", completion_time)
 
