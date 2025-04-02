@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://xfmv132k6qsv"]
 
-[ext_resource type="Script" path="res://Props/Wreckage/Wreckage.gd" id="1_xceeg"]
+[ext_resource type="Script" uid="uid://q342rw636ilp" path="res://Props/Wreckage/Wreckage.gd" id="1_xceeg"]
 [ext_resource type="Texture2D" uid="uid://cq8p3514sr2te" path="res://Props/Sprites/all.png" id="2_cs4rr"]
 [ext_resource type="PackedScene" uid="uid://bjtmtusxv7rne" path="res://GeneralNodes/HitBox/hit_box.tscn" id="3_dxwww"]
 

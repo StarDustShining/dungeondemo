@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dbcd2tsqomloe"]
 
-[ext_resource type="Script" path="res://Interactables/Bottle/sulphur_bottle.gd" id="1_0o74o"]
+[ext_resource type="Script" uid="uid://u4nhgjd3l0s6" path="res://Interactables/Bottle/sulphur_bottle.gd" id="1_0o74o"]
 [ext_resource type="PackedScene" uid="uid://dsiqwsqvr48f8" path="res://Interactables/Bottle/Balls/YellowBall.tscn" id="2_pdulv"]
 [ext_resource type="AudioStream" uid="uid://du6jle1dnvpu7" path="res://Interactables/Bottle/sand.mp3" id="3_d37ka"]
 [ext_resource type="Texture2D" uid="uid://brs6xgk1sibpg" path="res://Interactables/Bottle/Yellow_light.png" id="3_j3vqc"]
@@ -64,8 +64,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qvqr1"]
 _data = {
-"RESET": SubResource("Animation_jj4lx"),
-"shake": SubResource("Animation_quljv")
+&"RESET": SubResource("Animation_jj4lx"),
+&"shake": SubResource("Animation_quljv")
 }
 
 [node name="SulphurBottle" type="Area2D"]

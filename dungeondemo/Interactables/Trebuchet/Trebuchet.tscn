@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bilqvuqkq1mcq"]
 
-[ext_resource type="Script" path="res://Interactables/Trebuchet/trebuchet.gd" id="1_ekh3u"]
+[ext_resource type="Script" uid="uid://cnjwxx42cc8nl" path="res://Interactables/Trebuchet/trebuchet.gd" id="1_ekh3u"]
 [ext_resource type="PackedScene" uid="uid://cpbx1n0yhheaj" path="res://Interactables/Trebuchet/Charge.tscn" id="2_5e2si"]
 [ext_resource type="Texture2D" uid="uid://cavv4vfk8o6dx" path="res://Interactables/Trebuchet/Sprite/投石机.png" id="2_j3ntr"]
 [ext_resource type="PackedScene" uid="uid://dsng0vth5a56m" path="res://Level/Game02/ProgressBarMinigame.tscn" id="3_ukh0i"]
@@ -132,9 +132,9 @@ tracks/4/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iu0on"]
 _data = {
-"Idle": SubResource("Animation_ubiyw"),
-"RESET": SubResource("Animation_oq4f4"),
-"Throw": SubResource("Animation_bu0x3")
+&"Idle": SubResource("Animation_ubiyw"),
+&"RESET": SubResource("Animation_oq4f4"),
+&"Throw": SubResource("Animation_bu0x3")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0vhoi"]

@@ -1,13 +1,13 @@
 [gd_scene load_steps=339 format=3 uid="uid://cw87fq1cvp3ji"]
 
-[ext_resource type="Script" path="res://Player/script/player.gd" id="1_jb12i"]
+[ext_resource type="Script" uid="uid://dwawx4cw8g8dq" path="res://Player/script/player.gd" id="1_jb12i"]
 [ext_resource type="Texture2D" uid="uid://8fev7y815bdn" path="res://Player/The Female Adventurer - Premium/Attack/Spear/Attack_Spear.png" id="2_hjjii"]
 [ext_resource type="Texture2D" uid="uid://dq2aod0y01x8g" path="res://Player/The Female Adventurer - Premium/Death/Spear/death_Spear.png" id="3_ma586"]
 [ext_resource type="Texture2D" uid="uid://c41d2voof8u1p" path="res://Player/The Female Adventurer - Premium/Idle/Spear/Idle_Spear.png" id="4_wpogq"]
 [ext_resource type="Texture2D" uid="uid://bxssjnjnink62" path="res://Player/The Female Adventurer - Premium/Run/Spear/Run_Spear.png" id="5_8sng7"]
 [ext_resource type="Texture2D" uid="uid://d0uwvdw8xr3c8" path="res://Player/The Female Adventurer - Premium/Walk/Spear/walk_Spear.png" id="6_8atp3"]
-[ext_resource type="Script" path="res://Player/limbo_hsm.gd" id="7_2yp3l"]
-[ext_resource type="Script" path="res://Player/idle_state_test.gd" id="8_txfb3"]
+[ext_resource type="Script" uid="uid://sp0wsgid8eir" path="res://Player/limbo_hsm.gd" id="7_2yp3l"]
+[ext_resource type="Script" uid="uid://b57tnvtr8fllx" path="res://Player/idle_state_test.gd" id="8_txfb3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kiv0c"]
 radius = 20.0

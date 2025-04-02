@@ -1,6 +1,6 @@
 [gd_scene load_steps=336 format=3 uid="uid://bmw1cu6qn0dvt"]
 
-[ext_resource type="Script" path="res://Level/scripts/player_spwan.gd" id="1_lenta"]
+[ext_resource type="Script" uid="uid://64c1y43c24xn" path="res://Level/scripts/player_spwan.gd" id="1_lenta"]
 [ext_resource type="Texture2D" uid="uid://8fev7y815bdn" path="res://Player/The Female Adventurer - Premium/Attack/Spear/Attack_Spear.png" id="1_pfc1q"]
 [ext_resource type="Texture2D" uid="uid://dq2aod0y01x8g" path="res://Player/The Female Adventurer - Premium/Death/Spear/death_Spear.png" id="2_m6k14"]
 [ext_resource type="Texture2D" uid="uid://c41d2voof8u1p" path="res://Player/The Female Adventurer - Premium/Idle/Spear/Idle_Spear.png" id="3_2re54"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b4qjk72ga7lu0"]
 
-[ext_resource type="Script" path="res://Level/Game02/process_bar_UI.gd" id="1_fih5r"]
+[ext_resource type="Script" uid="uid://c8rvd3gp62aed" path="res://Level/Game02/process_bar_UI.gd" id="1_fih5r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t0jib"]
 bg_color = Color(0.162225, 0.183063, 0.287162, 1)
