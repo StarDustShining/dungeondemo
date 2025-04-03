@@ -1,17 +1,13 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://b4nandd1qlwyx"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://b4nandd1qlwyx"]
 
 [ext_resource type="Script" uid="uid://b2phmux7sr3wd" path="res://Items/item_effects/item_effects.gd" id="1_6kfpo"]
 [ext_resource type="Script" uid="uid://w4fnc5moq54l" path="res://Items/scripts/item_data.gd" id="2_7epjf"]
-[ext_resource type="Texture2D" uid="uid://0da6vkmfnu5w" path="res://Items/sprites/items.png" id="3_7epjf"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ahxul"]
-atlas = ExtResource("3_7epjf")
-region = Rect2(0, 0, 32, 32)
+[ext_resource type="Texture2D" uid="uid://cm7q1c0g78vj0" path="res://Items/sprites/bomb1.png" id="3_7epjf"]
 
 [resource]
 script = ExtResource("2_7epjf")
 name = "火药"
 description = "[传说中的火药]"
-texture = SubResource("AtlasTexture_ahxul")
+texture = ExtResource("3_7epjf")
 effects = Array[ExtResource("1_6kfpo")]([])
 metadata/_custom_type_script = "uid://w4fnc5moq54l"

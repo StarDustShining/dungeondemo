@@ -2917,7 +2917,7 @@ debug_color = Color(0.678417, 0.504687, 0, 0.42)
 
 [node name="EffectAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_vgrev")
+&"": SubResource("AnimationLibrary_vgrev")
 }
 
 [node name="InteractionIcon" type="AnimatedSprite2D" parent="."]

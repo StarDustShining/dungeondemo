@@ -144,7 +144,7 @@ size = Vector2(79, 38.5)
 size = Vector2(110, 68)
 
 [sub_resource type="Curve" id="Curve_5n3ml"]
-min_value = 0.2
+_limits = [0.2, 1.0, 0.0, 1.0]
 
 [node name="Trebuchet" type="Node2D"]
 script = ExtResource("1_ekh3u")
@@ -157,7 +157,7 @@ hframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_iu0on")
+&"": SubResource("AnimationLibrary_iu0on")
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

@@ -12,7 +12,6 @@ size = Vector2(44, 34)
 [node name="Table" type="Node2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_cutdw")
-game = "res://Level/Game01/game01.tscn"
 
 [node name="table" type="Sprite2D" parent="."]
 position = Vector2(0, -2)

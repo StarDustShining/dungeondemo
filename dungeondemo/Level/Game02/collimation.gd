@@ -3,7 +3,7 @@ class_name Collimation extends Node2D
 @export var enemy_think_time: float = 4.0
 @export var enemy_move_speed: float = 2.0
 @export var hook_pull_power: float = 0.08
-@export var hook_gravity: float = 0.02
+@export var hook_gravity: float = 0.05
 @export var hook_size: float = 0.2
 @export var hook_power: float = 0.5
 @export var hook_bounce_factor: float = 0.5  # 反弹系数（越接近1，反弹越大）
