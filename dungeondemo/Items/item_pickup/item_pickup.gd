@@ -8,10 +8,15 @@ class_name ItemPickup extends Node2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
+	# 更新纹理
 	_update_texture()
 	if Engine.is_editor_hint():
 		return
-	area_2d.body_entered.connect( _on_body_entered )
+	# 连接 body_entered 信号
+	if area_2d:
+		area_2d.body_entered.connect(_on_body_entered)
+	else:
+		print("错误: area_2d 未正确初始化。")
 
 func _on_body_entered( b ) -> void:
 	if b is Player:

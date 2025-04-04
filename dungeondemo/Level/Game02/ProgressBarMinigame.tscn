@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dsng0vth5a56m"]
 
 [ext_resource type="PackedScene" uid="uid://c2y06pkc7wspb" path="res://Level/Game02/Collimation.tscn" id="1_2eyiw"]
-[ext_resource type="Script" path="res://Level/Game02/progress_bar_minigame.gd" id="1_undqm"]
+[ext_resource type="Script" uid="uid://cqvuohow7n73c" path="res://Level/Game02/progress_bar_minigame.gd" id="1_undqm"]
 [ext_resource type="PackedScene" uid="uid://b4qjk72ga7lu0" path="res://Level/Game02/ProgressBar.tscn" id="2_kkq4i"]
 
 [node name="ProgressBarMinigame" type="Node2D"]
@@ -14,7 +14,8 @@ hook_bounce_factor = 0.4
 
 [node name="ProgressBar" parent="." instance=ExtResource("2_kkq4i")]
 offset_left = 37.0
-offset_right = 37.0
+offset_right = 74.0
+offset_bottom = 347.0
 scale = Vector2(0.779214, 0.781314)
 
 [connection signal="on_enemy_process" from="Collimation" to="ProgressBar" method="on_enemy_process"]

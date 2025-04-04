@@ -26,9 +26,13 @@ func _unhandled_input(event: InputEvent) -> void:
 func end_minigame():
 	# 隐藏当前小游戏，而不是销毁
 	self.visible = false  # 隐藏小游戏
+	# 延迟信号触发，确保信号连接完成
+	await get_tree().process_frame
 	# 触发小游戏完成信号
-	minigame_finished.emit()  
-
+	minigame_finished.emit()
+	var table=get_node("/root/02/Table")
+	table._on_game01_completed()
+	
 # 函数来更新每个瓶子实例化物品的数量
 func increment_charcoal_count():
 	charcoal_count += 1
@@ -45,7 +49,6 @@ func increment_sulphur_count():
 # 函数来计算炸药重量
 func calculate_ammo_weight():
 	ammo_weight = charcoal_count + saltpetre_count + sulphur_count
-	print("Current ammo weight: ", ammo_weight)
 
 # 新增函数来获取炸药重量
 func get_ammo_weight() -> float:

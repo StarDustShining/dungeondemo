@@ -1,25 +1,23 @@
 class_name Trebuchet extends Node2D
 
 @export var charge: PackedScene
+@export var progress_bar_minigame: PackedScene  # 导入 ProgressBarMinigame 场景
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var progress_bar_minigame: ProgressBarMinigame = $ProgressBarMinigame
 @onready var interact_area: Area2D = $Area2D
 @onready var marker: Marker2D = $Marker2D
 @onready var trajectory_line: Line2D = $Line2D
 
-
 signal item_created
 
 var game_active: bool = false  # 追踪游戏是否已启动
+var current_progress_bar_minigame: ProgressBarMinigame = null
+var saved_completion_time: float = 0.0  # 保存小游戏完成时间
 
 func _ready() -> void:
 	# 连接区域进入和退出事件
 	interact_area.area_entered.connect(OnAreaEnter)
 	interact_area.area_exited.connect(OnAreaExit)
-	
-	# 确保初始时，小游戏界面是隐藏的
-	progress_bar_minigame.visible = false
 
 # 玩家进入区域时触发交互
 func OnAreaEnter(_a: Area2D) -> void:
@@ -31,39 +29,67 @@ func OnAreaExit(_a: Area2D) -> void:
 
 # 玩家触发交互后开始小游戏
 func player_interact() -> void:
+	# 检查玩家背包中是否有 powder
+	var has_powder = false
+	for slot in PlayerManager.INVENTORY_DATA.slots:
+		if slot and slot.item_data and slot.item_data.resource_path == "res://Items/powder.tres":
+			has_powder = true
+			break
+	if not has_powder:
+		print("无法使用投石机，背包中没有 powder。")
+		return
+	# 删除玩家背包中的 powder
+	for i in range(PlayerManager.INVENTORY_DATA.slots.size()):
+		var slot = PlayerManager.INVENTORY_DATA.slots[i]
+		if slot and slot.item_data and slot.item_data.resource_path == "res://Items/powder.tres":
+			PlayerManager.INVENTORY_DATA.remove_item(i)
+			break
 	if not game_active:
 		# 启动小游戏
 		start_minigame()
 
+
 func start_minigame() -> void:
 	# 设置游戏为活动状态
 	game_active = true
-	# 显示进度条等小游戏界面
-	progress_bar_minigame.visible = true
-	# 启动小游戏计时
-	progress_bar_minigame.start_game()
-	# 连接小游戏完成的信号
-	progress_bar_minigame.minigame_finished.connect(_on_minigame_finished)
+	# 动态添加 ProgressBarMinigame
+	current_progress_bar_minigame = progress_bar_minigame.instantiate()
+	add_child(current_progress_bar_minigame)
+	current_progress_bar_minigame.set_can_start(true)  # 设置为可运行状态
+	current_progress_bar_minigame.start_game()  # 启动小游戏
+	current_progress_bar_minigame.minigame_finished.connect(_on_minigame_finished)  # 连接信号
+
 
 func _on_minigame_finished(completion_time: float) -> void:
 	clear_trajectory()  # 清除之前的轨迹线
+	saved_completion_time = completion_time  # 保存完成时间
 	var game01 = get_parent().get_parent().get_node("Game01")
 	var ammo_weight = game01.get_ammo_weight()
 	# 根据 completion_time 调整力系数（时间越短，力越大）
 	var force_multiplier = 1.0 / max(completion_time, 0.1)  # 防止除零错误
 	# 播放投掷动画
 	animation_player.play("Throw")
-	# 完成后隐藏小游戏界面并停止计时
-	progress_bar_minigame.visible = false
-	progress_bar_minigame.stop_game()  # 停止计时
-	game_active = false  # 游戏结束
+	# 发出 item_created 信号
+	emit_signal("item_created")
+	# 销毁当前的 ProgressBarMinigame
+	if current_progress_bar_minigame:
+		current_progress_bar_minigame.queue_free()
+		current_progress_bar_minigame = null
+
+func reset_trebuchet():
+	# 重置 Trebuchet 的状态
+	game_active = false
+	trajectory_line.points = []
+	animation_player.stop()  # 停止动画播放器
+	animation_player.seek(0)  # 将动画播放器重置到起始位置
 
 func _on_animation_frame_4():
 	var charge_instance: Node = charge.instantiate()
 	charge_instance.position = marker.position  # 使用 Marker 的位置
 	var game01 = get_parent().get_parent().get_node("Game01")
 	var ammo_weight = 0.01 * game01.get_ammo_weight()  # 调整火药质量
-	var completion_time: float = progress_bar_minigame.completion_time
+	# 使用保存的 completion_time
+	var completion_time: float = saved_completion_time
 	# 根据 completion_time 调整力系数（时间越短，力越大）
 	var force_multiplier = 1.0 / max(completion_time, 0.1)  # 防止除零错误
 	# 根据火药质量和力系数调整初始速度
@@ -94,6 +120,10 @@ func _on_animation_frame_4():
 	add_child(charge_instance)
 	# 发出 item_created 信号
 	emit_signal("item_created")
+	# 销毁 game01
+	game01.queue_free()
+	# 重置 Trebuchet 状态
+	reset_trebuchet()
 	
 
 func calculate_trajectory_points(initial_position: Vector2, initial_velocity: Vector2, gravity: float, max_y: float, min_x: float, num_points: int = 20) -> Array:
