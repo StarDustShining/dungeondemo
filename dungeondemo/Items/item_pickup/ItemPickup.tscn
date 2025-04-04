@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ci3m03r376tks"]
 
-[ext_resource type="Script" uid="uid://bcjua7myxixw" path="res://Items/item_pickup/item_pickup.gd" id="1_ib4el"]
+[ext_resource type="Script" path="res://Items/item_pickup/item_pickup.gd" id="1_ib4el"]
 [ext_resource type="AudioStream" uid="uid://b6kw081v3bur0" path="res://Items/item_pickup/item_pickup.wav" id="2_vggup"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vggup"]

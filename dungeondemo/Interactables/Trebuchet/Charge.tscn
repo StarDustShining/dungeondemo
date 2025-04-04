@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cpbx1n0yhheaj"]
 
-[ext_resource type="Script" uid="uid://b1yqvitcrw0x0" path="res://Interactables/Trebuchet/charge.gd" id="1_kc0ig"]
+[ext_resource type="Script" path="res://Interactables/Trebuchet/charge.gd" id="1_kc0ig"]
 [ext_resource type="Texture2D" uid="uid://bmcp7dg0sxu7w" path="res://Interactables/Trebuchet/Sprite/BOM.BUM.png" id="2_3fnsq"]
 [ext_resource type="AudioStream" uid="uid://dxlqeuurvf6cg" path="res://Interactables/Trebuchet/bomb.mp3" id="3_yy7if"]
 
@@ -70,9 +70,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bpd00"]
 _data = {
-&"RESET": SubResource("Animation_s6hnx"),
-&"explode": SubResource("Animation_cw5w5"),
-&"light": SubResource("Animation_h8ipt")
+"RESET": SubResource("Animation_s6hnx"),
+"explode": SubResource("Animation_cw5w5"),
+"light": SubResource("Animation_h8ipt")
 }
 
 [node name="Charge" type="RigidBody2D"]
@@ -97,7 +97,7 @@ shape = SubResource("CircleShape2D_p8isu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_bpd00")
+"": SubResource("AnimationLibrary_bpd00")
 }
 speed_scale = 0.8
 

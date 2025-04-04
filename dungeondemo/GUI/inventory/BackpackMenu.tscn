@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://cv7ou0mmvgh4e"]
 
 [ext_resource type="Texture2D" uid="uid://0da6vkmfnu5w" path="res://Items/sprites/items.png" id="1_hpxp1"]
-[ext_resource type="Script" uid="uid://ca2qqvf0vqqxd" path="res://GUI/inventory/backpack_menu.gd" id="1_uilv8"]
+[ext_resource type="Script" path="res://GUI/inventory/backpack_menu.gd" id="1_uilv8"]
 [ext_resource type="PackedScene" uid="uid://bx5vkr772ap0q" path="res://GUI/inventory/inventory_slot.tscn" id="2_uilv8"]
-[ext_resource type="Script" uid="uid://cj05ei4gsmgsj" path="res://GUI/inventory/scripts/inventory_ui.gd" id="3_ghdtg"]
+[ext_resource type="Script" path="res://GUI/inventory/scripts/inventory_ui.gd" id="3_ghdtg"]
 [ext_resource type="Resource" uid="uid://b4nfmmt17np56" path="res://GUI/inventory/player_inventory.tres" id="4_m374d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ghdtg"]

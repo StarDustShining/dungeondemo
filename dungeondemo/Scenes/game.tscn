@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://yq5epeywinky"]
 
-[ext_resource type="Script" uid="uid://cw4m8vch8c66t" path="res://Level/scripts/level.gd" id="1_8kge7"]
+[ext_resource type="Script" path="res://Level/scripts/level.gd" id="1_8kge7"]
 [ext_resource type="PackedScene" uid="uid://vc7qiiqujjjx" path="res://TileMaps/Ground.tscn" id="1_eirx6"]
 [ext_resource type="AudioStream" uid="uid://dp0l1vedeylr1" path="res://Music/sacred garden.mp3" id="3_8hxsy"]
 [ext_resource type="PackedScene" uid="uid://drwc2rv2vhr8" path="res://Enemy/骷髅/skeletonMonster.tscn" id="4_ojf0f"]

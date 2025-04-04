@@ -53,37 +53,47 @@ func load_new_level(
 	
 	pass
 
-func load_minigame(minigame_path: String) -> void:
+func load_minigame(minigame_path: String) -> Node:
 	if is_loading:
-		return
+		return null
 	is_loading = true
 
 	minigame_load_started.emit()
-	get_tree().paused=true
+	get_tree().paused = true
 
 	await SceneTransition.FadeOut()
 
-	var minigame_scene = load(minigame_path).instantiate()
-	get_tree().root.add_child(minigame_scene)  # 直接添加到根节点
+	# 加载场景并检查是否成功
+	var minigame_scene = load(minigame_path)
+	if minigame_scene == null:
+		print("错误: 无法加载小游戏场景，路径可能错误: ", minigame_path)
+		is_loading = false
+		return null
+
+	# 实例化场景
+	var minigame_instance = minigame_scene.instantiate()
+	get_tree().root.add_child(minigame_instance)  # 直接添加到根节点
 	PhysicsServer2D.set_active(true)
-	
-	if not minigame_scene.has_signal("minigame_finished"):
+
+	# 检查信号是否存在
+	if not minigame_instance.has_signal("minigame_finished"):
 		print("错误: 加载的小游戏没有 minigame_finished 信号")
 		is_loading = false
-		return
+		return null
 
 	await SceneTransition.FadeIn()
 
-	await minigame_scene.minigame_finished
-	
+	# 等待小游戏完成
+	await minigame_instance.minigame_finished
 
-	#minigame_scene.queue_free()
 	# 在小游戏完成后隐藏它，而不是销毁
-	minigame_scene.visible = false
+	minigame_instance.visible = false
 
 	# 触发加载完成信号
 	minigame_loaded.emit()
-	
-	get_tree().paused=false
 
+	get_tree().paused = false
 	is_loading = false
+
+	# 返回场景实例
+	return minigame_instance

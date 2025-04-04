@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c2y06pkc7wspb"]
 
-[ext_resource type="Script" uid="uid://dmnaclofsnicg" path="res://Level/Game02/collimation.gd" id="1_smut2"]
+[ext_resource type="Script" path="res://Level/Game02/collimation.gd" id="1_smut2"]
 [ext_resource type="Texture2D" uid="uid://huln6k8rd8l0" path="res://GUI/UI/Texture/图层 15.png" id="2_bdreg"]
 [ext_resource type="Texture2D" uid="uid://cnpkjiqcxn64h" path="res://GUI/UI/Texture/图层 8.png" id="3_p3lfm"]
 [ext_resource type="Texture2D" uid="uid://vhpmawuswkm2" path="res://Interactables/Trebuchet/Sprite/Character_sheet.png" id="4_010jf"]

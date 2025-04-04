@@ -24,10 +24,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	#queue_free()  # 清除小游戏
 	
 func end_minigame():
-	# 触发小游戏完成信号
-	minigame_finished.emit()  
 	# 隐藏当前小游戏，而不是销毁
 	self.visible = false  # 隐藏小游戏
+	# 触发小游戏完成信号
+	minigame_finished.emit()  
 
 # 函数来更新每个瓶子实例化物品的数量
 func increment_charcoal_count():

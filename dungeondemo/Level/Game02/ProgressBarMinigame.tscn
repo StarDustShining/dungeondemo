@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dsng0vth5a56m"]
 
 [ext_resource type="PackedScene" uid="uid://c2y06pkc7wspb" path="res://Level/Game02/Collimation.tscn" id="1_2eyiw"]
-[ext_resource type="Script" uid="uid://cqvuohow7n73c" path="res://Level/Game02/progress_bar_minigame.gd" id="1_undqm"]
+[ext_resource type="Script" path="res://Level/Game02/progress_bar_minigame.gd" id="1_undqm"]
 [ext_resource type="PackedScene" uid="uid://b4qjk72ga7lu0" path="res://Level/Game02/ProgressBar.tscn" id="2_kkq4i"]
 
 [node name="ProgressBarMinigame" type="Node2D"]

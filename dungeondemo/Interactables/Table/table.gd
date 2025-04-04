@@ -15,10 +15,18 @@ func _ready() -> void:
 	interact_area.area_exited.connect(OnAreaExit)
 
 func player_interact() -> void:
-	# 使用 await 调用协程，并传递场景路径
+	# 使用 await 调用协程，并获取返回值
 	minigame_instance = await LevelManager.load_minigame(game_path)
-	# 连接 minigame_finished 信号
-	minigame_instance.minigame_finished.connect(_on_minigame_completed)
+	# 检查 minigame_instance 是否为 null
+	if minigame_instance == null:
+		print("错误: 无法加载小游戏实例，请检查场景路径和资源。")
+		return
+	# 检查 minigame_finished 信号是否存在
+	if minigame_instance.has_signal("minigame_finished"):
+		minigame_instance.minigame_finished.connect(_on_minigame_completed)
+		print("信号触发")
+	else:
+		print("错误: 小游戏实例没有 'minigame_finished' 信号。")
 
 func OnAreaEnter(_a: Area2D) -> void:
 	PlayerManager.interact_pressed.connect(player_interact)
