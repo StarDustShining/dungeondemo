@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://bilqvuqkq1mcq"]
 
 [ext_resource type="Script" uid="uid://cnjwxx42cc8nl" path="res://Interactables/Trebuchet/trebuchet.gd" id="1_ekh3u"]
-[ext_resource type="PackedScene" uid="uid://cpbx1n0yhheaj" path="res://Interactables/Trebuchet/Charge.tscn" id="2_5e2si"]
+[ext_resource type="PackedScene" uid="uid://cpbx1n0yhheaj" path="res://Interactables/Charge/Charge.tscn" id="2_5e2si"]
 [ext_resource type="Texture2D" uid="uid://cavv4vfk8o6dx" path="res://Interactables/Trebuchet/Sprite/投石机.png" id="2_j3ntr"]
 [ext_resource type="PackedScene" uid="uid://dsng0vth5a56m" path="res://Level/Game02/ProgressBarMinigame.tscn" id="3_ukh0i"]
 [ext_resource type="AudioStream" uid="uid://c1h5g186cwqes" path="res://Interactables/Trebuchet/throw.mp3" id="4_33l2b"]

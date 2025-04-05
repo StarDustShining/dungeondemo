@@ -48,8 +48,6 @@ func _ready() -> void:
 	
 	pass
 
-
-
 func _player_entered( _p : Node2D ) -> void:
 	await get_tree().create_timer(0.5).timeout  # 短暂等待，防止重复触发
 	LevelManager.load_new_level( level, target_transition_area, get_offset() )
