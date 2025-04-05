@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b4qjk72ga7lu0" path="res://Level/Game02/ProgressBar.tscn" id="2_kkq4i"]
 
 [node name="ProgressBarMinigame" type="Node2D"]
+position = Vector2(-127, -135)
 script = ExtResource("1_undqm")
 
 [node name="Collimation" parent="." instance=ExtResource("1_2eyiw")]
@@ -17,5 +18,6 @@ offset_left = 37.0
 offset_right = 74.0
 offset_bottom = 347.0
 scale = Vector2(0.779214, 0.781314)
+metadata/_edit_use_anchors_ = true
 
 [connection signal="on_enemy_process" from="Collimation" to="ProgressBar" method="on_enemy_process"]

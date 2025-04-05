@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpbx1n0yhheaj"]
+[gd_scene load_steps=10 format=3 uid="uid://cpbx1n0yhheaj"]
 
-[ext_resource type="Script" path="res://Interactables/Trebuchet/charge.gd" id="1_kc0ig"]
+[ext_resource type="Script" uid="uid://b1yqvitcrw0x0" path="res://Interactables/Trebuchet/charge.gd" id="1_kc0ig"]
 [ext_resource type="Texture2D" uid="uid://bmcp7dg0sxu7w" path="res://Interactables/Trebuchet/Sprite/BOM.BUM.png" id="2_3fnsq"]
 [ext_resource type="AudioStream" uid="uid://dxlqeuurvf6cg" path="res://Interactables/Trebuchet/bomb.mp3" id="3_yy7if"]
+[ext_resource type="AudioStream" uid="uid://c3d8xmuyse4wc" path="res://Interactables/Trebuchet/点燃引线.mp3" id="4_yy7if"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p8isu"]
 radius = 9.8995
@@ -55,6 +56,7 @@ tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_h8ipt"]
 resource_name = "light"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -62,26 +64,38 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.802055, 0.835388, 0.868721, 0.902055, 0.935387, 0.968721),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+"values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.707999,
+"stream": ExtResource("4_yy7if")
+}],
+"times": PackedFloat32Array(0.0333334)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bpd00"]
 _data = {
-"RESET": SubResource("Animation_s6hnx"),
-"explode": SubResource("Animation_cw5w5"),
-"light": SubResource("Animation_h8ipt")
+&"RESET": SubResource("Animation_s6hnx"),
+&"explode": SubResource("Animation_cw5w5"),
+&"light": SubResource("Animation_h8ipt")
 }
 
 [node name="Charge" type="RigidBody2D"]
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("1_kc0ig")
-max_y_position = 460.0
-min_x_position = 30.0
-x_velocity_decay = 0.98
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(13, 9)
@@ -97,7 +111,7 @@ shape = SubResource("CircleShape2D_p8isu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_bpd00")
+&"": SubResource("AnimationLibrary_bpd00")
 }
 speed_scale = 0.8
 

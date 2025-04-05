@@ -7,6 +7,13 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.119386, 0.138508, 0.221545, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0.431447, 0.475416, 0.655508, 1)
+shadow_size = 2
+shadow_offset = Vector2(1.85, 1.43)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tdxsk"]
 bg_color = Color(0.447071, 0.491312, 0.671425, 1)
