@@ -1,40 +1,46 @@
-class_name Compass extends Control
-
-# 磁石的位置
-var magnet_position = Vector2(0, 0)
-# 磁石的作用半径
-var magnet_radius = 100
+class_name Compass extends CanvasLayer
 
 @onready var spoon: Sprite2D = $spoon
 
+var player: Node2D = null
+var magnets: Array[Magnet] = []
+var in_field := false
+var in_specific_level := false
+
+var rotation_speed := 5.0  # 控制旋转的平滑速度
 
 func _ready():
-	# 加入一个组以便接收信号
-	add_to_group("compass_group")
+	# 获取所有属于 "Magnet" 组的节点并加入 magnets 数组
+	for node in get_tree().get_nodes_in_group("Magnet"):
+		if node is Magnet:
+			magnets.append(node)
 
-func _process(delta):
-	var player_position = get_player_position()  # 你需要实现这个函数来获取玩家的位置
-	var distance_to_magnet = player_position.distance_to(magnet_position)
-	
-	if distance_to_magnet <= magnet_radius:
-		# 显示司南
-		visible = true
-		# 计算磁勺的方向
-		var direction = magnet_position - player_position
-		var angle = direction.angle()
-		# 更新磁勺的角度
-		spoon.rotation = angle
+func _process(delta: float) -> void:
+	if in_specific_level and in_field and player and magnets.size() > 0:
+		var closest = magnets[0]
+		var min_dist = player.global_position.distance_to(closest.global_position)
+
+		# 找到最近的磁石
+		for m in magnets:
+			var dist = player.global_position.distance_to(m.global_position)
+			if dist < min_dist:
+				min_dist = dist
+				closest = m
+
+		# 计算方向和角度
+		var dir = closest.global_position - player.global_position
+		var target_angle = dir.angle() + deg_to_rad(45)  # 初始朝东北方向，偏移45°
+
+		# 平滑旋转磁勺
+		spoon.rotation = lerp_angle(spoon.rotation, target_angle, rotation_speed * delta)
 	else:
-		# 隐藏司南
-		visible = false
+		# 离开磁场或不在关卡时，磁勺恢复默认朝向（正北偏 -45°）
+		var default_angle = deg_to_rad(-45)
+		spoon.rotation = lerp_angle(spoon.rotation, default_angle, rotation_speed * delta)
 
-func get_player_position():
-	return PlayerManager.player.global_position
+	# 控制整个指南针 UI 是否可见
+	visible = in_specific_level
 
-func player_entered_magnet_area(new_position):
-	magnet_position = new_position
-	
-
-func player_exited_magnet_area():
-	pass
-	
+func set_in_specific_level(value: bool) -> void:
+	in_specific_level = value
+	visible = value

@@ -1,27 +1,25 @@
 class_name Magnet extends Node2D
 
+signal player_entered_field(player)
+signal player_exited_field(player)
 
-# 磁石的位置
-var magnet_position = Vector2(0, 0)
+@onready var magnetic_field: Area2D = $MagneticField
 
-signal player_entered()
-
-@onready var magneticfield_area: Area2D = $Area2D
-
+var player_in_field := false  # 标记玩家是否在磁场中
 
 func _ready():
-	# 初始化磁石位置，可以根据需要调整
-	magnet_position = global_position
-	# 连接信号
-	magneticfield_area.body_entered.connect(_on_MagnetArea_body_entered)
-	magneticfield_area.body_exited.connect(_on_MagnetArea_body_exited)
+	magnetic_field.body_entered.connect(_on_MagneticField_body_entered)
+	magnetic_field.body_exited.connect(_on_MagneticField_body_exited)
 
-func _on_MagnetArea_body_entered(body):
-	if body.is_in_group("player_group"):
-		# 发送信号给指南针场景
-		get_tree().call_group("compass_group", "player_entered_magnet_area", magnet_position)
+func _on_MagneticField_body_entered(body):
+	if body is Player:
+		player_in_field = true
+		player_entered_field.emit(body)
 
-func _on_MagnetArea_body_exited(body):
-	if body.is_in_group("player_group"):
-		# 发送信号给指南针场景
-		get_tree().call_group("compass_group", "player_exited_magnet_area")
+func _on_MagneticField_body_exited(body):
+	if body is Player:
+		player_in_field = false
+		player_exited_field.emit(body)
+
+func is_player_in_field() -> bool:
+	return player_in_field
