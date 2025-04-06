@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://buduhuydpnnhe" path="res://Interactables/Table/table.tscn" id="9_iv3cx"]
 [ext_resource type="PackedScene" uid="uid://ci3m03r376tks" path="res://Items/item_pickup/ItemPickup.tscn" id="9_ldgsr"]
 [ext_resource type="Resource" uid="uid://b4nandd1qlwyx" path="res://Items/powder.tres" id="10_o5yvi"]
-[ext_resource type="Resource" uid="uid://c7xocg4emvnlv" path="res://Items/goods1.tres" id="11_o5yvi"]
+[ext_resource type="Resource" uid="uid://c7xocg4emvnlv" path="res://Items/potion.tres" id="11_o5yvi"]
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true

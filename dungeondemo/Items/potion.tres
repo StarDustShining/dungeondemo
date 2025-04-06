@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=8 format=3 uid="uid://c7xocg4emvnlv"]
+
+[ext_resource type="Script" uid="uid://b2phmux7sr3wd" path="res://Items/item_effects/item_effect.gd" id="1_t8xv6"]
+[ext_resource type="Script" uid="uid://w4fnc5moq54l" path="res://Items/scripts/item_data.gd" id="2_eu55q"]
+[ext_resource type="AudioStream" uid="uid://bvs478n7sgqt4" path="res://Items/item_effects/hp-up.wav" id="2_pw2eo"]
+[ext_resource type="Texture2D" uid="uid://0da6vkmfnu5w" path="res://Items/sprites/items.png" id="3_pw2eo"]
+[ext_resource type="Script" uid="uid://7lser56mfbi4" path="res://Items/item_effects/item_effect_heal.gd" id="3_yhh2t"]
+
+[sub_resource type="Resource" id="Resource_cvo6j"]
+script = ExtResource("3_yhh2t")
+heal_amount = 1
+audio = ExtResource("2_pw2eo")
+use_description = ""
+metadata/_custom_type_script = "uid://7lser56mfbi4"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oud7f"]
+atlas = ExtResource("3_pw2eo")
+region = Rect2(32, 0, 32, 32)
+
+[resource]
+script = ExtResource("2_eu55q")
+name = "治疗药水"
+description = "[神奇小药水，喝了身体棒]"
+texture = SubResource("AtlasTexture_oud7f")
+effects = Array[ExtResource("1_t8xv6")]([SubResource("Resource_cvo6j")])
+metadata/_custom_type_script = "uid://w4fnc5moq54l"

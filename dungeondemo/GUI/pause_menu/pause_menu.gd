@@ -79,10 +79,6 @@ func _on_load_pressed() -> void:
 #
 #
 #
-#func play_audio( audio : AudioStream ) -> void:
-	#audio_stream_player.stream = audio
-	#audio_stream_player.play()
-#
 #
 #
 #func change_tab( _i : int = 1 ) -> void:

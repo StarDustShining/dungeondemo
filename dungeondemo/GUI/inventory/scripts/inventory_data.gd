@@ -4,7 +4,8 @@ class_name InventoryData extends Resource
 
 signal inventory_updated  # 更新信号
 
-func _init():
+func _init() -> void:
+	connect_slots()
 	# 初始化 slots，确保其不为 null
 	if slots == null:
 		slots = []
@@ -26,6 +27,7 @@ func add_item(item: ItemData, count: int = 1) -> bool:
 			new.quantity = count
 			slots[i] = new
 			inventory_updated.emit()  # 背包更新即发送信号
+			new.changed.connect( slot_changed )
 			return true
 	print("inventory was full!")
 	return false
@@ -35,3 +37,20 @@ func remove_item(index: int) -> void:
 	if index >= 0 and index < slots.size():
 		slots[index] = null
 		inventory_updated.emit()  # 背包更新即发送信号
+
+
+func connect_slots() -> void:
+	for s in slots:
+		if s:
+			s.changed.connect( slot_changed )
+
+
+func slot_changed() -> void:
+	for s in slots:
+		if s:
+			if s.quantity < 1:
+				s.changed.disconnect( slot_changed )
+				var index = slots.find( s )
+				slots[ index ] = null
+				emit_changed()
+	pass
