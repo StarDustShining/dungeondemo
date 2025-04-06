@@ -1,0 +1,46 @@
+class_name LabyrinthLevel extends Node2D
+
+@export var music : AudioStream
+
+@onready var player: Player = get_node("/root/PlayerManager").player
+@onready var compass: Compass = $Compass
+
+var magnets: Array[Magnet] = []  # 存储所有磁石节点
+
+func _ready() -> void:
+	self.y_sort_enabled = true
+	PlayerManager.set_as_parent(self)
+	LevelManager.level_load_started.connect(_free_level)
+	LevelManager.minigame_load_started.connect(_pause_level)
+	
+	# 获取所有磁石节点并将它们存储在 magnets 数组中
+	magnets.clear()
+	for node in get_tree().get_nodes_in_group("Magnet"):
+		if node is Magnet:
+			magnets.append(node as Magnet)
+
+	# 连接磁石的信号
+	for magnet in magnets:
+		magnet.player_entered_field.connect(_on_player_entered_field)
+		magnet.player_exited_field.connect(_on_player_exited_field)
+	
+	# 设置指南针在特定关卡中显示
+	compass.set_in_specific_level(true)
+
+# 处理玩家进入磁场
+func _on_player_entered_field(player: Player) -> void:
+	compass.player = player
+	compass.in_field = true
+
+# 处理玩家离开磁场
+func _on_player_exited_field(player: Player) -> void:
+	compass.in_field = false
+
+# 不销毁场景，而是仅清除与小游戏相关的部分
+func _free_level() -> void:
+	# 如果你只需要清理小游戏相关的内容，而不是销毁整个场景
+	PlayerManager.unparent_player(self)  # 如果需要可以解除父子关系，但不销毁主场景
+	queue_free()  # 不销毁当前场景，避免主场景消失
+
+func _pause_level() -> void:
+	pass

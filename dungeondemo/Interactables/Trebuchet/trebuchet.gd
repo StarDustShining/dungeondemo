@@ -60,7 +60,7 @@ func start_minigame() -> void:
 func _on_minigame_finished(completion_time: float) -> void:
 	saved_completion_time = completion_time  # 保存完成时间
 	var game01 = get_parent().get_parent().get_node("Game01")
-	var ammo_weight = game01.get_ammo_weight()
+e	var ammo_weight = game01.get_ammo_weight()
 	# 获取计数器值
 	var counts = game01.get_counts()
 	var charcoal_count = counts["charcoal_count"]

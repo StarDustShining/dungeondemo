@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx42p4fn2w4ej"]
+
+[ext_resource type="Script" uid="uid://cav5akwe3etnu" path="res://GUI/Compass/magnet.gd" id="1_11k8h"]
+[ext_resource type="Texture2D" uid="uid://dgjwib301lilh" path="res://GUI/Compass/磁石.png" id="1_blvnj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_11k8h"]
+radius = 203.002
+
+[node name="Magnet" type="Node2D"]
+script = ExtResource("1_11k8h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_blvnj")
+
+[node name="MagneticField" type="Area2D" parent="."]
+collision_layer = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagneticField"]
+shape = SubResource("CircleShape2D_11k8h")

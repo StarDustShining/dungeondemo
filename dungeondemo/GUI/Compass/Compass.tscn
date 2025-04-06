@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxvp6ts4qsu5a"]
+
+[ext_resource type="Script" uid="uid://dt1c2gngci7de" path="res://GUI/Compass/compass.gd" id="1_l64mg"]
+[ext_resource type="Texture2D" uid="uid://bgqdcrn4ec4or" path="res://GUI/Compass/司南磁勺.png" id="1_npxea"]
+[ext_resource type="Texture2D" uid="uid://bk84kbbqjxwu7" path="res://GUI/Compass/司南底座.png" id="2_nyyu6"]
+
+[node name="Compass" type="CanvasLayer"]
+scale = Vector2(0.6, 0.6)
+transform = Transform2D(0.6, 0, 0, 0.6, 0, 0)
+script = ExtResource("1_l64mg")
+
+[node name="plate" type="Sprite2D" parent="."]
+position = Vector2(2490.78, 1328.7)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_nyyu6")
+
+[node name="spoon" type="Sprite2D" parent="."]
+position = Vector2(2490.78, 1328.7)
+rotation = -0.785398
+scale = Vector2(1, 1.10612)
+texture = ExtResource("1_npxea")
+offset = Vector2(14, -18.0811)

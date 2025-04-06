@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://co88qhc5l1v7c"]
+[gd_scene load_steps=7 format=3 uid="uid://co88qhc5l1v7c"]
 
+[ext_resource type="Script" uid="uid://b745662aebt1p" path="res://Level/scripts/labyrinth_level.gd" id="1_1q37a"]
 [ext_resource type="PackedScene" uid="uid://vc7qiiqujjjx" path="res://TileMaps/Ground.tscn" id="1_i7aiw"]
-[ext_resource type="Script" uid="uid://cw4m8vch8c66t" path="res://Level/scripts/level.gd" id="1_ifexy"]
 [ext_resource type="PackedScene" uid="uid://bmw1cu6qn0dvt" path="res://Level/player_spawn.tscn" id="2_h61k5"]
 [ext_resource type="PackedScene" uid="uid://ciju1j1ygnws2" path="res://Level/level_transition.tscn" id="4_33t11"]
+[ext_resource type="PackedScene" uid="uid://bx42p4fn2w4ej" path="res://GUI/Compass/Magnet.tscn" id="5_dpusd"]
+[ext_resource type="PackedScene" uid="uid://dxvp6ts4qsu5a" path="res://GUI/Compass/Compass.tscn" id="6_xodhj"]
 
 [node name="01" type="Node2D"]
-script = ExtResource("1_ifexy")
+script = ExtResource("1_1q37a")
 
 [node name="Ground" parent="." instance=ExtResource("1_i7aiw")]
 y_sort_enabled = true
@@ -26,3 +28,9 @@ level = "res://Scenes/game.tscn"
 position = Vector2(661, 16)
 level = "res://Level/Area02/02.tscn"
 side = 2
+
+[node name="Magnet" parent="." groups=["Magnet"] instance=ExtResource("5_dpusd")]
+position = Vector2(566, 323)
+scale = Vector2(0.768086, 0.768086)
+
+[node name="Compass" parent="." instance=ExtResource("6_xodhj")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=362 format=3 uid="uid://ciugelk15lxjx"]
+[gd_scene load_steps=363 format=3 uid="uid://ciugelk15lxjx"]
 
 [ext_resource type="Script" uid="uid://dwawx4cw8g8dq" path="res://Player/script/player.gd" id="1_bdolp"]
 [ext_resource type="Texture2D" uid="uid://8fev7y815bdn" path="res://Player/The Female Adventurer - Premium/Attack/Spear/Attack_Spear.png" id="2_k2jx5"]
@@ -2827,9 +2827,13 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_u5tep"]
+radius = 16.2788
+
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 position = Vector2(0, -27)
+scale = Vector2(0.6, 0.6)
 collision_mask = 16
 script = ExtResource("1_bdolp")
 
@@ -2891,7 +2895,6 @@ script = ExtResource("12_gojsv")
 [node name="AttackHurtBox" parent="Interaction" instance=ExtResource("13_m6gdy")]
 position = Vector2(1.50463e-36, -3.8147e-06)
 collision_mask = 256
-monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction/AttackHurtBox"]
 position = Vector2(0, 36)
@@ -2927,6 +2930,16 @@ sprite_frames = SubResource("SpriteFrames_5svom")
 autoplay = "default"
 frame_progress = 0.707964
 offset = Vector2(0, -79.8757)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_u5tep")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+y_sort_enabled = true
 
 [connection signal="animation_finished" from="Player" to="StateMachine/Run" method="Exit"]
 [connection signal="animation_finished" from="Player" to="StateMachine/Stun" method="_on_player_animation_finished"]
