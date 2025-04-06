@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bejtrxavot2vf"]
 
 [ext_resource type="PackedScene" uid="uid://lxx60xgoecea" path="res://TileMaps/Ground3.tscn" id="1_yxnyq"]
-[ext_resource type="PackedScene" uid="uid://buduhuydpnnhe" path="res://Interactables/Table/table.tscn" id="4_m76w4"]
+[ext_resource type="PackedScene" uid="uid://bmw1cu6qn0dvt" path="res://Level/player_spawn.tscn" id="4_8j8jb"]
 [ext_resource type="Script" uid="uid://cw4m8vch8c66t" path="res://Level/scripts/level.gd" id="5_l2aad"]
-[ext_resource type="PackedScene" uid="uid://bilqvuqkq1mcq" path="res://Interactables/Trebuchet/Trebuchet.tscn" id="5_yohgo"]
+[ext_resource type="PackedScene" uid="uid://dq4g5lk60l136" path="res://Interactables/Laser/NightPearl.tscn" id="5_m76w4"]
 
 [node name="03" type="Node2D"]
 y_sort_enabled = true
@@ -19,12 +19,9 @@ layer_2/tile_data = PackedInt32Array(0, 655362, 5, 65536, 655362, 5, 131072, 327
 layer_3/y_sort_enabled = true
 layer_3/tile_data = PackedInt32Array(393219, 589824, 4, 1507331, 589824, 7, 1507332, 655360, 8, 458757, 524288, 4, 262150, 1, 2, 393222, 524288, 4, 262153, 1, 2, 720908, 589824, 4, 196622, 327680, 1, 262158, 327680, 2, 393230, 1, 0, 655376, 393216, 1, 720912, 393216, 2, 851984, 1, 1, 1048594, 0, 4, 1114131, 196608, 4, 1048598, 327680, 1, 1114134, 327680, 2, 1245206, 1, 0, 524311, 720896, 12, 458776, 720896, 12, 589848, 851968, 11, 1245208, 589824, 4, 524313, 589824, 10, 262170, 1, 2, 262173, 1, 2, 1245216, 589824, 6, 1048614, 589824, 1, 1114150, 589824, 2, 1245226, 1, 1, 1179691, 0, 1, 1245229, 589824, 6, 1310766, 589824, 4, 1245231, 1, 0, 327728, 65536, 1)
 
-[node name="Table" parent="." instance=ExtResource("4_m76w4")]
-position = Vector2(374, 218)
-scale = Vector2(2.5, 2.5)
+[node name="NightPearl" parent="." instance=ExtResource("5_m76w4")]
+position = Vector2(255, 194)
 
-[node name="Trebuchet" parent="." instance=ExtResource("5_yohgo")]
-position = Vector2(232, 745)
-scale = Vector2(0.7, 0.7)
-script = ExtResource("5_l2aad")
-music = null
+[node name="PlayerSpawn" parent="." instance=ExtResource("4_8j8jb")]
+position = Vector2(302, 401)
+scale = Vector2(0.6, 0.6)
