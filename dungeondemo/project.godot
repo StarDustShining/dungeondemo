@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="DungeonDemo"
-run/main_scene="res://Scenes/game.tscn"
+run/main_scene="uid://bxlti7mm52e8c"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 
 [autoload]

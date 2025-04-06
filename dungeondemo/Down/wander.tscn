@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bor4q8yvhquxn"]
+
+[ext_resource type="Script" uid="uid://dx1qj45fdfko" path="res://Down/scripts/Wander.gd" id="1_xjcki"]
+
+[node name="Wander" type="Node2D"]
+script = ExtResource("1_xjcki")
+
+[node name="Point1" type="Marker2D" parent="." groups=["First"]]
+position = Vector2(-100, 0)
+
+[node name="Point2" type="Marker2D" parent="." groups=["First"]]
+position = Vector2(100, 0)
+
+[node name="Point3" type="Marker2D" parent="." groups=["First"]]
+position = Vector2(0, -100)
+
+[node name="Point4" type="Marker2D" parent="." groups=["First"]]
+position = Vector2(0, 100)
