@@ -30,7 +30,8 @@ level = "res://Level/Area02/02.tscn"
 side = 2
 
 [node name="Magnet" parent="." groups=["Magnet"] instance=ExtResource("5_dpusd")]
-position = Vector2(566, 323)
+position = Vector2(645, 392)
 scale = Vector2(0.768086, 0.768086)
+magnetic_field_size = Vector2(400, 400)
 
 [node name="Compass" parent="." instance=ExtResource("6_xodhj")]
