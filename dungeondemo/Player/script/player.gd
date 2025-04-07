@@ -20,6 +20,8 @@ var attack : int = 1 :
 var defense : int = 0
 var defense_bonus : int = 0
 
+var box_control: bool = false
+var pushed_box: CharacterBody2D = null
 
 @onready var player_animated: AnimatedSprite2D = $Player
 @onready var state_machine: PlayerStateMachine = $StateMachine
@@ -28,7 +30,7 @@ var defense_bonus : int = 0
 @onready var interact_area: Area2D = $Interaction/Area2D
 @onready var interaction_icon: AnimatedSprite2D = $InteractionIcon
 
-
+const SPEED = 200  # 你可以根据需要调整速度
 
 func _ready():
 	PlayerManager.player=self
@@ -40,22 +42,39 @@ func _ready():
 	pass
 
 func _process(_delta):
-	direction.x = Input.get_action_strength("右") - Input.get_action_strength("左")
-	direction.y = Input.get_action_strength("下") - Input.get_action_strength("上")
+	# direction.x = Input.get_action_strength("右") - Input.get_action_strength("左")
+	# direction.y = Input.get_action_strength("下") - Input.get_action_strength("上")
 
-	if direction.length() > 1:
-		direction = direction.normalized()  # 归一化方向，防止斜向移动变快
+	# if direction.length() > 1:
+	# 	direction = direction.normalized()  # 归一化方向，防止斜向移动变快
 
 	#SetDirection()  # 检测并更新方向
 	pass
 
 func _physics_process(_delta):
-	move_and_slide()
-	
-	
+	# 只有在不在推拉状态下，才更新玩家的方向和速度
+	if not box_control:
+		direction.x = Input.get_action_strength("右") - Input.get_action_strength("左")
+		direction.y = Input.get_action_strength("下") - Input.get_action_strength("上")
+
+		if direction.length() > 1:
+			direction = direction.normalized()  # 归一化方向，防止斜向移动变快
+
+		velocity.x = direction.x * SPEED
+		velocity.y = direction.y * SPEED
+		move_and_slide()
+	else:
+		# 在推拉物品状态下，停止玩家移动
+		velocity.x = 0
+		velocity.y = 0
+		move_and_slide()
+
+	# 执行射线检测和推拉物品的逻辑
+	player_raycast()
+
+
 func _exit_tree():
 	var time_str = Time.get_ticks_msec()  # 获取当前时间（毫秒）
-
 
 func SetDirection() -> bool:
 	var new_dir: Vector2 = Vector2.ZERO
@@ -152,3 +171,44 @@ func OnAreaEnter(_a: Area2D) -> void:
 
 func OnAreaExit(_a: Area2D) -> void:
 	interaction_icon.visible=false
+
+func player_raycast():
+	var raycast = $Interaction/RayCast2D
+	if raycast.is_colliding():
+		var collider = raycast.get_collider()
+		if collider.is_in_group("PushItem"):
+			if Input.is_action_pressed("推拉物品"):
+				start_push(collider)
+			elif box_control and pushed_box == collider:
+				# 如果松开键但还在推
+				stop_push()
+	else:
+		stop_push()
+
+	if box_control and pushed_box:
+		handle_push_movement()
+
+func start_push(box: CharacterBody2D):
+	modulate = Color(1, 0, 0)
+	box_control = true
+	pushed_box = box
+
+func stop_push():
+	modulate = Color(1, 1, 1)
+	box_control = false
+	if pushed_box:
+		pushed_box.velocity = Vector2.ZERO
+	pushed_box = null
+
+func handle_push_movement():
+	var move_vec = Vector2.ZERO
+	if Input.is_action_pressed("左"):
+		move_vec.x = -1
+	elif Input.is_action_pressed("右"):
+		move_vec.x = 1
+	elif Input.is_action_pressed("上"):
+		move_vec.y = -1
+	elif Input.is_action_pressed("下"):
+		move_vec.y = 1
+
+	pushed_box.velocity = move_vec.normalized() * 50

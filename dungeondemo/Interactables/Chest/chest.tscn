@@ -226,7 +226,7 @@ vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_b4wx2")
+&"": SubResource("AnimationLibrary_b4wx2")
 }
 autoplay = "closed"
 
