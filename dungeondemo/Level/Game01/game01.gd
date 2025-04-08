@@ -19,7 +19,7 @@ func end_minigame():
 	self.visible = false  # 隐藏小游戏
 	await get_tree().process_frame
 	minigame_finished.emit()
-	var table = get_node("/root/02/Table")
+	var table = get_node("/root/03/Table")
 	table._on_game01_completed()
 	
 # 函数来更新每个瓶子实例化物品的数量

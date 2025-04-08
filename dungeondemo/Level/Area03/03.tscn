@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bejtrxavot2vf"]
+[gd_scene load_steps=8 format=3 uid="uid://bejtrxavot2vf"]
 
 [ext_resource type="PackedScene" uid="uid://lxx60xgoecea" path="res://TileMaps/Ground3.tscn" id="1_yxnyq"]
 [ext_resource type="PackedScene" uid="uid://bmw1cu6qn0dvt" path="res://Level/player_spawn.tscn" id="4_8j8jb"]
 [ext_resource type="Script" uid="uid://cw4m8vch8c66t" path="res://Level/scripts/level.gd" id="5_l2aad"]
 [ext_resource type="PackedScene" uid="uid://dq4g5lk60l136" path="res://Interactables/Laser/NightPearl.tscn" id="5_m76w4"]
 [ext_resource type="PackedScene" uid="uid://clouff5udr3j3" path="res://Interactables/Mirror/mirror.tscn" id="5_yohgo"]
+[ext_resource type="PackedScene" uid="uid://buduhuydpnnhe" path="res://Interactables/Table/table.tscn" id="6_rf4vq"]
+[ext_resource type="PackedScene" uid="uid://bilqvuqkq1mcq" path="res://Interactables/Trebuchet/Trebuchet.tscn" id="7_l2aad"]
 
 [node name="03" type="Node2D"]
 y_sort_enabled = true
@@ -22,17 +24,25 @@ layer_3/tile_data = PackedInt32Array(393219, 589824, 4, 1507331, 589824, 7, 1507
 position = Vector2(255, 194)
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("4_8j8jb")]
-position = Vector2(302, 401)
+position = Vector2(886, 305)
 scale = Vector2(0.6, 0.6)
 
 [node name="Mirror" parent="." groups=["PushItem"] instance=ExtResource("5_yohgo")]
-position = Vector2(258, 526)
+position = Vector2(139, 326)
 scale = Vector2(0.6, 0.6)
 
 [node name="Mirror2" parent="." groups=["PushItem"] instance=ExtResource("5_yohgo")]
-position = Vector2(467, 632)
+position = Vector2(139, 422)
 scale = Vector2(0.6, 0.6)
 
 [node name="Mirror3" parent="." groups=["PushItem"] instance=ExtResource("5_yohgo")]
-position = Vector2(823, 680)
+position = Vector2(140, 525)
+scale = Vector2(0.6, 0.6)
+
+[node name="Table" parent="." instance=ExtResource("6_rf4vq")]
+position = Vector2(1003, 195)
+scale = Vector2(2.4, 2.4)
+
+[node name="Trebuchet" parent="." instance=ExtResource("7_l2aad")]
+position = Vector2(806, 389)
 scale = Vector2(0.6, 0.6)
