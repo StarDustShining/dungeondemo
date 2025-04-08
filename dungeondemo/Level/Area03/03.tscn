@@ -28,15 +28,11 @@ position = Vector2(886, 305)
 scale = Vector2(0.6, 0.6)
 
 [node name="Mirror" parent="." groups=["PushItem"] instance=ExtResource("5_yohgo")]
-position = Vector2(139, 326)
+position = Vector2(141, 523)
 scale = Vector2(0.6, 0.6)
 
 [node name="Mirror2" parent="." groups=["PushItem"] instance=ExtResource("5_yohgo")]
 position = Vector2(139, 422)
-scale = Vector2(0.6, 0.6)
-
-[node name="Mirror3" parent="." groups=["PushItem"] instance=ExtResource("5_yohgo")]
-position = Vector2(140, 525)
 scale = Vector2(0.6, 0.6)
 
 [node name="Table" parent="." instance=ExtResource("6_rf4vq")]
