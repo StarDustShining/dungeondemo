@@ -22,6 +22,7 @@ var defense_bonus : int = 0
 
 var box_control: bool = false
 var pushed_box: CharacterBody2D = null
+var pulling: bool = false
 
 @onready var player_animated: AnimatedSprite2D = $Player
 @onready var state_machine: PlayerStateMachine = $StateMachine
@@ -41,37 +42,9 @@ func _ready():
 	#update_damage_values()
 	pass
 
-func _process(_delta):
-	# direction.x = Input.get_action_strength("右") - Input.get_action_strength("左")
-	# direction.y = Input.get_action_strength("下") - Input.get_action_strength("上")
-
-	# if direction.length() > 1:
-	# 	direction = direction.normalized()  # 归一化方向，防止斜向移动变快
-
-	#SetDirection()  # 检测并更新方向
-	pass
-
 func _physics_process(_delta):
-	# 只有在不在推拉状态下，才更新玩家的方向和速度
-	if not box_control:
-		direction.x = Input.get_action_strength("右") - Input.get_action_strength("左")
-		direction.y = Input.get_action_strength("下") - Input.get_action_strength("上")
-
-		if direction.length() > 1:
-			direction = direction.normalized()  # 归一化方向，防止斜向移动变快
-
-		velocity.x = direction.x * SPEED
-		velocity.y = direction.y * SPEED
-		move_and_slide()
-	else:
-		# 在推拉物品状态下，停止玩家移动
-		velocity.x = 0
-		velocity.y = 0
-		move_and_slide()
-
-	# 执行射线检测和推拉物品的逻辑
+	player_move(_delta)
 	player_raycast()
-
 
 func _exit_tree():
 	var time_str = Time.get_ticks_msec()  # 获取当前时间（毫秒）
@@ -172,6 +145,23 @@ func OnAreaEnter(_a: Area2D) -> void:
 func OnAreaExit(_a: Area2D) -> void:
 	interaction_icon.visible=false
 
+func player_move(delta):
+	direction.x = Input.get_action_strength("右") - Input.get_action_strength("左")
+	direction.y = Input.get_action_strength("下") - Input.get_action_strength("上")
+
+	if direction.length() > 1:
+		direction = direction.normalized()  # 归一化方向，防止斜向移动变快
+
+	if not box_control:
+		velocity.x = direction.x * SPEED
+		velocity.y = direction.y * SPEED
+	else:
+		velocity.x = 0
+		velocity.y = 0
+
+	move_and_slide()
+	player_raycast()
+		
 func player_raycast():
 	var raycast = $Interaction/RayCast2D
 	if raycast.is_colliding():
@@ -189,12 +179,19 @@ func player_raycast():
 		handle_push_movement()
 
 func start_push(box: CharacterBody2D):
-	modulate = Color(1, 0, 0)
+	# 确保箱子有Sprite2D子节点
+	var sprite = box.get_node("Sprite2D")  # 假设箱子的Sprite2D节点名称为Sprite2D
+	if sprite:
+		sprite.modulate = Color(247 / 255.0, 206 / 255.0, 0 / 255.0,0.8)
 	box_control = true
 	pushed_box = box
 
 func stop_push():
-	modulate = Color(1, 1, 1)
+	# 不再给玩家加颜色特效，直接去除箱子的颜色特效
+	if pushed_box:
+		var sprite = pushed_box.get_node("Sprite2D")  # 获取Sprite2D子节点
+		if sprite:
+			sprite.modulate = Color(1, 1, 1)  # 还原箱子的颜色为白色
 	box_control = false
 	if pushed_box:
 		pushed_box.velocity = Vector2.ZERO
