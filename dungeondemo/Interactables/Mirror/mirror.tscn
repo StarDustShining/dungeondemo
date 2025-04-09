@@ -14,6 +14,7 @@ size = Vector2(81, 76.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmps6"]
 
 [node name="Mirror" type="CharacterBody2D"]
+y_sort_enabled = true
 texture_filter = 1
 position = Vector2(0, -30)
 collision_layer = 512
@@ -22,8 +23,9 @@ script = ExtResource("1_0qllf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0.970395, 0.809251, 0, 1)
+position = Vector2(0, -10)
 texture = ExtResource("2_pdlcj")
-offset = Vector2(0, 5)
+offset = Vector2(0, 15)
 hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

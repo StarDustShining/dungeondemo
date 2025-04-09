@@ -73,5 +73,5 @@ level = "<null>"
 metadata/_custom_type_script = "uid://73wuyosh7n6v"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransition"]
-position = Vector2(-43, -5)
+position = Vector2(-32, 0)
 shape = SubResource("RectangleShape2D_bk78f")

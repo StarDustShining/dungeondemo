@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="DungeonDemo"
-run/main_scene="uid://bxlti7mm52e8c"
+run/main_scene="uid://jnomgop3jc72"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
+boot_splash/show_image=false
 
 [autoload]
 
@@ -46,7 +47,7 @@ enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg", "res://add
 
 [gui]
 
-theme/custom_font="res://GUI/UI/font/ark-pixel-10px-monospaced-zh_cn.ttf"
+theme/custom_font="uid://dt8jwfhg6v2mx"
 
 [input]
 
