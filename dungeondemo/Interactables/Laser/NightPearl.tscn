@@ -58,8 +58,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dqmb"]
-size = Vector2(38, 46)
+[sub_resource type="CircleShape2D" id="CircleShape2D_d3dmr"]
 
 [node name="NightPearl" type="Node2D"]
 
@@ -72,9 +71,10 @@ frame_progress = 0.640753
 
 [node name="Laser" parent="." instance=ExtResource("2_6cvqf")]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="ReflectArea" type="Area2D" parent="."]
 collision_layer = 128
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_3dqmb")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReflectArea"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_d3dmr")

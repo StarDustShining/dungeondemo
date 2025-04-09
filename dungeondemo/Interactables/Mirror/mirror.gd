@@ -70,7 +70,7 @@ func update_areas():
 
 		"right_up":
 			reflect_area.shape.size = Vector2(44.767, 3.0)
-			reflect_area.position = Vector2(0, 0)
+			reflect_area.position = Vector2(1, -1)
 			reflect_area.rotation_degrees = 30  # 设定旋转（使用 rotation_degrees）
 
 			block_area.shape.size = Vector2(44.767, 3.0)
@@ -82,7 +82,7 @@ func update_areas():
 			reflect_area.position = Vector2(3.5, 0)
 			reflect_area.rotation_degrees = 90  # 设定旋转（使用 rotation_degrees）
 
-			block_area.shape.size = Vector2(61.0, 10)
+			block_area.shape.size = Vector2(61.0, 3)
 			block_area.position = Vector2(-2.0, 0.5)
 			block_area.rotation_degrees = 90  # 设定旋转（使用 rotation_degrees）
 
@@ -118,7 +118,7 @@ func update_areas():
 			reflect_area.position = Vector2(-3.5, -2.5)
 			reflect_area.rotation_degrees = -90  # 设定旋转（使用 rotation_degrees）
 
-			block_area.shape.size = Vector2(54.0, 8.439)
+			block_area.shape.size = Vector2(54.0, 3)
 			block_area.position = Vector2(2.22, -3)
 			block_area.rotation_degrees = -90  # 设定旋转（使用 rotation_degrees）
 

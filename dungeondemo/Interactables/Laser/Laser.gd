@@ -1,7 +1,9 @@
 extends Node2D
 
 var bounces := 10  # 激光反弹次数限制
-const MAX_LENGTH := 2000  # 激光的最大长度（射程）
+const MAX_LENGTH := 1000000  # 激光的最大长度（射程）
+
+signal receive_area_detected
 
 @onready var line = $Line2D  # 用于绘制激光路径
 var max_cast_to  # 最大射程向量，固定为 Y 轴正方向
@@ -50,6 +52,9 @@ func _process(_delta):
 						is_reflect = true
 					"BlockArea":
 						is_block = true
+						# 触发信号
+					"ReceiveArea":
+						emit_signal("receive_area_detected")
 			elif collider is TileMap:
 				var tilemap = collider
 				var local_pos = tilemap.to_local(collision_point)
