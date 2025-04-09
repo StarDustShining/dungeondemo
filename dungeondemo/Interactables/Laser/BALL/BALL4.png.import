@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8vcti48q853f"
-path="res://.godot/imported/Dungeon_brick_wall_blue.png.png-45611e6fdcf9671a4185d38cb86eacc8.ctex"
+uid="uid://cdo15ueks0qgh"
+path="res://.godot/imported/BALL4.png-c7497b5ecd24f0744ffc4193bb0cb67b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Level/Dungeon_brick_wall_blue.png.png"
-dest_files=["res://.godot/imported/Dungeon_brick_wall_blue.png.png-45611e6fdcf9671a4185d38cb86eacc8.ctex"]
+source_file="res://Interactables/Laser/BALL/BALL4.png"
+dest_files=["res://.godot/imported/BALL4.png-c7497b5ecd24f0744ffc4193bb0cb67b.ctex"]
 
 [params]
 

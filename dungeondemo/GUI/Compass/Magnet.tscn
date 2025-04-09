@@ -1,19 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://bx42p4fn2w4ej"]
+[gd_scene load_steps=3 format=3 uid="uid://bx42p4fn2w4ej"]
 
 [ext_resource type="Script" uid="uid://cav5akwe3etnu" path="res://GUI/Compass/magnet.gd" id="1_11k8h"]
-[ext_resource type="Texture2D" uid="uid://dgjwib301lilh" path="res://GUI/Compass/磁石.png" id="1_blvnj"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_11k8h"]
-radius = 203.002
+[ext_resource type="Texture2D" uid="uid://dmcufbrio6ul1" path="res://GUI/Compass/磁石2.png" id="2_kn606"]
 
 [node name="Magnet" type="Node2D"]
 script = ExtResource("1_11k8h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_blvnj")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_kn606")
 
 [node name="MagneticField" type="Area2D" parent="."]
 collision_layer = 64
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MagneticField"]
-shape = SubResource("CircleShape2D_11k8h")
+[node name="Area2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(0, 12)
+scale = Vector2(1.48159, 1.03353)
+polygon = PackedVector2Array(-9.44929, 2.90267, 0, 8.70801, 9.44929, 3.87023, 0.67495, -2.90267)

@@ -1,22 +1,80 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq4g5lk60l136"]
+[gd_scene load_steps=16 format=3 uid="uid://dq4g5lk60l136"]
 
-[ext_resource type="Texture2D" uid="uid://4a18rsxlbnen" path="res://Interactables/Laser/夜明珠.png" id="1_u330j"]
+[ext_resource type="Texture2D" uid="uid://c8r0okyfeljdr" path="res://Interactables/Laser/BALL/BALL1.png" id="1_d3dmr"]
 [ext_resource type="PackedScene" uid="uid://p8hgwkwlffdy" path="res://Interactables/Laser/Laser.tscn" id="2_6cvqf"]
+[ext_resource type="Texture2D" uid="uid://lv2yqmnr6ccs" path="res://Interactables/Laser/BALL/BALL2.png" id="2_8s8gj"]
+[ext_resource type="Texture2D" uid="uid://cmwoi0p507wq" path="res://Interactables/Laser/BALL/BALL3.png" id="3_vjndk"]
+[ext_resource type="Texture2D" uid="uid://cdo15ueks0qgh" path="res://Interactables/Laser/BALL/BALL4.png" id="4_e0ata"]
+[ext_resource type="Texture2D" uid="uid://ce3lojh6h8dp0" path="res://Interactables/Laser/BALL/BALL5.png" id="5_0ms7n"]
+[ext_resource type="Texture2D" uid="uid://3ccwnhdnx23d" path="res://Interactables/Laser/BALL/BALL6.png" id="6_l4w2s"]
+[ext_resource type="Texture2D" uid="uid://c581p563jrvlf" path="res://Interactables/Laser/BALL/BALL7.png" id="7_8vg3p"]
+[ext_resource type="Texture2D" uid="uid://dteassufjgt4d" path="res://Interactables/Laser/BALL/BALL8.png" id="8_krvs7"]
+[ext_resource type="Texture2D" uid="uid://b2b1hvnowdpdk" path="res://Interactables/Laser/BALL/BALL9.png" id="9_m3e43"]
+[ext_resource type="Texture2D" uid="uid://blopctlyu50ck" path="res://Interactables/Laser/BALL/BALL10.png" id="10_5kscf"]
+[ext_resource type="Texture2D" uid="uid://6pe4fxqhacfb" path="res://Interactables/Laser/BALL/BALL11.png" id="11_kki0j"]
+[ext_resource type="Texture2D" uid="uid://bgy7f3b10y221" path="res://Interactables/Laser/BALL/BALL12.png" id="12_f8ss3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dqmb"]
-size = Vector2(38, 46)
+[sub_resource type="SpriteFrames" id="SpriteFrames_iheey"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d3dmr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8s8gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vjndk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e0ata")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0ms7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_l4w2s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8vg3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_krvs7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_m3e43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5kscf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_kki0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_f8ss3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d3dmr"]
 
 [node name="NightPearl" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.0585585, 0.0585585)
-texture = ExtResource("1_u330j")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.125002, -0.128523)
+scale = Vector2(0.538732, 0.5442)
+sprite_frames = SubResource("SpriteFrames_iheey")
+autoplay = "default"
+frame_progress = 0.640753
 
 [node name="Laser" parent="." instance=ExtResource("2_6cvqf")]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="ReflectArea" type="Area2D" parent="."]
 collision_layer = 128
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_3dqmb")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReflectArea"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_d3dmr")

@@ -20,6 +20,9 @@ var attack : int = 1 :
 var defense : int = 0
 var defense_bonus : int = 0
 
+var box_control: bool = false
+var pushed_box: CharacterBody2D = null
+var pulling: bool = false
 
 @onready var player_animated: AnimatedSprite2D = $Player
 @onready var state_machine: PlayerStateMachine = $StateMachine
@@ -28,7 +31,7 @@ var defense_bonus : int = 0
 @onready var interact_area: Area2D = $Interaction/Area2D
 @onready var interaction_icon: AnimatedSprite2D = $InteractionIcon
 
-
+const SPEED = 200  # 你可以根据需要调整速度
 
 func _ready():
 	PlayerManager.player=self
@@ -39,23 +42,12 @@ func _ready():
 	#update_damage_values()
 	pass
 
-func _process(_delta):
-	direction.x = Input.get_action_strength("右") - Input.get_action_strength("左")
-	direction.y = Input.get_action_strength("下") - Input.get_action_strength("上")
-
-	if direction.length() > 1:
-		direction = direction.normalized()  # 归一化方向，防止斜向移动变快
-
-	#SetDirection()  # 检测并更新方向
-	pass
-
 func _physics_process(_delta):
-	move_and_slide()
-	
-	
+	player_move(_delta)
+	player_raycast()
+
 func _exit_tree():
 	var time_str = Time.get_ticks_msec()  # 获取当前时间（毫秒）
-
 
 func SetDirection() -> bool:
 	var new_dir: Vector2 = Vector2.ZERO
@@ -152,3 +144,68 @@ func OnAreaEnter(_a: Area2D) -> void:
 
 func OnAreaExit(_a: Area2D) -> void:
 	interaction_icon.visible=false
+
+func player_move(delta):
+	direction.x = Input.get_action_strength("右") - Input.get_action_strength("左")
+	direction.y = Input.get_action_strength("下") - Input.get_action_strength("上")
+
+	if direction.length() > 1:
+		direction = direction.normalized()  # 归一化方向，防止斜向移动变快
+
+	if not box_control:
+		velocity.x = direction.x * SPEED
+		velocity.y = direction.y * SPEED
+	else:
+		velocity.x = 0
+		velocity.y = 0
+
+	move_and_slide()
+	player_raycast()
+		
+func player_raycast():
+	var raycast = $Interaction/RayCast2D
+	if raycast.is_colliding():
+		var collider = raycast.get_collider()
+		if collider.is_in_group("PushItem"):
+			if Input.is_action_pressed("推拉物品"):
+				start_push(collider)
+			elif box_control and pushed_box == collider:
+				# 如果松开键但还在推
+				stop_push()
+	else:
+		stop_push()
+
+	if box_control and pushed_box:
+		handle_push_movement()
+
+func start_push(box: CharacterBody2D):
+	# 确保箱子有Sprite2D子节点
+	var sprite = box.get_node("Sprite2D")  # 假设箱子的Sprite2D节点名称为Sprite2D
+	if sprite:
+		sprite.modulate = Color(247 / 255.0, 206 / 255.0, 0 / 255.0,0.8)
+	box_control = true
+	pushed_box = box
+
+func stop_push():
+	# 不再给玩家加颜色特效，直接去除箱子的颜色特效
+	if pushed_box:
+		var sprite = pushed_box.get_node("Sprite2D")  # 获取Sprite2D子节点
+		if sprite:
+			sprite.modulate = Color(1, 1, 1)  # 还原箱子的颜色为白色
+	box_control = false
+	if pushed_box:
+		pushed_box.velocity = Vector2.ZERO
+	pushed_box = null
+
+func handle_push_movement():
+	var move_vec = Vector2.ZERO
+	if Input.is_action_pressed("左"):
+		move_vec.x = -1
+	elif Input.is_action_pressed("右"):
+		move_vec.x = 1
+	elif Input.is_action_pressed("上"):
+		move_vec.y = -1
+	elif Input.is_action_pressed("下"):
+		move_vec.y = 1
+
+	pushed_box.velocity = move_vec.normalized() * 50

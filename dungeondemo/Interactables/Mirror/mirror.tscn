@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://clouff5udr3j3"]
+
+[ext_resource type="Script" uid="uid://bg175fjdl7giu" path="res://Interactables/Mirror/mirror.gd" id="1_0qllf"]
+[ext_resource type="Texture2D" uid="uid://diwlrlcx2ox6e" path="res://Interactables/Mirror/mirror.png" id="2_pdlcj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1agw"]
+size = Vector2(44, 38.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdlcj"]
+size = Vector2(81, 76.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0sw4x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmps6"]
+
+[node name="Mirror" type="CharacterBody2D"]
+texture_filter = 1
+position = Vector2(0, -30)
+collision_layer = 512
+collision_mask = 16
+script = ExtResource("1_0qllf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.970395, 0.809251, 0, 1)
+texture = ExtResource("2_pdlcj")
+offset = Vector2(0, 5)
+hframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 29)
+shape = SubResource("RectangleShape2D_b1agw")
+
+[node name="RotationArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RotationArea"]
+position = Vector2(0, 29)
+shape = SubResource("RectangleShape2D_pdlcj")
+debug_color = Color(0, 0.640735, 0.345352, 0.42)
+
+[node name="ReflectArea" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReflectArea"]
+shape = SubResource("RectangleShape2D_0sw4x")
+debug_color = Color(0.600342, 0.427473, 1, 0.42)
+
+[node name="BlockArea" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockArea"]
+shape = SubResource("RectangleShape2D_gmps6")
+debug_color = Color(0.989651, 0, 0.287918, 0.42)

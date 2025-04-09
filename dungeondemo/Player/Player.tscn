@@ -1,4 +1,4 @@
-[gd_scene load_steps=363 format=3 uid="uid://ciugelk15lxjx"]
+[gd_scene load_steps=362 format=3 uid="uid://ciugelk15lxjx"]
 
 [ext_resource type="Script" uid="uid://dwawx4cw8g8dq" path="res://Player/script/player.gd" id="1_bdolp"]
 [ext_resource type="Texture2D" uid="uid://8fev7y815bdn" path="res://Player/The Female Adventurer - Premium/Attack/Spear/Attack_Spear.png" id="2_k2jx5"]
@@ -23,8 +23,7 @@
 [ext_resource type="Script" uid="uid://c7kpyahlhrx2p" path="res://Player/script/state_run.gd" id="18_arly0"]
 [ext_resource type="Texture2D" uid="uid://co8mj33pc1mpu" path="res://GUI/UI/Texture/Keyboard Black.png" id="22_fxfwk"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kiv0c"]
-radius = 20.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u5tep"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xbuog"]
 atlas = ExtResource("2_k2jx5")
@@ -2827,28 +2826,30 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_u5tep"]
-radius = 16.2788
-
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
-position = Vector2(0, -27)
 scale = Vector2(0.6, 0.6)
-collision_mask = 16
+collision_mask = 528
 script = ExtResource("1_bdolp")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+y_sort_enabled = true
+limit_left = 0
+limit_top = 0
+limit_right = 1600
+limit_bottom = 900
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -7)
-shape = SubResource("CircleShape2D_kiv0c")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_u5tep")
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1.26218e-29, -34)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_6tkpq")
-animation = &"stun_Up"
+animation = &"idle_Down"
 autoplay = "idle_Down"
-offset = Vector2(-2.72478e-06, -1.18359)
+offset = Vector2(-2.72478e-06, -11.1836)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = 0
@@ -2894,10 +2895,12 @@ script = ExtResource("12_gojsv")
 
 [node name="AttackHurtBox" parent="Interaction" instance=ExtResource("13_m6gdy")]
 position = Vector2(1.50463e-36, -3.8147e-06)
+scale = Vector2(0.993074, 1)
 collision_mask = 256
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction/AttackHurtBox"]
-position = Vector2(0, 36)
+position = Vector2(-1.51512e-36, 16.6667)
 shape = SubResource("CapsuleShape2D_fiuvv")
 debug_color = Color(0.999762, 0, 0.102051, 0.42)
 
@@ -2906,15 +2909,19 @@ collision_layer = 4
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction/Area2D"]
-position = Vector2(0, 10.125)
 shape = SubResource("RectangleShape2D_yh3us")
 debug_color = Color(0, 0.648119, 0.191015, 0.42)
+
+[node name="RayCast2D" type="RayCast2D" parent="Interaction"]
+self_modulate = Color(1, 0.137313, 0.971706, 1)
+target_position = Vector2(0, 30)
+collision_mask = 512
 
 [node name="HitBox" parent="." instance=ExtResource("14_wtctv")]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(1, -26)
+position = Vector2(0, -30)
 shape = SubResource("CapsuleShape2D_fx7w0")
 debug_color = Color(0.678417, 0.504687, 0, 0.42)
 
@@ -2924,7 +2931,6 @@ libraries = {
 }
 
 [node name="InteractionIcon" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 27)
 scale = Vector2(1.8028, 1.8028)
 sprite_frames = SubResource("SpriteFrames_5svom")
 autoplay = "default"
@@ -2935,11 +2941,8 @@ offset = Vector2(0, -79.8757)
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -7)
-shape = SubResource("CircleShape2D_u5tep")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-y_sort_enabled = true
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_u5tep")
 
 [connection signal="animation_finished" from="Player" to="StateMachine/Run" method="Exit"]
 [connection signal="animation_finished" from="Player" to="StateMachine/Stun" method="_on_player_animation_finished"]

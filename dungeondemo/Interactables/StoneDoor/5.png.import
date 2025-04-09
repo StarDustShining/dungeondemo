@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d8id0s21dfaa"
-path="res://.godot/imported/background.png-47debb3bfbcb3feff6312c6444b82560.ctex"
+uid="uid://cp6ufhualuum7"
+path="res://.godot/imported/5.png-e44d5fec4df7872c9af05135d57c7c34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Level/background.png"
-dest_files=["res://.godot/imported/background.png-47debb3bfbcb3feff6312c6444b82560.ctex"]
+source_file="res://Interactables/StoneDoor/5.png"
+dest_files=["res://.godot/imported/5.png-e44d5fec4df7872c9af05135d57c7c34.ctex"]
 
 [params]
 

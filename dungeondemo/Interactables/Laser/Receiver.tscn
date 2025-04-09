@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqy2xy3rnkxgn"]
+
+[ext_resource type="Texture2D" uid="uid://dtlicrdyy63r2" path="res://Interactables/Laser/接收器.png" id="1_nxooi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nxooi"]
+radius = 8.0
+
+[node name="Receiver" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_nxooi")
+
+[node name="ReceiveArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReceiveArea"]
+shape = SubResource("CircleShape2D_nxooi")

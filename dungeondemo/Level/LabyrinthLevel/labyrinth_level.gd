@@ -4,6 +4,9 @@ class_name LabyrinthLevel extends Node2D
 
 @onready var player: Player = get_node("/root/PlayerManager").player
 @onready var compass: Compass = $Compass
+@onready var vision_range: CollisionShape2D = $VisionRange
+@onready var mask_layer: ColorRect = $MaskLayer
+
 
 var magnets: Array[Magnet] = []  # 存储所有磁石节点
 
@@ -12,7 +15,9 @@ func _ready() -> void:
 	PlayerManager.set_as_parent(self)
 	LevelManager.level_load_started.connect(_free_level)
 	LevelManager.minigame_load_started.connect(_pause_level)
-	
+	mask_layer.size = get_viewport_rect().size
+	mask_layer.position = Vector2.ZERO
+
 	# 获取所有磁石节点并将它们存储在 magnets 数组中
 	magnets.clear()
 	for node in get_tree().get_nodes_in_group("Magnet"):
@@ -44,3 +49,21 @@ func _free_level() -> void:
 
 func _pause_level() -> void:
 	pass
+
+func _process(delta: float) -> void:
+	var vision_shape = vision_range.shape as CircleShape2D
+	var vision_radius = vision_shape.radius
+	var player_position = player.global_position
+	var mask_position = mask_layer.global_position
+	var mask_size = mask_layer.size
+
+	# 转换为 0~1 的 UV 坐标
+	var center_relative = (player_position - mask_position) / mask_size
+
+	# 更新 Shader 参数
+	var mask_material = mask_layer.material as ShaderMaterial
+	if mask_material:
+		mask_material.set_shader_parameter("center", center_relative)
+		# 注意归一化 radius（除以对角线长度）
+		mask_material.set_shader_parameter("radius", vision_radius / mask_size.length())
+		mask_material.set_shader_parameter("softness", 0.05)

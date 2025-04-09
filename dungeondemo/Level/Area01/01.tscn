@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://co88qhc5l1v7c"]
 
-[ext_resource type="Script" uid="uid://b745662aebt1p" path="res://Level/scripts/labyrinth_level.gd" id="1_1q37a"]
+[ext_resource type="Script" uid="uid://b745662aebt1p" path="res://Level/LabyrinthLevel/labyrinth_level.gd" id="1_1q37a"]
 [ext_resource type="PackedScene" uid="uid://vc7qiiqujjjx" path="res://TileMaps/Ground.tscn" id="1_i7aiw"]
 [ext_resource type="PackedScene" uid="uid://bmw1cu6qn0dvt" path="res://Level/player_spawn.tscn" id="2_h61k5"]
 [ext_resource type="PackedScene" uid="uid://ciju1j1ygnws2" path="res://Level/level_transition.tscn" id="4_33t11"]
@@ -30,7 +30,12 @@ level = "res://Level/Area02/02.tscn"
 side = 2
 
 [node name="Magnet" parent="." groups=["Magnet"] instance=ExtResource("5_dpusd")]
-position = Vector2(566, 323)
+position = Vector2(515, 294)
+scale = Vector2(0.768086, 0.768086)
+magnetic_field_size = Vector2(400, 200)
+
+[node name="Magnet2" parent="." groups=["Magnet"] instance=ExtResource("5_dpusd")]
+position = Vector2(879, 557)
 scale = Vector2(0.768086, 0.768086)
 
 [node name="Compass" parent="." instance=ExtResource("6_xodhj")]
