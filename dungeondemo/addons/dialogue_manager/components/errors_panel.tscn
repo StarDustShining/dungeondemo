@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cs8pwrxr5vxix"]
 
-[ext_resource type="Script" uid="uid://bkfyxticsb4wl" path="res://addons/dialogue_manager/components/errors_panel.gd" id="1_nfm3c"]
+[ext_resource type="Script" uid="uid://d2l8nlb6hhrfp" path="res://addons/dialogue_manager/components/errors_panel.gd" id="1_nfm3c"]
 
 [sub_resource type="Image" id="Image_w0gko"]
 data = {

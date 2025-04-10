@@ -10,22 +10,22 @@ size = Vector2(44, 38.5)
 size = Vector2(81, 76.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0sw4x"]
+size = Vector2(54, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmps6"]
+size = Vector2(55, 2)
 
 [node name="Mirror" type="CharacterBody2D"]
 y_sort_enabled = true
 texture_filter = 1
-position = Vector2(0, -30)
 collision_layer = 512
 collision_mask = 16
 script = ExtResource("1_0qllf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0.970395, 0.809251, 0, 1)
-position = Vector2(0, -10)
 texture = ExtResource("2_pdlcj")
-offset = Vector2(0, 15)
+offset = Vector2(0, 5)
 hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -45,6 +45,7 @@ collision_layer = 128
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReflectArea"]
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_0sw4x")
 debug_color = Color(0.600342, 0.427473, 1, 0.42)
 
@@ -53,5 +54,6 @@ collision_layer = 128
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlockArea"]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_gmps6")
 debug_color = Color(0.989651, 0, 0.287918, 0.42)

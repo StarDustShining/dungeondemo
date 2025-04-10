@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0rxlpu0kho2k"]
+
+[ext_resource type="Texture2D" uid="uid://dgi283fmfm8qh" path="res://NPC/Mozi/1386-1.png" id="1_4wl0f"]
+[ext_resource type="Script" uid="uid://df07q5nb6rinj" path="res://NPC/Mozi/mozi.gd" id="1_dm2r8"]
+[ext_resource type="Texture2D" uid="uid://bj0hdolypk70" path="res://NPC/Mozi/1386-2.png" id="2_dm2r8"]
+[ext_resource type="Texture2D" uid="uid://4k7c7edxmm51" path="res://NPC/Mozi/1386-3.png" id="3_d4j1l"]
+[ext_resource type="Texture2D" uid="uid://8u61q4ohmgcm" path="res://NPC/Mozi/1386-4.png" id="4_yatk0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4wl0f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4wl0f")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4wl0f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dm2r8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_d4j1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yatk0")
+}],
+"loop": true,
+"name": &"say",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dm2r8"]
+radius = 8.0
+height = 26.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wl0f"]
+size = Vector2(44, 34)
+
+[node name="Mozi" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_dm2r8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.423529)
+sprite_frames = SubResource("SpriteFrames_4wl0f")
+animation = &"say"
+offset = Vector2(-1, -36)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_dm2r8")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_4wl0f")
+debug_color = Color(2.16588e-06, 0.635648, 0.414643, 0.42)

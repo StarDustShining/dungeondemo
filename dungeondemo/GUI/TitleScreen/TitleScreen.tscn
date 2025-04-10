@@ -1,7 +1,218 @@
-[gd_scene load_steps=4 format=3 uid="uid://jnomgop3jc72"]
+[gd_scene load_steps=55 format=3 uid="uid://jnomgop3jc72"]
 
-[ext_resource type="Texture2D" uid="uid://bdefmofghrwuk" path="res://GUI/TitleScreen/开始页面.png" id="1_3kimx"]
 [ext_resource type="Script" uid="uid://du0wksg8wruyo" path="res://GUI/TitleScreen/title_screen.gd" id="1_itps4"]
+[ext_resource type="Texture2D" uid="uid://cm1lw6as7r476" path="res://GUI/TitleScreen/标题画面/Image1.jpg" id="2_sh2vs"]
+[ext_resource type="Texture2D" uid="uid://dr88lqq80r6qu" path="res://GUI/TitleScreen/标题画面/Image2.jpg" id="3_oper8"]
+[ext_resource type="Texture2D" uid="uid://bltldmghq0a63" path="res://GUI/TitleScreen/标题画面/Image3.jpg" id="4_e320g"]
+[ext_resource type="Texture2D" uid="uid://csw6l77hdjv1m" path="res://GUI/TitleScreen/标题画面/Image4.jpg" id="5_xdfpp"]
+[ext_resource type="Texture2D" uid="uid://vyyj37v1kix8" path="res://GUI/TitleScreen/标题画面/Image5.jpg" id="6_deg88"]
+[ext_resource type="Texture2D" uid="uid://cdmwxpo02wmst" path="res://GUI/TitleScreen/标题画面/Image6.jpg" id="7_t5pmq"]
+[ext_resource type="Texture2D" uid="uid://ckj5jh26u3rsg" path="res://GUI/TitleScreen/标题画面/Image7.jpg" id="8_xdwtx"]
+[ext_resource type="Texture2D" uid="uid://wesr8vu7loio" path="res://GUI/TitleScreen/标题画面/Image8.jpg" id="9_7ios8"]
+[ext_resource type="Texture2D" uid="uid://bwc16aet0ge2t" path="res://GUI/TitleScreen/标题画面/Image9.jpg" id="10_siwej"]
+[ext_resource type="Texture2D" uid="uid://1b4ugcvuxdy7" path="res://GUI/TitleScreen/标题画面/Image10.jpg" id="11_y8do1"]
+[ext_resource type="Texture2D" uid="uid://dw7yhu1vckxcd" path="res://GUI/TitleScreen/标题画面/Image11.jpg" id="12_x7awv"]
+[ext_resource type="Texture2D" uid="uid://01odn71qmr45" path="res://GUI/TitleScreen/标题画面/Image12.jpg" id="13_a0mvf"]
+[ext_resource type="Texture2D" uid="uid://dt5i45mr4glwu" path="res://GUI/TitleScreen/标题画面/Image13.jpg" id="14_4bvlk"]
+[ext_resource type="Texture2D" uid="uid://bgx33hwbvigfp" path="res://GUI/TitleScreen/标题画面/Image14.jpg" id="15_61coi"]
+[ext_resource type="Texture2D" uid="uid://c01x54r6dffoy" path="res://GUI/TitleScreen/标题画面/Image15.jpg" id="16_6db5n"]
+[ext_resource type="Texture2D" uid="uid://bft2gektikuy0" path="res://GUI/TitleScreen/标题画面/Image16.jpg" id="17_o5c4b"]
+[ext_resource type="Texture2D" uid="uid://dqwahsbtm05ai" path="res://GUI/TitleScreen/标题画面/Image17.jpg" id="18_hu4kn"]
+[ext_resource type="Texture2D" uid="uid://tp0umuj4f4hg" path="res://GUI/TitleScreen/标题画面/Image18.jpg" id="19_88gc2"]
+[ext_resource type="Texture2D" uid="uid://o3wfmysxqebl" path="res://GUI/TitleScreen/标题画面/Image19.jpg" id="20_0bdbu"]
+[ext_resource type="Texture2D" uid="uid://cth12t3ktt6qe" path="res://GUI/TitleScreen/标题画面/Image20.jpg" id="21_h1lyq"]
+[ext_resource type="Texture2D" uid="uid://ui08s4xp6lko" path="res://GUI/TitleScreen/标题画面/Image21.jpg" id="22_nc3p4"]
+[ext_resource type="Texture2D" uid="uid://cvy63tb4n8sv0" path="res://GUI/TitleScreen/标题画面/Image22.jpg" id="23_ht0mr"]
+[ext_resource type="Texture2D" uid="uid://bmkmb772i0htg" path="res://GUI/TitleScreen/标题画面/Image23.jpg" id="24_oao8u"]
+[ext_resource type="Texture2D" uid="uid://bt5w7r1vkq56l" path="res://GUI/TitleScreen/标题画面/Image24.jpg" id="25_he8sq"]
+[ext_resource type="Texture2D" uid="uid://d1t7j1dudb11u" path="res://GUI/TitleScreen/标题画面/Image25.jpg" id="26_bt0ce"]
+[ext_resource type="Texture2D" uid="uid://m0lw7oojaaqv" path="res://GUI/TitleScreen/标题画面/Image26.jpg" id="27_325fd"]
+[ext_resource type="Texture2D" uid="uid://cihl0gf6mbi0f" path="res://GUI/TitleScreen/标题画面/Image27.jpg" id="28_h4ngc"]
+[ext_resource type="Texture2D" uid="uid://utolm86eoln5" path="res://GUI/TitleScreen/标题画面/Image28.jpg" id="29_ipqdr"]
+[ext_resource type="Texture2D" uid="uid://dcu182uufsydk" path="res://GUI/TitleScreen/标题画面/Image29.jpg" id="30_25qxu"]
+[ext_resource type="Texture2D" uid="uid://cdmi4u661ec04" path="res://GUI/TitleScreen/标题画面/Image30.jpg" id="31_t41q7"]
+[ext_resource type="Texture2D" uid="uid://dg4tlsgre657q" path="res://GUI/TitleScreen/标题画面/Image31.jpg" id="32_y8gox"]
+[ext_resource type="Texture2D" uid="uid://5ftb6oep73sx" path="res://GUI/TitleScreen/标题画面/Image32.jpg" id="33_wx1bp"]
+[ext_resource type="Texture2D" uid="uid://m6qx6sj68g63" path="res://GUI/TitleScreen/标题画面/Image33.jpg" id="34_ks014"]
+[ext_resource type="Texture2D" uid="uid://dg25qf8eog6un" path="res://GUI/TitleScreen/标题画面/Image34.jpg" id="35_b0tqb"]
+[ext_resource type="Texture2D" uid="uid://dptgqg0i4sxf3" path="res://GUI/TitleScreen/标题画面/Image35.jpg" id="36_dqlin"]
+[ext_resource type="Texture2D" uid="uid://ce8yg28amkeu2" path="res://GUI/TitleScreen/标题画面/Image36.jpg" id="37_ip7pd"]
+[ext_resource type="Texture2D" uid="uid://csdj0r3dwwuk2" path="res://GUI/TitleScreen/标题画面/Image37.jpg" id="38_n6yiw"]
+[ext_resource type="Texture2D" uid="uid://dugh2yutqcob8" path="res://GUI/TitleScreen/标题画面/Image38.jpg" id="39_trgfo"]
+[ext_resource type="Texture2D" uid="uid://blx7guhipxul1" path="res://GUI/TitleScreen/标题画面/Image39.jpg" id="40_7usfy"]
+[ext_resource type="Texture2D" uid="uid://dijamluq8rnje" path="res://GUI/TitleScreen/标题画面/Image40.jpg" id="41_q0ob8"]
+[ext_resource type="Texture2D" uid="uid://bjj1px632wdf2" path="res://GUI/TitleScreen/标题画面/Image41.jpg" id="42_pme7v"]
+[ext_resource type="Texture2D" uid="uid://bmp57m1i4owol" path="res://GUI/TitleScreen/标题画面/Image42.jpg" id="43_qh5kl"]
+[ext_resource type="Texture2D" uid="uid://bah2vup2nghoi" path="res://GUI/TitleScreen/标题画面/Image43.jpg" id="44_pldjm"]
+[ext_resource type="Texture2D" uid="uid://yjxyvtjr3ado" path="res://GUI/TitleScreen/标题画面/Image44.jpg" id="45_bd3ca"]
+[ext_resource type="Texture2D" uid="uid://dxm6d3imwp1yc" path="res://GUI/TitleScreen/标题画面/Image45.jpg" id="46_vkqmc"]
+[ext_resource type="Texture2D" uid="uid://b7wic5r4a28li" path="res://GUI/TitleScreen/标题画面/Image46.jpg" id="47_6comx"]
+[ext_resource type="Texture2D" uid="uid://cdgbuqxx48d42" path="res://GUI/TitleScreen/标题画面/Image47.jpg" id="48_1cipw"]
+[ext_resource type="Texture2D" uid="uid://b07dittduuy18" path="res://GUI/TitleScreen/标题画面/Image48.jpg" id="49_1odnw"]
+[ext_resource type="Texture2D" uid="uid://bxci7uj3wccd8" path="res://GUI/TitleScreen/标题画面/Image49.jpg" id="50_1ruyb"]
+[ext_resource type="Texture2D" uid="uid://dysbs1yg818hq" path="res://GUI/TitleScreen/标题画面/Image50.jpg" id="51_ri5em"]
+[ext_resource type="Texture2D" uid="uid://cckxhxk3r5cny" path="res://GUI/TitleScreen/标题画面/Image51.jpg" id="52_wefqn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_32obj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sh2vs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_oper8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e320g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xdfpp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_deg88")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t5pmq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xdwtx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7ios8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_siwej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_y8do1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_x7awv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_a0mvf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_4bvlk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_61coi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_6db5n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_o5c4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_hu4kn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_88gc2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_0bdbu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_h1lyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_nc3p4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ht0mr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_oao8u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_he8sq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_bt0ce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_325fd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_h4ngc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_ipqdr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_25qxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_t41q7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_y8gox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_wx1bp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_ks014")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_b0tqb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_dqlin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_ip7pd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_n6yiw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_trgfo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_7usfy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_q0ob8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_pme7v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_qh5kl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_pldjm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_bd3ca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_vkqmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_6comx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_1cipw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_1odnw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_1ruyb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_ri5em")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_wefqn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
 
 [sub_resource type="Theme" id="Theme_itps4"]
 Button/font_sizes/font_size = 60
@@ -17,10 +228,11 @@ script = ExtResource("1_itps4")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(800, 452)
-scale = Vector2(1.5625, 1.56944)
-texture = ExtResource("1_3kimx")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(800.05, 450)
+scale = Vector2(0.833385, 0.833333)
+sprite_frames = SubResource("SpriteFrames_32obj")
+frame_progress = 0.491417
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -47,9 +259,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -185.0
-offset_top = 7.0
+offset_top = 97.0
 offset_right = 185.0
-offset_bottom = 100.0
+offset_bottom = 190.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_itps4")
@@ -64,9 +276,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -185.0
-offset_top = 120.0
+offset_top = 210.0
 offset_right = 185.0
-offset_bottom = 213.0
+offset_bottom = 303.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_itps4")

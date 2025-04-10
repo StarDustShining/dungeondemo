@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://e0y5w1wjmdrf"
+path="res://.godot/imported/Mozi.dialogue-6a57ce8f054f2f4bb345c0a62f5b435d.tres"
+
+[deps]
+
+source_file="res://NPC/Mozi/Mozi.dialogue"
+dest_files=["res://.godot/imported/Mozi.dialogue-6a57ce8f054f2f4bb345c0a62f5b435d.tres"]
+
+[params]
+
+defaults=true
