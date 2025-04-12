@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ymo7ifgcp43a"]
+
+[sub_resource type="TileSet" id="TileSet_tle6n"]
+
+[node name="Ground4" type="TileMap"]
+tile_set = SubResource("TileSet_tle6n")
+format = 2
+layer_0/name = "ground"
+layer_1/name = "walls"
