@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbp7d8d2ky2q3"]
+[gd_scene load_steps=3 format=3 uid="uid://dbp7d8d2ky2q3"]
 
 [ext_resource type="Script" uid="uid://bp5e2181h2nqq" path="res://GUI/pause_menu/pause_menu.gd" id="1_4wujt"]
+[ext_resource type="Theme" uid="uid://bsjmjg1v76kin" path="res://GUI/UI/Theme/global_theme.tres" id="2_xyt8q"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_4wujt")
 
 [node name="Control" type="Control" parent="."]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,31 +25,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.172833, 0.172833, 0.172833, 0.596078)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -159.0
-offset_top = -57.0
-offset_right = -73.0002
-offset_bottom = 8.99997
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(3.70524, 3.70688)
-
-[node name="Button_Save" type="Button" parent="Control/VBoxContainer"]
-layout_mode = 2
-text = "保存
-"
-
-[node name="Button_Load" type="Button" parent="Control/VBoxContainer"]
-layout_mode = 2
-text = "加载
-"
-
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
@@ -55,13 +32,48 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.5
-offset_top = -243.0
-offset_right = -102.5
-offset_bottom = -220.0
+offset_left = -160.0
+offset_top = -186.0
+offset_right = 160.0
+offset_bottom = -76.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(6.66773, 6.66773)
+theme = ExtResource("2_xyt8q")
 text = "[暂停]"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Button_Save" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -40.0
+offset_right = 160.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_xyt8q")
+text = "保存
+"
+
+[node name="Button_Load" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = 70.0
+offset_right = 160.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_xyt8q")
+text = "加载"

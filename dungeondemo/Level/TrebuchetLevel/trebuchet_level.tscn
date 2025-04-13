@@ -1,14 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://pmhoshnwreyi"]
+[gd_scene load_steps=9 format=3 uid="uid://pmhoshnwreyi"]
 
 [ext_resource type="Script" uid="uid://cw4m8vch8c66t" path="res://Level/scripts/level.gd" id="1_ml1fa"]
 [ext_resource type="PackedScene" uid="uid://lxx60xgoecea" path="res://TileMaps/Ground3.tscn" id="2_f6t8b"]
+[ext_resource type="PackedScene" uid="uid://ciugelk15lxjx" path="res://Player/Player.tscn" id="4_15g7n"]
 [ext_resource type="PackedScene" uid="uid://bmw1cu6qn0dvt" path="res://Level/player_spawn.tscn" id="4_idfcu"]
 [ext_resource type="PackedScene" uid="uid://bilqvuqkq1mcq" path="res://Interactables/Trebuchet/Trebuchet.tscn" id="4_rlgsy"]
 [ext_resource type="PackedScene" uid="uid://buduhuydpnnhe" path="res://Interactables/Table/table.tscn" id="5_7fk3p"]
+[ext_resource type="PackedScene" uid="uid://ciju1j1ygnws2" path="res://Level/level_transition.tscn" id="6_7fk3p"]
+[ext_resource type="PackedScene" uid="uid://v650qkdjwpva" path="res://Enemy/石头人/StoneMonster.tscn" id="8_jsruw"]
 
 [node name="TrebuchetLevel" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_ml1fa")
+
+[node name="Player" parent="." instance=ExtResource("4_15g7n")]
+position = Vector2(59, 276)
 
 [node name="Ground2" parent="." instance=ExtResource("2_f6t8b")]
 scale = Vector2(2, 2)
@@ -19,13 +25,21 @@ layer_3/y_sort_enabled = true
 layer_3/tile_data = PackedInt32Array(393219, 589824, 4, 1507331, 589824, 7, 1507332, 655360, 8, 458757, 524288, 4, 262150, 1, 2, 393222, 524288, 4, 262153, 1, 2, 720908, 589824, 4, 196622, 327680, 1, 262158, 327680, 2, 393230, 1, 0, 655376, 393216, 1, 720912, 393216, 2, 851984, 1, 1, 1048594, 0, 4, 1114131, 196608, 4, 1048598, 327680, 1, 1114134, 327680, 2, 1245206, 1, 0, 524311, 720896, 12, 458776, 720896, 12, 589848, 851968, 11, 1245208, 589824, 4, 524313, 589824, 10, 262170, 1, 2, 262173, 1, 2, 1245216, 589824, 6, 1048614, 589824, 1, 1114150, 589824, 2, 1245226, 1, 1, 1179691, 0, 1, 1245229, 589824, 6, 1310766, 589824, 4, 1245231, 1, 0, 327728, 65536, 1)
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("4_idfcu")]
-position = Vector2(302, 401)
-scale = Vector2(0.6, 0.6)
+position = Vector2(49, 275)
+scale = Vector2(0.5, 0.5)
 
 [node name="Trebuchet" parent="." instance=ExtResource("4_rlgsy")]
-position = Vector2(274, 707)
+position = Vector2(805, 441)
 scale = Vector2(0.6, 0.6)
 
 [node name="Table" parent="." instance=ExtResource("5_7fk3p")]
-position = Vector2(274, 707)
-scale = Vector2(1.2, 1.2)
+position = Vector2(371, 228)
+
+[node name="LevelTransition" parent="." instance=ExtResource("6_7fk3p")]
+position = Vector2(1590, 718)
+level = "uid://bew7jmyecmfn5"
+size = 4
+side = 1
+
+[node name="StoneMonster" parent="." instance=ExtResource("8_jsruw")]
+position = Vector2(1133, 448)

@@ -26,10 +26,6 @@ func load_new_level(
 		_target_transition : String,
 		_position_offset : Vector2
 ) -> void:
-	#if is_loading:
-		#return
-	#is_loading = true
-	
 	get_tree().paused = true
 	target_transition = _target_transition
 	position_offset = _position_offset

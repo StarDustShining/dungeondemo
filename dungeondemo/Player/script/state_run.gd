@@ -1,6 +1,6 @@
 class_name State_Run extends State
 
-@export var run_speed: float = 350  # 跑步速度（比 walk 快）
+@export var run_speed: float = 250  # 跑步速度（比 walk 快）
 @export var attack_sound:AudioStream
 
 @onready var walk: State = $"../Walk"

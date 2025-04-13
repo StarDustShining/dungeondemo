@@ -19,7 +19,6 @@ func Enter() -> void:
 
 	# **确保敌人 HP <= 0 才进入销毁状态**
 	if enemy.hp > 0:
-		print("敌人未死亡，不能销毁！")
 		return
 
 	# **获取朝向方向（面向玩家）**
@@ -62,13 +61,8 @@ func OnEnemyDestroyed(hurt_box:HurtBox) -> void:
 	if enemy.hp <= 0:
 		_damage_position=hurt_box.global_position
 		state_machine.ChangeState(self)
-	else:
-		print("敌人 HP 大于 0，无法进入销毁状态")
 
 # **动画播放完后删除敌人**
 func OnAnimationFinished() -> void:
 	if enemy.hp <= 0:
-		print("动画播放完毕，销毁敌人")
 		enemy.queue_free()
-	else:
-		print("敌人 HP 仍然大于 0，不销毁")

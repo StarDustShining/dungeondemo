@@ -12,6 +12,7 @@
 
 [node name="Game01" type="Node2D"]
 process_mode = 3
+scale = Vector2(0.8, 0.8)
 script = ExtResource("1_gabea")
 
 [node name="Background" type="Node2D" parent="."]

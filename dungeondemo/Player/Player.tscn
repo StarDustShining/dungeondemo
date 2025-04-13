@@ -1,7 +1,8 @@
-[gd_scene load_steps=362 format=3 uid="uid://ciugelk15lxjx"]
+[gd_scene load_steps=363 format=3 uid="uid://ciugelk15lxjx"]
 
 [ext_resource type="Script" uid="uid://dwawx4cw8g8dq" path="res://Player/script/player.gd" id="1_bdolp"]
 [ext_resource type="Texture2D" uid="uid://8fev7y815bdn" path="res://Player/The Female Adventurer - Premium/Attack/Spear/Attack_Spear.png" id="2_k2jx5"]
+[ext_resource type="Script" uid="uid://cqvonmuexh038" path="res://Player/script/player_camera.gd" id="2_ps8ct"]
 [ext_resource type="Texture2D" uid="uid://c41d2voof8u1p" path="res://Player/The Female Adventurer - Premium/Idle/Spear/Idle_Spear.png" id="2_px7fs"]
 [ext_resource type="Texture2D" uid="uid://bxssjnjnink62" path="res://Player/The Female Adventurer - Premium/Run/Spear/Run_Spear.png" id="3_7dpf0"]
 [ext_resource type="Texture2D" uid="uid://d0uwvdw8xr3c8" path="res://Player/The Female Adventurer - Premium/Walk/Spear/walk_Spear.png" id="4_lchvr"]
@@ -21,7 +22,7 @@
 [ext_resource type="Script" uid="uid://bqwtbbwefp70n" path="res://Player/script/state_walk.gd" id="17_eostd"]
 [ext_resource type="AudioStream" uid="uid://becgteayh7wma" path="res://Player/death.mp3" id="18_5pb2m"]
 [ext_resource type="Script" uid="uid://c7kpyahlhrx2p" path="res://Player/script/state_run.gd" id="18_arly0"]
-[ext_resource type="Texture2D" uid="uid://co8mj33pc1mpu" path="res://GUI/UI/Texture/Keyboard Black.png" id="22_fxfwk"]
+[ext_resource type="Texture2D" uid="uid://cnq0m7vvb6x3k" path="res://GUI/UI/Texture/Keyboard White.png" id="22_u5tep"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u5tep"]
 
@@ -2804,22 +2805,22 @@ _data = {
 &"damage": SubResource("Animation_bcdym")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cvqab"]
-atlas = ExtResource("22_fxfwk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps8ct"]
+atlas = ExtResource("22_u5tep")
 region = Rect2(80, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wos2s"]
-atlas = ExtResource("22_fxfwk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7uipr"]
+atlas = ExtResource("22_u5tep")
 region = Rect2(80, 128, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5svom"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cvqab")
+"texture": SubResource("AtlasTexture_ps8ct")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wos2s")
+"texture": SubResource("AtlasTexture_7uipr")
 }],
 "loop": true,
 "name": &"default",
@@ -2834,10 +2835,9 @@ script = ExtResource("1_bdolp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 y_sort_enabled = true
-limit_left = 0
-limit_top = 0
-limit_right = 1600
-limit_bottom = 900
+zoom = Vector2(1.2, 1.2)
+script = ExtResource("2_ps8ct")
+shake_power = 0.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -2851,13 +2851,6 @@ animation = &"idle_Down"
 autoplay = "idle_Down"
 offset = Vector2(-2.72478e-06, -11.1836)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-limit_left = 0
-limit_top = 0
-limit_right = 1600
-limit_bottom = 900
-limit_smoothed = true
-
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("15_3e20b")
 
@@ -2866,6 +2859,7 @@ script = ExtResource("16_clxm0")
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("17_eostd")
+move_speed = 150.0
 attack_sound = ExtResource("10_qn04i")
 
 [node name="Run" type="Node" parent="StateMachine"]
@@ -2931,11 +2925,11 @@ libraries = {
 }
 
 [node name="InteractionIcon" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.8028, 1.8028)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_5svom")
 autoplay = "default"
 frame_progress = 0.707964
-offset = Vector2(0, -79.8757)
+offset = Vector2(0, -68.7646)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 0

@@ -97,6 +97,6 @@ color = Color(0, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
 libraries = {
-"": SubResource("AnimationLibrary_c1xlh")
+&"": SubResource("AnimationLibrary_c1xlh")
 }
 autoplay = "default"

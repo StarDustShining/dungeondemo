@@ -1,0 +1,30 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bsjmjg1v76kin"]
+
+[ext_resource type="FontFile" uid="uid://dt8jwfhg6v2mx" path="res://GUI/RuiZiTaiKongQiYuXiangSuJian-Shan(REEJI-TaikoMagicGB-Flash)-2.ttf" id="1_knxvn"]
+[ext_resource type="Texture2D" uid="uid://c8ulivo0cghmk" path="res://GUI/UI/Texture/panel-transparent-center-030.png" id="2_knxvn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_knxvn"]
+texture = ExtResource("2_knxvn")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+modulate_color = Color(0.597176, 0.597176, 0.597176, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oycj7"]
+texture = ExtResource("2_knxvn")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+
+[resource]
+default_font = ExtResource("1_knxvn")
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(0.804741, 0.804743, 0.804743, 1)
+Button/colors/font_hover_color = Color(0.803922, 0.803922, 0.803922, 1)
+Button/font_sizes/font_size = 40
+Button/fonts/font = ExtResource("1_knxvn")
+Button/styles/hover = SubResource("StyleBoxTexture_knxvn")
+Button/styles/normal = SubResource("StyleBoxTexture_oycj7")
+Label/font_sizes/font_size = 100

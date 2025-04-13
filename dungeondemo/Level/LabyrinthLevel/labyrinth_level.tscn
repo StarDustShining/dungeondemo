@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bew7jmyecmfn5"]
+[gd_scene load_steps=12 format=3 uid="uid://bew7jmyecmfn5"]
 
 [ext_resource type="Script" uid="uid://b745662aebt1p" path="res://Level/LabyrinthLevel/labyrinth_level.gd" id="1_b44ro"]
 [ext_resource type="PackedScene" uid="uid://lxx60xgoecea" path="res://TileMaps/Ground3.tscn" id="2_64fwt"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dxvp6ts4qsu5a" path="res://GUI/Compass/Compass.tscn" id="4_mhue1"]
 [ext_resource type="PackedScene" uid="uid://bx42p4fn2w4ej" path="res://GUI/Compass/Magnet.tscn" id="5_6q6ck"]
 [ext_resource type="Shader" uid="uid://c1bvre0eystx" path="res://Level/LabyrinthLevel/labyrinth_level.gdshader" id="6_6q6ck"]
+[ext_resource type="PackedScene" uid="uid://ciju1j1ygnws2" path="res://Level/level_transition.tscn" id="7_u333g"]
+[ext_resource type="VideoStream" uid="uid://r8s4dwnuln02" path="res://Level/LabyrinthLevel/磁铁房出去.ogv" id="8_ijbf2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b44ro"]
 radius = 125.2
@@ -15,6 +17,9 @@ shader = ExtResource("6_6q6ck")
 shader_parameter/center = Vector2(0, 0)
 shader_parameter/radius = 0.0
 shader_parameter/softness = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmqc0"]
+size = Vector2(48, 192)
 
 [node name="LabyrinthLevel" type="Node2D"]
 y_sort_enabled = true
@@ -29,7 +34,7 @@ layer_3/y_sort_enabled = true
 layer_3/tile_data = PackedInt32Array(393219, 589824, 4, 1507331, 589824, 7, 1507332, 655360, 8, 458757, 524288, 4, 262150, 1, 2, 393222, 524288, 4, 262153, 1, 2, 720908, 589824, 4, 196622, 327680, 1, 262158, 327680, 2, 393230, 1, 0, 655376, 393216, 1, 720912, 393216, 2, 851984, 1, 1, 1048594, 0, 4, 1114131, 196608, 4, 1048598, 327680, 1, 1114134, 327680, 2, 1245206, 1, 0, 524311, 720896, 12, 458776, 720896, 12, 589848, 851968, 11, 1245208, 589824, 4, 524313, 589824, 10, 262170, 1, 2, 262173, 1, 2, 1245216, 589824, 6, 1048614, 589824, 1, 1114150, 589824, 2, 1245226, 1, 1, 1179691, 0, 1, 1245229, 589824, 6, 1310766, 589824, 4, 1245231, 1, 0, 327728, 65536, 1)
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("4_cgswk")]
-position = Vector2(302, 401)
+position = Vector2(41, 294)
 scale = Vector2(0.6, 0.6)
 
 [node name="Compass" parent="." instance=ExtResource("4_mhue1")]
@@ -51,3 +56,40 @@ position = Vector2(309, 639)
 z_index = 100
 material = SubResource("ShaderMaterial_u333g")
 color = Color(0, 0, 0, 1)
+
+[node name="LevelTransition" parent="." instance=ExtResource("7_u333g")]
+position = Vector2(8, 261)
+level = "uid://pmhoshnwreyi"
+
+[node name="LevelTransition2" parent="." instance=ExtResource("7_u333g")]
+position = Vector2(1591, 718)
+level = "uid://blcy1w5cxc0fa"
+size = 4
+side = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1591, 718)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-18, 0)
+shape = SubResource("RectangleShape2D_wmqc0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer"]
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+stream = ExtResource("8_ijbf2")
+expand = true
+buffering_msec = 1000
+metadata/_edit_use_anchors_ = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

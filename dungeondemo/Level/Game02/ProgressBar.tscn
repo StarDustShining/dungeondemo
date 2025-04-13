@@ -4,10 +4,11 @@
 [ext_resource type="Script" uid="uid://c8rvd3gp62aed" path="res://Level/Game02/process_bar_UI.gd" id="1_fih5r"]
 
 [node name="ProgressBar" type="ProgressBar"]
-offset_right = 35.0
-offset_bottom = 298.0
+offset_right = 39.0
+offset_bottom = 497.0
 scale = Vector2(1.21645, 1.14278)
 theme = ExtResource("1_8jvid")
 step = 1.0
+value = 20.0
 fill_mode = 3
 script = ExtResource("1_fih5r")

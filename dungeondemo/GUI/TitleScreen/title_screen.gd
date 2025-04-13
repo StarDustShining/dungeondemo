@@ -1,6 +1,6 @@
 extends Node2D
 
-const START_LEVEL : String = "res://Level/LaserLevel/laser_level.tscn"
+const START_LEVEL : String = "res://Level/TrebuchetLevel/trebuchet_level.tscn"
 
 @export var music : AudioStream
 @export var button_focus_audio : AudioStream
@@ -9,6 +9,7 @@ const START_LEVEL : String = "res://Level/LaserLevel/laser_level.tscn"
 @onready var audio_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var button_new: Button = $CanvasLayer/Control/ButtonNew
 @onready var button_continue: Button = $CanvasLayer/Control/ButtonContinue
+@onready var video_player: VideoStreamPlayer = $CanvasLayer/Control/VideoStreamPlayer
 
 
 func _ready() -> void:
@@ -19,7 +20,7 @@ func _ready() -> void:
 	if SaveManager.get_save_file() == null:
 		button_continue.disabled = true
 		button_continue.visible = false
-	#$CanvasLayer/SplashScene.finished.connect( setup_title_screen )
+	video_player.finished.connect(on_video_finished)
 	LevelManager.level_load_started.connect( exit_title_screen )
 
 func setup_title_screen() -> void:
@@ -34,22 +35,23 @@ func setup_title_screen() -> void:
 
 func start_game() -> void:
 	print("start!")
-	play_audio( button_press_audio )
-	LevelManager.load_new_level( START_LEVEL, "", Vector2.ZERO )
-	pass
+	play_audio(button_press_audio)
+	video_player.play()
 
 func exit_title_screen() -> void:
 	PlayerHud.visible = true
 	PauseMenu.process_mode = Node.PROCESS_MODE_ALWAYS
-	BackpackMenu.visible=false
+	BackpackMenu.visible=true
 	self.queue_free()
-	pass
 
 func load_game() -> void:
 	play_audio( button_press_audio )
 	SaveManager.LoadGame()
-	pass
 
 func play_audio( _a : AudioStream ) -> void:
 	audio_stream_player.stream = _a
 	audio_stream_player.play()
+
+func on_video_finished() -> void:
+	LevelManager.load_new_level(START_LEVEL, "", Vector2.ZERO)
+	exit_title_screen()

@@ -10,7 +10,7 @@ class_name Collimation extends Node2D
 @export var hook_damping_factor: float = 0.9  # 反弹衰减系数（用于减少反弹次数）
 
 @onready var hook: Sprite2D = $Hook
-@onready var enemy: Sprite2D = $Enemy
+@onready var enemy: AnimatedSprite2D = $Enemy
 @onready var top_pivot: Node2D = $TopPivot
 @onready var bottom_pivot: Node2D = $BottomPivot
 

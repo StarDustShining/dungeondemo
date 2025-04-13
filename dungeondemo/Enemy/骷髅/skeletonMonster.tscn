@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://y14bdjyqw3l" path="res://Enemy/骷髅/骷髅皮肤/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Idle_right.png" id="1_02csh"]
 [ext_resource type="Texture2D" uid="uid://6aod5b2sm1qd" path="res://Enemy/骷髅/骷髅皮肤/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Attack1_left.png" id="1_8xpbf"]
-[ext_resource type="Script" uid="uid://bamm7okjl3y7s" path="res://Enemy/script/enemy.gd" id="1_mosfj"]
+[ext_resource type="Script" uid="uid://bamm7okjl3y7s" path="res://Enemy/骷髅/skeleton_monster.gd" id="1_mosfj"]
 [ext_resource type="Texture2D" uid="uid://b71afixixqbyt" path="res://Enemy/骷髅/骷髅皮肤/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Attack1.png" id="2_ewww5"]
 [ext_resource type="PackedScene" uid="uid://bjtmtusxv7rne" path="res://GeneralNodes/HitBox/hit_box.tscn" id="2_hqbqi"]
 [ext_resource type="Texture2D" uid="uid://dx5bscjjphveh" path="res://Enemy/骷髅/骷髅皮肤/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Walk_left.png" id="3_oqy1t"]
@@ -23,7 +23,7 @@
 [ext_resource type="Script" uid="uid://dnumnm3nvvmic" path="res://Enemy/script/states/enemy_state_attack.gd" id="19_xteta"]
 [ext_resource type="AudioStream" uid="uid://byrex2ylfjkin" path="res://Enemy/骷髅/attack.mp3" id="20_gu27h"]
 [ext_resource type="Script" uid="uid://d1qr6k24knqiv" path="res://Enemy/script/states/enemy_state_track.gd" id="20_jvcay"]
-[ext_resource type="Script" uid="uid://emb030tl55ba" path="res://Enemy/script/states/skeletonMonsterInteraction.gd" id="21_h66n0"]
+[ext_resource type="Script" uid="uid://emb030tl55ba" path="res://Enemy/骷髅/skeletonMonsterInteraction.gd" id="21_h66n0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7j1my"]
 size = Vector2(23, 27)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://blcy1w5cxc0fa"]
+[gd_scene load_steps=11 format=3 uid="uid://blcy1w5cxc0fa"]
 
 [ext_resource type="Script" uid="uid://crp8vqsm8autk" path="res://Level/LaserLevel/laser_level.gd" id="1_ee0xp"]
 [ext_resource type="PackedScene" uid="uid://lxx60xgoecea" path="res://TileMaps/Ground3.tscn" id="2_y4jql"]
@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bmw1cu6qn0dvt" path="res://Level/player_spawn.tscn" id="5_tt5wj"]
 [ext_resource type="PackedScene" uid="uid://c24cwequ16bcw" path="res://Interactables/StoneDoor/StoneDoor.tscn" id="6_wcy5n"]
 [ext_resource type="PackedScene" uid="uid://clouff5udr3j3" path="res://Interactables/Mirror/mirror.tscn" id="7_tom5t"]
-[ext_resource type="PackedScene" uid="uid://ciugelk15lxjx" path="res://Player/Player.tscn" id="8_y4jql"]
 [ext_resource type="PackedScene" uid="uid://b0rxlpu0kho2k" path="res://NPC/Mozi/Mozi.tscn" id="9_f5q44"]
+[ext_resource type="PackedScene" uid="uid://ciju1j1ygnws2" path="res://Level/level_transition.tscn" id="10_ocd5v"]
+[ext_resource type="VideoStream" uid="uid://s0sismpmn8i3" path="res://Level/LaserLevel/齿轮转动.ogv" id="10_tt5wj"]
 
 [node name="LaserLevel" type="Node2D"]
 y_sort_enabled = true
@@ -31,10 +32,10 @@ scale = Vector2(1.1547, 0.897023)
 position = Vector2(255, 194)
 
 [node name="Receiver" parent="." instance=ExtResource("4_ocd5v")]
-position = Vector2(1152, 201)
+position = Vector2(360, 553)
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("5_tt5wj")]
-position = Vector2(886, 305)
+position = Vector2(52, 287)
 scale = Vector2(0.6, 0.6)
 
 [node name="Mirror" parent="." groups=["PushItem"] instance=ExtResource("7_tom5t")]
@@ -65,8 +66,28 @@ scale = Vector2(0.6, 0.6)
 position = Vector2(920, 275)
 scale = Vector2(0.6, 0.6)
 
-[node name="Player" parent="." instance=ExtResource("8_y4jql")]
-position = Vector2(933, 361)
-
 [node name="Mozi" parent="." instance=ExtResource("9_f5q44")]
 position = Vector2(661, 694)
+
+[node name="LevelTransition" parent="." instance=ExtResource("10_ocd5v")]
+position = Vector2(5, 262)
+scale = Vector2(0.6, 0.6)
+level = "uid://bew7jmyecmfn5"
+target_transition_area = "LevelTransition2"
+size = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer"]
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1065.0
+offset_top = 599.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stream = ExtResource("10_tt5wj")
+expand = true
+buffering_msec = 1000

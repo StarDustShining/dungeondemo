@@ -26,7 +26,7 @@ func _ready():
 	# 设置sprite初始帧
 	update_sprite()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 		# 确保不自动滑动
 	if velocity.length() > 0:
 		move_and_slide()
@@ -132,9 +132,9 @@ func update_areas():
 			block_area.rotation_degrees = -30  # 设定旋转（使用 rotation_degrees）
 
 # 当玩家进入区域时触发
-func _on_Area2D_area_entered(area: Area2D) -> void:
+func _on_Area2D_area_entered(_area: Area2D) -> void:
 	player_in_area = true
 
 # 当玩家离开区域时触发
-func _on_Area2D_area_exited(area: Area2D) -> void:
+func _on_Area2D_area_exited(_area: Area2D) -> void:
 	player_in_area = false

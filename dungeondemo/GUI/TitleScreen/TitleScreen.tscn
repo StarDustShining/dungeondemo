@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://jnomgop3jc72"]
+[gd_scene load_steps=60 format=3 uid="uid://jnomgop3jc72"]
 
 [ext_resource type="Script" uid="uid://du0wksg8wruyo" path="res://GUI/TitleScreen/title_screen.gd" id="1_itps4"]
 [ext_resource type="Texture2D" uid="uid://cm1lw6as7r476" path="res://GUI/TitleScreen/标题画面/Image1.jpg" id="2_sh2vs"]
@@ -52,6 +52,11 @@
 [ext_resource type="Texture2D" uid="uid://bxci7uj3wccd8" path="res://GUI/TitleScreen/标题画面/Image49.jpg" id="50_1ruyb"]
 [ext_resource type="Texture2D" uid="uid://dysbs1yg818hq" path="res://GUI/TitleScreen/标题画面/Image50.jpg" id="51_ri5em"]
 [ext_resource type="Texture2D" uid="uid://cckxhxk3r5cny" path="res://GUI/TitleScreen/标题画面/Image51.jpg" id="52_wefqn"]
+[ext_resource type="FontFile" uid="uid://dt8jwfhg6v2mx" path="res://GUI/RuiZiTaiKongQiYuXiangSuJian-Shan(REEJI-TaikoMagicGB-Flash)-2.ttf" id="53_deg88"]
+[ext_resource type="StyleBox" uid="uid://b4i2i5t3nynrg" path="res://GUI/UI/Theme/TitleScreen/title_hover_button.tres" id="54_t5pmq"]
+[ext_resource type="StyleBox" uid="uid://cir4e5iigt4pu" path="res://GUI/UI/Theme/TitleScreen/title_normal_button.tres" id="55_xdwtx"]
+[ext_resource type="Texture2D" uid="uid://bau75bj58us87" path="res://GUI/UI/Texture/panel-border-010.png" id="56_7ios8"]
+[ext_resource type="VideoStream" uid="uid://opvjkipr814g" path="res://GUI/TitleScreen/进入画面/进入游戏.ogv" id="57_t5pmq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_32obj"]
 animations = [{
@@ -215,12 +220,27 @@ animations = [{
 }]
 
 [sub_resource type="Theme" id="Theme_itps4"]
-Button/font_sizes/font_size = 60
-Button/fonts/font = null
-Button/styles/disabled = null
-Button/styles/focus = null
-Button/styles/hover = null
-Button/styles/normal = null
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 50
+Button/fonts/font = ExtResource("53_deg88")
+Button/styles/hover = ExtResource("54_t5pmq")
+Button/styles/normal = ExtResource("55_xdwtx")
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_itps4")
@@ -232,6 +252,7 @@ process_mode = 3
 position = Vector2(800.05, 450)
 scale = Vector2(0.833385, 0.833333)
 sprite_frames = SubResource("SpriteFrames_32obj")
+autoplay = "default"
 frame_progress = 0.491417
 
 [node name="Control" type="Control" parent="CanvasLayer"]
@@ -268,6 +289,19 @@ theme = SubResource("Theme_itps4")
 text = "开始新游戏"
 language = "zh"
 
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Control/ButtonNew"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("56_7ios8")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
 [node name="ButtonContinue" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 8
@@ -284,6 +318,27 @@ grow_vertical = 2
 theme = SubResource("Theme_itps4")
 text = "继续游戏"
 language = "zh"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Control/ButtonContinue"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("56_7ios8")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer/Control"]
+layout_mode = 1
+offset_right = 1600.0
+offset_bottom = 900.0
+mouse_filter = 2
+stream = ExtResource("57_t5pmq")
+expand = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 

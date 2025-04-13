@@ -6,6 +6,8 @@ class_name LabyrinthLevel extends Node2D
 @onready var compass: Compass = $Compass
 @onready var vision_range: CollisionShape2D = $VisionRange
 @onready var mask_layer: ColorRect = $MaskLayer
+@onready var video_player: VideoStreamPlayer = $CanvasLayer/VideoStreamPlayer
+@onready var area_2d: Area2D = $Area2D
 
 
 var magnets: Array[Magnet] = []  # 存储所有磁石节点
@@ -67,3 +69,8 @@ func _process(delta: float) -> void:
 		# 注意归一化 radius（除以对角线长度）
 		mask_material.set_shader_parameter("radius", vision_radius / mask_size.length())
 		mask_material.set_shader_parameter("softness", 0.05)
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	video_player.play();
+	pass # Replace with function body.

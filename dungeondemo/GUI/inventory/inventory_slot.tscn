@@ -1,29 +1,77 @@
-[gd_scene load_steps=4 format=3 uid="uid://bx5vkr772ap0q"]
+[gd_scene load_steps=12 format=3 uid="uid://bx5vkr772ap0q"]
 
+[ext_resource type="Texture2D" uid="uid://blvjdbghjkqao" path="res://GUI/UI/Texture/panel-transparent-center-007.png" id="1_itpqw"]
 [ext_resource type="Script" uid="uid://clly7gkx8bljy" path="res://GUI/inventory/scripts/inventory_slot_ui.gd" id="1_ul7rj"]
 [ext_resource type="Texture2D" uid="uid://0da6vkmfnu5w" path="res://Items/sprites/items.png" id="1_x78q7"]
+[ext_resource type="Texture2D" uid="uid://77a3fdax7w58" path="res://GUI/UI/Texture/panel-007.png" id="2_jihu1"]
+[ext_resource type="FontFile" uid="uid://dt8jwfhg6v2mx" path="res://GUI/RuiZiTaiKongQiYuXiangSuJian-Shan(REEJI-TaikoMagicGB-Flash)-2.ttf" id="3_fvspr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jihu1"]
+texture = ExtResource("1_itpqw")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ftkkv"]
+texture = ExtResource("1_itpqw")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ump0n"]
+texture = ExtResource("2_jihu1")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+modulate_color = Color(0.509286, 0.509286, 0.509286, 0.784314)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0w7qk"]
+texture = ExtResource("1_itpqw")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+
+[sub_resource type="Theme" id="Theme_xil7d"]
+Button/styles/focus = SubResource("StyleBoxTexture_jihu1")
+Button/styles/hover = SubResource("StyleBoxTexture_ftkkv")
+Button/styles/normal = SubResource("StyleBoxTexture_ump0n")
+Button/styles/pressed = SubResource("StyleBoxTexture_0w7qk")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6denj"]
 atlas = ExtResource("1_x78q7")
 region = Rect2(0, 0, 32, 32)
 
 [node name="InventorySlot" type="Button"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(64, 64)
 offset_right = 8.0
 offset_bottom = 8.0
+theme = SubResource("Theme_xil7d")
 script = ExtResource("1_ul7rj")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
+offset_right = 64.0
+offset_bottom = 64.0
 texture = SubResource("AtlasTexture_6denj")
-stretch_mode = 3
 
 [node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 27.0
-offset_bottom = 17.0
-theme_override_font_sizes/font_size = 8
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -3.5
+offset_top = -12.0
+offset_right = 3.5
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_fvspr")
+theme_override_font_sizes/font_size = 9
 text = "2"
 horizontal_alignment = 2

@@ -31,8 +31,6 @@ var pulling: bool = false
 @onready var interact_area: Area2D = $Interaction/Area2D
 @onready var interaction_icon: AnimatedSprite2D = $InteractionIcon
 
-const SPEED = 200  # 你可以根据需要调整速度
-
 func _ready():
 	PlayerManager.player=self
 	state_machine.Initialize(self)
@@ -145,7 +143,7 @@ func OnAreaEnter(_a: Area2D) -> void:
 func OnAreaExit(_a: Area2D) -> void:
 	interaction_icon.visible=false
 
-func player_move(delta):
+func player_move(_delta):
 	direction.x = Input.get_action_strength("右") - Input.get_action_strength("左")
 	direction.y = Input.get_action_strength("下") - Input.get_action_strength("上")
 
@@ -153,8 +151,7 @@ func player_move(delta):
 		direction = direction.normalized()  # 归一化方向，防止斜向移动变快
 
 	if not box_control:
-		velocity.x = direction.x * SPEED
-		velocity.y = direction.y * SPEED
+		pass
 	else:
 		velocity.x = 0
 		velocity.y = 0

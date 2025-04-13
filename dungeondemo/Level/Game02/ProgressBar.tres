@@ -1,27 +1,29 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bgstacbynajkg"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bgstacbynajkg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t0jib"]
-bg_color = Color(0.162225, 0.183063, 0.287162, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.119386, 0.138508, 0.221545, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-shadow_color = Color(0.431447, 0.475416, 0.655508, 1)
-shadow_size = 2
-shadow_offset = Vector2(1.85, 1.43)
+[ext_resource type="Texture2D" uid="uid://c428p543danx6" path="res://GUI/UI/Texture/panel-transparent-center-004.png" id="1_xwqw7"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tdxsk"]
-bg_color = Color(0.447071, 0.491312, 0.671425, 1)
-border_width_left = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(1, 1, 1, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bk4ew"]
+texture = ExtResource("1_xwqw7")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+modulate_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwqw7"]
+bg_color = Color(1, 1, 1, 1)
+shadow_color = Color(0.856067, 0.856067, 0.856067, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
 
 [resource]
-ProgressBar/styles/background = SubResource("StyleBoxFlat_t0jib")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_tdxsk")
+ProgressBar/colors/font_color = Color(0, 1, 1, 1)
+ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
+ProgressBar/constants/outline_size = 5
+ProgressBar/font_sizes/font_size = 20
+ProgressBar/styles/background = SubResource("StyleBoxTexture_bk4ew")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_xwqw7")

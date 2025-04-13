@@ -68,7 +68,7 @@ func _on_minigame_finished(completion_time: float) -> void:
 	var sulphur_count = counts["sulphur_count"]
 	
 	# 根据 completion_time 调整力系数（时间越短，力越大）
-	var force_multiplier = 1.0 / max(completion_time, 0.1)  # 防止除零错误
+	var force_multiplier = 2.5 / max(completion_time, 0.1)  # 防止除零错误
 	# 播放投掷动画
 	animation_player.play("Throw")
 	# 发出 item_created 信号
@@ -109,7 +109,7 @@ func _on_animation_frame_4():
 	
 	var ammo_weight = 0.01 * game01.get_ammo_weight()  # 调整火药质量
 	var completion_time: float = saved_completion_time
-	var force_multiplier = 1.0 / max(completion_time, 0.1)  # 防止除零错误
+	var force_multiplier = 2.5 / max(completion_time, 0.1)  # 防止除零错误
 	var base_speed = 1000.0  # 增加基础速度
 	var initial_velocity = Vector2(
 		(base_speed / max(ammo_weight, 0.1)) * force_multiplier,  # 水平速度

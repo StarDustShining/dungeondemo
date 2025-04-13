@@ -45,8 +45,6 @@ func add_player_instance() -> void:
 	add_child( player )
 	pass
 
-
-
 func set_health( hp: int, max_hp: int ) -> void:
 	# 确保玩家存在并且场景不是Down场景
 	if is_down_scene() or not player or not is_instance_valid(player):
@@ -63,12 +61,6 @@ func reward_xp( _xp : int ) -> void:
 	# check for level advancement
 	check_for_level_advance()
 
-
-# Check for level advance, recursively.
-# A recursive function will call itself under certain conditions,
-# and will NOT call itself under other conditions, known as a base condition.
-# An exit or base condition that stops the recursion is essential, 
-# otherwise the function will call itself indefinitely and lock up the program 
 func check_for_level_advance() -> void:
 	if player.level >= level_requirements.size():
 		return
@@ -86,8 +78,6 @@ func check_for_level_advance() -> void:
 func set_player_position( _new_pos : Vector2 ) -> void:
 	player.global_position = _new_pos
 	pass
-
-
 
 # 检查当前场景是否为Down相关场景
 func is_down_scene() -> bool:
@@ -111,8 +101,6 @@ func set_as_parent(_p : Node2D) -> void:
 		player.get_parent().remove_child(player)
 	if player:
 		_p.add_child(player)
-
-
 
 # 修改interact函数，添加场景检测
 func interact() -> void:

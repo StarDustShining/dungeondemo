@@ -1,9 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2y06pkc7wspb"]
+[gd_scene load_steps=10 format=3 uid="uid://c2y06pkc7wspb"]
 
 [ext_resource type="Script" uid="uid://dmnaclofsnicg" path="res://Level/Game02/collimation.gd" id="1_smut2"]
-[ext_resource type="Texture2D" uid="uid://huln6k8rd8l0" path="res://GUI/UI/Texture/图层 15.png" id="2_bdreg"]
-[ext_resource type="Texture2D" uid="uid://cnpkjiqcxn64h" path="res://GUI/UI/Texture/图层 8.png" id="3_p3lfm"]
+[ext_resource type="Texture2D" uid="uid://c8ulivo0cghmk" path="res://GUI/UI/Texture/panel-transparent-center-030.png" id="2_3yykv"]
+[ext_resource type="Texture2D" uid="uid://bdypox2x83awo" path="res://GUI/UI/Texture/panel-009.png" id="3_nr5ir"]
 [ext_resource type="Texture2D" uid="uid://vhpmawuswkm2" path="res://Interactables/Trebuchet/Sprite/Character_sheet.png" id="4_010jf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yykv"]
+atlas = ExtResource("4_010jf")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nr5ir"]
+atlas = ExtResource("4_010jf")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04v5r"]
+atlas = ExtResource("4_010jf")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mg5v6"]
+atlas = ExtResource("4_010jf")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7mo3p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yykv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nr5ir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04v5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mg5v6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Collimation" type="Node2D"]
 script = ExtResource("1_smut2")
@@ -12,33 +48,47 @@ hook_pull_power = 0.1
 [node name="Background" type="Sprite2D" parent="."]
 
 [node name="texture" type="NinePatchRect" parent="Background"]
-offset_left = 0.875
-offset_right = 31.875
-offset_bottom = 267.0
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 1.0
+offset_right = 64.0
+offset_bottom = 512.0
 size_flags_horizontal = 4
-texture = ExtResource("2_bdreg")
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
+texture = ExtResource("2_3yykv")
+region_rect = Rect2(0, 0, 96, 96)
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
 [node name="Hook" type="Sprite2D" parent="."]
-position = Vector2(16.8143, 89.0154)
+position = Vector2(32.3429, 127.194)
 rotation = 1.5708
 scale = Vector2(1.45176, 1.52451)
-texture = ExtResource("3_p3lfm")
+offset = Vector2(-26.298, 10.1863)
 
-[node name="Enemy" type="Sprite2D" parent="."]
-position = Vector2(16.875, 86)
-scale = Vector2(0.6975, 0.6975)
-texture = ExtResource("4_010jf")
-hframes = 10
-vframes = 10
+[node name="texture" type="NinePatchRect" parent="Hook"]
+offset_left = -43.5292
+offset_top = -15.5177
+offset_right = 41.4709
+offset_bottom = 15.4823
+pivot_offset = Vector2(43.5292, 15.5)
+texture = ExtResource("3_nr5ir")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Enemy" type="AnimatedSprite2D" parent="."]
+position = Vector2(34, 104.125)
+scale = Vector2(1.06, 1.06)
+sprite_frames = SubResource("SpriteFrames_7mo3p")
+autoplay = "default"
+frame_progress = 0.289423
 
 [node name="TopPivot" type="Node2D" parent="."]
-position = Vector2(15.875, 10)
+position = Vector2(32, 8)
 
 [node name="BottomPivot" type="Node2D" parent="."]
-position = Vector2(15.875, 256)
+position = Vector2(32, 504)

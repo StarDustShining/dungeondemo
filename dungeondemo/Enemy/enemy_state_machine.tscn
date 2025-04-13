@@ -1,0 +1,44 @@
+[gd_scene load_steps=11 format=3 uid="uid://bfbghcwae7te4"]
+
+[ext_resource type="Script" uid="uid://dsv7qis5u0chk" path="res://Enemy/script/enemy_state_machine.gd" id="1_qvubg"]
+[ext_resource type="Script" uid="uid://devwoe0h6rr1m" path="res://Enemy/script/states/enemy_state_idle.gd" id="2_t10fb"]
+[ext_resource type="Script" uid="uid://cxei0drqs1dxs" path="res://Enemy/script/states/enemy_state_wander.gd" id="3_flor3"]
+[ext_resource type="Script" uid="uid://chq5jb2pl2q5l" path="res://Enemy/script/states/enemy_state_hurt.gd" id="4_envk5"]
+[ext_resource type="AudioStream" uid="uid://cpgf820lfo334" path="res://Enemy/骷髅/hurt.mp3" id="5_iv4sv"]
+[ext_resource type="Script" uid="uid://bties3maloys7" path="res://Enemy/script/states/enemy_state_destroyed.gd" id="6_bbmav"]
+[ext_resource type="AudioStream" uid="uid://buh2yvturive4" path="res://Enemy/骷髅/die.mp3" id="7_pk7a7"]
+[ext_resource type="Script" uid="uid://dnumnm3nvvmic" path="res://Enemy/script/states/enemy_state_attack.gd" id="8_y22og"]
+[ext_resource type="AudioStream" uid="uid://byrex2ylfjkin" path="res://Enemy/骷髅/attack.mp3" id="9_fmjhm"]
+[ext_resource type="Script" uid="uid://d1qr6k24knqiv" path="res://Enemy/script/states/enemy_state_track.gd" id="10_wp7qx"]
+
+[node name="EnemyStateMachine" type="Node"]
+script = ExtResource("1_qvubg")
+
+[node name="Idle" type="Node" parent="." node_paths=PackedStringArray("after_idle_state")]
+script = ExtResource("2_t10fb")
+after_idle_state = NodePath("../Wander")
+
+[node name="Wander" type="Node" parent="." node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_flor3")
+state_animation_duration = 0.7
+next_state = NodePath("../Idle")
+
+[node name="Hurt" type="Node" parent="." node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_envk5")
+hurt_sound = ExtResource("5_iv4sv")
+next_state = NodePath("../Track")
+
+[node name="Destroy" type="Node" parent="."]
+script = ExtResource("6_bbmav")
+attack_sound = ExtResource("7_pk7a7")
+
+[node name="Attack" type="Node" parent="."]
+script = ExtResource("8_y22og")
+anim_name = null
+attack_sound = ExtResource("9_fmjhm")
+attack_duration = null
+knockback_speed = null
+cooldown_time = null
+
+[node name="Track" type="Node" parent="."]
+script = ExtResource("10_wp7qx")
