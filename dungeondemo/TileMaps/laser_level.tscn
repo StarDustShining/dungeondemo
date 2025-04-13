@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bkqvb1eakshvx"]
 
 [ext_resource type="Script" uid="uid://crp8vqsm8autk" path="res://Level/LaserLevel/laser_level.gd" id="1_23txa"]
-[ext_resource type="PackedScene" uid="uid://lxx60xgoecea" path="res://TileMaps/Ground3.tscn" id="2_r82h6"]
+[ext_resource type="PackedScene" uid="uid://lxx60xgoecea" path="res://TileMaps/Ground2.tscn" id="2_r82h6"]
 [ext_resource type="PackedScene" uid="uid://c24cwequ16bcw" path="res://Interactables/StoneDoor/StoneDoor.tscn" id="3_hu1nt"]
 [ext_resource type="PackedScene" uid="uid://dq4g5lk60l136" path="res://Interactables/Laser/NightPearl.tscn" id="4_n4cy2"]
 [ext_resource type="PackedScene" uid="uid://bqy2xy3rnkxgn" path="res://Interactables/Laser/Receiver.tscn" id="5_g5p80"]
