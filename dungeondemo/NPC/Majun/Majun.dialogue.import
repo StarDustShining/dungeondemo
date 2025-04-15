@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://dbjv4n66m38fe"
+path="res://.godot/imported/Majun.dialogue-d68fc8c5cc306976d1dd16a7069e6a41.tres"
+
+[deps]
+
+source_file="res://NPC/Majun/Majun.dialogue"
+dest_files=["res://.godot/imported/Majun.dialogue-d68fc8c5cc306976d1dd16a7069e6a41.tres"]
+
+[params]
+
+defaults=true

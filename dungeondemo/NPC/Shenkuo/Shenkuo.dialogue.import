@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://b7e6mx5l2x3jo"
+path="res://.godot/imported/Shenkuo.dialogue-f675f7e907a4781bfa20ba2bd88bc731.tres"
+
+[deps]
+
+source_file="res://NPC/Shenkuo/Shenkuo.dialogue"
+dest_files=["res://.godot/imported/Shenkuo.dialogue-f675f7e907a4781bfa20ba2bd88bc731.tres"]
+
+[params]
+
+defaults=true

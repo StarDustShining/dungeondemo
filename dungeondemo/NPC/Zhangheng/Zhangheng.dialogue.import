@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://ypse4rcmbsqo"
+path="res://.godot/imported/Zhangheng.dialogue-b189e8cce879887fc8bf0493924fe362.tres"
+
+[deps]
+
+source_file="res://NPC/Zhangheng/Zhangheng.dialogue"
+dest_files=["res://.godot/imported/Zhangheng.dialogue-b189e8cce879887fc8bf0493924fe362.tres"]
+
+[params]
+
+defaults=true
