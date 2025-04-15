@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx0btefyjquhb"]
+
+[ext_resource type="Texture2D" uid="uid://cm2rone2gdbie" path="res://Interactables/Seisomgraph/龙珠.png" id="1_84aj3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_84aj3"]
+radius = 9.05539
+
+[node name="Bead" type="RigidBody2D"]
+y_sort_enabled = true
+gravity_scale = 0.2
+sleeping = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("1_84aj3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_84aj3")

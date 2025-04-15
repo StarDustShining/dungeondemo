@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://lxx60xgoecea"]
+[gd_scene load_steps=11 format=3 uid="uid://lxx60xgoecea"]
 
 [ext_resource type="Texture2D" uid="uid://1jmt0nx75ogc" path="res://TileMaps/mainlevbuild.png" id="1_ax8nb"]
 [ext_resource type="Texture2D" uid="uid://df7drsbhkanak" path="res://TileMaps/decorative.png" id="1_r6ki5"]
 [ext_resource type="Texture2D" uid="uid://jgin0ctn0a1a" path="res://TileMaps/candle&torch.png" id="2_n8cvf"]
+[ext_resource type="Texture2D" uid="uid://cu0ef0wt470ry" path="res://TileMaps/4.png" id="4_x1di5"]
 [ext_resource type="Script" uid="uid://tn0utovo7beg" path="res://TileMaps/script/LevelTileMap.gd" id="4_ys7du"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x88gw"]
@@ -1391,9 +1392,26 @@ texture = ExtResource("1_ax8nb")
 44:0/0 = 0
 44:0/0/custom_data_0 = "wall"
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3r45m"]
+texture = ExtResource("4_x1di5")
+texture_region_size = Vector2i(32, 32)
+0:0/animation_columns = 6
+0:0/animation_speed = 4.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/0 = 0
+0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/custom_data_0 = "Spike"
+
 [sub_resource type="TileSet" id="TileSet_vmodw"]
 physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 0
+physics_layer_1/collision_layer = 0
+physics_layer_1/collision_mask = 0
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "purple soil"
 terrain_set_0/terrain_0/color = Color(0.737464, 0.614569, 0.856758, 1)
@@ -1407,6 +1425,7 @@ custom_data_layer_0/type = 4
 sources/2 = SubResource("TileSetAtlasSource_o1vr7")
 sources/0 = SubResource("TileSetAtlasSource_x88gw")
 sources/1 = SubResource("TileSetAtlasSource_ywuu3")
+sources/4 = SubResource("TileSetAtlasSource_3r45m")
 
 [node name="Ground2" type="TileMap"]
 y_sort_enabled = true
@@ -1416,4 +1435,5 @@ layer_0/name = "导航"
 layer_1/name = "地面"
 layer_2/name = "墙壁"
 layer_3/name = "装饰"
+layer_4/name = "陷阱"
 script = ExtResource("4_ys7du")

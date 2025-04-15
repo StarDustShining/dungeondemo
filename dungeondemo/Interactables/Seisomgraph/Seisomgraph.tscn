@@ -1,0 +1,372 @@
+[gd_scene load_steps=21 format=3 uid="uid://cagt3tf1gklhb"]
+
+[ext_resource type="Texture2D" uid="uid://cc5pif3a8mxbi" path="res://Interactables/Seisomgraph/图层 5.png" id="2_kqdd3"]
+[ext_resource type="Texture2D" uid="uid://dmjneluuk8wkl" path="res://Interactables/Seisomgraph/sprite.png" id="2_ln2j4"]
+[ext_resource type="Texture2D" uid="uid://6f63rd2q2ix2" path="res://Interactables/Seisomgraph/图层 6.png" id="3_tn7an"]
+[ext_resource type="Texture2D" uid="uid://00u5quovsw3a" path="res://Interactables/Seisomgraph/图层 7.png" id="4_q3ghv"]
+[ext_resource type="Texture2D" uid="uid://bhvr34vmpdfm7" path="res://Interactables/Seisomgraph/图层 8.png" id="5_lakn6"]
+[ext_resource type="Texture2D" uid="uid://dku2fd0eo6hjm" path="res://Interactables/Seisomgraph/图层 9.png" id="6_t5o0a"]
+[ext_resource type="Texture2D" uid="uid://b3jfb31n7agee" path="res://Interactables/Seisomgraph/图层 2.png" id="7_ln2j4"]
+[ext_resource type="Texture2D" uid="uid://cgo5f25nr0gsx" path="res://Interactables/Seisomgraph/图层 3.png" id="8_trvtc"]
+[ext_resource type="Texture2D" uid="uid://c7h0vkb6pqeh2" path="res://Interactables/Seisomgraph/图层 4.png" id="9_xactf"]
+
+[sub_resource type="Animation" id="Animation_k3fb1"]
+resource_name = "1"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("long1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_gkngt"]
+resource_name = "2"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("long2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_oids7"]
+resource_name = "3"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("long3:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_v1tmm"]
+resource_name = "4"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("long4:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_wh5p6"]
+resource_name = "5"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("long5:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_jm2et"]
+resource_name = "6"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("long6:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_i25dc"]
+resource_name = "7"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("long7:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_lakn6"]
+resource_name = "8"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("long8:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_xactf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("long1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("long2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("long3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("long4:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("long5:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("long6:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("long7:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("long8:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_trvtc"]
+resource_name = "idle"
+step = 0.1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oobd0"]
+_data = {
+&"1": SubResource("Animation_k3fb1"),
+&"2": SubResource("Animation_gkngt"),
+&"3": SubResource("Animation_oids7"),
+&"4": SubResource("Animation_v1tmm"),
+&"5": SubResource("Animation_wh5p6"),
+&"6": SubResource("Animation_jm2et"),
+&"7": SubResource("Animation_i25dc"),
+&"8": SubResource("Animation_lakn6"),
+&"RESET": SubResource("Animation_xactf"),
+&"idle": SubResource("Animation_trvtc")
+}
+
+[node name="Seisomgraph" type="Node2D"]
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D7"]
+position = Vector2(-25, -16)
+scale = Vector2(0.806958, 0.806958)
+polygon = PackedVector2Array(-8, 0, -4, 7, 2, 9, 8, 7, 12, 0, 13, 0, 8, 8, 2, 10, -4, 8, -9, 0)
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D8"]
+position = Vector2(21, -16)
+scale = Vector2(0.806958, 0.806958)
+polygon = PackedVector2Array(-8, 0, -4, 7, 2, 9, 8, 7, 12, 0, 13, 0, 8, 8, 2, 10, -4, 8, -9, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_ln2j4")
+offset = Vector2(0, 32)
+hframes = 3
+vframes = 3
+
+[node name="long1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(49, -80)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_kqdd3")
+
+[node name="long2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(14, -105)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_tn7an")
+
+[node name="long3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-14, -105)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_q3ghv")
+
+[node name="long4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-47, -79)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_lakn6")
+
+[node name="long5" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-75, -49)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_t5o0a")
+
+[node name="long6" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-30, -36)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_ln2j4")
+
+[node name="long7" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(31, -35)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_trvtc")
+
+[node name="long8" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(75, -49)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("9_xactf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_oobd0")
+}
+autoplay = "idle"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(86, 21)
+polygon = PackedVector2Array(-8, 0, -4, 7, 2, 9, 8, 7, 12, 0, 13, 0, 8, 8, 2, 10, -4, 8, -9, 0)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+position = Vector2(-91, 21)
+polygon = PackedVector2Array(-8, 0, -4, 7, 2, 9, 8, 7, 12, 0, 13, 0, 8, 8, 2, 10, -4, 8, -9, 0)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D3"]
+position = Vector2(-43, 43)
+polygon = PackedVector2Array(-8, 0, -4, 7, 2, 9, 8, 7, 12, 0, 13, 0, 8, 8, 2, 10, -4, 8, -9, 0)
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D4"]
+position = Vector2(38, 43)
+polygon = PackedVector2Array(-8, 0, -4, 7, 2, 9, 8, 7, 12, 0, 13, 0, 8, 8, 2, 10, -4, 8, -9, 0)
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D5"]
+position = Vector2(-69, 2)
+scale = Vector2(0.806958, 0.806958)
+polygon = PackedVector2Array(-8, 0, -4, 7, 2, 9, 8, 7, 12, 0, 13, 0, 8, 8, 2, 10, -4, 8, -9, 0)
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D6"]
+position = Vector2(69, 2)
+scale = Vector2(0.806958, 0.806958)
+polygon = PackedVector2Array(-8, 0, -4, 7, 2, 9, 8, 7, 12, 0, 13, 0, 8, 8, 2, 10, -4, 8, -9, 0)

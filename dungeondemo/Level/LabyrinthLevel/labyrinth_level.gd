@@ -17,7 +17,7 @@ func _ready() -> void:
 	PlayerManager.set_as_parent(self)
 	LevelManager.level_load_started.connect(_free_level)
 	LevelManager.minigame_load_started.connect(_pause_level)
-	mask_layer.size = get_viewport_rect().size
+	mask_layer.size = Vector2(5000,5000)
 	mask_layer.position = Vector2.ZERO
 
 	# 获取所有磁石节点并将它们存储在 magnets 数组中

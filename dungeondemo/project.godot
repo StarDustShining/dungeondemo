@@ -128,7 +128,7 @@ R={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://NPC/Mozi/Mozi.dialogue")
+locale/translations_pot_files=PackedStringArray("res://NPC/Mozi/Mozi.dialogue", "res://untitled.dialogue")
 
 [layer_names]
 
@@ -140,6 +140,7 @@ locale/translations_pot_files=PackedStringArray("res://NPC/Mozi/Mozi.dialogue")
 2d_physics/layer_7="Magneticfield"
 2d_physics/layer_8="Mirror"
 2d_physics/layer_9="Enemy"
+2d_physics/layer_10="SpikeHurt"
 
 [physics]
 

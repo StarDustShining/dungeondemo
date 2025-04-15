@@ -108,9 +108,6 @@ func TakeDamage( hurt_box : HurtBox ) -> void:
 	
 	if hp > 0:
 		var dmg : int = hurt_box.damage
-		# Simple damage calculation that subtracts defense value
-		# will keep damage to a minimum of 1, so we will do an if check
-		# to allow 0 to still be passed by a hurt_box if needed
 		if dmg > 0:
 			dmg = clampi( dmg - defense - defense_bonus, 1, dmg )
 		UpdateHp( -dmg )

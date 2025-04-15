@@ -2835,7 +2835,6 @@ script = ExtResource("1_bdolp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 y_sort_enabled = true
-zoom = Vector2(1.2, 1.2)
 script = ExtResource("2_ps8ct")
 shake_power = 0.3
 
