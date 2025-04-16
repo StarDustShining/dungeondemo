@@ -1439,8 +1439,7 @@ layer_2/tile_data = PackedInt32Array(0, 917506, 1, 131072, 983042, 5, 262144, 98
 layer_3/y_sort_enabled = true
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("4_cgswk")]
-position = Vector2(806, 186)
-scale = Vector2(0.6, 0.6)
+position = Vector2(1700, 2376)
 
 [node name="Compass" parent="." instance=ExtResource("4_mhue1")]
 
@@ -1514,22 +1513,21 @@ position = Vector2(1600, 1793)
 magnetic_field_size = Vector2(500, 500)
 
 [node name="LevelTransition" parent="." instance=ExtResource("7_u333g")]
-position = Vector2(831, 12)
-level = "uid://pmhoshnwreyi"
+position = Vector2(1600, 130)
+level = "uid://blcy1w5cxc0fa"
+side = 2
 
 [node name="LevelTransition2" parent="." instance=ExtResource("7_u333g")]
-position = Vector2(1458, 2463)
+position = Vector2(1472, 2376)
 level = "uid://blcy1w5cxc0fa"
-size = 4
 side = 3
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(850, 2497)
 collision_layer = 0
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(615, -66)
+position = Vector2(1472, 2376)
 rotation = 1.57124
 shape = SubResource("RectangleShape2D_wmqc0")
 

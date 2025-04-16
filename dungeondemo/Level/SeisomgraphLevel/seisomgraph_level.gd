@@ -47,10 +47,16 @@ func _ready() -> void:
 	PlayerManager.set_as_parent(self)
 	LevelManager.level_load_started.connect(_free_level)
 	LevelManager.minigame_load_started.connect(_pause_level)
+	# 隐藏所有地刺并禁用其 hurt_box 的监测
+	for spike in spikes:
+		spike.visible = false
+		var hurt_box = spike.get_node("hurt_box")
+		if hurt_box:
+			hurt_box.monitoring = false
 	# 将定时器添加到场景中
 	add_child(timer)
-	# 设置定时器的间隔时间（例如，5秒）
-	timer.wait_time = 5.0
+	# 设置定时器的间隔时间
+	timer.wait_time = 10.0
 	# 连接定时器的timeout信号到随机显示地刺的函数
 	timer.timeout.connect(_on_Timer_timeout)
 	# 启动定时器
@@ -59,13 +65,9 @@ func _ready() -> void:
 	_reset_beads()
 
 func _on_Timer_timeout():
-	# 隐藏所有地刺并禁用其 hurt_box 的监测
-	for spike in spikes:
-		spike.visible = false
-		var hurt_box = spike.get_node("hurt_box")
-		if hurt_box:
-			hurt_box.monitoring = false
-
+	# 重新启动定时器
+	timer.start()
+	
 	# 随机选择地刺的数量（最多3个）
 	var spike_count = randi() % 4  # 0到3之间的随机数
 	if spike_count == 0:
@@ -80,33 +82,42 @@ func _on_Timer_timeout():
 		if not selected_spikes.has(index):
 			selected_spikes.append(index)
 
-	# 播放选中的地刺对应的动画
-	for index in selected_spikes:
-		var spike_name = spikes[index].name
-		var animation_name = spike_to_seisomgraph_animation.get(spike_name, "idle")
-		animation_player.play(animation_name)
+	# 将当前选中的地刺保存到 pre_selected_spikes 中，供下一轮使用
+	pre_selected_spikes = selected_spikes.duplicate()
 	
 	# 让 Bead 同时开始掉落
 	_activate_beads()
 	audio_stream_player.play()
-	# 设置延迟时间，让 Bead 下落，同时等待动画播放完毕
+	
+	# 播放选中的地刺对应的动画
+	for index in selected_spikes:
+		var spike_name = spikes[index].name
+		var animation_name = spike_to_seisomgraph_animation.get(spike_name, "idle")
+		var long_node = seisomgraph.get_node("longs/" + "long" + animation_name)
+		var animation_player = long_node.get_node(animation_name)
+		animation_player.play(animation_name)
+	
+	# 设置延迟时间
 	await get_tree().create_timer(2.0).timeout  # 可根据需求调整时间
-
+	
 	# 显示选中的地刺并启用其 hurt_box 的监测
 	for index in selected_spikes:
 		spikes[index].visible = true
 		var hurt_box = spikes[index].get_node("hurt_box")
 		if hurt_box:
 			hurt_box.monitoring = true
-
+	
+	await get_tree().create_timer(1.0).timeout
 	# 根据上一轮的掉落地刺重置 Bead
 	_reset_beads()
-
-	# 将当前选中的地刺保存到 pre_selected_spikes 中，供下一轮使用
-	pre_selected_spikes = selected_spikes.duplicate()
-
-	# 重新启动定时器
-	timer.start()
+	
+	await get_tree().create_timer(5.0).timeout
+	
+	for spike in spikes:
+		spike.visible = false
+		var hurt_box = spike.get_node("hurt_box")
+		if hurt_box:
+			hurt_box.monitoring = false
 
 # 不销毁场景，而是仅清除与小游戏相关的部分
 func _free_level() -> void:
@@ -115,15 +126,6 @@ func _free_level() -> void:
 
 func _pause_level() -> void:
 	pass
-
-# 实例化 Bead 到所有地刺的初始位置，并设置为休眠状态
-func _instantiate_beads():
-	for spike_name in spike_to_seisomgraph_animation.keys():
-		var bead_instance = bead_scene.instantiate()
-		bead_instance.position = get_initial_bead_position(spike_name)
-		bead_instance.sleeping = true  # 设置 Bead 为休眠状态
-		seisomgraph.add_child(bead_instance)
-		bead_instances[spike_name] = bead_instance
 
 # 激活掉落的 Bead
 func _activate_beads():

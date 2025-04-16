@@ -35,8 +35,7 @@ position = Vector2(255, 194)
 position = Vector2(360, 553)
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("5_tt5wj")]
-position = Vector2(52, 287)
-scale = Vector2(0.6, 0.6)
+position = Vector2(53, 262)
 
 [node name="Mirror" parent="." groups=["PushItem"] instance=ExtResource("7_tom5t")]
 position = Vector2(397, 611)
@@ -70,11 +69,16 @@ scale = Vector2(0.6, 0.6)
 position = Vector2(661, 694)
 
 [node name="LevelTransition" parent="." instance=ExtResource("10_ocd5v")]
-position = Vector2(5, 262)
+position = Vector2(9, 262)
 scale = Vector2(0.6, 0.6)
-level = "uid://bew7jmyecmfn5"
-target_transition_area = "LevelTransition2"
 size = 4
+
+[node name="LevelTransition2" parent="." instance=ExtResource("10_ocd5v")]
+position = Vector2(1590, 711)
+scale = Vector2(0.6, 0.6)
+level = "uid://pqahqqlsqpcd"
+size = 6
+side = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

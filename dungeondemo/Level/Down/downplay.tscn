@@ -1,10 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://bxlti7mm52e8c"]
 
 [ext_resource type="Texture2D" uid="uid://vxynd7oahmj6" path="res://TileMaps/dungeon.png" id="1_bbjw0"]
+[ext_resource type="Script" uid="uid://cw4m8vch8c66t" path="res://Level/scripts/level.gd" id="1_m4hji"]
 [ext_resource type="Script" uid="uid://tn0utovo7beg" path="res://TileMaps/script/LevelTileMap.gd" id="2_7qv52"]
 [ext_resource type="PackedScene" uid="uid://b0506b2oow7bh" path="res://Down/downSideView/downplayer.tscn" id="3_duqja"]
 [ext_resource type="PackedScene" uid="uid://bojr2bxtd7s8e" path="res://Down/downSideView/downskeleton.tscn" id="4_idvha"]
-[ext_resource type="Script" uid="uid://73wuyosh7n6v" path="res://Level/scripts/level_transition.gd" id="6_rtecx"]
+[ext_resource type="PackedScene" uid="uid://ciju1j1ygnws2" path="res://Level/level_transition.tscn" id="5_v886p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_btcoy"]
 texture = ExtResource("1_bbjw0")
@@ -43,10 +44,8 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_btcoy")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bk78f"]
-size = Vector2(32, 96)
-
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_m4hji")
 
 [node name="LevelTileMapLayer" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_duqja")
@@ -56,7 +55,7 @@ script = ExtResource("2_7qv52")
 metadata/_custom_type_script = "uid://tn0utovo7beg"
 
 [node name="Downplayer" parent="." instance=ExtResource("3_duqja")]
-position = Vector2(113, 371)
+position = Vector2(143, 350)
 
 [node name="downskeleton" parent="." instance=ExtResource("4_idvha")]
 position = Vector2(812, 392)
@@ -67,11 +66,12 @@ position = Vector2(615, 588)
 [node name="downskeleton3" parent="." instance=ExtResource("4_idvha")]
 position = Vector2(1058, 535)
 
-[node name="LevelTransition" type="Area2D" parent="."]
-script = ExtResource("6_rtecx")
-level = "<null>"
-metadata/_custom_type_script = "uid://73wuyosh7n6v"
+[node name="LevelTransition" parent="." instance=ExtResource("5_v886p")]
+position = Vector2(105, 352)
+size = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransition"]
-position = Vector2(-32, 0)
-shape = SubResource("RectangleShape2D_bk78f")
+[node name="LevelTransition2" parent="." instance=ExtResource("5_v886p")]
+position = Vector2(1371, 574)
+level = "uid://kstws4i4a8fs"
+size = 2
+side = 1

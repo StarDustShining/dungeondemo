@@ -2,6 +2,8 @@ class_name Level extends Node2D
 
 func _ready() -> void:
 	self.y_sort_enabled = true
+	PlayerManager.player.visible=true
+	PlayerManager.player.position=get_node("PlayerSpawn").position
 	PlayerManager.set_as_parent(self)
 	LevelManager.level_load_started.connect(_free_level)
 	LevelManager.minigame_load_started.connect(_pause_level)

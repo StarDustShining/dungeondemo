@@ -2743,8 +2743,8 @@ script = ExtResource("1_lenta")
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1.26218e-29, -34)
-scale = Vector2(3, 3)
+position = Vector2(-1, -15)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_fetql")
 animation = &"stun_Left"
 autoplay = "idle_Down"

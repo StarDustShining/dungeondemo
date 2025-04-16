@@ -22,9 +22,7 @@ func _ready() -> void:
 	
 	# 如果场景路径或场景名包含Down或TitleScreen，则不生成全局玩家
 	if scene_path.contains("Down") or scene_path.contains("down") or \
-	   scene_path.contains("TitleScreen") or scene_path.contains("titlescreen") or \
-	   (current_scene and (current_scene.name.contains("Down") or current_scene.name.contains("down") or \
-						  current_scene.name.contains("TitleScreen") or current_scene.name.contains("titlescreen"))):
+	   (current_scene and (current_scene.name.contains("Down")) or current_scene.name.contains("down")):
 		print("检测到Down或TitleScreen场景，禁用全局玩家生成: " + scene_path)
 		# 在Down或TitleScreen场景中，我们不生成全局玩家
 		player_spawned = true
@@ -35,7 +33,7 @@ func _ready() -> void:
 		return
 	
 	# 对于其他场景，正常生成全局玩家
-	print("非Down或TitleScreen场景，正常生成全局玩家")
+	print("非Down场景，正常生成全局玩家")
 	add_player_instance()
 	await get_tree().create_timer(0.2).timeout
 	player_spawned = true

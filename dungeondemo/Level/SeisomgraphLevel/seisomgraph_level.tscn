@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://pqahqqlsqpcd"]
+[gd_scene load_steps=11 format=4 uid="uid://pqahqqlsqpcd"]
 
 [ext_resource type="Script" uid="uid://dy84ijxnfmcsk" path="res://Level/SeisomgraphLevel/seisomgraph_level.gd" id="1_5mbxw"]
 [ext_resource type="PackedScene" uid="uid://lxx60xgoecea" path="res://TileMaps/Ground2.tscn" id="1_keq7b"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cu0ef0wt470ry" path="res://TileMaps/4.png" id="5_3cu4p"]
 [ext_resource type="Script" uid="uid://bt0d6ah04xk3o" path="res://GeneralNodes/HurtBox/hurt_box.gd" id="6_5mbxw"]
 [ext_resource type="AudioStream" uid="uid://ciytx4unh1x62" path="res://Interactables/Seisomgraph/金属落地.mp3" id="7_v6kll"]
+[ext_resource type="PackedScene" uid="uid://ciju1j1ygnws2" path="res://Level/level_transition.tscn" id="8_daaei"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5mbxw"]
 texture = ExtResource("5_3cu4p")
@@ -39,7 +40,7 @@ y_sort_enabled = true
 position = Vector2(800, 392)
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("3_yonlg")]
-position = Vector2(272, 464)
+position = Vector2(40, 448)
 
 [node name="Spike" type="Node2D" parent="."]
 
@@ -201,3 +202,7 @@ polygon = PackedVector2Array(-11.8384, -7.77685, 6.81602, 12.443, 6.81602, -7.77
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_v6kll")
+
+[node name="LevelTransition" parent="." instance=ExtResource("8_daaei")]
+position = Vector2(12, 448)
+size = 2
