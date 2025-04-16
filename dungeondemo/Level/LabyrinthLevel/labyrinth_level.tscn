@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://kstws4i4a8fs"]
+[gd_scene load_steps=20 format=3 uid="uid://kstws4i4a8fs"]
 
 [ext_resource type="Script" uid="uid://b745662aebt1p" path="res://Level/LabyrinthLevel/labyrinth_level.gd" id="1_b44ro"]
 [ext_resource type="PackedScene" uid="uid://lxx60xgoecea" path="res://TileMaps/Ground2.tscn" id="2_8l1uw"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://1jmt0nx75ogc" path="res://TileMaps/mainlevbuild.png" id="6_sx48c"]
 [ext_resource type="PackedScene" uid="uid://ciju1j1ygnws2" path="res://Level/level_transition.tscn" id="7_u333g"]
 [ext_resource type="VideoStream" uid="uid://r8s4dwnuln02" path="res://Level/LabyrinthLevel/磁铁房出去.ogv" id="8_ijbf2"]
+[ext_resource type="PackedScene" uid="uid://b45d5rfiimfgd" path="res://Interactables/PressurePlate/PressurePlate.tscn" id="12_sx48c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ggl2s"]
 texture = ExtResource("3_mfqea")
@@ -1550,5 +1551,8 @@ stream = ExtResource("8_ijbf2")
 expand = true
 buffering_msec = 1000
 metadata/_edit_use_anchors_ = true
+
+[node name="PressurePlate" parent="." instance=ExtResource("12_sx48c")]
+position = Vector2(1600, 313)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

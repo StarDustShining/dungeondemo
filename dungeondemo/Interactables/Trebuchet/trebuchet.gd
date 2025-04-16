@@ -110,7 +110,7 @@ func _on_animation_frame_4():
 	var ammo_weight = 0.01 * game01.get_ammo_weight()  # 调整火药质量
 	var completion_time: float = saved_completion_time
 	var force_multiplier = 2.5 / max(completion_time, 0.1)  # 防止除零错误
-	var base_speed = 1000.0  # 增加基础速度
+	var base_speed = 800.0  # 增加基础速度
 	var initial_velocity = Vector2(
 		(base_speed / max(ammo_weight, 0.1)) * force_multiplier,  # 水平速度
 		(-500 / max(ammo_weight, 0.1)) * force_multiplier         # 垂直速度

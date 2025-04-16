@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://b45d5rfiimfgd"]
+
+[ext_resource type="Texture2D" uid="uid://cp6h4yrg1egdk" path="res://Interactables/PressurePlate/1.png" id="1_mqbgd"]
+[ext_resource type="Script" uid="uid://dg3tjl4ni0t1x" path="res://Interactables/PressurePlate/pressure_plate.gd" id="1_oaeqx"]
+[ext_resource type="PackedScene" uid="uid://drwc2rv2vhr8" path="res://Enemy/骷髅/skeletonMonster.tscn" id="2_4kddy"]
+[ext_resource type="Texture2D" uid="uid://bvr3c11bv67nv" path="res://Interactables/PressurePlate/2.png" id="2_oaeqx"]
+[ext_resource type="Texture2D" uid="uid://dot1hhcnygbgs" path="res://Interactables/PressurePlate/3.png" id="3_4kddy"]
+[ext_resource type="Texture2D" uid="uid://bymfep6y0ivlq" path="res://Interactables/PressurePlate/4.png" id="4_jhlqx"]
+[ext_resource type="Texture2D" uid="uid://bmxv0xsbsk2ew" path="res://Interactables/PressurePlate/5.png" id="5_le2fk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_31jnl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mqbgd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_oaeqx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4kddy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jhlqx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_le2fk")
+}],
+"loop": false,
+"name": &"depress",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mqbgd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_le2fk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jhlqx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4kddy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_oaeqx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_mqbgd")
+}],
+"loop": false,
+"name": &"upspring",
+"speed": 15.0
+}]
+
+[node name="PressurePlate" type="Node2D"]
+scale = Vector2(1.00416, 1.00658)
+script = ExtResource("1_oaeqx")
+skeleton_monster_scene = ExtResource("2_4kddy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_31jnl")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+scale = Vector2(3.51855, 2.77654)
+polygon = PackedVector2Array(0, -5.28899, -9.06964, 1.22054, 0, 7.73007, 9.06964, 1.11883)

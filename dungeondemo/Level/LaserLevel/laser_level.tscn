@@ -32,7 +32,7 @@ scale = Vector2(1.1547, 0.897023)
 position = Vector2(255, 194)
 
 [node name="Receiver" parent="." instance=ExtResource("4_ocd5v")]
-position = Vector2(360, 553)
+position = Vector2(1150, 191)
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("5_tt5wj")]
 position = Vector2(53, 262)
@@ -71,11 +71,13 @@ position = Vector2(661, 694)
 [node name="LevelTransition" parent="." instance=ExtResource("10_ocd5v")]
 position = Vector2(9, 262)
 scale = Vector2(0.6, 0.6)
+monitorable = false
 size = 4
 
 [node name="LevelTransition2" parent="." instance=ExtResource("10_ocd5v")]
 position = Vector2(1590, 711)
 scale = Vector2(0.6, 0.6)
+monitorable = false
 level = "uid://pqahqqlsqpcd"
 size = 6
 side = 1

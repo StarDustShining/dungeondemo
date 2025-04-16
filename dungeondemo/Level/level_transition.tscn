@@ -9,9 +9,6 @@ size = Vector2(32, 96)
 [node name="LevelTransition" type="Area2D"]
 light_mask = 0
 collision_layer = 0
-collision_mask = 1
-monitorable = true
-monitoring = true
 script = ExtResource("1_rygna")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

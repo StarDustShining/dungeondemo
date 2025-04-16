@@ -6,8 +6,6 @@ class_name PlayerCamera extends Camera2D
 @export var shake_decay : float = 1.0
 var shake_trauma : float = 0.0
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	LevelManager.tilemap_bounds_changed.connect( _update_limits )

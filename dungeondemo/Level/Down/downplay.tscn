@@ -66,11 +66,13 @@ position = Vector2(1058, 535)
 
 [node name="LevelTransition" parent="." instance=ExtResource("5_v886p")]
 position = Vector2(105, 352)
+monitorable = false
 level = "uid://pmhoshnwreyi"
 size = 2
 
 [node name="LevelTransition2" parent="." instance=ExtResource("5_v886p")]
 position = Vector2(1371, 574)
+monitorable = false
 level = "res://Level/LabyrinthLevel/labyrinth_level.tscn"
 size = 2
 side = 1

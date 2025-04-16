@@ -1,0 +1,89 @@
+[gd_scene load_steps=14 format=3 uid="uid://dwk0fs04tthpp"]
+
+[ext_resource type="Script" uid="uid://b6hya05tgh7cu" path="res://NPC/Shenkuo/shenkuo.gd" id="1_82d2f"]
+[ext_resource type="Texture2D" uid="uid://cnybfkvfcae7l" path="res://NPC/Shenkuo/1433-1.png" id="2_hwjmg"]
+[ext_resource type="Texture2D" uid="uid://dgp53hao6ka61" path="res://NPC/Shenkuo/1433-2.png" id="3_ogdae"]
+[ext_resource type="Texture2D" uid="uid://dvfqakppftfsg" path="res://NPC/Shenkuo/1433-3.png" id="4_g4e3y"]
+[ext_resource type="Texture2D" uid="uid://dfxjq576s1jvq" path="res://NPC/Shenkuo/1433-4.png" id="5_qt65s"]
+[ext_resource type="Texture2D" uid="uid://b8uxx3xv18eso" path="res://NPC/Shenkuo/1434-1.png" id="6_dkm8j"]
+[ext_resource type="Texture2D" uid="uid://bpmtvupt40man" path="res://NPC/Shenkuo/1434-2.png" id="7_m2q42"]
+[ext_resource type="Texture2D" uid="uid://cur1dxchjwyjk" path="res://NPC/Shenkuo/1434-3.png" id="8_v4uko"]
+[ext_resource type="Texture2D" uid="uid://dserabwvw7d56" path="res://NPC/Shenkuo/1435-1.png" id="9_mftpj"]
+[ext_resource type="Texture2D" uid="uid://inf3gj05108e" path="res://NPC/Shenkuo/1435-2.png" id="10_7ixbg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4wl0f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hwjmg")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hwjmg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ogdae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_g4e3y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qt65s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dkm8j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_m2q42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_v4uko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mftpj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7ixbg")
+}],
+"loop": true,
+"name": &"say",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dm2r8"]
+radius = 8.0
+height = 26.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wl0f"]
+size = Vector2(44, 34)
+
+[node name="Shenkuo" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_82d2f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.423529)
+sprite_frames = SubResource("SpriteFrames_4wl0f")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 1.0
+offset = Vector2(-1, -36)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_dm2r8")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_4wl0f")
+debug_color = Color(2.16588e-06, 0.635648, 0.414643, 0.42)

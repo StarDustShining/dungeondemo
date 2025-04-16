@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://dax265t0jbtmh"]
+
+[ext_resource type="Script" uid="uid://dd6xixugo3870" path="res://NPC/Zhangheng/zhangheng.gd" id="1_oranu"]
+[ext_resource type="Texture2D" uid="uid://cs1ii8mvj8236" path="res://NPC/Zhangheng/1347-1.png" id="2_4wlug"]
+[ext_resource type="Texture2D" uid="uid://4b2dmjoymu4g" path="res://NPC/Zhangheng/1347-2.png" id="3_kmdda"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4wl0f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4wlug")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4wlug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kmdda")
+}],
+"loop": true,
+"name": &"say",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dm2r8"]
+radius = 8.0
+height = 26.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wl0f"]
+size = Vector2(44, 34)
+
+[node name="Zhangheng" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_oranu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.423529)
+sprite_frames = SubResource("SpriteFrames_4wl0f")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 1.0
+offset = Vector2(-1, -36)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_dm2r8")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_4wl0f")
+debug_color = Color(2.16588e-06, 0.635648, 0.414643, 0.42)

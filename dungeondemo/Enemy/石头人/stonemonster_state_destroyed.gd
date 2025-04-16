@@ -6,10 +6,12 @@ class_name StoneMonsterStateDestroy extends EnemyState
 @export var decelerate_speed: float = 10.0
 @onready var audio: AudioStreamPlayer2D = $"../../AudioStreamPlayer2D"
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
+@onready var video_stream_player: VideoStreamPlayer = get_node("/root/TrebuchetLevel/CanvasLayer/VideoStreamPlayer") 
+@onready var wall: Node2D = get_node("/root/TrebuchetLevel/Wall")
 
 @export_category("AI")
 
-var _damage_position:Vector2
+var _damage_position: Vector2
 var _direction: Vector2
 
 func Init() -> void:
@@ -27,7 +29,6 @@ func Enter() -> void:
 		_direction = enemy.global_position.direction_to(_damage_position)
 	else:
 		_direction = Vector2.ZERO  # 没有玩家则不改变方向
-
 
 	# 播放死亡动画
 	animated_sprite_2d.play("hurt")
@@ -55,13 +56,19 @@ func Process(_delta: float) -> EnemyState:
 func Physics(_delta: float) -> EnemyState:
 	return null
 
-func OnEnemyDestroyed(hurt_box:HurtBox) -> void:
+func OnEnemyDestroyed(hurt_box: HurtBox) -> void:
 	# **确保敌人真正死亡后才进入此状态**
 	if enemy.hp <= 0:
-		_damage_position=hurt_box.global_position
+		_damage_position = hurt_box.global_position
 		state_machine.ChangeState(self)
 
 # **动画播放完后删除敌人**
 func OnAnimationFinished() -> void:
 	if enemy.hp <= 0:
 		enemy.queue_free()
+		# 播放 VideoStreamPlayer
+		if video_stream_player:
+			video_stream_player.play()
+		# queue_free Wall 节点
+		if wall:
+			wall.queue_free()
