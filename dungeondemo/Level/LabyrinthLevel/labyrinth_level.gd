@@ -14,6 +14,13 @@ var magnets: Array[Magnet] = []  # 存储所有磁石节点
 
 func _ready() -> void:
 	self.y_sort_enabled = true
+	
+	# 强制设置玩家位置在(1500, 200)
+	await get_tree().create_timer(0.1).timeout
+	if PlayerManager.player and is_instance_valid(PlayerManager.player):
+		PlayerManager.player.global_position = Vector2(1500, 200)
+		print("在迷宫关卡中强制设置玩家位置为:", Vector2(1500, 200))
+	
 	PlayerManager.set_as_parent(self)
 	LevelManager.level_load_started.connect(_free_level)
 	LevelManager.minigame_load_started.connect(_pause_level)

@@ -14,6 +14,9 @@ var player_spawned : bool = false
 #var level_requirements = [ 0, 50, 100, 200, 400, 800, 1500, 3000, 6000, 12000, 2500 ]
 var level_requirements = [ 0, 5, 10, 20, 40 ]
 
+# 添加变量保存血量，用于在场景间过渡
+var _saved_hp : int = 0
+var _saved_max_hp : int = 0
 
 func _ready() -> void:
 	# 检查当前场景，更精确地查找Down相关场景
@@ -41,18 +44,26 @@ func _ready() -> void:
 func add_player_instance() -> void:
 	player = PLAYER.instantiate()
 	add_child( player )
+	
+	# 应用之前保存的血量（如果有）
+	if _saved_max_hp > 0:
+		player.max_hp = _saved_max_hp
+		player.hp = _saved_hp
+		print("应用保存的血量：", _saved_hp, "/", _saved_max_hp)
+	
 	pass
 
 func set_health( hp: int, max_hp: int ) -> void:
 	# 确保玩家存在并且场景不是Down场景
-	if is_down_scene() or not player or not is_instance_valid(player):
+	if not player or not is_instance_valid(player):
+		# 保存值以便后续使用
+		_saved_hp = hp
+		_saved_max_hp = max_hp
 		return
 		
 	player.max_hp = max_hp
 	player.hp = hp
 	player.UpdateHp( 0 )
-
-
 
 func reward_xp( _xp : int ) -> void:
 	player.xp += _xp
@@ -70,9 +81,6 @@ func check_for_level_advance() -> void:
 		check_for_level_advance()
 	pass
 
-
-
-
 func set_player_position( _new_pos : Vector2 ) -> void:
 	player.global_position = _new_pos
 	pass
@@ -84,8 +92,6 @@ func is_down_scene() -> bool:
 	
 	return scene_path.contains("Down") or scene_path.contains("down") or \
 		(current_scene and (current_scene.name.contains("Down") or current_scene.name.contains("down")))
-
-
 
 # 修改set_as_parent函数，在Down场景中不执行
 func set_as_parent(_p : Node2D) -> void:
@@ -105,12 +111,8 @@ func interact() -> void:
 	interact_handled = false
 	interact_pressed.emit()
 
-
-
 func shake_camera( trauma : float = 1 ) -> void:
 	camera_shook.emit( clampi( trauma, 0, 3 ) )
-
-
 
 # 修改unparent_player函数，添加场景检测
 func unparent_player(_p : Node2D) -> void:
@@ -122,7 +124,6 @@ func unparent_player(_p : Node2D) -> void:
 	print("Unparenting player")
 	if player and player.get_parent() == _p:
 		_p.remove_child(player)
-
 
 func play_audio( _audio : AudioStream ) -> void:
 	if player and is_instance_valid(player) and player.has_method("play"):

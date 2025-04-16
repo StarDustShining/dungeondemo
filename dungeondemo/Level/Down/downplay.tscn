@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxlti7mm52e8c"]
+[gd_scene load_steps=8 format=3 uid="uid://bxlti7mm52e8c"]
 
 [ext_resource type="Texture2D" uid="uid://vxynd7oahmj6" path="res://TileMaps/dungeon.png" id="1_bbjw0"]
 [ext_resource type="Script" uid="uid://tn0utovo7beg" path="res://TileMaps/script/LevelTileMap.gd" id="2_7qv52"]
 [ext_resource type="PackedScene" uid="uid://b0506b2oow7bh" path="res://Down/downSideView/downplayer.tscn" id="3_duqja"]
 [ext_resource type="PackedScene" uid="uid://bojr2bxtd7s8e" path="res://Down/downSideView/downskeleton.tscn" id="4_idvha"]
 [ext_resource type="PackedScene" uid="uid://ciju1j1ygnws2" path="res://Level/level_transition.tscn" id="5_v886p"]
-[ext_resource type="PackedScene" uid="uid://lxx60xgoecea" path="res://TileMaps/Ground2.tscn" id="7_btn7m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_btcoy"]
 texture = ExtResource("1_bbjw0")
@@ -67,13 +66,11 @@ position = Vector2(1058, 535)
 
 [node name="LevelTransition" parent="." instance=ExtResource("5_v886p")]
 position = Vector2(105, 352)
+level = "uid://pmhoshnwreyi"
 size = 2
 
 [node name="LevelTransition2" parent="." instance=ExtResource("5_v886p")]
 position = Vector2(1371, 574)
-level = "uid://kstws4i4a8fs"
+level = "res://Level/LabyrinthLevel/labyrinth_level.tscn"
 size = 2
 side = 1
-
-[node name="Ground2" parent="." instance=ExtResource("7_btn7m")]
-layer_0/tile_data = PackedInt32Array(131083, 327682, 3, 131084, 393218, 3, 131085, 458754, 3, 131082, 262146, 3, 131086, 983042, 3, 196618, 262146, 5, 262154, 262146, 5, 327690, 262146, 5, 196622, 983042, 5, 262158, 983042, 5, 327694, 983042, 5, 393227, 327682, 12, 393228, 327682, 12, 393229, 327682, 12, 393226, 262146, 1, 393230, 983042, 1, 196619, 458754, 5, 196620, 524290, 5, 196621, 655362, 4, 262157, 655362, 4, 327693, 655362, 4, 327692, 655362, 4, 262156, 655362, 4, 262155, 655362, 4, 327691, 655362, 4, 131089, 458754, 3, 131090, 458754, 3, 131091, 458754, 3, 131092, 458754, 3, 131093, 458754, 3, 131094, 458754, 3, 131095, 458754, 3, 196624, 262146, 4, 262160, 262146, 4, 327696, 262146, 4, 393232, 262146, 4, 458768, 262146, 4, 524304, 262146, 4, 589840, 262146, 4, 196632, 983042, 4, 262168, 983042, 4, 327704, 983042, 4, 393240, 983042, 4, 458776, 983042, 4, 524312, 983042, 4, 589848, 983042, 4, 655377, 393218, 12, 655378, 393218, 12, 655379, 393218, 12, 655380, 393218, 12, 655381, 393218, 12, 655382, 393218, 12, 655383, 393218, 12, 655384, 983042, 1, 655376, 262146, 1, 131096, 983042, 3, 131088, 262146, 3, 196625, 524290, 6, 196626, 524290, 6, 262162, 524290, 6, 327699, 524290, 6, 393236, 524290, 6, 393237, 524290, 6, 458773, 524290, 6, 458774, 524290, 6, 524310, 524290, 6, 524311, 524290, 6, 458775, 524290, 6, 262167, 524290, 6, 196631, 524290, 6, 196630, 524290, 6, 196629, 524290, 6, 196628, 524290, 6, 262161, 524290, 6, 327697, 524290, 6, 393233, 524290, 6, 458769, 524290, 6, 524305, 524290, 6, 589841, 524290, 6, 327698, 524290, 6, 393234, 524290, 6, 458770, 524290, 6, 524306, 524290, 6, 589842, 524290, 6, 196627, 524290, 6, 262163, 524290, 6, 393235, 524290, 6, 458771, 524290, 6, 524307, 524290, 6, 589843, 524290, 6, 262164, 524290, 6, 327700, 524290, 6, 458772, 524290, 6, 524308, 524290, 6, 589844, 524290, 6, 262165, 524290, 6, 327701, 524290, 6, 524309, 524290, 6, 589845, 524290, 6, 262166, 524290, 6, 327702, 524290, 6, 393238, 524290, 6, 589846, 524290, 6, 327703, 524290, 6, 393239, 524290, 6, 589847, 524290, 6)

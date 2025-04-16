@@ -31,7 +31,18 @@ var death_sound = preload("res://Player/death.mp3") if ResourceLoader.exists("re
 func _ready():
 	# 连接信号
 	LevelManager.tilemap_bounds_changed.connect(_on_bounds_changed)
-	hp = max_hp
+	LevelManager.level_load_started.connect(_save_health_to_global)
+	
+	# 从全局 PlayerManager 获取血量（如果有）
+	var global_player = get_node_or_null("/root/PlayerManager").player if has_node("/root/PlayerManager") else null
+	if global_player and global_player.hp != null and global_player.max_hp != null:
+		# 继承全局玩家的血量
+		hp = global_player.hp
+		max_hp = global_player.max_hp
+		print("从全局玩家继承血量: ", hp, "/", max_hp)
+	else:
+		hp = max_hp
+		print("使用默认血量: ", hp, "/", max_hp)
 	
 	# 创建音频播放器（如果不存在）
 	if not audio_player:
@@ -155,25 +166,37 @@ func play_hurt_sound():
 		audio_player.play()
 
 # 更新生命值，正数增加，负数减少
-func UpdateHp(delta: int) -> void:
-	if delta < 0 and invulnerable:
-		return # 如果是伤害且处于无敌状态，则忽略
+func UpdateHp(value: int) -> void:
+	if invulnerable:
+		return
 		
-	var old_hp = hp
-	hp = clamp(hp + delta, 0, max_hp)
-	print("玩家生命值: ", hp, "/", max_hp)
+	hp = clamp(hp + value, 0, max_hp)
 	
-	# 更新全局UI显示
+	if value < 0:  # 受到伤害
+		invulnerable = true
+		invulnerable_timer = 1.0  # 1秒无敌时间
+		
+		# 播放受伤音效
+		if hurt_sound and audio_player:
+			audio_player.stream = hurt_sound
+			audio_player.play()
+			
+		# 开始受伤闪烁效果
+		start_hurt_effect()
+		
+		# 检查死亡
+		if hp <= 0:
+			Die()
+			return
+	
+	# 更新UI显示
 	if get_node_or_null("/root/PlayerHud"):
 		get_node("/root/PlayerHud").UpdateHp(hp, max_hp)
 	
-	if delta < 0 and old_hp > hp: # 如果确实受到了伤害
-		MakeInvulnerable(0.5) # 受伤后0.5秒无敌
-		start_hurt_effect() # 开始受伤特效
-		play_hurt_sound()   # 播放受伤声音
-		
-		if hp <= 0:
-			Die()
+	# 通知 PlayerManager 更新血量
+	var player_manager = get_node_or_null("/root/PlayerManager")
+	if player_manager and player_manager.has_method("set_health"):
+		player_manager.set_health(hp, max_hp)
 
 # 设置无敌状态
 func MakeInvulnerable(duration: float) -> void:
@@ -240,3 +263,16 @@ func _input(event):
 	if event.is_action_pressed("交互"):
 		# 不需要调用PlayerManager.interact()，因为会在_physics_process中处理
 		pass
+
+# 在场景切换前保存血量到全局管理器
+func _save_health_to_global():
+	var player_manager = get_node_or_null("/root/PlayerManager")
+	if player_manager and player_manager.player:
+		player_manager.player.hp = hp
+		player_manager.player.max_hp = max_hp
+		print("保存血量到全局玩家: ", hp, "/", max_hp)
+	else:
+		# 如果没有全局玩家，直接使用 PlayerManager 的 set_health 函数
+		if player_manager and player_manager.has_method("set_health"):
+			player_manager.set_health(hp, max_hp)
+			print("通过 set_health 保存血量: ", hp, "/", max_hp)

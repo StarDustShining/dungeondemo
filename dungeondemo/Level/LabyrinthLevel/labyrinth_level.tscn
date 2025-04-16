@@ -1439,7 +1439,7 @@ layer_2/tile_data = PackedInt32Array(0, 917506, 1, 131072, 983042, 5, 262144, 98
 layer_3/y_sort_enabled = true
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("4_cgswk")]
-position = Vector2(1700, 2376)
+position = Vector2(1572, 203)
 
 [node name="Compass" parent="." instance=ExtResource("4_mhue1")]
 
@@ -1457,65 +1457,65 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Magnet" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
-position = Vector2(1070, 163)
+position = Vector2(1311, 531)
 magnetic_field_size = Vector2(500, 500)
 
 [node name="Magnet2" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
-position = Vector2(647, 397)
+position = Vector2(379, 419)
 magnetic_field_size = Vector2(800, 800)
 
 [node name="Magnet3" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
-position = Vector2(2749, 138)
+position = Vector2(3015, 409)
 magnetic_field_size = Vector2(500, 500)
 
 [node name="Magnet4" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
-position = Vector2(0, 106)
+position = Vector2(82, 567)
 magnetic_field_size = Vector2(800, 800)
 
 [node name="Magnet5" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
-position = Vector2(404, 1013)
+position = Vector2(402, 1102)
 magnetic_field_size = Vector2(500, 500)
 
 [node name="Magnet6" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
-position = Vector2(1049, 416)
+position = Vector2(881, 211)
 magnetic_field_size = Vector2(800, 800)
 
 [node name="Magnet7" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
-position = Vector2(1070, 1506)
+position = Vector2(1189, 1185)
 magnetic_field_size = Vector2(500, 500)
 
 [node name="Magnet8" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
-position = Vector2(383, 1664)
+position = Vector2(310, 1942)
 magnetic_field_size = Vector2(800, 800)
 
 [node name="Magnet9" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
-position = Vector2(961, 2083)
+position = Vector2(768, 2324)
 magnetic_field_size = Vector2(500, 500)
 
 [node name="Magnet10" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
-position = Vector2(2071, 938)
+position = Vector2(1768, 1145)
 
 [node name="Magnet11" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
-position = Vector2(2742, 1334)
+position = Vector2(2403, 1331)
 
 [node name="Magnet12" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
-position = Vector2(2024, 2092)
+position = Vector2(2270, 2078)
 
 [node name="Magnet13" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
-position = Vector2(2488, 186)
+position = Vector2(2490, 159)
 magnetic_field_size = Vector2(500, 500)
 
 [node name="Magnet14" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
-position = Vector2(3118, 1727)
+position = Vector2(3111, 1327)
 
 [node name="Magnet15" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
-position = Vector2(1600, 1793)
+position = Vector2(1120, 1802)
 magnetic_field_size = Vector2(500, 500)
 
-[node name="LevelTransition" parent="." instance=ExtResource("7_u333g")]
-position = Vector2(1600, 130)
-level = "uid://blcy1w5cxc0fa"
-side = 2
+[node name="LevelTransition1" parent="." instance=ExtResource("7_u333g")]
+position = Vector2(1600, 80)
+level = "uid://bxlti7mm52e8c"
+side = 3
 
 [node name="LevelTransition2" parent="." instance=ExtResource("7_u333g")]
 position = Vector2(1472, 2376)
@@ -1538,6 +1538,10 @@ z_index = 10
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 3.0
+offset_right = 23.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
