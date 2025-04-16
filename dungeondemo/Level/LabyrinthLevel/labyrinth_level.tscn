@@ -1425,7 +1425,7 @@ shader_parameter/radius = 0.0
 shader_parameter/softness = 0.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wmqc0"]
-size = Vector2(48, 192)
+size = Vector2(63.0001, 237.998)
 
 [node name="LabyrinthLevel" type="Node2D"]
 y_sort_enabled = true
@@ -1527,8 +1527,9 @@ collision_layer = 0
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1472, 2376)
+position = Vector2(1474, 2369)
 rotation = 1.57124
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wmqc0")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

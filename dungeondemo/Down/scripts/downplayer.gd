@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var walk_speed = 200 # 走路速度
-@export var run_speed = 350 # 跑步速度
+@export var run_speed = 250 # 跑步速度
 @export var tile_size : float = 32 # 瓦片大小
 @export var max_hp = 6 # 最大生命值
 @export var footstep_sound_interval = 0.3 # 脚步声间隔时间
