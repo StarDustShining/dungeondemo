@@ -5,6 +5,7 @@ class_name SaltpetreBottle extends Area2D
 @onready var marker = $Marker  # 预先获取 Marker 节点
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animated_sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
 
 var is_mouse_inside: bool = false  # 记录鼠标是否在区域内
 var can_instantiate: bool = true   # 控制是否可以实例化
@@ -15,12 +16,13 @@ func _ready():
 	# 不再需要计时器，直接处理鼠标事件
 	pass
 
-# 当鼠标进入 Area2D 时触发
 func _on_mouse_entered():
+	animated_sprite_2d.visible=true
 	is_mouse_inside = true  # 记录鼠标在区域内
 
 # 当鼠标退出 Area2D 时触发
 func _on_mouse_exited():
+	animated_sprite_2d.visible=false
 	is_mouse_inside = false  # 记录鼠标不在区域内
 
 # 处理输入事件

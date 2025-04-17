@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://bj7tu3mmy6krl"]
+
+[ext_resource type="Script" path="res://Items/item_effects/item_effect.gd" id="1_ms080"]
+[ext_resource type="Script" uid="uid://w4fnc5moq54l" path="res://Items/scripts/item_data.gd" id="2_r8r55"]
+[ext_resource type="Texture2D" uid="uid://dhdv367tb3pru" path="res://Items/sprites/乾.png" id="3_4w7ab"]
+
+[resource]
+script = ExtResource("2_r8r55")
+name = "乾卦"
+description = "天行刚健，龙鳞炽热如日"
+texture = ExtResource("3_4w7ab")
+effects = Array[ExtResource("1_ms080")]([])
+metadata/_custom_type_script = "uid://w4fnc5moq54l"

@@ -68,6 +68,7 @@ script = ExtResource("1_82d2f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.423529)
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_4wl0f")
 animation = &"idle"
 autoplay = "idle"

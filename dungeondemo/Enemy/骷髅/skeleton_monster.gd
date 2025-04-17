@@ -2,34 +2,15 @@ class_name SkeletonMonster extends Enemy
 
 const DIR_6 = [Vector2.RIGHT, Vector2.LEFT, Vector2(-1, -1), Vector2(-1, 1), Vector2(1, -1), Vector2(1, 1)]
 
-var fade_alpha = 1.0  # 用于控制透明度
-var fade_speed = 1.0  # 渐变速度
-
 # 这个定时器控制怪物的消失和渐变透明
 func _ready() -> void:
 	state_machine.Initialize(self)
 	player = PlayerManager.player
 	hit_box.damaged.connect(TakeDamage)
-	# 添加一个定时器，定期触发更新
-	var fade_timer = Timer.new()
-	fade_timer.wait_time = 0.1
-	fade_timer.timeout.connect(_on_fade_timeout)
-	add_child(fade_timer)
-	fade_timer.start()
 
 func _process(_delta):
+	# 处理怪物的透明度变化
 	pass
-
-func _on_fade_timeout():
-	if fade_alpha > 0.0:
-		fade_alpha -= fade_speed * 0.1
-		self.modulate.a = fade_alpha
-	else:
-		queue_free()
-
-# 处理怪物定时器到期时的销毁逻辑
-func _on_timeout():
-	self.queue_free()  # 销毁怪物
 
 func _physics_process(_delta):
 	move_and_slide()
@@ -73,14 +54,3 @@ func TakeDamage(hurt_box:HurtBox)->void:
 		enemy_damaged.emit(hurt_box)
 	else:
 		enemy_destroyed.emit(hurt_box)
-		
-# 定义 fade_out 方法，控制怪物透明度渐变
-# 渐变消失的处理方法
-func fade_out(_delta):
-	# 控制透明度逐渐减少
-	if fade_alpha > 0.0:
-		fade_alpha -= fade_speed * _delta
-		self.modulate.a = fade_alpha  # 更新透明度
-	else:
-		# 完全消失时销毁怪物
-		queue_free()

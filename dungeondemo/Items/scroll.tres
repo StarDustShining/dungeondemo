@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://cdxk3v0er1l3l"]
+
+[ext_resource type="Script" path="res://Items/item_effects/item_effect.gd" id="1_amsni"]
+[ext_resource type="Script" uid="uid://w4fnc5moq54l" path="res://Items/scripts/item_data.gd" id="2_k2plu"]
+[ext_resource type="Texture2D" uid="uid://bdqlb4weor8fv" path="res://Items/sprites/Items (2).png" id="3_amsni"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2plu"]
+atlas = ExtResource("3_amsni")
+region = Rect2(64, 16, 16, 16)
+
+[resource]
+script = ExtResource("2_k2plu")
+name = "火药"
+description = "[]"
+texture = SubResource("AtlasTexture_k2plu")
+effects = Array[ExtResource("1_amsni")]([])
+metadata/_custom_type_script = "uid://w4fnc5moq54l"

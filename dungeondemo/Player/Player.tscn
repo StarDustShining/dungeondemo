@@ -1,4 +1,4 @@
-[gd_scene load_steps=363 format=3 uid="uid://ciugelk15lxjx"]
+[gd_scene load_steps=369 format=3 uid="uid://ciugelk15lxjx"]
 
 [ext_resource type="Script" uid="uid://dwawx4cw8g8dq" path="res://Player/script/player.gd" id="1_bdolp"]
 [ext_resource type="Texture2D" uid="uid://8fev7y815bdn" path="res://Player/The Female Adventurer - Premium/Attack/Spear/Attack_Spear.png" id="2_k2jx5"]
@@ -23,6 +23,12 @@
 [ext_resource type="AudioStream" uid="uid://becgteayh7wma" path="res://Player/death.mp3" id="18_5pb2m"]
 [ext_resource type="Script" uid="uid://c7kpyahlhrx2p" path="res://Player/script/state_run.gd" id="18_arly0"]
 [ext_resource type="Texture2D" uid="uid://cnq0m7vvb6x3k" path="res://GUI/UI/Texture/Keyboard White.png" id="22_u5tep"]
+[ext_resource type="Texture2D" uid="uid://bbj75btmcttmi" path="res://GUI/UI/Q&R/1.png" id="24_hqjia"]
+[ext_resource type="Texture2D" uid="uid://dssygelgiie1d" path="res://GUI/UI/Q&R/2.png" id="25_x70vp"]
+[ext_resource type="Texture2D" uid="uid://cwkbj82vc8h0s" path="res://GUI/UI/Q&R/3.png" id="26_wo5nf"]
+[ext_resource type="Texture2D" uid="uid://cjoyqp83wshhv" path="res://GUI/UI/Q&R/4.png" id="27_croik"]
+[ext_resource type="Texture2D" uid="uid://gmveoftjymvg" path="res://GUI/UI/Q&R/space1.png" id="28_wo5nf"]
+[ext_resource type="Texture2D" uid="uid://crurvm3go5kqq" path="res://GUI/UI/Q&R/space2.png" id="29_croik"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u5tep"]
 
@@ -1367,7 +1373,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_Spear_Down",
-"speed": 11.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1396,7 +1402,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_Spear_Left",
-"speed": 11.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1425,7 +1431,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_Spear_Left_Down",
-"speed": 11.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1454,7 +1460,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_Spear_Left_Up",
-"speed": 11.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1483,7 +1489,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_Spear_Right",
-"speed": 11.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1512,7 +1518,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_Spear_Right_Down",
-"speed": 11.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1541,7 +1547,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_Spear_Right_Up",
-"speed": 11.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1570,7 +1576,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_Spear_Up",
-"speed": 11.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -2823,8 +2829,45 @@ animations = [{
 "texture": SubResource("AtlasTexture_7uipr")
 }],
 "loop": true,
-"name": &"default",
+"name": &"E",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_hqjia")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_x70vp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_hqjia")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_wo5nf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_croik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_wo5nf")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"Q&R",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_wo5nf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_croik")
+}],
+"loop": true,
+"name": &"Space",
+"speed": 4.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -2835,7 +2878,6 @@ script = ExtResource("1_bdolp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 y_sort_enabled = true
-zoom = Vector2(1.2, 1.2)
 script = ExtResource("2_ps8ct")
 shake_power = 0.3
 
@@ -2847,7 +2889,7 @@ shape = SubResource("CapsuleShape2D_u5tep")
 texture_filter = 1
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_6tkpq")
-animation = &"idle_Down"
+animation = &"attack_Spear_Up"
 autoplay = "idle_Down"
 offset = Vector2(-2.72478e-06, -11.1836)
 
@@ -2869,7 +2911,6 @@ attack_sound = ExtResource("11_m8ri1")
 [node name="Attack_Spear" type="Node" parent="StateMachine"]
 script = ExtResource("10_wm8th")
 attack_sound = ExtResource("12_f3lp3")
-decelerate_speed = 3.0
 
 [node name="Stun" type="Node" parent="StateMachine"]
 script = ExtResource("16_23p86")
@@ -2898,11 +2939,11 @@ position = Vector2(-1.51512e-36, 16.6667)
 shape = SubResource("CapsuleShape2D_fiuvv")
 debug_color = Color(0.999762, 0, 0.102051, 0.42)
 
-[node name="Area2D" type="Area2D" parent="Interaction"]
+[node name="InteractArea" type="Area2D" parent="Interaction"]
 collision_layer = 4
 collision_mask = 32
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction/InteractArea"]
 shape = SubResource("RectangleShape2D_yh3us")
 debug_color = Color(0, 0.648119, 0.191015, 0.42)
 
@@ -2927,8 +2968,9 @@ libraries = {
 [node name="InteractionIcon" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_5svom")
-autoplay = "default"
-frame_progress = 0.707964
+animation = &"Space"
+autoplay = "E"
+frame_progress = 0.845877
 offset = Vector2(0, -68.7646)
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -2940,5 +2982,5 @@ shape = SubResource("CapsuleShape2D_u5tep")
 
 [connection signal="animation_finished" from="Player" to="StateMachine/Run" method="Exit"]
 [connection signal="animation_finished" from="Player" to="StateMachine/Stun" method="_on_player_animation_finished"]
-[connection signal="area_entered" from="Interaction/Area2D" to="." method="OnAreaEnter"]
-[connection signal="area_exited" from="Interaction/Area2D" to="." method="OnAreaExit"]
+[connection signal="area_entered" from="Interaction/InteractArea" to="." method="OnAreaEnter"]
+[connection signal="area_exited" from="Interaction/InteractArea" to="." method="OnAreaExit"]

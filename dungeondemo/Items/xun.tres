@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://fxm2rg0xuf4c"]
+
+[ext_resource type="Script" path="res://Items/item_effects/item_effect.gd" id="1_viuql"]
+[ext_resource type="Script" uid="uid://w4fnc5moq54l" path="res://Items/scripts/item_data.gd" id="2_6dfpt"]
+[ext_resource type="Texture2D" uid="uid://d0lqsnbqichk1" path="res://Items/sprites/巽.png" id="3_qpj3g"]
+
+[resource]
+script = ExtResource("2_6dfpt")
+name = "巽卦"
+description = "风入疏竹，鳞片轻若无物"
+texture = ExtResource("3_qpj3g")
+effects = Array[ExtResource("1_viuql")]([])
+metadata/_custom_type_script = "uid://w4fnc5moq54l"

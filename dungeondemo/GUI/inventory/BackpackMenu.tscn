@@ -50,20 +50,20 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -186.0
+offset_left = -696.0
 offset_top = -100.0
-offset_right = 186.0
+offset_right = 696.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(0.570878, 0.570878)
-pivot_offset = Vector2(186.929, 100.374)
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(696.149, 94.9471)
 theme_override_styles/panel = SubResource("StyleBoxTexture_fpmu5")
 
 [node name="GridContainer" type="GridContainer" parent="Control/PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-columns = 5
+columns = 20
 script = ExtResource("3_ghdtg")
 data = ExtResource("4_m374d")
 
@@ -80,6 +80,51 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="InventorySlot5" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_uilv8")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_uilv8")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_uilv8")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_uilv8")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_uilv8")]
+layout_mode = 2
+
+[node name="InventorySlot10" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_uilv8")]
+layout_mode = 2
+
+[node name="InventorySlot11" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_uilv8")]
+layout_mode = 2
+
+[node name="InventorySlot12" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_uilv8")]
+layout_mode = 2
+
+[node name="InventorySlot13" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_uilv8")]
+layout_mode = 2
+
+[node name="InventorySlot14" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_uilv8")]
+layout_mode = 2
+
+[node name="InventorySlot15" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_uilv8")]
+layout_mode = 2
+
+[node name="InventorySlot16" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_uilv8")]
+layout_mode = 2
+
+[node name="InventorySlot17" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_uilv8")]
+layout_mode = 2
+
+[node name="InventorySlot18" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_uilv8")]
+layout_mode = 2
+
+[node name="InventorySlot19" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_uilv8")]
+layout_mode = 2
+
+[node name="InventorySlot20" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_uilv8")]
 layout_mode = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control"]

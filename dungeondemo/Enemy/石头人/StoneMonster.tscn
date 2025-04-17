@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://v650qkdjwpva"]
+[gd_scene load_steps=56 format=3 uid="uid://v650qkdjwpva"]
 
 [ext_resource type="Script" uid="uid://5fjc84fj1kll" path="res://Enemy/石头人/stone_monster.gd" id="1_c2f8n"]
 [ext_resource type="Texture2D" uid="uid://btlyx7h1miha4" path="res://Enemy/石头人/No_Swoosh_VFX/Golem_1_idle.png" id="2_05r3v"]
@@ -12,6 +12,9 @@
 [ext_resource type="Script" uid="uid://djr0q7tem4f7w" path="res://Enemy/石头人/stonemonster_state_hurt.gd" id="7_05r3v"]
 [ext_resource type="Script" uid="uid://21g58mdlm742" path="res://Enemy/石头人/stonemonster_state_destroyed.gd" id="8_05r3v"]
 [ext_resource type="Script" uid="uid://c1xhbi7p30qy8" path="res://Enemy/石头人/stonemonster_state_attack.gd" id="11_1ucai"]
+[ext_resource type="AudioStream" uid="uid://c0ynoo1hmouv1" path="res://Enemy/石头人/hurt.mp3" id="11_lq6dd"]
+[ext_resource type="AudioStream" uid="uid://68xntfd75oam" path="res://Enemy/石头人/die.mp3" id="13_swhk3"]
+[ext_resource type="AudioStream" uid="uid://chm0wk8kxechf" path="res://Enemy/石头人/attack.mp3" id="15_8klmk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a8a6f"]
 radius = 28.1603
@@ -198,7 +201,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack",
-"speed": 10.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -302,7 +305,7 @@ scale = Vector2(0.9, 0.9)
 collision_layer = 256
 collision_mask = 0
 script = ExtResource("1_c2f8n")
-hp = 5
+hp = 20
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -315,6 +318,7 @@ scale = Vector2(2.45, 2.45)
 sprite_frames = SubResource("SpriteFrames_dbqn0")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.864743
 flip_h = true
 
 [node name="HurtBox" parent="." instance=ExtResource("3_6ke62")]
@@ -340,12 +344,15 @@ after_idle_state = NodePath("../Attack")
 
 [node name="Hurt" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("7_05r3v")
+hurt_sound = ExtResource("11_lq6dd")
 next_state = NodePath("../Idle")
 
 [node name="Destroy" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("8_05r3v")
+died_sound = ExtResource("13_swhk3")
 
 [node name="Attack" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("11_1ucai")
+attack_sound = ExtResource("15_8klmk")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

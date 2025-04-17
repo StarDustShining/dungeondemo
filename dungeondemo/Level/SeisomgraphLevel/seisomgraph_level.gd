@@ -12,6 +12,18 @@ extends Node2D
 	$Spike/Spike8
 ]
 
+# 定义 Marker 节点的引用
+@onready var markers = [
+	$Markers/xun, 
+	$Markers/qian, 
+	$Markers/dui, 
+	$Markers/li, 
+	$Markers/zhen,
+	$Markers/kun, 
+	$Markers/gen, 
+	$Markers/kan
+]
+
 # 定义 AnimationPlayer 节点的引用
 @onready var animation_player: AnimationPlayer = $Seisomgraph/AnimationPlayer
 @onready var audio_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -31,6 +43,9 @@ var spike_to_seisomgraph_animation = {
 # 定义 Bead 预制体
 @onready var bead_scene: PackedScene = preload("res://Interactables/Seisomgraph/Bead.tscn")
 
+# 定义 Bagua 预制体
+@onready var bagua_scene: PackedScene = preload("res://Items/item_pickup/Bagua.tscn")
+
 @onready var timer: Timer = $Timer
 
 # 存储当前选中的地刺索引
@@ -38,6 +53,8 @@ var selected_spikes = []
 var pre_selected_spikes = []  # 记录上一轮掉落的地刺
 # 存储当前实例化的 Bead 节点
 var bead_instances = {}
+# 存储当前实例化的 Bagua 节点
+var bagua_instances = {}
 
 # 获取 Seisomgraph 节点
 @onready var seisomgraph = $Seisomgraph
@@ -107,6 +124,38 @@ func _on_Timer_timeout():
 		if hurt_box:
 			hurt_box.monitoring = true
 	
+	# 随机选择 Marker 节点来实例化 Bagua 物品
+	var bagua_count = randi() % 4  # 0到3之间的随机数
+	if bagua_count == 0:
+		bagua_count = 1  # 确保至少有一个 Bagua 出现
+
+	# 创建一个集合来存储已经选择的 Marker 索引
+	var selected_markers = []
+
+	# 随机选择 Marker
+	while selected_markers.size() < bagua_count:
+		var index = randi() % markers.size()
+		if not selected_markers.has(index):
+			selected_markers.append(index)
+
+	# 在选中的 Marker 节点位置实例化 Bagua 物品
+	for index in selected_markers:
+		var marker = markers[index]
+		var bagua_instance = bagua_scene.instantiate()
+		# 使用 load 函数加载资源
+		bagua_instance.item_data = load("res://Items/" + marker.name + ".tres")
+		bagua_instance.position = marker.global_position
+		get_parent().add_child(bagua_instance)
+		bagua_instances[marker.name] = bagua_instance
+		# 设置销毁计时器
+		var destroy_timer = Timer.new()
+		destroy_timer.wait_time = 10.0  # 根据需求调整时间
+		destroy_timer.one_shot = true
+		# 使用 Callable 来传递 bagua_instance
+		destroy_timer.timeout.connect(Callable(self, "_on_Bagua_destroy_timeout").bind(bagua_instance))
+		add_child(destroy_timer)  # 确保计时器添加到当前节点
+		destroy_timer.start()
+
 	await get_tree().create_timer(1.0).timeout
 	# 根据上一轮的掉落地刺重置 Bead
 	_reset_beads()
@@ -172,3 +221,10 @@ func get_initial_bead_position(spike_name: String) -> Vector2:
 			return Vector2(88, -7)
 		_:
 			return Vector2(0, 0)  # 默认位置
+
+
+# 销毁未被捡起的 Bagua 物品
+func _on_Bagua_destroy_timeout(bagua_instance: Node2D) -> void:
+	if bagua_instance.is_in_group("picked_up"):
+		return  # 如果 Bagua 已经被捡起，则不销毁
+	bagua_instance.queue_free()  # 销毁 Bagua 实例

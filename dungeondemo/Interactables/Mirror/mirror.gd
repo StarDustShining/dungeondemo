@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-@onready var rotation_area: Area2D = $RotationArea
+@onready var rotation_area: Area2D = $"Q&R"
+@onready var push: Area2D = $Space
 @onready var reflect_area: CollisionShape2D = $ReflectArea/CollisionShape2D
 @onready var block_area: CollisionShape2D = $BlockArea/CollisionShape2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -19,6 +20,8 @@ func _ready():
 	reverse_state.reverse()
 	rotation_area.area_entered.connect(_on_Area2D_area_entered)
 	rotation_area.area_exited.connect(_on_Area2D_area_exited)
+	push.area_entered.connect(_on_Area2D_area_entered)
+	push.area_exited.connect(_on_Area2D_area_exited)
 	
 	# 初始化状态
 	current_state = initial_state

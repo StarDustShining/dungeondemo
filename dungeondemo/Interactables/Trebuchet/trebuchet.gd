@@ -4,8 +4,8 @@ class_name Trebuchet extends Node2D
 @export var progress_bar_minigame: PackedScene  # 导入 ProgressBarMinigame 场景
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var interact_area: Area2D = $Area2D
 @onready var marker: Marker2D = $Marker2D
+@onready var interact_area: Area2D = $E
 
 signal item_created
 
@@ -92,7 +92,7 @@ func _on_animation_frame_4():
 	var sulphur_count = counts["sulphur_count"]
 	
 	# 计算比例评分
-	var target_ratio = Vector3(15, 75, 10)
+	var target_ratio = Vector3(3, 1, 2)
 	var total_count = charcoal_count + saltpetre_count + sulphur_count
 	if total_count == 0:
 		total_count = 1  # 防止除零错误
@@ -109,11 +109,11 @@ func _on_animation_frame_4():
 	
 	var ammo_weight = 0.01 * game01.get_ammo_weight()  # 调整火药质量
 	var completion_time: float = saved_completion_time
-	var force_multiplier = 2.5 / max(completion_time, 0.1)  # 防止除零错误
+	var force_multiplier = 5 / max(completion_time, 0.1)  # 防止除零错误
 	var base_speed = 800.0  # 增加基础速度
 	var initial_velocity = Vector2(
 		(base_speed / max(ammo_weight, 0.1)) * force_multiplier,  # 水平速度
-		(-500 / max(ammo_weight, 0.1)) * force_multiplier         # 垂直速度
+		(-300 / max(ammo_weight, 0.1)) * force_multiplier         # 垂直速度
 	)
 	
 	charge_instance.set_initial_velocity(initial_velocity)

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://dg5on2cia2vv6"]
+
+[ext_resource type="Script" path="res://Items/item_effects/item_effect.gd" id="1_f2unl"]
+[ext_resource type="Script" uid="uid://w4fnc5moq54l" path="res://Items/scripts/item_data.gd" id="2_s3d74"]
+[ext_resource type="Texture2D" uid="uid://b72j5bi6ixk5m" path="res://Items/sprites/震.png" id="3_f2unl"]
+
+[resource]
+script = ExtResource("2_s3d74")
+name = "震卦"
+description = "雷动九霄，鳞隙间电光隐现"
+texture = ExtResource("3_f2unl")
+effects = Array[ExtResource("1_f2unl")]([])
+metadata/_custom_type_script = "uid://w4fnc5moq54l"

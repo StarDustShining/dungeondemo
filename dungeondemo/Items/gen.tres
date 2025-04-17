@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://ci2tsd6c20g8q"]
+
+[ext_resource type="Script" path="res://Items/item_effects/item_effect.gd" id="1_b3tx7"]
+[ext_resource type="Script" uid="uid://w4fnc5moq54l" path="res://Items/scripts/item_data.gd" id="2_torjw"]
+[ext_resource type="Texture2D" uid="uid://dt5fq12fm4uut" path="res://Items/sprites/艮.png" id="3_b3tx7"]
+
+[resource]
+script = ExtResource("2_torjw")
+name = "艮卦"
+description = "山止不动，鳞重千钧难移"
+texture = ExtResource("3_b3tx7")
+effects = Array[ExtResource("1_b3tx7")]([])
+metadata/_custom_type_script = "uid://w4fnc5moq54l"

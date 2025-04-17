@@ -10,6 +10,7 @@ var current_tilemap_bounds : Array[ Vector2 ]
 var target_transition : String
 var position_offset : Vector2
 var is_loading = false
+var loaded_levels : Dictionary = {}  # 存储加载过的场景实例
 
 func _ready() -> void:
 	await get_tree().process_frame

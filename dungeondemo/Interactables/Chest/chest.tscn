@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c622qpwt11at2" path="res://Interactables/Chest/chest.gd" id="1_6622b"]
 [ext_resource type="Texture2D" uid="uid://bhiwlowl15vf4" path="res://Interactables/Chest/Fantasy RPG (Toony) 32x32.png" id="1_md408"]
-[ext_resource type="Texture2D" uid="uid://bdqlb4weor8fv" path="res://Interactables/Chest/Items.png" id="2_uvbyd"]
+[ext_resource type="Texture2D" uid="uid://bdqlb4weor8fv" path="res://Items/sprites/Items (2).png" id="2_uvbyd"]
 [ext_resource type="AudioStream" uid="uid://dsrwc02y0mqqo" path="res://Interactables/Chest/chest_open.mp3" id="4_1ermq"]
 [ext_resource type="Script" uid="uid://uqrsfoga5e2s" path="res://GeneralNodes/PersistentDataHandler/persistent-data-handler.gd" id="5_adpj8"]
 
@@ -203,6 +203,7 @@ script = ExtResource("1_6622b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
+scale = Vector2(2, 2)
 texture = ExtResource("1_md408")
 hframes = 12
 vframes = 8

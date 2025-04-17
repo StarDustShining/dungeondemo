@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://onl12753ld8h"]
+
+[ext_resource type="Script" path="res://Items/item_effects/item_effect.gd" id="1_hdxgt"]
+[ext_resource type="Script" uid="uid://w4fnc5moq54l" path="res://Items/scripts/item_data.gd" id="2_sd2gp"]
+[ext_resource type="Texture2D" uid="uid://ch62xwk5v5jq8" path="res://Items/sprites/坎.png" id="3_hdxgt"]
+
+[resource]
+script = ExtResource("2_sd2gp")
+name = "坎卦"
+description = "水洊至险，鳞面凝露不散"
+texture = ExtResource("3_hdxgt")
+effects = Array[ExtResource("1_hdxgt")]([])
+metadata/_custom_type_script = "uid://w4fnc5moq54l"

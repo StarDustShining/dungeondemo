@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://4ai7r0y6r55j"]
+[gd_scene load_steps=13 format=3 uid="uid://4ai7r0y6r55j"]
 
 [ext_resource type="Script" uid="uid://cfq7m5apyuvyd" path="res://Level/Game01/game01.gd" id="1_gabea"]
 [ext_resource type="Texture2D" uid="uid://d8id0s21dfaa" path="res://Level/Game01/background.png" id="1_r0ouy"]
@@ -7,12 +7,34 @@
 [ext_resource type="PackedScene" uid="uid://dbcd2tsqomloe" path="res://Interactables/Bottle/SulphurBottle.tscn" id="2_ga5j0"]
 [ext_resource type="Texture2D" uid="uid://dxoowmkvqx5vp" path="res://Level/Game01/table.png" id="2_lvsca"]
 [ext_resource type="PackedScene" uid="uid://de4dilpg8wedl" path="res://Interactables/Bottle/SaltpetreBottle.tscn" id="5_5mf18"]
+[ext_resource type="Texture2D" uid="uid://cnq0m7vvb6x3k" path="res://GUI/UI/Texture/Keyboard White.png" id="8_8mhyu"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lvnqv"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdbgg"]
+atlas = ExtResource("8_8mhyu")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmved"]
+atlas = ExtResource("8_8mhyu")
+region = Rect2(80, 128, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g14aa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdbgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmved")
+}],
+"loop": true,
+"name": &"E",
+"speed": 5.0
+}]
+
 [node name="Game01" type="Node2D"]
 process_mode = 3
-scale = Vector2(0.8, 0.8)
 script = ExtResource("1_gabea")
 
 [node name="Background" type="Node2D" parent="."]
@@ -37,13 +59,13 @@ scale = Vector2(567.31, 2.34419)
 shape = SubResource("WorldBoundaryShape2D_lvnqv")
 
 [node name="CharcoalBottle" parent="." instance=ExtResource("1_werqc")]
-position = Vector2(422, 388)
+position = Vector2(422, 424)
 
 [node name="SaltpetreBottle" parent="." instance=ExtResource("5_5mf18")]
-position = Vector2(789, 388)
+position = Vector2(789, 424)
 
 [node name="SulphurBottle" parent="." instance=ExtResource("2_ga5j0")]
-position = Vector2(1153, 388)
+position = Vector2(1153, 424)
 
 [node name="GlassBottle" parent="." instance=ExtResource("2_dt0oo")]
 position = Vector2(405, 640)
@@ -53,6 +75,14 @@ position = Vector2(1137, 640)
 
 [node name="GlassBottle3" parent="." instance=ExtResource("2_dt0oo")]
 position = Vector2(771, 640)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(768, 192)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_g14aa")
+animation = &"E"
+autoplay = "E"
+frame_progress = 0.457897
 
 [connection signal="item_created" from="CharcoalBottle" to="." method="increment_charcoal_count"]
 [connection signal="item_created" from="SaltpetreBottle" to="." method="increment_saltpetre_count"]

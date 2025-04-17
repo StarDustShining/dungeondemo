@@ -168,12 +168,12 @@ collision_mask = 0
 position = Vector2(1.5, 18.75)
 shape = SubResource("RectangleShape2D_0vhoi")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="E" type="Area2D" parent="."]
 position = Vector2(-84, 32)
 collision_layer = 32
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="E"]
 position = Vector2(83, -7)
 shape = SubResource("RectangleShape2D_awpis")
 debug_color = Color(2.16588e-06, 0.635648, 0.414643, 0.42)

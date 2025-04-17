@@ -323,10 +323,9 @@ scale = Vector2(0.806958, 0.806958)
 polygon = PackedVector2Array(-8, 0, -4, 7, 2, 9, 8, 7, 12, 0, 13, 0, 8, 8, 2, 10, -4, 8, -9, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(0, -8)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_ln2j4")
-offset = Vector2(0, 32)
 hframes = 3
 vframes = 3
 

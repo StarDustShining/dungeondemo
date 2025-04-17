@@ -5,8 +5,7 @@ var is_open: bool = false
 
 # 直接使用场景路径
 var game_path: String = "res://Level/Game01/game01.tscn"
-
-@onready var interact_area: Area2D = $Area2D
+@onready var interact_area: Area2D = $E
 var minigame_instance: Node = null  # 用于存储加载的小游戏实例
 
 func _ready() -> void:

@@ -57,6 +57,7 @@ layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 texture = SubResource("AtlasTexture_6denj")
+expand_mode = 2
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

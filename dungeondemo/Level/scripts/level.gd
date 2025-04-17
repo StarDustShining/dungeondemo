@@ -16,3 +16,9 @@ func _free_level() -> void:
 
 func _pause_level() -> void:
 	pass
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	var video_player=get_node("CanvasLayer/VideoStreamPlayer")
+	video_player.play();
+	pass # Replace with function body.

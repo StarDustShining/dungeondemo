@@ -32,11 +32,23 @@ hframes = 8
 position = Vector2(0, 29)
 shape = SubResource("RectangleShape2D_b1agw")
 
-[node name="RotationArea" type="Area2D" parent="."]
-collision_layer = 0
+[node name="Q&R" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RotationArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Q&R"]
+visible = false
 position = Vector2(0, 29)
+shape = SubResource("RectangleShape2D_pdlcj")
+debug_color = Color(0, 0.640735, 0.345352, 0.42)
+
+[node name="Space" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Space"]
+position = Vector2(0, 29)
+scale = Vector2(0.538131, 0.485221)
 shape = SubResource("RectangleShape2D_pdlcj")
 debug_color = Color(0, 0.640735, 0.345352, 0.42)
 

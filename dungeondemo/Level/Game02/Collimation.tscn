@@ -1,32 +1,53 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2y06pkc7wspb"]
+[gd_scene load_steps=16 format=3 uid="uid://c2y06pkc7wspb"]
 
 [ext_resource type="Script" uid="uid://dmnaclofsnicg" path="res://Level/Game02/collimation.gd" id="1_smut2"]
 [ext_resource type="Texture2D" uid="uid://c8ulivo0cghmk" path="res://GUI/UI/Texture/panel-transparent-center-030.png" id="2_3yykv"]
 [ext_resource type="Texture2D" uid="uid://bdypox2x83awo" path="res://GUI/UI/Texture/panel-009.png" id="3_nr5ir"]
-[ext_resource type="Texture2D" uid="uid://vhpmawuswkm2" path="res://Interactables/Trebuchet/Sprite/Character_sheet.png" id="4_010jf"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3yykv"]
-atlas = ExtResource("4_010jf")
-region = Rect2(0, 0, 100, 100)
+[ext_resource type="Texture2D" uid="uid://7uirmddes8vw" path="res://Enemy/石头人/No_Swoosh_VFX/Golem_1_walk.png" id="4_3yykv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nr5ir"]
-atlas = ExtResource("4_010jf")
-region = Rect2(100, 0, 100, 100)
+atlas = ExtResource("4_3yykv")
+region = Rect2(0, 0, 90, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_04v5r"]
-atlas = ExtResource("4_010jf")
-region = Rect2(200, 0, 100, 100)
+atlas = ExtResource("4_3yykv")
+region = Rect2(90, 0, 90, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mg5v6"]
-atlas = ExtResource("4_010jf")
-region = Rect2(300, 0, 100, 100)
+atlas = ExtResource("4_3yykv")
+region = Rect2(180, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mo3p"]
+atlas = ExtResource("4_3yykv")
+region = Rect2(270, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kxdm"]
+atlas = ExtResource("4_3yykv")
+region = Rect2(360, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyqiu"]
+atlas = ExtResource("4_3yykv")
+region = Rect2(450, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdxnq"]
+atlas = ExtResource("4_3yykv")
+region = Rect2(540, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6faw"]
+atlas = ExtResource("4_3yykv")
+region = Rect2(630, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crrue"]
+atlas = ExtResource("4_3yykv")
+region = Rect2(720, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cq6f1"]
+atlas = ExtResource("4_3yykv")
+region = Rect2(810, 0, 90, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7mo3p"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3yykv")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nr5ir")
 }, {
@@ -35,10 +56,31 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mg5v6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mo3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kxdm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyqiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdxnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6faw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crrue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cq6f1")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="Collimation" type="Node2D"]
@@ -81,11 +123,11 @@ patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="Enemy" type="AnimatedSprite2D" parent="."]
-position = Vector2(34, 104.125)
-scale = Vector2(1.06, 1.06)
+position = Vector2(32, 112)
+scale = Vector2(1.40305, 1.40305)
 sprite_frames = SubResource("SpriteFrames_7mo3p")
 autoplay = "default"
-frame_progress = 0.289423
+frame_progress = 0.433353
 
 [node name="TopPivot" type="Node2D" parent="."]
 position = Vector2(32, 8)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdqlb4weor8fv"
-path="res://.godot/imported/Items.png-e2ed3931b34499c91772f76fb73dc983.ctex"
+uid="uid://byukdd2rg2wx8"
+path="res://.godot/imported/坤.png-bc4aa63d715f511d29c641d706fa962c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Interactables/Chest/Items.png"
-dest_files=["res://.godot/imported/Items.png-e2ed3931b34499c91772f76fb73dc983.ctex"]
+source_file="res://Items/sprites/坤.png"
+dest_files=["res://.godot/imported/坤.png-bc4aa63d715f511d29c641d706fa962c.ctex"]
 
 [params]
 

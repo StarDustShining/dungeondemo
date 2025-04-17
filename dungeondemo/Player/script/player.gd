@@ -24,12 +24,16 @@ var box_control: bool = false
 var pushed_box: CharacterBody2D = null
 var pulling: bool = false
 
+# 添加标志变量
+var in_special_level: bool = false
+
 @onready var player_animated: AnimatedSprite2D = $Player
 @onready var state_machine: PlayerStateMachine = $StateMachine
 @onready var hit_box: HitBox = $HitBox
 @onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
-@onready var interact_area: Area2D = $Interaction/Area2D
 @onready var interaction_icon: AnimatedSprite2D = $InteractionIcon
+@onready var interact_area: Area2D = $Interaction/InteractArea
+
 
 func _ready():
 	PlayerManager.player=self
@@ -135,7 +139,18 @@ func MakeInvulnerable( _duration : float = 1.0 ) -> void:
 	#%ChargeSpinHurtBox.damage = damage_value * 2
 
 func OnAreaEnter(_a: Area2D) -> void:
-	interaction_icon.visible=true
+	if _a.name == "E":
+		interaction_icon.visible = true
+		interaction_icon.play("E")
+	elif _a.name == "Q&R":
+		interaction_icon.visible = true
+		interaction_icon.play("Q&R")
+	elif _a.name == "Space":
+		interaction_icon.visible = true
+		interaction_icon.play("Space")
+	else:
+		interaction_icon.visible = true
+		interaction_icon.play("Default")  # 使用默认动画名称
 
 func OnAreaExit(_a: Area2D) -> void:
 	interaction_icon.visible=false
@@ -203,3 +218,6 @@ func handle_push_movement():
 		move_vec.y = 1
 
 	pushed_box.velocity = move_vec.normalized() * 50
+
+func set_special_level(flag: bool):
+	in_special_level = flag

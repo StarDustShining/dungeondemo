@@ -31,7 +31,7 @@ func Enter() -> void:
 		_direction = Vector2.ZERO  # 没有玩家则不改变方向
 
 	# 播放死亡动画
-	animated_sprite_2d.play("hurt")
+	animated_sprite_2d.play("die")
 
 	# **确保信号只连接一次，防止重复触发**
 	if not enemy.enemy_animated.animation_finished.is_connected(OnAnimationFinished):
