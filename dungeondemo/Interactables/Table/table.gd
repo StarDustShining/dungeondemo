@@ -2,10 +2,14 @@
 class_name Table extends Node
 
 var is_open: bool = false
-
 # 直接使用场景路径
 var game_path: String = "res://Level/Game01/game01.tscn"
+
 @onready var interact_area: Area2D = $E
+
+@onready var hint_label: Label = $HintLabel
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 var minigame_instance: Node = null  # 用于存储加载的小游戏实例
 
 func _ready() -> void:
@@ -21,6 +25,7 @@ func player_interact() -> void:
 			break
 	if has_powder:
 		print("无法与 table 互动，背包中已有 powder。")
+		show_hint_label()
 		return
 	# 使用 await 调用协程，并获取返回值
 	minigame_instance = await LevelManager.load_minigame(game_path)
@@ -47,3 +52,16 @@ func _on_game01_completed() -> void:
 	item_pickup.position = self.position  # 设置 item_pickup 的位置为 Table 节点的位置
 	get_parent().add_child(item_pickup)  # 将 item_pickup 添加到主场景中
 	print("item_pickup 已成功添加到场景中。")
+
+func show_hint_label() -> void:
+	# 设置提示标签的文本
+	hint_label.text = "背包中已有配置完毕的火药，无法与配药桌互动"
+	# 播放弹出动画
+	animation_player.play("show_hint")
+	
+	# 在2秒后开始消失动画
+	get_tree().create_timer(2.0).timeout.connect(_on_timer_timeout)
+
+func _on_timer_timeout() -> void:
+	# 播放消失动画
+	animation_player.play("hide_hint")

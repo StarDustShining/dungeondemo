@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_8720b")
 name = "坤卦"
-description = "地势厚德，鳞纹沉若山河"
+description = "[坤卦☷]：地势厚德，鳞纹沉若山河"
 texture = ExtResource("3_4rd6t")
 effects = Array[ExtResource("1_4rd6t")]([])
 metadata/_custom_type_script = "uid://w4fnc5moq54l"

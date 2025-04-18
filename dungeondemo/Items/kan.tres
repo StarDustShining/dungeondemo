@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_sd2gp")
 name = "坎卦"
-description = "水洊至险，鳞面凝露不散"
+description = "[坎卦☵]：水洊至险，鳞面凝露不散"
 texture = ExtResource("3_hdxgt")
 effects = Array[ExtResource("1_hdxgt")]([])
 metadata/_custom_type_script = "uid://w4fnc5moq54l"

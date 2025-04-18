@@ -12,7 +12,7 @@ func _ready() -> void:
 func _free_level() -> void:
 	# 如果你只需要清理小游戏相关的内容，而不是销毁整个场景
 	PlayerManager.unparent_player(self)  # 如果需要可以解除父子关系，但不销毁主场景
-	queue_free()  # 不销毁当前场景，避免主场景消失
+	#queue_free()  # 不销毁当前场景，避免主场景消失
 
 func _pause_level() -> void:
 	pass

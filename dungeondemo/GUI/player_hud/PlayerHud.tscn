@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt06u20oe82yq"]
+[gd_scene load_steps=5 format=3 uid="uid://dt06u20oe82yq"]
 
 [ext_resource type="Script" uid="uid://6vdq2qdynsk4" path="res://GUI/player_hud/player_hud.gd" id="1_xhmrq"]
 [ext_resource type="Texture2D" uid="uid://cb8m8m44j8p1i" path="res://GUI/player_hud/gui-health.png" id="1_ysfoq"]
 [ext_resource type="PackedScene" uid="uid://eqq1egfmdyii" path="res://GUI/player_hud/heart_gui.tscn" id="2_74oxm"]
+[ext_resource type="PackedScene" uid="uid://c2v7skfhk8c4f" path="res://GUI/player_hud/game_over.tscn" id="4_yy2tp"]
 
 [node name="PlayerHud" type="CanvasLayer"]
 script = ExtResource("1_xhmrq")
@@ -93,3 +94,6 @@ layout_mode = 2
 
 [node name="Heart20" parent="Control/HFlowContainer" instance=ExtResource("2_74oxm")]
 layout_mode = 2
+
+[node name="GameOver" parent="." instance=ExtResource("4_yy2tp")]
+mouse_filter = 2

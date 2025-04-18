@@ -1,4 +1,5 @@
 extends Node2D
+@onready var video_stream_player: VideoStreamPlayer = $VideoStreamPlayer
 
 # 定义地刺节点的引用
 @onready var spikes = [
@@ -26,7 +27,8 @@ extends Node2D
 
 # 定义 AnimationPlayer 节点的引用
 @onready var animation_player: AnimationPlayer = $Seisomgraph/AnimationPlayer
-@onready var audio_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var metal: AudioStreamPlayer2D = $Metal
+@onready var long_yin: AudioStreamPlayer2D = $LongYin
 
 # 定义尖刺陷阱和地动仪动画的映射
 var spike_to_seisomgraph_animation = {
@@ -80,6 +82,22 @@ func _ready() -> void:
 	timer.start()
 	pre_selected_spikes = [0,1,2,3,4,5,6,7]
 	_reset_beads()
+	
+	# 检查玩家背包中是否有 longlin.tres
+	check_for_longlin()
+
+func check_for_longlin() -> void:
+	# 定义 longlin.tres 的资源路径
+	var longlin_resource_path = "res://Items/longlin.tres"
+	
+	# 遍历玩家背包中的物品
+	for slot in PlayerManager.INVENTORY_DATA.slots:
+		if slot and slot.item_data and slot.item_data.resource_path == longlin_resource_path:
+			# 播放 long_yin 音频
+			long_yin.play()
+			print("检测到 longlin.tres，播放 long_yin 音频")
+			video_stream_player.play()
+			break
 
 func _on_Timer_timeout():
 	# 重新启动定时器
@@ -104,7 +122,7 @@ func _on_Timer_timeout():
 	
 	# 让 Bead 同时开始掉落
 	_activate_beads()
-	audio_stream_player.play()
+	metal.play()
 	
 	# 播放选中的地刺对应的动画
 	for index in selected_spikes:

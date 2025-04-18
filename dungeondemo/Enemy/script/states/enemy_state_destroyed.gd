@@ -1,12 +1,17 @@
 class_name EnemyStateDestroy extends EnemyState
 
+const PICKUP = preload("res://Items/item_pickup/ItemPickup.tscn")
+
 @export var attack_sound: AudioStream
 @export var anim_name: String = "die"
 @export var knockback_speed: float = 300.0
 @export var decelerate_speed: float = 10.0
+@export var drops : Array[ DropData ]
 @onready var audio: AudioStreamPlayer2D = $"../../AudioStreamPlayer2D"
 
 @export_category("AI")
+@export_category("Item Drops")
+
 
 var _damage_position:Vector2
 var _direction: Vector2
@@ -42,6 +47,8 @@ func Enter() -> void:
 		audio.stream = attack_sound
 		audio.pitch_scale = randf_range(0.9, 1.1)
 		audio.play()
+		
+	drop_items()
 
 func Exit() -> void:
 	# **解除绑定，防止重复调用**
@@ -66,3 +73,23 @@ func OnEnemyDestroyed(hurt_box:HurtBox) -> void:
 func OnAnimationFinished() -> void:
 	if enemy.hp <= 0:
 		enemy.queue_free()
+
+func disable_hurt_box() -> void:
+	var hurt_box : HurtBox = enemy.get_node_or_null("HurtBox")
+	if hurt_box:
+		hurt_box.monitoring = false
+
+func drop_items() -> void:
+	if drops.size() == 0:
+		return
+	
+	for i in drops.size():
+		if drops[ i ] == null or drops[ i ].item == null:
+			continue
+		var drop_count : int = drops[ i ].get_drop_count()
+		for j in drop_count:
+			var drop : ItemPickup = PICKUP.instantiate() as ItemPickup
+			drop.item_data = drops[ i ].item
+			enemy.get_parent().call_deferred( "add_child", drop )
+			drop.global_position = enemy.global_position
+	pass

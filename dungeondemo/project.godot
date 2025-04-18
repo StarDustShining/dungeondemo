@@ -26,6 +26,7 @@ PauseMenu="*res://GUI/pause_menu/PauseMenu.tscn"
 SaveManager="*res://00_Globals/global_save_manager.gd"
 BackpackMenu="*res://GUI/inventory/BackpackMenu.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+AudioManager="*res://00_Globals/global_audio_manager.gd"
 
 [dialogue_manager]
 

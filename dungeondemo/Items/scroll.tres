@@ -11,7 +11,7 @@ region = Rect2(64, 16, 16, 16)
 [resource]
 script = ExtResource("2_k2plu")
 name = "火药"
-description = "[]"
+description = "[火药配方残卷]：硝石主爆，硫磺速燃，木炭为续……三者相合，贵在均衡。失衡则力散，一如地脉紊乱之象。"
 texture = SubResource("AtlasTexture_k2plu")
 effects = Array[ExtResource("1_amsni")]([])
 metadata/_custom_type_script = "uid://w4fnc5moq54l"

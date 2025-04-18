@@ -4,6 +4,10 @@ signal player_entered_field(player)
 signal player_exited_field(player)
 
 @onready var magnetic_field: Area2D = $MagneticField  # 获取MagneticField节点
+@onready var hint: Area2D = $Hint
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var hint_label: Label = $HintLabel
+
 
 @export var magnetic_field_size: Vector2 = Vector2(200, 200)  # 默认磁场大小
 var player_in_field := false  # 标记玩家是否在磁场中
@@ -24,6 +28,7 @@ func _ready():
 	# 连接信号
 	magnetic_field.body_entered.connect(_on_MagneticField_body_entered)
 	magnetic_field.body_exited.connect(_on_MagneticField_body_exited)
+	hint.body_entered.connect(_on_player_body_entered)
 
 func _on_MagneticField_body_entered(body):
 	if body is Player:
@@ -37,3 +42,21 @@ func _on_MagneticField_body_exited(body):
 
 func is_player_in_field() -> bool:
 	return player_in_field
+	
+func _on_player_body_entered(body):
+	if body is Player:
+		show_hint_label()
+	
+func show_hint_label() -> void:
+	# 设置提示标签的文本
+	hint_label.text = "指南者，非石之力，乃天地之序。邪石扰之，如人心蔽于妄念。"
+	
+	# 播放弹出动画
+	animation_player.play("show_hint")
+	
+	# 在2秒后开始消失动画
+	get_tree().create_timer(5.0).timeout.connect(_on_timer_timeout)
+
+func _on_timer_timeout() -> void:
+	# 播放消失动画
+	animation_player.play("hide_hint")

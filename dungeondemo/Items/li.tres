@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_2tx1a")
 name = "离卦"
-description = "火附丽明，鳞缘灼痕宛然"
+description = "[离卦☲]：火附丽明，鳞缘灼痕宛然"
 texture = ExtResource("3_or6x0")
 effects = Array[ExtResource("1_or6x0")]([])
 metadata/_custom_type_script = "uid://w4fnc5moq54l"

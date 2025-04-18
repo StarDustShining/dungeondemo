@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://bofn1cub5yefx"]
+
+[ext_resource type="Script" path="res://Items/item_effects/item_effect.gd" id="1_oh865"]
+[ext_resource type="Script" uid="uid://w4fnc5moq54l" path="res://Items/scripts/item_data.gd" id="2_ox6hg"]
+[ext_resource type="Texture2D" uid="uid://dw2u6wn5e4vdt" path="res://Items/sprites/bone.png" id="3_oh865"]
+
+[resource]
+script = ExtResource("2_ox6hg")
+name = "骨片"
+description = "[骸骨]：刻有模糊的日期：元嘉二十八年……"
+texture = ExtResource("3_oh865")
+effects = Array[ExtResource("1_oh865")]([])
+metadata/_custom_type_script = "uid://w4fnc5moq54l"

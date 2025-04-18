@@ -1,4 +1,4 @@
-[gd_scene load_steps=124 format=3 uid="uid://drwc2rv2vhr8"]
+[gd_scene load_steps=127 format=3 uid="uid://drwc2rv2vhr8"]
 
 [ext_resource type="Texture2D" uid="uid://y14bdjyqw3l" path="res://Enemy/骷髅/骷髅皮肤/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Idle_right.png" id="1_02csh"]
 [ext_resource type="Texture2D" uid="uid://6aod5b2sm1qd" path="res://Enemy/骷髅/骷髅皮肤/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Attack1_left.png" id="1_8xpbf"]
@@ -21,9 +21,11 @@
 [ext_resource type="Script" uid="uid://bties3maloys7" path="res://Enemy/script/states/enemy_state_destroyed.gd" id="18_y2si2"]
 [ext_resource type="AudioStream" uid="uid://buh2yvturive4" path="res://Enemy/骷髅/die.mp3" id="19_a8lfy"]
 [ext_resource type="Script" uid="uid://dnumnm3nvvmic" path="res://Enemy/script/states/enemy_state_attack.gd" id="19_xteta"]
+[ext_resource type="Script" uid="uid://b17evl75ld0qg" path="res://Enemy/script/drop_item.gd" id="20_7fs70"]
 [ext_resource type="AudioStream" uid="uid://byrex2ylfjkin" path="res://Enemy/骷髅/attack.mp3" id="20_gu27h"]
 [ext_resource type="Script" uid="uid://d1qr6k24knqiv" path="res://Enemy/script/states/enemy_state_track.gd" id="20_jvcay"]
 [ext_resource type="Script" uid="uid://emb030tl55ba" path="res://Enemy/骷髅/skeletonMonsterInteraction.gd" id="21_h66n0"]
+[ext_resource type="Resource" uid="uid://bofn1cub5yefx" path="res://Items/bone.tres" id="22_bptbr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7j1my"]
 size = Vector2(23, 27)
@@ -815,11 +817,20 @@ _data = {
 radius = 5.0
 height = 24.0
 
+[sub_resource type="Resource" id="Resource_kosrn"]
+script = ExtResource("20_7fs70")
+item = ExtResource("22_bptbr")
+probability = 10.0
+min_amount = 1
+max_amount = 1
+metadata/_custom_type_script = "uid://b17evl75ld0qg"
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kgc2i"]
 radius = 2.41
 height = 34.32
 
 [node name="SkeletonMonster" type="CharacterBody2D"]
+y_sort_enabled = true
 scale = Vector2(1.2, 1.2)
 collision_layer = 272
 collision_mask = 16
@@ -871,6 +882,7 @@ next_state = NodePath("../Track")
 [node name="Destroy" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("18_y2si2")
 attack_sound = ExtResource("19_a8lfy")
+drops = Array[ExtResource("20_7fs70")]([SubResource("Resource_kosrn")])
 
 [node name="Attack" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("19_xteta")

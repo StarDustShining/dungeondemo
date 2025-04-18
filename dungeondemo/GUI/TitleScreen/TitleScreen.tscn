@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://jnomgop3jc72"]
+[gd_scene load_steps=62 format=3 uid="uid://jnomgop3jc72"]
 
 [ext_resource type="Script" uid="uid://du0wksg8wruyo" path="res://GUI/TitleScreen/title_screen.gd" id="1_itps4"]
 [ext_resource type="Texture2D" uid="uid://cm1lw6as7r476" path="res://GUI/TitleScreen/标题画面/Image1.jpg" id="2_sh2vs"]
@@ -56,7 +56,9 @@
 [ext_resource type="StyleBox" uid="uid://b4i2i5t3nynrg" path="res://GUI/UI/Theme/TitleScreen/title_hover_button.tres" id="54_t5pmq"]
 [ext_resource type="StyleBox" uid="uid://cir4e5iigt4pu" path="res://GUI/UI/Theme/TitleScreen/title_normal_button.tres" id="55_xdwtx"]
 [ext_resource type="Texture2D" uid="uid://bau75bj58us87" path="res://GUI/UI/Texture/panel-border-010.png" id="56_7ios8"]
-[ext_resource type="VideoStream" uid="uid://opvjkipr814g" path="res://GUI/TitleScreen/进入画面/进入游戏.ogv" id="57_t5pmq"]
+[ext_resource type="Texture2D" uid="uid://ckd5mbl65cqxs" path="res://游戏标题.png" id="57_7ios8"]
+[ext_resource type="VideoStream" uid="uid://cm1e2mtlxm2ue" path="res://GUI/TitleScreen/进入画面/进入游戏(1).ogv" id="58_7ios8"]
+[ext_resource type="VideoStream" uid="uid://owyt565s1mou" path="res://GUI/TitleScreen/splash.ogv" id="58_xdwtx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_32obj"]
 animations = [{
@@ -332,12 +334,24 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/Control"]
+position = Vector2(800, 315.75)
+scale = Vector2(0.706, 0.753)
+texture = ExtResource("57_7ios8")
+
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer/Control"]
 layout_mode = 1
 offset_right = 1600.0
 offset_bottom = 900.0
 mouse_filter = 2
-stream = ExtResource("57_t5pmq")
+stream = ExtResource("58_7ios8")
+expand = true
+
+[node name="SplashPlayer" type="VideoStreamPlayer" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 1600.0
+offset_bottom = 900.0
+stream = ExtResource("58_xdwtx")
 expand = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

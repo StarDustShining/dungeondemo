@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bilqvuqkq1mcq"]
+[gd_scene load_steps=17 format=3 uid="uid://bilqvuqkq1mcq"]
 
 [ext_resource type="Script" uid="uid://cnjwxx42cc8nl" path="res://Interactables/Trebuchet/trebuchet.gd" id="1_ekh3u"]
 [ext_resource type="PackedScene" uid="uid://cpbx1n0yhheaj" path="res://Interactables/Charge/Charge.tscn" id="2_5e2si"]
@@ -145,6 +145,96 @@ size = Vector2(110, 68)
 
 [sub_resource type="Curve" id="Curve_5n3ml"]
 
+[sub_resource type="Animation" id="Animation_7f2fe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HintLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HintLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_n7ejs"]
+resource_name = "hide_hint"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HintLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HintLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_317s1"]
+resource_name = "show_hint"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HintLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HintLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oixji"]
+_data = {
+&"RESET": SubResource("Animation_7f2fe"),
+&"hide_hint": SubResource("Animation_n7ejs"),
+&"show_hint": SubResource("Animation_317s1")
+}
+
 [node name="Trebuchet" type="Node2D"]
 script = ExtResource("1_ekh3u")
 charge = ExtResource("2_5e2si")
@@ -155,7 +245,7 @@ position = Vector2(0, -81)
 texture = ExtResource("2_j3ntr")
 hframes = 5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer1" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_iu0on")
 }
@@ -193,3 +283,22 @@ position = Vector2(17, -117)
 points = PackedVector2Array(0, 0)
 width_curve = SubResource("Curve_5n3ml")
 default_color = Color(0.878431, 0.721569, 0.027451, 1)
+
+[node name="HintLabel" type="Label" parent="."]
+texture_filter = 6
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.0
+offset_top = -112.0
+offset_right = 104.0
+offset_bottom = -90.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_oixji")
+}

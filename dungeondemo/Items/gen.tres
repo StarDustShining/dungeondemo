@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_torjw")
 name = "艮卦"
-description = "山止不动，鳞重千钧难移"
+description = "[艮卦☶]：山止不动，鳞重千钧难移"
 texture = ExtResource("3_b3tx7")
 effects = Array[ExtResource("1_b3tx7")]([])
 metadata/_custom_type_script = "uid://w4fnc5moq54l"

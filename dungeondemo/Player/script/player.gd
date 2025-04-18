@@ -9,7 +9,7 @@ var cardinal_direction: Vector2 = Vector2.DOWN
 var direction: Vector2 = Vector2.ZERO
 
 var invulnerable:bool=false
-var hp:int =6
+var hp:int =20
 var max_hp:int=6
 
 var attack : int = 1 :
@@ -221,3 +221,7 @@ func handle_push_movement():
 
 func set_special_level(flag: bool):
 	in_special_level = flag
+
+func revive_player() -> void:
+	UpdateHp( 99 )
+	state_machine.change_state( $StateMachine/Idle )

@@ -5,11 +5,15 @@ extends CharacterBody2D
 @onready var reflect_area: CollisionShape2D = $ReflectArea/CollisionShape2D
 @onready var block_area: CollisionShape2D = $BlockArea/CollisionShape2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var hint_label: Label = $HintLabel
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 
 var state = ["up", "right_up", "right", "right_down", "down", "left_down", "left", "left_up"]
 var reverse_state = []  # 用于反转动画数组
 var current_state: String
 var player_in_area: bool = false
+var hint_showed:bool=false
 
 @export var initial_state: String = "up"
 
@@ -137,7 +141,23 @@ func update_areas():
 # 当玩家进入区域时触发
 func _on_Area2D_area_entered(_area: Area2D) -> void:
 	player_in_area = true
+	if !hint_showed:
+		show_hint_label()
 
 # 当玩家离开区域时触发
 func _on_Area2D_area_exited(_area: Area2D) -> void:
 	player_in_area = false
+	
+func show_hint_label() -> void:
+	# 设置提示标签的文本
+	hint_label.text = "光行于直，遇镜则折。然镜歪一寸，光谬千里。"
+	
+	# 播放弹出动画
+	animation_player.play("show_hint")
+	
+	# 在2秒后开始消失动画
+	get_tree().create_timer(2.0).timeout.connect(_on_timer_timeout)
+
+func _on_timer_timeout() -> void:
+	# 播放消失动画
+	animation_player.play("hide_hint")

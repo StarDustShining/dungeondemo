@@ -1,7 +1,100 @@
-[gd_scene load_steps=3 format=3 uid="uid://bx42p4fn2w4ej"]
+[gd_scene load_steps=8 format=3 uid="uid://bx42p4fn2w4ej"]
 
 [ext_resource type="Script" uid="uid://cav5akwe3etnu" path="res://GUI/Compass/magnet.gd" id="1_11k8h"]
 [ext_resource type="Texture2D" uid="uid://dmcufbrio6ul1" path="res://GUI/Compass/磁石2.png" id="2_kn606"]
+
+[sub_resource type="Animation" id="Animation_7f2fe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HintLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HintLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_n7ejs"]
+resource_name = "hide_hint"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HintLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HintLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_317s1"]
+resource_name = "show_hint"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HintLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HintLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oixji"]
+_data = {
+&"RESET": SubResource("Animation_7f2fe"),
+&"hide_hint": SubResource("Animation_n7ejs"),
+&"show_hint": SubResource("Animation_317s1")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kn606"]
+size = Vector2(64, 68)
 
 [node name="Magnet" type="Node2D"]
 script = ExtResource("1_11k8h")
@@ -20,3 +113,28 @@ collision_layer = 16
 position = Vector2(0, 12)
 scale = Vector2(1.48159, 1.03353)
 polygon = PackedVector2Array(-9.44929, 2.90267, 0, 8.70801, 9.44929, 3.87023, 0.67495, -2.90267)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_oixji")
+}
+
+[node name="HintLabel" type="Label" parent="."]
+texture_filter = 6
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.0
+offset_top = -56.0
+offset_right = 104.0
+offset_bottom = -34.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hint" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hint"]
+shape = SubResource("RectangleShape2D_kn606")

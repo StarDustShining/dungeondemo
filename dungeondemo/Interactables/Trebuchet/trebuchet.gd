@@ -3,9 +3,12 @@ class_name Trebuchet extends Node2D
 @export var charge: PackedScene
 @export var progress_bar_minigame: PackedScene  # 导入 ProgressBarMinigame 场景
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var marker: Marker2D = $Marker2D
 @onready var interact_area: Area2D = $E
+@onready var animation_player: AnimationPlayer = $AnimationPlayer1
+@onready var hint_label: Label = $HintLabel
+@onready var animation_player_2: AnimationPlayer = $AnimationPlayer2
+
 
 signal item_created
 
@@ -36,6 +39,7 @@ func player_interact() -> void:
 			break
 	if not has_powder:
 		print("无法使用投石机，背包中没有 powder。")
+		show_hint_label()
 		return
 	# 删除玩家背包中的 powder
 	for i in range(PlayerManager.INVENTORY_DATA.slots.size()):
@@ -135,3 +139,16 @@ func reset_trebuchet():
 	game_active = false
 	animation_player.stop()
 	animation_player.seek(0)
+	
+func show_hint_label() -> void:
+	# 设置提示标签的文本
+	hint_label.text = "背包中没有配置完毕的火药，无法与投石机互动"
+	# 播放弹出动画
+	animation_player_2.play("show_hint")
+	
+	# 在2秒后开始消失动画
+	get_tree().create_timer(2.0).timeout.connect(_on_timer_timeout)
+
+func _on_timer_timeout() -> void:
+	# 播放消失动画
+	animation_player_2.play("hide_hint")

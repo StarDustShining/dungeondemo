@@ -4,6 +4,11 @@ extends CanvasLayer
 #@export var button_select_audio : AudioStream = preload( "res://title_scene/audio/menu_select.wav" )
 
 var hearts : Array[ HeartGUI ] = []
+@onready var game_over: Control = $GameOver
+@onready var animation_player: AnimationPlayer = $GameOver/AnimationPlayer
+@onready var title_button: Button = $GameOver/VBoxContainer/TitleButton
+@onready var continue_button: Button = $GameOver/VBoxContainer/ContinueButton
+
 
 
 #@onready var game_over : Control = $Control/GameOver
@@ -23,15 +28,11 @@ func _ready():
 		if child is HeartGUI:
 			hearts.append( child )
 			child.visible = false
-	
-	#HideGameOverScreen()
-	#continue_button.focus_entered.connect( play_audio.bind( button_focus_audio ) )
-	#continue_button.pressed.connect( load_game )
-	#title_button.focus_entered.connect( play_audio.bind( button_focus_audio ) )
-	#title_button.pressed.connect( title_screen )
-	#LevelManager.level_load_started.connect( hide_game_over_screen )
-	#
-	#HideBossHealth()
+	hide_game_over_screen()
+	continue_button.pressed.connect( load_game )
+	title_button.pressed.connect( title_screen )
+	LevelManager.level_load_started.connect( hide_game_over_screen )
+
 	
 	pass
 
@@ -57,75 +58,41 @@ func UpdateMaxHp( _max_hp : int ) -> void:
 
 
 #
-#func ShowGameOverScreen() -> void:
-	#game_over.visible = true
-	#game_over.mouse_filter = Control.MOUSE_FILTER_STOP
+func show_game_over_screen() -> void:
+	game_over.visible = true
+	game_over.mouse_filter = Control.MOUSE_FILTER_STOP
+	
+	var can_continue : bool = SaveManager.get_save_file() != null
+	continue_button.visible = can_continue
+	
+	animation_player.play("show_game_over")
+	await animation_player.animation_finished
+	
+	if can_continue == true:
+		continue_button.grab_focus()
+	else:
+		title_button.grab_focus()
 	#
-	#var can_continue : bool = SaveManager.get_save_file() != null
-	#continue_button.visible = can_continue
-	#
-	#animation_player.play("show_game_over")
-	#await animation_player.animation_finished
-	#
-	#if can_continue == true:
-		#continue_button.grab_focus()
-	#else:
-		#title_button.grab_focus()
-	#
 #
 #
-#
-#func HideGameOverScreen() -> void:
-	#game_over.visible = false
-	#game_over.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	#game_over.modulate = Color( 1,1,1,0 )
-#
-#
-#
-#func LoadGame() -> void:
-	#play_audio( button_select_audio )
-	#await fade_to_black()
-	#SaveManager.load_game()
-#
-#
-#func TitleScreen() -> void:
-	#play_audio( button_select_audio )
-	#await fade_to_black()
-	#LevelManager.load_new_level( "res://title_scene/title_scene.tscn", "", Vector2.ZERO )
-#
-#
-#func FadeToBlack() -> bool:
-	#animation_player.play("fade_to_black")
-	#await animation_player.animation_finished
-	#PlayerManager.player.revive_player()
-	#return true
-#
-#
-#
-#func PlayAudio( _a : AudioStream ) -> void:
-	#audio.stream = _a
-	#audio.play()
-#
-#
-#
-#func ShowBossHealth( boss_name : String ) -> void:
-	#boss_ui.visible = true
-	#boss_label.text = boss_name
-	#update_boss_health( 1, 1 )
-	#pass
-#
-#
-#func HideBossHealth() -> void:
-	#boss_ui.visible = false
-	#pass
-#
-#
-#func UpdateBossHealth( hp : int, max_hp : int ) -> void:
-	#boss_hp_bar.value = clampf( float(hp) / float(max_hp) * 100, 0, 100 )
-	#pass
-#
-#
-#
-#func QueueNotification( _title : String, _message : String ) -> void:
-	#notification_ui.add_notification_to_queue( _title, _message )
-	#pass
+func hide_game_over_screen() -> void:
+	game_over.visible = false
+	game_over.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	game_over.modulate = Color( 1,1,1,0 )
+
+func load_game() -> void:
+	await fade_to_black()
+	SaveManager.load_game()
+
+
+func title_screen() -> void:
+
+	await fade_to_black()
+	LevelManager.load_new_level( "res://title_scene/title_scene.tscn", "", Vector2.ZERO )
+
+
+func fade_to_black() -> bool:
+	animation_player.play("fade_to_black")
+	await animation_player.animation_finished
+	PlayerManager.player.revive_player()
+	return true

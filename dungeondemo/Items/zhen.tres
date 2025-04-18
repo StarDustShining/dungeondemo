@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_s3d74")
 name = "震卦"
-description = "雷动九霄，鳞隙间电光隐现"
+description = "[震卦☳]：雷动九霄，鳞隙间电光隐现"
 texture = ExtResource("3_f2unl")
 effects = Array[ExtResource("1_f2unl")]([])
 metadata/_custom_type_script = "uid://w4fnc5moq54l"

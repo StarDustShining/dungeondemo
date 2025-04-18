@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_6dfpt")
 name = "巽卦"
-description = "风入疏竹，鳞片轻若无物"
+description = "[巽卦☴]：风入疏竹，鳞片轻若无物"
 texture = ExtResource("3_qpj3g")
 effects = Array[ExtResource("1_viuql")]([])
 metadata/_custom_type_script = "uid://w4fnc5moq54l"

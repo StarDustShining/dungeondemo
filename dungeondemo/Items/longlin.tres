@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_6it6t")
 name = "龙鳞"
-description = "一片泛着幽光的青铜龙鳞，表面刻有细密的星纹。握在手中时，能感受到微弱的脉动，仿佛与某种宏大的韵律共鸣。传说地动仪上的八龙曾因观测天机而剥落此鳞，唯有集齐八卦之力者，方可令其重归原位。"
+description = "[时晷之鳞]：一片泛着幽光的青铜龙鳞，表面刻有细密的星纹。握在手中时，能感受到微弱的脉动，仿佛与某种宏大的韵律共鸣。传说地动仪上的八龙曾因观测天机而剥落此鳞，唯有集齐八卦之力者，方可令其重归原位]"
 texture = ExtResource("3_y13js")
 effects = Array[ExtResource("1_y13js")]([])
 metadata/_custom_type_script = "uid://w4fnc5moq54l"
