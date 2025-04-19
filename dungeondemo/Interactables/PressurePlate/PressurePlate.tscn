@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b45d5rfiimfgd"]
+[gd_scene load_steps=10 format=3 uid="uid://b45d5rfiimfgd"]
 
 [ext_resource type="Texture2D" uid="uid://cp6h4yrg1egdk" path="res://Interactables/PressurePlate/1.png" id="1_mqbgd"]
 [ext_resource type="Script" uid="uid://dg3tjl4ni0t1x" path="res://Interactables/PressurePlate/pressure_plate.gd" id="1_oaeqx"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dot1hhcnygbgs" path="res://Interactables/PressurePlate/3.png" id="3_4kddy"]
 [ext_resource type="Texture2D" uid="uid://bymfep6y0ivlq" path="res://Interactables/PressurePlate/4.png" id="4_jhlqx"]
 [ext_resource type="Texture2D" uid="uid://bmxv0xsbsk2ew" path="res://Interactables/PressurePlate/5.png" id="5_le2fk"]
+[ext_resource type="VideoStream" uid="uid://duhk16qae8lmw" path="res://Interactables/PressurePlate/骷髅.ogv" id="7_jhlqx"]
+[ext_resource type="VideoStream" uid="uid://bnyo4vnfpfiu4" path="res://Interactables/PressurePlate/地动仪 (1).ogv" id="8_le2fk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_31jnl"]
 animations = [{
@@ -78,3 +80,38 @@ collision_layer = 0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 scale = Vector2(3.51855, 2.77654)
 polygon = PackedVector2Array(0, -5.28899, -9.06964, 1.22054, 0, 7.73007, 9.06964, 1.11883)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SkeletonVideoPlayer" type="VideoStreamPlayer" parent="CanvasLayer"]
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 368.0
+offset_right = -864.0
+offset_bottom = -628.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+stream = ExtResource("7_jhlqx")
+expand = true
+buffering_msec = 1000
+
+[node name="SeisomgraphVideoPlayer" type="VideoStreamPlayer" parent="CanvasLayer"]
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1232.0
+offset_bottom = -628.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+stream = ExtResource("8_le2fk")
+expand = true
+buffering_msec = 1000
+
+[connection signal="finished" from="CanvasLayer/SkeletonVideoPlayer" to="." method="spawn_skeleton_monster"]

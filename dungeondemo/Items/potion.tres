@@ -20,7 +20,7 @@ region = Rect2(64, 48, 16, 16)
 [resource]
 script = ExtResource("2_eu55q")
 name = "治疗药水"
-description = "[神奇小药水，喝了身体棒]"
+description = "[神奇小药水，喝了身体棒]：左键使用"
 texture = SubResource("AtlasTexture_yhh2t")
 effects = Array[ExtResource("1_t8xv6")]([SubResource("Resource_cvo6j")])
 metadata/_custom_type_script = "uid://w4fnc5moq54l"

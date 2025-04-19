@@ -4,14 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://ciylmup5vqrj5" path="res://Interactables/Table/table.png" id="1_ktqvx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ch1ya"]
-size = Vector2(38, 22.5)
+size = Vector2(94, 49.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a53xi"]
-size = Vector2(44, 34)
+size = Vector2(110, 86)
 
-[sub_resource type="Animation" id="Animation_317s1"]
-resource_name = "show_hint"
-length = 0.5
+[sub_resource type="Animation" id="Animation_7f2fe"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -19,10 +18,10 @@ tracks/0/path = NodePath("HintLabel:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -65,8 +64,9 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_7f2fe"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_317s1"]
+resource_name = "show_hint"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -74,10 +74,10 @@ tracks/0/path = NodePath("HintLabel:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -100,29 +100,33 @@ _data = {
 }
 
 [node name="Table" type="Node2D"]
+position = Vector2(0, -1)
 script = ExtResource("1_cutdw")
 
 [node name="table" type="Sprite2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0, -13)
+scale = Vector2(2, 2)
 texture = ExtResource("1_ktqvx")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -11)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -11)
 collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 0.25)
-scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_ch1ya")
 
 [node name="E" type="Area2D" parent="."]
+position = Vector2(0, -11)
 collision_layer = 32
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="E"]
-position = Vector2(0, 1)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_a53xi")
 debug_color = Color(2.16588e-06, 0.635648, 0.414643, 0.42)
 

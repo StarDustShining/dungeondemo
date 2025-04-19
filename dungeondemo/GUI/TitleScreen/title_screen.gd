@@ -14,7 +14,7 @@ const START_LEVEL : String = "res://Level/TrebuchetLevel/trebuchet_level.tscn"
 
 func _ready() -> void:
 	get_tree().paused = true
-	PlayerManager.player.visible=false
+	#PlayerManager.player.visible=false
 	PlayerHud.visible = false
 	BackpackMenu.visible=false
 	PauseMenu.process_mode = Node.PROCESS_MODE_DISABLED

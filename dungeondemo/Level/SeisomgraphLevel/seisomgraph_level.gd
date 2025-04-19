@@ -1,5 +1,4 @@
 extends Node2D
-@onready var video_stream_player: VideoStreamPlayer = $VideoStreamPlayer
 
 # 定义地刺节点的引用
 @onready var spikes = [
@@ -29,6 +28,7 @@ extends Node2D
 @onready var animation_player: AnimationPlayer = $Seisomgraph/AnimationPlayer
 @onready var metal: AudioStreamPlayer2D = $Metal
 @onready var long_yin: AudioStreamPlayer2D = $LongYin
+@onready var video_stream_player: VideoStreamPlayer = $CanvasLayer/VideoStreamPlayer
 
 # 定义尖刺陷阱和地动仪动画的映射
 var spike_to_seisomgraph_animation = {
@@ -75,20 +75,24 @@ func _ready() -> void:
 	# 将定时器添加到场景中
 	add_child(timer)
 	# 设置定时器的间隔时间
-	timer.wait_time = 10.0
+	timer.wait_time = 8.0
 	# 连接定时器的timeout信号到随机显示地刺的函数
 	timer.timeout.connect(_on_Timer_timeout)
 	# 启动定时器
 	timer.start()
 	pre_selected_spikes = [0,1,2,3,4,5,6,7]
 	_reset_beads()
+	# 连接 VideoStreamPlayer 的 finished 信号
+	video_stream_player.finished.connect(_on_VideoStreamPlayer_finished)
 	
 func _process(delta: float) -> void:
 	await get_tree().process_frame
 		# 检查玩家背包中是否有 longlin.tres
 	check_for_longlin()
 
-var _has_played_long_yin : bool = false ###
+var _has_played_long_yin : bool = false
+var _has_played_video : bool = false
+
 func check_for_longlin() -> void:
 	# 定义 longlin.tres 的资源路径
 	var longlin_resource_path = "res://Items/longlin.tres"
@@ -101,9 +105,11 @@ func check_for_longlin() -> void:
 		if slot and slot.item_data and slot.item_data.resource_path == longlin_resource_path:
 			# 播放 long_yin 音频
 			long_yin.play()
+			_has_played_long_yin = true
 			print("检测到 longlin.tres，播放 long_yin 音频")
+			get_tree().paused = true  # 暂停游戏
 			video_stream_player.play()
-			_has_played_long_yin = true ###
+			_has_played_video =true
 			break
 
 func _on_Timer_timeout():
@@ -229,13 +235,13 @@ func _reset_beads():
 func get_initial_bead_position(spike_name: String) -> Vector2:
 	match spike_name:
 		"Spike1":
-			return Vector2(71, -35)
+			return Vector2(71, -30)
 		"Spike2":
-			return Vector2(22, -35)
+			return Vector2(22, -30)
 		"Spike3":
-			return Vector2(-23, -35)
+			return Vector2(-23, -30)
 		"Spike4":
-			return Vector2(-68, -35)
+			return Vector2(-68, -30)
 		"Spike5":
 			return Vector2(-88, -7)
 		"Spike6":
@@ -251,5 +257,8 @@ func get_initial_bead_position(spike_name: String) -> Vector2:
 # 销毁未被捡起的 Bagua 物品
 func _on_Bagua_destroy_timeout(bagua_instance: Node2D) -> void:
 	if bagua_instance.is_in_group("picked_up"):
-		return  # 如果 Bagua 已经被捡起，则不销毁
+		return  # 如果 Bagua 已经被捡起，则不销毁s
 	bagua_instance.queue_free()  # 销毁 Bagua 实例
+
+func _on_VideoStreamPlayer_finished():
+	get_tree().change_scene_to_file("res://GUI/TitleScreen/TitleScreen.tscn")  # 假设标题界面的场景路径为 "res://Scenes/TitleScreen.tscn"

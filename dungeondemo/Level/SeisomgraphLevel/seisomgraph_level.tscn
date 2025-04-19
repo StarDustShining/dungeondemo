@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://pqahqqlsqpcd"]
+[gd_scene load_steps=16 format=4 uid="uid://pqahqqlsqpcd"]
 
 [ext_resource type="Script" uid="uid://dy84ijxnfmcsk" path="res://Level/SeisomgraphLevel/seisomgraph_level.gd" id="1_5mbxw"]
 [ext_resource type="PackedScene" uid="uid://lxx60xgoecea" path="res://TileMaps/Ground.tscn" id="1_keq7b"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://c5iqkdjd6l776" path="res://Level/SeisomgraphLevel/龙吟.mp3" id="10_dtdwv"]
 [ext_resource type="PackedScene" uid="uid://dax265t0jbtmh" path="res://NPC/Zhangheng/Zhangheng.tscn" id="11_ak2jq"]
 [ext_resource type="VideoStream" uid="uid://dbq6xytk1of35" path="res://Level/SeisomgraphLevel/剧终.ogv" id="12_qmxcs"]
+[ext_resource type="AudioStream" uid="uid://dp0l1vedeylr1" path="res://Music/sacred garden.mp3" id="13_ejhvg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5mbxw"]
 texture = ExtResource("5_3cu4p")
@@ -247,9 +248,20 @@ stream = ExtResource("10_dtdwv")
 [node name="Zhangheng" parent="." instance=ExtResource("11_ak2jq")]
 position = Vector2(336, 420)
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-offset_right = 1600.0
-offset_bottom = 900.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 stream = ExtResource("12_qmxcs")
 expand = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_ejhvg")
+volume_db = -9.449
+autoplay = true

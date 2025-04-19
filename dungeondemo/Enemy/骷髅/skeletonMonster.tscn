@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=3 uid="uid://drwc2rv2vhr8"]
+[gd_scene load_steps=128 format=3 uid="uid://drwc2rv2vhr8"]
 
 [ext_resource type="Texture2D" uid="uid://y14bdjyqw3l" path="res://Enemy/骷髅/骷髅皮肤/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Idle_right.png" id="1_02csh"]
 [ext_resource type="Texture2D" uid="uid://6aod5b2sm1qd" path="res://Enemy/骷髅/骷髅皮肤/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Attack1_left.png" id="1_8xpbf"]
@@ -727,6 +727,10 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kgc2i"]
+radius = 2.41
+height = 34.32
+
 [sub_resource type="Animation" id="Animation_yriyi"]
 length = 0.001
 step = 0.1
@@ -766,6 +770,21 @@ tracks/2/keys = {
 "update": 0,
 "values": [2.41]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Interaction/HurtBox/CollisionPolygon2D:shape")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CapsuleShape2D_kgc2i")]
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4i6e5"]
+radius = 0.132258
 
 [sub_resource type="Animation" id="Animation_cunfh"]
 resource_name = "attack_track"
@@ -777,7 +796,7 @@ tracks/0/path = NodePath("Interaction/HurtBox/CollisionPolygon2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.7, 1),
+"times": PackedFloat32Array(0, 0.3, 0.8, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-13, -30), Vector2(-13, -30), Vector2(-33, -31), Vector2(-13, -30)]
@@ -789,7 +808,7 @@ tracks/1/path = NodePath("Interaction/HurtBox/CollisionPolygon2D:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.7, 1),
+"times": PackedFloat32Array(0, 0.3, 0.8, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [2.7454, 2.7454, 1.68075, 2.7454]
@@ -801,10 +820,22 @@ tracks/2/path = NodePath("Interaction/HurtBox/CollisionPolygon2D:shape:radius")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.7, 1),
+"times": PackedFloat32Array(0, 0.3, 0.8, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.01, 0.01, 7.76, 0.01]
+"values": [0.01, 0.01, 4.64, 0.01]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Interaction/HurtBox/CollisionPolygon2D:shape")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.82, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [null, SubResource("CapsuleShape2D_4i6e5"), null]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lrtxj"]
@@ -825,10 +856,6 @@ min_amount = 1
 max_amount = 1
 metadata/_custom_type_script = "uid://b17evl75ld0qg"
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kgc2i"]
-radius = 2.41
-height = 34.32
-
 [node name="SkeletonMonster" type="CharacterBody2D"]
 y_sort_enabled = true
 scale = Vector2(1.2, 1.2)
@@ -843,12 +870,12 @@ position = Vector2(0, -16.5)
 shape = SubResource("RectangleShape2D_7j1my")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -22)
+position = Vector2(0, -6.66667)
 sprite_frames = SubResource("SpriteFrames_j0iuk")
 animation = &"attack_Left"
 autoplay = "idle_Left"
 frame = 5
-offset = Vector2(0, -11)
+offset = Vector2(0, -26.3333)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

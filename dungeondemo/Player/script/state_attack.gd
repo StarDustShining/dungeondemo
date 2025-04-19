@@ -3,7 +3,7 @@ class_name State_Attack_Spear extends State
 var attacking:bool=false
 
 @export var attack_sound:AudioStream
-@export_range(1,20,0.5) var decelerate_speed:float=3.0
+@export_range(1,20,0.5) var decelerate_speed:float=1.0
 
 @onready var walk: State = $"../Walk"
 @onready var run: State = $"../Run"

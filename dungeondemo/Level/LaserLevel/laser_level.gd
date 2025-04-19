@@ -13,6 +13,11 @@ var stone_door_opened = false
 var video_playing = false
 
 func _ready() -> void:
+	# 强制设置玩家位置在(1500, 200)
+	await get_tree().create_timer(0.1).timeout
+	if PlayerManager.player and is_instance_valid(PlayerManager.player):
+		PlayerManager.player.global_position = Vector2(400, 128)
+		
 	self.y_sort_enabled = true
 	PlayerManager.set_as_parent(self)
 	LevelManager.level_load_started.connect(_free_level)

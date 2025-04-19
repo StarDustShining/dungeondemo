@@ -31,7 +31,7 @@ scale = Vector2(1.44, 1.44)
 
 [node name="LevelTransition" parent="." instance=ExtResource("4_6xwwk")]
 position = Vector2(8, 440)
-level = "uid://pmhoshnwreyi"
+level = "uid://kstws4i4a8fs"
 target_transition_area = "LevelTransition2"
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("5_juvn7")]

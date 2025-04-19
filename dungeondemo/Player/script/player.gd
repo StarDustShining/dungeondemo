@@ -9,8 +9,8 @@ var cardinal_direction: Vector2 = Vector2.DOWN
 var direction: Vector2 = Vector2.ZERO
 
 var invulnerable:bool=false
-var hp:int =20
-var max_hp:int=6
+var hp:int =10
+var max_hp:int=10
 
 var attack : int = 1 :
 	set( v ):

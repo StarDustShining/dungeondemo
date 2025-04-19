@@ -341,16 +341,22 @@ texture = ExtResource("57_7ios8")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer/Control"]
 layout_mode = 1
-offset_right = 1600.0
-offset_bottom = 900.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 stream = ExtResource("58_7ios8")
 expand = true
 
 [node name="SplashPlayer" type="VideoStreamPlayer" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_right = 1600.0
-offset_bottom = 900.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 stream = ExtResource("58_xdwtx")
 expand = true
 
