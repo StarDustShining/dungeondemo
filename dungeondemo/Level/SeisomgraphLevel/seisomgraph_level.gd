@@ -83,10 +83,12 @@ func _ready() -> void:
 	pre_selected_spikes = [0,1,2,3,4,5,6,7]
 	_reset_beads()
 	
-	# 检查玩家背包中是否有 longlin.tres
+func _process(delta: float) -> void:
+	await get_tree().process_frame
+		# 检查玩家背包中是否有 longlin.tres
 	check_for_longlin()
 
-func check_for_longlin() -> void:
+func check_for_longlin() -> void: #死循环
 	# 定义 longlin.tres 的资源路径
 	var longlin_resource_path = "res://Items/longlin.tres"
 	

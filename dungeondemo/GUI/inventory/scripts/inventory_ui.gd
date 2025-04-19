@@ -37,7 +37,7 @@ func update_inventory(i : int = 0) -> void:
 		new_slot.focus_entered.connect( item_focused )
 	
 	await get_tree().process_frame
-	get_child( i ).grab_focus()
+	#get_child( i ).grab_focus()
 
 func item_focused() -> void:
 	for i in get_child_count():
