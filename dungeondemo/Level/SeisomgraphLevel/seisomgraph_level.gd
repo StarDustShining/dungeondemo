@@ -88,9 +88,13 @@ func _process(delta: float) -> void:
 		# 检查玩家背包中是否有 longlin.tres
 	check_for_longlin()
 
-func check_for_longlin() -> void: #死循环
+var _has_played_long_yin : bool = false ###
+func check_for_longlin() -> void:
 	# 定义 longlin.tres 的资源路径
 	var longlin_resource_path = "res://Items/longlin.tres"
+	
+	if _has_played_long_yin: ###
+		return
 	
 	# 遍历玩家背包中的物品
 	for slot in PlayerManager.INVENTORY_DATA.slots:
@@ -99,6 +103,7 @@ func check_for_longlin() -> void: #死循环
 			long_yin.play()
 			print("检测到 longlin.tres，播放 long_yin 音频")
 			video_stream_player.play()
+			_has_played_long_yin = true ###
 			break
 
 func _on_Timer_timeout():

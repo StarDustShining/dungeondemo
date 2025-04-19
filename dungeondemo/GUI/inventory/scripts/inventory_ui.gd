@@ -24,7 +24,7 @@ func _ready() -> void:
 func clear_inventory() -> void:
 	for c in get_children():
 		c.queue_free()
-	await get_tree().process_frame #等待一帧，确保上一个UI销毁
+	#await get_tree().process_frame #等待一帧，确保上一个UI销毁
 
 
 func update_inventory(i : int = 0) -> void:
@@ -37,7 +37,7 @@ func update_inventory(i : int = 0) -> void:
 		new_slot.focus_entered.connect( item_focused )
 	
 	await get_tree().process_frame
-	#get_child( i ).grab_focus()
+	get_child( i ).grab_focus()
 
 func item_focused() -> void:
 	for i in get_child_count():
