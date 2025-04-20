@@ -51,6 +51,8 @@ var mutation_cooldown: Timer = Timer.new()
 ## The menu of responses
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
+@onready var portrait: TextureRect = $Balloon/Panel/Dialogue/HBoxContainer/Portrait
+
 
 func _ready() -> void:
 	balloon.hide()
@@ -97,6 +99,13 @@ func apply_dialogue_line() -> void:
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
+	
+	var portrait_path: String="res://portraits/%s.png" % dialogue_line.get_tag_value("portrait")
+	
+	if ResourceLoader.exists(portrait_path):
+		portrait.texture=load(portrait_path)
+	else:
+		portrait.texture=null
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
@@ -165,7 +174,7 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 		next(dialogue_line.next_id)
-	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
+	elif event.is_action_pressed("Space") and get_viewport().gui_get_focus_owner() == balloon:
 		next(dialogue_line.next_id)
 
 

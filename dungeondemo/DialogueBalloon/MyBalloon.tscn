@@ -1,292 +1,191 @@
-[gd_scene load_steps=9 format=3 uid="uid://cn6pf2d4iuufe"]
+[gd_scene load_steps=6 format=3 uid="uid://boa52xsufyj7l"]
 
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="1_bfh0n"]
+[ext_resource type="Theme" uid="uid://ghf8dc8t3tjs" path="res://DialogueBalloon/DialogueBalloon.tres" id="1_cf3rg"]
+[ext_resource type="Texture2D" uid="uid://w76pk6xunk7c" path="res://portraits/Majun.png" id="3_lgwdg"]
 
-[sub_resource type="CSharpScript" id="CSharpScript_u0kyo"]
-script/source = "using Godot;
-using Godot.Collections;
+[sub_resource type="GDScript" id="GDScript_cf3rg"]
+script/source = "class_name DialogueManagerExampleBalloon extends CanvasLayer
+## A basic dialogue balloon for use with Dialogue Manager.
 
-namespace DialogueManagerRuntime
-{
-  public partial class DialogueBalloon : CanvasLayer
-  {
-	[Export] public string NextAction = \"ui_accept\";
-	[Export] public string SkipAction = \"ui_cancel\";
+## The action to use for advancing the dialogue
+@export var next_action: StringName = &\"ui_accept\"
 
+## The action to use to skip typing the dialogue
+@export var skip_action: StringName = &\"ui_cancel\"
 
-	Control balloon;
-	RichTextLabel characterLabel;
-	RichTextLabel dialogueLabel;
-	VBoxContainer responsesMenu;
+## The dialogue resource
+var resource: DialogueResource
 
-	Resource resource;
-	Array<Variant> temporaryGameStates = new Array<Variant>();
-	bool isWaitingForInput = false;
-	bool willHideBalloon = false;
+## Temporary game states
+var temporary_game_states: Array = []
 
-	DialogueLine dialogueLine;
-	DialogueLine DialogueLine
-	{
-	  get => dialogueLine;
-	  set
-	  {
-		isWaitingForInput = false;
-		balloon.FocusMode = Control.FocusModeEnum.All;
-		balloon.GrabFocus();
+## See if we are waiting for the player
+var is_waiting_for_input: bool = false
 
-		if (value == null)
-		{
-		  QueueFree();
-		  return;
-		}
+## See if we are running a long mutation and should hide the balloon
+var will_hide_balloon: bool = false
 
-		dialogueLine = value;
-		UpdateDialogue();
-	  }
-	}
+## A dictionary to store any ephemeral variables
+var locals: Dictionary = {}
 
+var _locale: String = TranslationServer.get_locale()
 
-	public override void _Ready()
-	{
-	  balloon = GetNode<Control>(\"%Balloon\");
-	  characterLabel = GetNode<RichTextLabel>(\"%CharacterLabel\");
-	  dialogueLabel = GetNode<RichTextLabel>(\"%DialogueLabel\");
-	  responsesMenu = GetNode<VBoxContainer>(\"%ResponsesMenu\");
+## The current line
+var dialogue_line: DialogueLine:
+	set(value):
+		if value:
+			dialogue_line = value
+			apply_dialogue_line()
+		else:
+			# The dialogue has finished so close the balloon
+			queue_free()
+	get:
+		return dialogue_line
 
-	  balloon.Hide();
+## A cooldown timer for delaying the balloon hide when encountering a mutation.
+var mutation_cooldown: Timer = Timer.new()
 
-	  balloon.GuiInput += (@event) =>
-	  {
-		if ((bool)dialogueLabel.Get(\"is_typing\"))
-		{
-		  bool mouseWasClicked = @event is InputEventMouseButton && (@event as InputEventMouseButton).ButtonIndex == MouseButton.Left && @event.IsPressed();
-		  bool skipButtonWasPressed = @event.IsActionPressed(SkipAction);
-		  if (mouseWasClicked || skipButtonWasPressed)
-		  {
-			GetViewport().SetInputAsHandled();
-			dialogueLabel.Call(\"skip_typing\");
-			return;
-		  }
-		}
+## The base balloon anchor
+@onready var balloon: Control = %Balloon
 
-		if (!isWaitingForInput) return;
-		if (dialogueLine.Responses.Count > 0) return;
+## The label showing the name of the currently speaking character
+@onready var character_label: RichTextLabel = %CharacterLabel
 
-		GetViewport().SetInputAsHandled();
+## The label showing the currently spoken dialogue
+@onready var dialogue_label: DialogueLabel = %DialogueLabel
 
-		if (@event is InputEventMouseButton && @event.IsPressed() && (@event as InputEventMouseButton).ButtonIndex == MouseButton.Left)
-		{
-		  Next(dialogueLine.NextId);
-		}
-		else if (@event.IsActionPressed(NextAction) && GetViewport().GuiGetFocusOwner() == balloon)
-		{
-		  Next(dialogueLine.NextId);
-		}
-	  };
+## The menu of responses
+@onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
-	  if (string.IsNullOrEmpty((string)responsesMenu.Get(\"next_action\")))
-	  {
-		responsesMenu.Set(\"next_action\", NextAction);
-	  }
-	  responsesMenu.Connect(\"response_selected\", Callable.From((DialogueResponse response) =>
-	  {
-		Next(response.NextId);
-	  }));
-
-	  DialogueManager.Mutated += OnMutated;
-	}
+@onready var portrait: TextureRect = $Balloon/Panel/Dialogue/HBoxContainer/Portrait
 
 
-	public override void _ExitTree()
-	{
-	  DialogueManager.Mutated -= OnMutated;
-	}
+func _ready() -> void:
+	balloon.hide()
+	Engine.get_singleton(\"DialogueManager\").mutated.connect(_on_mutated)
+
+	# If the responses menu doesn't have a next action set, use this one
+	if responses_menu.next_action.is_empty():
+		responses_menu.next_action = next_action
+
+	mutation_cooldown.timeout.connect(_on_mutation_cooldown_timeout)
+	add_child(mutation_cooldown)
 
 
-	public override void _UnhandledInput(InputEvent @event)
-	{
-	  // Only the balloon is allowed to handle input while it's showing
-	  GetViewport().SetInputAsHandled();
-	}
+func _unhandled_input(_event: InputEvent) -> void:
+	# Only the balloon is allowed to handle input while it's showing
+	get_viewport().set_input_as_handled()
 
 
-	public override async void _Notification(int what)
-	{
-	  // Detect a change of locale and update the current dialogue line to show the new language
-	  if (what == NotificationTranslationChanged && IsInstanceValid(dialogueLabel))
-	  {
-		float visibleRatio = dialogueLabel.VisibleRatio;
-		DialogueLine = await DialogueManager.GetNextDialogueLine(resource, DialogueLine.Id, temporaryGameStates);
-		if (visibleRatio < 1.0f)
-		{
-		  dialogueLabel.Call(\"skip_typing\");
-		}
-	  }
-	}
+func _notification(what: int) -> void:
+	## Detect a change of locale and update the current dialogue line to show the new language
+	if what == NOTIFICATION_TRANSLATION_CHANGED and _locale != TranslationServer.get_locale() and is_instance_valid(dialogue_label):
+		_locale = TranslationServer.get_locale()
+		var visible_ratio = dialogue_label.visible_ratio
+		self.dialogue_line = await resource.get_next_dialogue_line(dialogue_line.id)
+		if visible_ratio < 1:
+			dialogue_label.skip_typing()
 
 
-	public async void Start(Resource dialogueResource, string title, Array<Variant> extraGameStates = null)
-	{
-	  if (!IsNodeReady())
-	  {
-		await ToSignal(this, SignalName.Ready);
-	  }
-
-	  temporaryGameStates = extraGameStates ?? new Array<Variant>();
-	  isWaitingForInput = false;
-	  resource = dialogueResource;
-
-	  DialogueLine = await DialogueManager.GetNextDialogueLine(resource, title, temporaryGameStates);
-	}
+## Start some dialogue
+func start(dialogue_resource: DialogueResource, title: String, extra_game_states: Array = []) -> void:
+	temporary_game_states = [self] + extra_game_states
+	is_waiting_for_input = false
+	resource = dialogue_resource
+	self.dialogue_line = await resource.get_next_dialogue_line(title, temporary_game_states)
 
 
-	public async void Next(string nextId)
-	{
-	  DialogueLine = await DialogueManager.GetNextDialogueLine(resource, nextId, temporaryGameStates);
-	}
+## Apply any changes to the balloon given a new [DialogueLine].
+func apply_dialogue_line() -> void:
+	mutation_cooldown.stop()
+
+	is_waiting_for_input = false
+	balloon.focus_mode = Control.FOCUS_ALL
+	balloon.grab_focus()
+
+	character_label.visible = not dialogue_line.character.is_empty()
+	character_label.text = tr(dialogue_line.character, \"dialogue\")
+	
+	var portrait_path: String=\"res://portraits/%s.png\" % dialogue_line.character
+
+	dialogue_label.hide()
+	dialogue_label.dialogue_line = dialogue_line
+
+	responses_menu.hide()
+	responses_menu.responses = dialogue_line.responses
+
+	# Show our balloon
+	balloon.show()
+	will_hide_balloon = false
+
+	dialogue_label.show()
+	if not dialogue_line.text.is_empty():
+		dialogue_label.type_out()
+		await dialogue_label.finished_typing
+
+	# Wait for input
+	if dialogue_line.responses.size() > 0:
+		balloon.focus_mode = Control.FOCUS_NONE
+		responses_menu.show()
+	elif dialogue_line.time != \"\":
+		var time = dialogue_line.text.length() * 0.02 if dialogue_line.time == \"auto\" else dialogue_line.time.to_float()
+		await get_tree().create_timer(time).timeout
+		next(dialogue_line.next_id)
+	else:
+		is_waiting_for_input = true
+		balloon.focus_mode = Control.FOCUS_ALL
+		balloon.grab_focus()
 
 
-	#region Helpers
+## Go to the next line
+func next(next_id: String) -> void:
+	self.dialogue_line = await resource.get_next_dialogue_line(next_id, temporary_game_states)
 
 
-	private async void UpdateDialogue()
-	{
-	  if (!IsNodeReady())
-	  {
-		await ToSignal(this, SignalName.Ready);
-	  }
-
-	  // Set up the character name
-	  characterLabel.Visible = !string.IsNullOrEmpty(dialogueLine.Character);
-	  characterLabel.Text = Tr(dialogueLine.Character, \"dialogue\");
-
-	  // Set up the dialogue
-	  dialogueLabel.Hide();
-	  dialogueLabel.Set(\"dialogue_line\", dialogueLine);
-
-	  // Set up the responses
-	  responsesMenu.Hide();
-	  responsesMenu.Set(\"responses\", dialogueLine.Responses);
-
-	  // Type out the text
-	  balloon.Show();
-	  willHideBalloon = false;
-	  dialogueLabel.Show();
-	  if (!string.IsNullOrEmpty(dialogueLine.Text))
-	  {
-		dialogueLabel.Call(\"type_out\");
-		await ToSignal(dialogueLabel, \"finished_typing\");
-	  }
-
-	  // Wait for input
-	  if (dialogueLine.Responses.Count > 0)
-	  {
-		balloon.FocusMode = Control.FocusModeEnum.None;
-		responsesMenu.Show();
-	  }
-	  else if (!string.IsNullOrEmpty(dialogueLine.Time))
-	  {
-		float time = 0f;
-		if (!float.TryParse(dialogueLine.Time, out time))
-		{
-		  time = dialogueLine.Text.Length * 0.02f;
-		}
-		await ToSignal(GetTree().CreateTimer(time), \"timeout\");
-		Next(dialogueLine.NextId);
-	  }
-	  else
-	  {
-		isWaitingForInput = true;
-		balloon.FocusMode = Control.FocusModeEnum.All;
-		balloon.GrabFocus();
-	  }
-	}
+#region Signals
 
 
-	#endregion
+func _on_mutation_cooldown_timeout() -> void:
+	if will_hide_balloon:
+		will_hide_balloon = false
+		balloon.hide()
 
 
-	#region signals
+func _on_mutated(_mutation: Dictionary) -> void:
+	is_waiting_for_input = false
+	will_hide_balloon = true
+	mutation_cooldown.start(0.1)
 
 
-	private void OnMutated(Dictionary _mutation)
-	{
-	  isWaitingForInput = false;
-	  willHideBalloon = true;
-	  GetTree().CreateTimer(0.1f).Timeout += () =>
-	  {
-		if (willHideBalloon)
-		{
-		  willHideBalloon = false;
-		  balloon.Hide();
-		}
-	  };
-	}
+func _on_balloon_gui_input(event: InputEvent) -> void:
+	# See if we need to skip typing of the dialogue
+	if dialogue_label.is_typing:
+		var mouse_was_clicked: bool = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()
+		var skip_button_was_pressed: bool = event.is_action_pressed(skip_action)
+		if mouse_was_clicked or skip_button_was_pressed:
+			get_viewport().set_input_as_handled()
+			dialogue_label.skip_typing()
+			return
+
+	if not is_waiting_for_input: return
+	if dialogue_line.responses.size() > 0: return
+
+	# When there are no response options the balloon itself is the clickable thing
+	get_viewport().set_input_as_handled()
+
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		next(dialogue_line.next_id)
+	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
+		next(dialogue_line.next_id)
 
 
-	#endregion
-  }
-}
+func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
+	next(response.next_id)
+
+
+#endregion
 "
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.329412, 0.329412, 0.329412, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ri4m3"]
-bg_color = Color(0.121569, 0.121569, 0.121569, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0njw"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.6, 0.6, 0.6, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uy0d5"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="Theme" id="Theme_qq3yp"]
-default_font_size = 20
-Button/styles/disabled = SubResource("StyleBoxFlat_spyqn")
-Button/styles/focus = SubResource("StyleBoxFlat_ri4m3")
-Button/styles/hover = SubResource("StyleBoxFlat_e0njw")
-Button/styles/normal = SubResource("StyleBoxFlat_e0njw")
-MarginContainer/constants/margin_bottom = 15
-MarginContainer/constants/margin_left = 30
-MarginContainer/constants/margin_right = 30
-MarginContainer/constants/margin_top = 15
-Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 
 [sub_resource type="GDScript" id="GDScript_bqpc5"]
 script/source = "@icon(\"./assets/responses_menu.svg\")
@@ -434,11 +333,9 @@ func _on_response_gui_input(event: InputEvent, item: Control, response) -> void:
 #endregion
 "
 
-[node name="ExampleBalloon" type="CanvasLayer"]
+[node name="MyBalloon" type="CanvasLayer"]
 layer = 100
-script = SubResource("CSharpScript_u0kyo")
-NextAction = null
-SkipAction = null
+script = SubResource("GDScript_cf3rg")
 
 [node name="Balloon" type="Control" parent="."]
 unique_name_in_owner = true
@@ -448,9 +345,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_qq3yp")
+theme = ExtResource("1_cf3rg")
 
 [node name="Panel" type="Panel" parent="Balloon"]
+self_modulate = Color(0.0687983, 0.0687983, 0.0687983, 1)
 clip_children = 2
 layout_mode = 1
 anchors_preset = 12
@@ -473,10 +371,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/Panel/Dialogue"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Balloon/Panel/Dialogue"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/Panel/Dialogue/VBoxContainer"]
+[node name="Portrait" type="TextureRect" parent="Balloon/Panel/Dialogue/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_lgwdg")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/Panel/Dialogue/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/Panel/Dialogue/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
@@ -486,11 +395,14 @@ text = "Character"
 fit_content = true
 scroll_active = false
 
-[node name="DialogueLabel" parent="Balloon/Panel/Dialogue/VBoxContainer" instance=ExtResource("1_bfh0n")]
+[node name="DialogueLabel" parent="Balloon/Panel/Dialogue/HBoxContainer/VBoxContainer" instance=ExtResource("1_bfh0n")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "Dialogue..."
+fit_content = false
+seconds_per_step = 0.03
+pause_at_characters = ".?!。？！"
 
 [node name="Responses" type="MarginContainer" parent="Balloon"]
 layout_mode = 1
@@ -516,6 +428,7 @@ response_template = NodePath("ResponseExample")
 
 [node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu"]
 layout_mode = 2
+theme = ExtResource("1_cf3rg")
 text = "Response example"
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
