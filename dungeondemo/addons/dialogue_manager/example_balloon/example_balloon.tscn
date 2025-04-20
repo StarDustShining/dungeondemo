@@ -78,6 +78,7 @@ skip_action = &"鼠标左击"
 pause_at_characters = ".?!。？！"
 
 [node name="Label" type="Label" parent="Balloon/Panel/Dialogue/HBoxContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.607843)
 layout_mode = 2
 size_flags_vertical = 0
 text = "按下空格继续..."

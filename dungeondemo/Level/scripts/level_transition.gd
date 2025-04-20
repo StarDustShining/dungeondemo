@@ -90,7 +90,7 @@ func _player_entered(_p: Node2D) -> void:
 			print("保存玩家血量:", _p.hp, "/", _p.max_hp)
 	
 	# 短暂等待，防止重复触发
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.5).timeout
 	
 	print("正在转换到新场景：", level)
 	LevelManager.load_new_level(level, target_transition_area, get_offset())
