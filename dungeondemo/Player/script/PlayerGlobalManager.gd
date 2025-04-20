@@ -1,6 +1,6 @@
 extends Node
 
-const PLAYER=preload("res://Scenes/Player.tscn")
+const PLAYER=preload("res://Player/Player.tscn")
 
 signal interact_pressed
 

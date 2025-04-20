@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b45d5rfiimfgd" path="res://Interactables/PressurePlate/PressurePlate.tscn" id="12_sx48c"]
 [ext_resource type="PackedScene" uid="uid://dwk0fs04tthpp" path="res://NPC/Shenkuo/Shenkuo.tscn" id="13_rsbkd"]
 [ext_resource type="AudioStream" uid="uid://dp0l1vedeylr1" path="res://Music/sacred garden.mp3" id="14_jq5py"]
-[ext_resource type="PackedScene" uid="uid://ckrtpeusv0a8g" path="res://Interactables/Chest/Chest.tscn" id="15_kb5pn"]
+[ext_resource type="PackedScene" uid="uid://ckrtpeusv0a8g" path="res://Interactables/Chest/chest.tscn" id="15_kb5pn"]
 [ext_resource type="Resource" uid="uid://c0xo2gupsdwli" path="res://Items/potion.tres" id="16_8l1uw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ggl2s"]

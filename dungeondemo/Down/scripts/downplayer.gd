@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var walk_speed = 200 # 走路速度
 @export var run_speed = 250 # 跑步速度
 @export var tile_size : float = 32 # 瓦片大小
-@export var max_hp = 6 # 最大生命值
+@export var max_hp = 10 # 最大生命值
 @export var footstep_sound_interval = 0.3 # 脚步声间隔时间
 
 @onready var animation_player = $AnimationPlayer # 动画播放器节点引用
@@ -34,7 +34,19 @@ func _ready():
 	LevelManager.level_load_started.connect(_save_health_to_global)
 	
 	# 从全局 PlayerManager 获取血量（如果有）
-	var global_player = get_node_or_null("/root/PlayerManager").player if has_node("/root/PlayerManager") else null
+	#var global_player = get_node_or_null("/root/PlayerManager").player if has_node("/root/PlayerManager") else null
+	#if global_player and global_player.hp != null and global_player.max_hp != null:
+		# 继承全局玩家的血量
+	#	hp = global_player.hp
+	#	max_hp = global_player.max_hp
+	#	print("从全局玩家继承血量: ", hp, "/", max_hp)
+	#else:
+	#	hp = max_hp
+	#	print("使用默认血量: ", hp, "/", max_hp)
+	
+###
+	var global_player = PlayerManager.player
+
 	if global_player and global_player.hp != null and global_player.max_hp != null:
 		# 继承全局玩家的血量
 		hp = global_player.hp
@@ -50,6 +62,7 @@ func _ready():
 		add_child(audio_player)
 		audio_player.max_distance = 2000
 		audio_player.volume_db = -10
+###
 	
 	# 处理PlayerManager.interact信号
 	PlayerManager.interact_pressed.connect(_on_interact)
@@ -59,6 +72,9 @@ func _ready():
 		print("全局玩家不存在，当前downplayer将处理所有玩家相关逻辑")
 	
 	print("当前场景使用 downplayer 作为主要玩家")
+	
+	if get_node_or_null("/root/PlayerHud"): ###
+		get_node("/root/PlayerHud").UpdateHp(hp, max_hp)
 
 func _on_bounds_changed(new_bounds : Array[Vector2]):
 	bounds = new_bounds
@@ -167,7 +183,10 @@ func play_hurt_sound():
 
 # 更新生命值，正数增加，负数减少
 func UpdateHp(value: int) -> void:
-	if invulnerable:
+	#if invulnerable:
+	#	return
+	
+	if invulnerable and (hp + value) > 0: ###
 		return
 		
 	hp = clamp(hp + value, 0, max_hp)

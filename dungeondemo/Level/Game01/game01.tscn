@@ -77,12 +77,21 @@ position = Vector2(1137, 640)
 position = Vector2(771, 640)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(768, 192)
+position = Vector2(626, 192)
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_g14aa")
 animation = &"E"
 autoplay = "E"
 frame_progress = 0.457897
+
+[node name="Label" type="Label" parent="."]
+offset_left = 699.0
+offset_top = 156.0
+offset_right = 1029.0
+offset_bottom = 235.0
+text = "鼠标放在对应火药上，长按E向瓶中倒入火药
+配置完毕按~退出"
+vertical_alignment = 1
 
 [connection signal="item_created" from="CharcoalBottle" to="." method="increment_charcoal_count"]
 [connection signal="item_created" from="SaltpetreBottle" to="." method="increment_saltpetre_count"]
