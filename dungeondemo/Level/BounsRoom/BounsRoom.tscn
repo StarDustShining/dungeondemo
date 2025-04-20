@@ -27,7 +27,6 @@ position = Vector2(650, 480)
 
 [node name="SkeletonMonster2" parent="." instance=ExtResource("3_6xwwk")]
 position = Vector2(352, 487)
-scale = Vector2(1.44, 1.44)
 
 [node name="LevelTransition" parent="." instance=ExtResource("4_6xwwk")]
 position = Vector2(8, 440)

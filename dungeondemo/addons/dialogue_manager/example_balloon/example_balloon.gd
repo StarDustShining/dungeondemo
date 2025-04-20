@@ -67,8 +67,17 @@ func _ready() -> void:
 
 
 func _unhandled_input(_event: InputEvent) -> void:
-	# Only the balloon is allowed to handle input while it's showing
-	get_viewport().set_input_as_handled()
+	# Check if the balloon is showing
+	if balloon.visible:
+		# Check if the space key is pressed using get_action_strength
+		if _event.get_action_strength("Space"):
+			get_viewport().set_input_as_handled()
+			if not is_waiting_for_input: return
+			if dialogue_line.responses.size() > 0: return
+			next(dialogue_line.next_id)
+	else:
+		# Only the balloon is allowed to handle input while it's showing
+		get_viewport().set_input_as_handled()
 
 
 func _notification(what: int) -> void:
@@ -139,6 +148,7 @@ func apply_dialogue_line() -> void:
 ## Go to the next line
 func next(next_id: String) -> void:
 	self.dialogue_line = await resource.get_next_dialogue_line(next_id, temporary_game_states)
+
 
 
 #region Signals

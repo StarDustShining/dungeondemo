@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://caxe0luycsrwp"]
+[gd_scene load_steps=2 format=3 uid="uid://bxons77npb51n"]
 
 [sub_resource type="GDScript" id="GDScript_r7cen"]
 script/source = "extends BaseDialogueTestScene

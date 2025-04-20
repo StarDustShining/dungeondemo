@@ -1,216 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8f860nglh0nt"]
+[gd_scene load_steps=6 format=3 uid="uid://twaaq7dfetvc"]
 
-[ext_resource type="Script" uid="uid://5b3w40kwakl3" path="res://addons/dialogue_manager/example_balloon/ExampleBalloon.cs" id="1_36de5"]
+[ext_resource type="Script" uid="uid://d1wt4ma6055l8" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_uwxn8"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
+[ext_resource type="Theme" uid="uid://ghf8dc8t3tjs" path="res://DialogueBalloon/DialogueBalloon.tres" id="2_nlsx6"]
+[ext_resource type="Texture2D" uid="uid://w76pk6xunk7c" path="res://portraits/Majun.png" id="3_1337t"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="5_1337t"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.329412, 0.329412, 0.329412, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ri4m3"]
-bg_color = Color(0.121569, 0.121569, 0.121569, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0njw"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.6, 0.6, 0.6, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uy0d5"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="Theme" id="Theme_qq3yp"]
-default_font_size = 20
-Button/styles/disabled = SubResource("StyleBoxFlat_spyqn")
-Button/styles/focus = SubResource("StyleBoxFlat_ri4m3")
-Button/styles/hover = SubResource("StyleBoxFlat_e0njw")
-Button/styles/normal = SubResource("StyleBoxFlat_e0njw")
-MarginContainer/constants/margin_bottom = 15
-MarginContainer/constants/margin_left = 30
-MarginContainer/constants/margin_right = 30
-MarginContainer/constants/margin_top = 15
-Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
-
-[sub_resource type="GDScript" id="GDScript_0b4kk"]
-script/source = "@icon(\"./assets/responses_menu.svg\")
-
-## A [Container] for dialogue responses provided by [b]Dialogue Manager[/b].
-class_name DialogueResponsesMenu extends Container
-
-
-## Emitted when a response is selected.
-signal response_selected(response)
-
-
-## Optionally specify a control to duplicate for each response
-@export var response_template: Control
-
-## The action for accepting a response (is possibly overridden by parent dialogue balloon).
-@export var next_action: StringName = &\"\"
-
-## Hide any responses where [code]is_allowed[/code] is false
-@export var hide_failed_responses: bool = false
-
-## The list of dialogue responses.
-var responses: Array = []:
-	get:
-		return responses
-	set(value):
-		responses = value
-
-		# Remove any current items
-		for item in get_children():
-			if item == response_template: continue
-
-			remove_child(item)
-			item.queue_free()
-
-		# Add new items
-		if responses.size() > 0:
-			for response in responses:
-				if hide_failed_responses and not response.is_allowed: continue
-
-				var item: Control
-				if is_instance_valid(response_template):
-					item = response_template.duplicate(DUPLICATE_GROUPS | DUPLICATE_SCRIPTS | DUPLICATE_SIGNALS)
-					item.show()
-				else:
-					item = Button.new()
-				item.name = \"Response%d\" % get_child_count()
-				if not response.is_allowed:
-					item.name = item.name + &\"Disallowed\"
-					item.disabled = true
-
-				# If the item has a response property then use that
-				if \"response\" in item:
-					item.response = response
-				# Otherwise assume we can just set the text
-				else:
-					item.text = response.text
-
-				item.set_meta(\"response\", response)
-
-				add_child(item)
-
-			_configure_focus()
-
-
-func _ready() -> void:
-	visibility_changed.connect(func():
-		if visible and get_menu_items().size() > 0:
-			var first_item: Control = get_menu_items()[0]
-			if first_item.is_inside_tree():
-				first_item.grab_focus()
-	)
-
-	if is_instance_valid(response_template):
-		response_template.hide()
-
-
-## Get the selectable items in the menu.
-func get_menu_items() -> Array:
-	var items: Array = []
-	for child in get_children():
-		if not child.visible: continue
-		if \"Disallowed\" in child.name: continue
-		items.append(child)
-
-	return items
-
-
-#region Internal
-
-
-# Prepare the menu for keyboard and mouse navigation.
-func _configure_focus() -> void:
-	var items = get_menu_items()
-	for i in items.size():
-		var item: Control = items[i]
-
-		item.focus_mode = Control.FOCUS_ALL
-
-		item.focus_neighbor_left = item.get_path()
-		item.focus_neighbor_right = item.get_path()
-
-		if i == 0:
-			item.focus_neighbor_top = item.get_path()
-			item.focus_previous = item.get_path()
-		else:
-			item.focus_neighbor_top = items[i - 1].get_path()
-			item.focus_previous = items[i - 1].get_path()
-
-		if i == items.size() - 1:
-			item.focus_neighbor_bottom = item.get_path()
-			item.focus_next = item.get_path()
-		else:
-			item.focus_neighbor_bottom = items[i + 1].get_path()
-			item.focus_next = items[i + 1].get_path()
-
-		item.mouse_entered.connect(_on_response_mouse_entered.bind(item))
-		item.gui_input.connect(_on_response_gui_input.bind(item, item.get_meta(\"response\")))
-
-	items[0].grab_focus()
-
-
-#endregion
-
-#region Signals
-
-
-func _on_response_mouse_entered(item: Control) -> void:
-	if \"Disallowed\" in item.name: return
-
-	item.grab_focus()
-
-
-func _on_response_gui_input(event: InputEvent, item: Control, response) -> void:
-	if \"Disallowed\" in item.name: return
-
-	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
-		get_viewport().set_input_as_handled()
-		response_selected.emit(response)
-	elif event.is_action_pressed(&\"ui_accept\" if next_action.is_empty() else next_action) and item in get_menu_items():
-		get_viewport().set_input_as_handled()
-		response_selected.emit(response)
-
-
-#endregion
-"
-
-[node name="ExampleBalloon" type="CanvasLayer"]
+[node name="MyBalloon" type="CanvasLayer"]
 layer = 100
-script = ExtResource("1_36de5")
+script = ExtResource("1_uwxn8")
 
 [node name="Balloon" type="Control" parent="."]
 unique_name_in_owner = true
@@ -220,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_qq3yp")
+theme = ExtResource("2_nlsx6")
 
 [node name="Panel" type="Panel" parent="Balloon"]
 clip_children = 2
@@ -230,12 +28,13 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 21.0
-offset_top = -183.0
+offset_top = -235.0
 offset_right = -19.0
-offset_bottom = -19.0
+offset_bottom = -71.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
+theme = ExtResource("2_nlsx6")
 
 [node name="Dialogue" type="MarginContainer" parent="Balloon/Panel"]
 layout_mode = 1
@@ -245,10 +44,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/Panel/Dialogue"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Balloon/Panel/Dialogue"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/Panel/Dialogue/VBoxContainer"]
+[node name="Portrait" type="TextureRect" parent="Balloon/Panel/Dialogue/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_1337t")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/Panel/Dialogue/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/Panel/Dialogue/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
@@ -258,11 +68,20 @@ text = "Character"
 fit_content = true
 scroll_active = false
 
-[node name="DialogueLabel" parent="Balloon/Panel/Dialogue/VBoxContainer" instance=ExtResource("2_a8ve6")]
+[node name="DialogueLabel" parent="Balloon/Panel/Dialogue/HBoxContainer/VBoxContainer" instance=ExtResource("2_a8ve6")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "Dialogue..."
+fit_content = false
+skip_action = &"鼠标左击"
+pause_at_characters = ".?!。？！"
+
+[node name="Label" type="Label" parent="Balloon/Panel/Dialogue/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "按下空格继续..."
+horizontal_alignment = 2
 
 [node name="Responses" type="MarginContainer" parent="Balloon"]
 layout_mode = 1
@@ -271,23 +90,21 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -147.0
-offset_top = -558.0
-offset_right = 494.0
-offset_bottom = -154.0
+offset_left = -143.0
+offset_top = -613.0
+offset_right = 498.0
+offset_bottom = -209.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon/Responses" node_paths=PackedStringArray("response_template")]
+[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon/Responses"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 2
-script = SubResource("GDScript_0b4kk")
-response_template = NodePath("ResponseExample")
+script = ExtResource("5_1337t")
 
 [node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu"]
 layout_mode = 2
+theme = ExtResource("2_nlsx6")
 text = "Response example"
-
-[connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
