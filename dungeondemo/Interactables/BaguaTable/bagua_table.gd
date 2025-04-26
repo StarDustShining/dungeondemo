@@ -5,6 +5,9 @@ class_name BaguaTable extends Node
 @onready var hint_label: Label = $HintLabel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var player:Player = PlayerManager.player
+@onready var long_yin: AudioStreamPlayer2D = $LongYin
+@onready var video_stream_player: VideoStreamPlayer = $CanvasLayer/VideoStreamPlayer
+
 
 # 定义八卦石的资源路径
 var bagua_stones = [
@@ -22,6 +25,8 @@ func _ready() -> void:
 	interact_area.area_entered.connect(OnAreaEnter)
 	interact_area.area_exited.connect(OnAreaExit)
 	hint_label.visible = false
+	# 连接 VideoStreamPlayer 的 finished 信号
+	video_stream_player.finished.connect(_on_VideoStreamPlayer_finished)
 
 func player_interact() -> void:
 	# 检查玩家背包中是否有足够数量的八卦石
@@ -55,6 +60,11 @@ func player_interact() -> void:
 		item_pickup.position = player.global_position
 		get_parent().add_child(item_pickup)  # 将 item_pickup 添加到主场景中
 		print("item_pickup 已成功添加到场景中。")
+		PlayerManager.shake_camera(10)
+		long_yin.play()
+		await get_tree().create_timer(5.0).timeout
+		get_tree().paused = true  # 暂停游戏
+		video_stream_player.play()
 		
 	else:
 		# 玩家背包中没有足够的八卦石，提示玩家
@@ -98,3 +108,6 @@ func OnAreaEnter(_a: Area2D) -> void:
 
 func OnAreaExit(_a: Area2D) -> void:
 	PlayerManager.interact_pressed.disconnect(player_interact)
+
+func _on_VideoStreamPlayer_finished():
+	get_tree().change_scene_to_file("res://GUI/TitleScreen/TitleScreen.tscn")

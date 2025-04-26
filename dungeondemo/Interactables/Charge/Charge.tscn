@@ -94,7 +94,7 @@ _data = {
 
 [node name="Charge" type="RigidBody2D"]
 collision_layer = 0
-collision_mask = 16
+collision_mask = 1024
 script = ExtResource("1_kc0ig")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

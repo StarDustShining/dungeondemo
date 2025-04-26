@@ -56,7 +56,7 @@
 [ext_resource type="StyleBox" uid="uid://b4i2i5t3nynrg" path="res://GUI/UI/Theme/TitleScreen/title_hover_button.tres" id="54_t5pmq"]
 [ext_resource type="StyleBox" uid="uid://cir4e5iigt4pu" path="res://GUI/UI/Theme/TitleScreen/title_normal_button.tres" id="55_xdwtx"]
 [ext_resource type="Texture2D" uid="uid://bau75bj58us87" path="res://GUI/UI/Texture/panel-border-010.png" id="56_7ios8"]
-[ext_resource type="Texture2D" uid="uid://ckd5mbl65cqxs" path="res://游戏标题.png" id="57_7ios8"]
+[ext_resource type="Texture2D" uid="uid://ckd5mbl65cqxs" path="res://GUI/TitleScreen/游戏标题.png" id="57_7ios8"]
 [ext_resource type="VideoStream" uid="uid://cm1e2mtlxm2ue" path="res://GUI/TitleScreen/进入画面/进入游戏(1).ogv" id="58_7ios8"]
 [ext_resource type="VideoStream" uid="uid://owyt565s1mou" path="res://GUI/TitleScreen/splash.ogv" id="58_xdwtx"]
 

@@ -27,9 +27,13 @@ extends Node2D
 # 定义 AnimationPlayer 节点的引用
 @onready var animation_player: AnimationPlayer = $Seisomgraph/AnimationPlayer
 @onready var metal: AudioStreamPlayer2D = $Metal
-@onready var long_yin: AudioStreamPlayer2D = $LongYin
-@onready var video_stream_player: VideoStreamPlayer = $CanvasLayer/VideoStreamPlayer
+# 定义 Bead 预制体
+@onready var bead_scene: PackedScene = preload("res://Interactables/Seisomgraph/Bead.tscn")
 
+# 定义 Bagua 预制体
+@onready var bagua_scene: PackedScene = preload("res://Items/item_pickup/Bagua.tscn")
+
+@onready var timer: Timer = $Timer
 # 定义尖刺陷阱和地动仪动画的映射
 var spike_to_seisomgraph_animation = {
 	"Spike1": "1",
@@ -42,13 +46,7 @@ var spike_to_seisomgraph_animation = {
 	"Spike8": "8"
 }
 
-# 定义 Bead 预制体
-@onready var bead_scene: PackedScene = preload("res://Interactables/Seisomgraph/Bead.tscn")
 
-# 定义 Bagua 预制体
-@onready var bagua_scene: PackedScene = preload("res://Items/item_pickup/Bagua.tscn")
-
-@onready var timer: Timer = $Timer
 
 # 存储当前选中的地刺索引
 var selected_spikes = []
@@ -82,35 +80,6 @@ func _ready() -> void:
 	timer.start()
 	pre_selected_spikes = [0,1,2,3,4,5,6,7]
 	_reset_beads()
-	# 连接 VideoStreamPlayer 的 finished 信号
-	video_stream_player.finished.connect(_on_VideoStreamPlayer_finished)
-	
-func _process(delta: float) -> void:
-	await get_tree().process_frame
-		# 检查玩家背包中是否有 longlin.tres
-	check_for_longlin()
-
-var _has_played_long_yin : bool = false
-var _has_played_video : bool = false
-
-func check_for_longlin() -> void:
-	# 定义 longlin.tres 的资源路径
-	var longlin_resource_path = "res://Items/longlin.tres"
-	
-	if _has_played_long_yin: ###
-		return
-	
-	# 遍历玩家背包中的物品
-	for slot in PlayerManager.INVENTORY_DATA.slots:
-		if slot and slot.item_data and slot.item_data.resource_path == longlin_resource_path:
-			# 播放 long_yin 音频
-			long_yin.play()
-			_has_played_long_yin = true
-			print("检测到 longlin.tres，播放 long_yin 音频")
-			get_tree().paused = true  # 暂停游戏
-			video_stream_player.play()
-			_has_played_video =true
-			break
 
 func _on_Timer_timeout():
 	# 重新启动定时器
@@ -259,6 +228,3 @@ func _on_Bagua_destroy_timeout(bagua_instance: Node2D) -> void:
 	if bagua_instance.is_in_group("picked_up"):
 		return  # 如果 Bagua 已经被捡起，则不销毁s
 	bagua_instance.queue_free()  # 销毁 Bagua 实例
-
-func _on_VideoStreamPlayer_finished():
-	get_tree().change_scene_to_file("res://GUI/TitleScreen/TitleScreen.tscn")  # 假设标题界面的场景路径为 "res://Scenes/TitleScreen.tscn"

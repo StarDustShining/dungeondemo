@@ -431,7 +431,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kioqn")
 }],
-"loop": false,
+"loop": true,
 "name": &"attack_Left",
 "speed": 10.0
 }, {
@@ -784,10 +784,11 @@ tracks/3/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4i6e5"]
-radius = 0.132258
+radius = 0.692869
 
 [sub_resource type="Animation" id="Animation_cunfh"]
 resource_name = "attack_track"
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -796,7 +797,7 @@ tracks/0/path = NodePath("Interaction/HurtBox/CollisionPolygon2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.8, 1),
+"times": PackedFloat32Array(0, 0.1, 0.6, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-13, -30), Vector2(-13, -30), Vector2(-33, -31), Vector2(-13, -30)]
@@ -808,7 +809,7 @@ tracks/1/path = NodePath("Interaction/HurtBox/CollisionPolygon2D:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.8, 1),
+"times": PackedFloat32Array(0, 0.1, 0.6, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [2.7454, 2.7454, 1.68075, 2.7454]
@@ -820,7 +821,7 @@ tracks/2/path = NodePath("Interaction/HurtBox/CollisionPolygon2D:shape:radius")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.8, 1),
+"times": PackedFloat32Array(0, 0.1, 0.6, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.01, 0.01, 4.64, 0.01]
@@ -832,7 +833,7 @@ tracks/3/path = NodePath("Interaction/HurtBox/CollisionPolygon2D:shape")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.82, 1),
+"times": PackedFloat32Array(0, 0.6, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [null, SubResource("CapsuleShape2D_4i6e5"), null]
@@ -874,7 +875,7 @@ position = Vector2(0, -6.66667)
 sprite_frames = SubResource("SpriteFrames_j0iuk")
 animation = &"attack_Left"
 autoplay = "idle_Left"
-frame = 5
+frame_progress = 0.798925
 offset = Vector2(0, -26.3333)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

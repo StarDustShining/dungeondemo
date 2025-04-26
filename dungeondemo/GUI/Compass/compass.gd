@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 		spoon.rotation = lerp_angle(spoon.rotation, target_angle, rotation_speed * delta)
 	else:
 		# 离开磁场或不在关卡时，磁勺恢复默认朝向（正北偏 -45°）
-		var default_angle = deg_to_rad(-45)
+		var default_angle = deg_to_rad(135)
 		spoon.rotation = lerp_angle(spoon.rotation, default_angle, rotation_speed * delta)
 
 	# 控制整个指南针 UI 是否可见

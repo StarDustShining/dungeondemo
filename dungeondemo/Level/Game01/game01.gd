@@ -2,6 +2,7 @@ class_name Game01 extends Node2D
 
 signal minigame_finished  # 定义信号
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var player:Player=PlayerManager.player
 
 # 定义变量来存储每个瓶子实例化物品的数量
 var charcoal_count = 0  # 炭的数量

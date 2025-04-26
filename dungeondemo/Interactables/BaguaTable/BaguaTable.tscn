@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cg6e31t5ia08x"]
+[gd_scene load_steps=10 format=3 uid="uid://cg6e31t5ia08x"]
 
 [ext_resource type="Script" uid="uid://cx11q6khytung" path="res://Interactables/BaguaTable/bagua_table.gd" id="1_317s1"]
 [ext_resource type="Texture2D" uid="uid://tjbrp1o71eve" path="res://Interactables/BaguaTable/BaguaTable.png" id="1_s480q"]
+[ext_resource type="AudioStream" uid="uid://c5iqkdjd6l776" path="res://Level/SeisomgraphLevel/龙吟.mp3" id="3_7f2fe"]
+[ext_resource type="VideoStream" uid="uid://dbq6xytk1of35" path="res://Level/SeisomgraphLevel/剧终.ogv" id="4_oixji"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_317s1"]
 size = Vector2(44, 34)
@@ -145,3 +147,20 @@ vertical_alignment = 1
 libraries = {
 &"": SubResource("AnimationLibrary_oixji")
 }
+
+[node name="LongYin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_7f2fe")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stream = ExtResource("4_oixji")
+expand = true
+metadata/_edit_use_anchors_ = true

@@ -7,6 +7,7 @@ resource_local_to_scene = true
 size = Vector2(32, 96)
 
 [node name="LevelTransition" type="Area2D"]
+visible = false
 light_mask = 0
 collision_layer = 0
 script = ExtResource("1_rygna")
