@@ -33,31 +33,31 @@ position = Vector2(255, 194)
 [node name="Receiver" parent="." instance=ExtResource("4_ocd5v")]
 position = Vector2(1150, 191)
 
-[node name="Mirror" parent="." groups=["PushItem"] instance=ExtResource("7_tom5t")]
+[node name="Mirror" parent="." instance=ExtResource("7_tom5t")]
 position = Vector2(397, 611)
 scale = Vector2(0.6, 0.6)
 
-[node name="Mirror2" parent="." groups=["PushItem"] instance=ExtResource("7_tom5t")]
+[node name="Mirror2" parent="." instance=ExtResource("7_tom5t")]
 position = Vector2(255, 689)
 scale = Vector2(0.6, 0.6)
 
-[node name="Mirror3" parent="." groups=["PushItem"] instance=ExtResource("7_tom5t")]
+[node name="Mirror3" parent="." instance=ExtResource("7_tom5t")]
 position = Vector2(953, 752)
 scale = Vector2(0.6, 0.6)
 
-[node name="Mirror4" parent="." groups=["PushItem"] instance=ExtResource("7_tom5t")]
+[node name="Mirror4" parent="." instance=ExtResource("7_tom5t")]
 position = Vector2(828, 451)
 scale = Vector2(0.6, 0.6)
 
-[node name="Mirror5" parent="." groups=["PushItem"] instance=ExtResource("7_tom5t")]
+[node name="Mirror5" parent="." instance=ExtResource("7_tom5t")]
 position = Vector2(1134, 387)
 scale = Vector2(0.6, 0.6)
 
-[node name="Mirror6" parent="." groups=["PushItem"] instance=ExtResource("7_tom5t")]
+[node name="Mirror6" parent="." instance=ExtResource("7_tom5t")]
 position = Vector2(855, 330)
 scale = Vector2(0.6, 0.6)
 
-[node name="Mirror7" parent="." groups=["PushItem"] instance=ExtResource("7_tom5t")]
+[node name="Mirror7" parent="." instance=ExtResource("7_tom5t")]
 position = Vector2(920, 275)
 scale = Vector2(0.6, 0.6)
 

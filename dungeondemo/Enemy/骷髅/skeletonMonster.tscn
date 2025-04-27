@@ -857,7 +857,7 @@ min_amount = 1
 max_amount = 1
 metadata/_custom_type_script = "uid://b17evl75ld0qg"
 
-[node name="SkeletonMonster" type="CharacterBody2D" groups=["enemy"]]
+[node name="SkeletonMonster" type="CharacterBody2D" groups=["Enemy"]]
 y_sort_enabled = true
 scale = Vector2(1.2, 1.2)
 collision_layer = 272

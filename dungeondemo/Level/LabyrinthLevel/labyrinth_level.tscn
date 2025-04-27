@@ -1466,59 +1466,59 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Magnet" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
+[node name="Magnet" parent="." instance=ExtResource("5_6q6ck")]
 position = Vector2(1089, 179)
 magnetic_field_size = Vector2(500, 500)
 
-[node name="Magnet2" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
+[node name="Magnet2" parent="." instance=ExtResource("5_6q6ck")]
 position = Vector2(664, 419)
 magnetic_field_size = Vector2(800, 800)
 
-[node name="Magnet3" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
+[node name="Magnet3" parent="." instance=ExtResource("5_6q6ck")]
 position = Vector2(2774, 155)
 magnetic_field_size = Vector2(500, 500)
 
-[node name="Magnet4" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
+[node name="Magnet4" parent="." instance=ExtResource("5_6q6ck")]
 position = Vector2(82, 216)
 magnetic_field_size = Vector2(800, 800)
 
-[node name="Magnet5" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
+[node name="Magnet5" parent="." instance=ExtResource("5_6q6ck")]
 position = Vector2(402, 1046)
 magnetic_field_size = Vector2(500, 500)
 
-[node name="Magnet6" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
+[node name="Magnet6" parent="." instance=ExtResource("5_6q6ck")]
 position = Vector2(1038, 419)
 magnetic_field_size = Vector2(800, 800)
 
-[node name="Magnet7" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
+[node name="Magnet7" parent="." instance=ExtResource("5_6q6ck")]
 position = Vector2(1072, 1512)
 magnetic_field_size = Vector2(500, 500)
 
-[node name="Magnet8" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
+[node name="Magnet8" parent="." instance=ExtResource("5_6q6ck")]
 position = Vector2(332, 1751)
 magnetic_field_size = Vector2(800, 800)
 
-[node name="Magnet9" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
+[node name="Magnet9" parent="." instance=ExtResource("5_6q6ck")]
 position = Vector2(985, 2142)
 magnetic_field_size = Vector2(500, 500)
 
-[node name="Magnet10" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
+[node name="Magnet10" parent="." instance=ExtResource("5_6q6ck")]
 position = Vector2(2073, 956)
 
-[node name="Magnet11" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
+[node name="Magnet11" parent="." instance=ExtResource("5_6q6ck")]
 position = Vector2(2299, 1208)
 
-[node name="Magnet12" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
+[node name="Magnet12" parent="." instance=ExtResource("5_6q6ck")]
 position = Vector2(2214, 2076)
 
-[node name="Magnet13" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
+[node name="Magnet13" parent="." instance=ExtResource("5_6q6ck")]
 position = Vector2(2490, 160)
 magnetic_field_size = Vector2(500, 500)
 
-[node name="Magnet14" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
+[node name="Magnet14" parent="." instance=ExtResource("5_6q6ck")]
 position = Vector2(3132, 1746)
 
-[node name="Magnet15" parent="." groups=["Magnet"] instance=ExtResource("5_6q6ck")]
+[node name="Magnet15" parent="." instance=ExtResource("5_6q6ck")]
 position = Vector2(1574, 1802)
 magnetic_field_size = Vector2(500, 500)
 

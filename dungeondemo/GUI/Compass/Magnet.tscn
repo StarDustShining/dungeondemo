@@ -96,7 +96,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kn606"]
 size = Vector2(64, 68)
 
-[node name="Magnet" type="Node2D"]
+[node name="Magnet" type="Node2D" groups=["Magnet"]]
 script = ExtResource("1_11k8h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
