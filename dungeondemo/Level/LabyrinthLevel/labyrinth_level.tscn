@@ -1452,9 +1452,6 @@ layer_3/tile_data = PackedInt32Array(3407923, 196608, 1, 3407902, 65536, 1, 2752
 
 [node name="Compass" parent="." instance=ExtResource("4_mhue1")]
 
-[node name="PlayerSpawn" parent="." instance=ExtResource("4_cgswk")]
-position = Vector2(1596, 211)
-
 [node name="VisionRange" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_b44ro")
 
@@ -1625,5 +1622,8 @@ quantity = 3
 [node name="Chest3" parent="." instance=ExtResource("15_kb5pn")]
 position = Vector2(2720, 1343)
 item_data = ExtResource("16_8l1uw")
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("4_cgswk")]
+position = Vector2(1600, 195)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

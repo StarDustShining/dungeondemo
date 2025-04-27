@@ -19,9 +19,6 @@ var current_save : Dictionary = {
 	},
 	items = [],
 	persistence = [],
-	quests = [
-		#{ title = "not found", is_complete = false, completed_steps = [''] }
-	],
 }
 
 #func SaveGame() -> void:

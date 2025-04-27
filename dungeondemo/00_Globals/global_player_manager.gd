@@ -22,21 +22,6 @@ func _ready() -> void:
 	# 检查当前场景，更精确地查找Down相关场景
 	var current_scene = get_tree().current_scene
 	var scene_path = current_scene.scene_file_path if current_scene else ""
-	
-	# 如果场景路径或场景名包含Down或TitleScreen，则不生成全局玩家
-	if scene_path.contains("Down") or scene_path.contains("down") or \
-	   (current_scene and (current_scene.name.contains("Down")) or current_scene.name.contains("down")):
-		print("检测到Down或TitleScreen场景，禁用全局玩家生成: " + scene_path)
-		# 在Down或TitleScreen场景中，我们不生成全局玩家
-		player_spawned = true
-		# 确保没有已存在的玩家实例
-		if player:
-			player.queue_free()
-			player = null
-		return
-	
-	# 对于其他场景，正常生成全局玩家
-	print("非Down场景，正常生成全局玩家")
 	add_player_instance()
 	await get_tree().create_timer(0.2).timeout
 	player_spawned = true
@@ -85,21 +70,8 @@ func set_player_position( _new_pos : Vector2 ) -> void:
 	player.global_position = _new_pos
 	pass
 
-# 检查当前场景是否为Down相关场景
-func is_down_scene() -> bool:
-	var current_scene = get_tree().current_scene
-	var scene_path = current_scene.scene_file_path if current_scene else ""
-	
-	return scene_path.contains("Down") or scene_path.contains("down") or \
-		(current_scene and (current_scene.name.contains("Down") or current_scene.name.contains("down")))
-
 # 修改set_as_parent函数，在Down场景中不执行
 func set_as_parent(_p : Node2D) -> void:
-	# 在Down场景中不执行此函数
-	if is_down_scene():
-		print("当前为Down场景，不执行set_as_parent")
-		return
-		
 	print("Setting player parent")
 	if player and player.get_parent():
 		player.get_parent().remove_child(player)
@@ -116,11 +88,6 @@ func shake_camera( trauma : float = 1 ) -> void:
 
 # 修改unparent_player函数，添加场景检测
 func unparent_player(_p : Node2D) -> void:
-	# 在Down场景中不执行此函数
-	if is_down_scene():
-		print("当前为Down场景，不执行unparent_player")
-		return
-		
 	print("Unparenting player")
 	if player and player.get_parent() == _p:
 		_p.remove_child(player)

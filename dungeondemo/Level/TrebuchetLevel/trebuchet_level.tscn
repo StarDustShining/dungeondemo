@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://pmhoshnwreyi"]
 
-[ext_resource type="Script" uid="uid://cw4m8vch8c66t" path="res://Level/scripts/level.gd" id="1_ml1fa"]
+[ext_resource type="Script" uid="uid://wrg28cepy71e" path="res://Level/TrebuchetLevel/trebuchet_level.gd" id="1_k2k3l"]
 [ext_resource type="PackedScene" uid="uid://lxx60xgoecea" path="res://TileMaps/Ground.tscn" id="2_f6t8b"]
 [ext_resource type="PackedScene" uid="uid://bmw1cu6qn0dvt" path="res://Level/player_spawn.tscn" id="4_idfcu"]
 [ext_resource type="PackedScene" uid="uid://bilqvuqkq1mcq" path="res://Interactables/Trebuchet/Trebuchet.tscn" id="4_rlgsy"]
@@ -25,7 +25,7 @@ size = Vector2(40, 688)
 
 [node name="TrebuchetLevel" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_ml1fa")
+script = ExtResource("1_k2k3l")
 
 [node name="Ground" parent="." instance=ExtResource("2_f6t8b")]
 scale = Vector2(2, 2)
@@ -34,7 +34,7 @@ layer_2/tile_data = PackedInt32Array(0, 458754, 5, 65536, 458754, 5, 131072, 458
 layer_3/tile_data = PackedInt32Array(983051, 1, 1, 851987, 1, 2, 851990, 1, 2, 262177, 393216, 1, 327713, 393216, 2, 393268, 196608, 1, 2555920, 589824, 7, 2621457, 655360, 9, 327724, 1, 2, 327727, 1, 2, 327747, 1, 2, 327750, 1, 2, 458805, 1, 1, 1441809, 1966082, 12, 1441816, 1966082, 12, 1179695, 0, 8, 1638447, 393216, 1, 1703983, 393216, 2, 1638453, 393216, 1, 1703989, 393216, 2, 1835056, 786432, 1, 1835061, 589824, 9, 2097197, 2031618, 18, 2097207, 2031618, 18, 1572900, 65536, 1, 1769508, 0, 4, 1835044, 0, 6, 1900580, 0, 8)
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("4_idfcu")]
-position = Vector2(816, 1256)
+position = Vector2(712, 1256)
 
 [node name="Trebuchet" parent="." instance=ExtResource("4_rlgsy")]
 position = Vector2(2112, 442)
@@ -48,7 +48,6 @@ side = 1
 
 [node name="StoneMonster" parent="." instance=ExtResource("8_jsruw")]
 position = Vector2(2480, 447)
-hp = 15
 
 [node name="Wall" type="Sprite2D" parent="."]
 position = Vector2(2640, 382.031)

@@ -300,7 +300,7 @@ size = Vector2(480, 231.111)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wo0dw"]
 size = Vector2(84.4445, 57.7778)
 
-[node name="StoneMonster" type="CharacterBody2D"]
+[node name="StoneMonster" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(0.9, 0.9)
 collision_layer = 256
 collision_mask = 0

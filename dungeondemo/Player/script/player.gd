@@ -5,6 +5,14 @@ signal player_damaged( hurt_box: HurtBox )
 
 const PLAYER_HUD = preload("res://GUI/player_hud/PlayerHud.tscn")
 
+@onready var normal_perspective: AnimatedSprite2D = $NormalPerspective
+@onready var top_down_perspective: AnimatedSprite2D = $TopDownPerspective
+@onready var state_machine: PlayerStateMachine = $StateMachine
+@onready var hit_box: HitBox = $HitBox
+@onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
+@onready var interaction_icon: AnimatedSprite2D = $InteractionIcon
+@onready var interact_area: Area2D = $Interaction/InteractArea
+
 var cardinal_direction: Vector2 = Vector2.DOWN
 var direction: Vector2 = Vector2.ZERO
 
@@ -24,22 +32,16 @@ var box_control: bool = false
 var pushed_box: CharacterBody2D = null
 var pulling: bool = false
 
-# 添加标志变量
-var in_special_level: bool = false
-
-@onready var player_animated: AnimatedSprite2D = $Player
-@onready var state_machine: PlayerStateMachine = $StateMachine
-@onready var hit_box: HitBox = $HitBox
-@onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
-@onready var interaction_icon: AnimatedSprite2D = $InteractionIcon
-@onready var interact_area: Area2D = $Interaction/InteractArea
-
+var top_down:bool =false
 
 func _ready():
 	PlayerManager.player=self
 	state_machine.Initialize(self)
 	hit_box.damaged.connect(TakeDamage)
 	interaction_icon.visible=false
+	# 根据 top_down 属性设置可见性
+	top_down_perspective.visible = top_down
+	normal_perspective.visible = not top_down
 	UpdateHp(99)
 	#update_damage_values()
 	pass
@@ -86,7 +88,8 @@ func SetDirection() -> bool:
 	return true
 
 func UpdateAnimation(state: String) -> void:
-	player_animated.play(state + "_" + AnimDirection())
+	normal_perspective.play(state + "_" + AnimDirection())
+	top_down_perspective.play(state + "_" + AnimDirection())
 
 func AnimDirection() -> String:
 	if cardinal_direction == Vector2.DOWN:
@@ -218,9 +221,6 @@ func handle_push_movement():
 		move_vec.y = 1
 
 	pushed_box.velocity = move_vec.normalized() * 50
-
-func set_special_level(flag: bool):
-	in_special_level = flag
 
 func revive_player() -> void:
 	UpdateHp( 99 )

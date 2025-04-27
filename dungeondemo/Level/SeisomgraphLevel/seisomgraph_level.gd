@@ -64,6 +64,8 @@ func _ready() -> void:
 	PlayerManager.set_as_parent(self)
 	LevelManager.level_load_started.connect(_free_level)
 	LevelManager.minigame_load_started.connect(_pause_level)
+	PlayerManager.player.top_down = false
+	PlayerManager.player._ready()  # 确保 Player 的 _ready() 函数被调用
 	# 隐藏所有地刺并禁用其 hurt_box 的监测
 	for spike in spikes:
 		spike.visible = false

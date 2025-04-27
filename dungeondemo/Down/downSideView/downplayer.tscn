@@ -332,6 +332,7 @@ _data = {
 }
 
 [node name="Downplayer" type="CharacterBody2D"]
+collision_mask = 0
 script = ExtResource("1_6t2r5")
 
 [node name="Graphic" type="Node2D" parent="."]

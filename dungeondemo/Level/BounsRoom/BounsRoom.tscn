@@ -31,7 +31,7 @@ position = Vector2(352, 487)
 [node name="LevelTransition" parent="." instance=ExtResource("4_6xwwk")]
 position = Vector2(8, 440)
 level = "uid://kstws4i4a8fs"
-target_transition_area = "LevelTransition2"
+target_transition_area = "LevelTransition3"
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("5_juvn7")]
 position = Vector2(72, 456)

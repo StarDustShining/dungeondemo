@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal direction_changed(new_direction:Vector2)
+
 @export var speed = 100  # 移动速度
 @export var chase_speed_multiplier = 1.5  # 追击时的速度倍数
 @export var damage = 0.5  # 对玩家造成的伤害
@@ -7,12 +9,14 @@ extends CharacterBody2D
 @onready var animation_player = $AnimationPlayer
 @onready var wander = $Wander
 @onready var area_2d = $Area2D
-@onready var audio_player = $AudioStreamPlayer2D if has_node("AudioStreamPlayer2D") else null
+@onready var hurt_box: HurtBox = $HurtBox
+
 
 var is_chasing = false
 var player = null
 var is_stunned = false  # 是否被击晕
 var stun_timer = 0.0    # 击晕计时器
+
 
 # 预加载音效资源
 var attack_sound = preload("res://Player/spear_attack.mp3") if ResourceLoader.exists("res://Player/spear_attack.mp3") else null
@@ -21,14 +25,7 @@ var stun_sound = preload("res://Player/stun.mp3") if ResourceLoader.exists("res:
 func _ready():
 	# 设置Wander节点的参数
 	wander.speed = speed
-	
-	# 创建音频播放器（如果不存在）
-	if not audio_player:
-		audio_player = AudioStreamPlayer2D.new()
-		add_child(audio_player)
-		audio_player.max_distance = 2000
-		audio_player.volume_db = -10
-	
+
 	# 开始时播放向下走动画
 	animation_player.play("walk_down")
 
@@ -54,6 +51,10 @@ func _physics_process(delta):
 		velocity = wander.direction * speed
 		direction = wander.direction
 	
+	# 检测方向是否改变
+	if direction != Vector2.ZERO and direction != velocity.normalized():
+		emit_signal("direction_changed", direction)
+	
 	# 根据移动方向更新动画
 	if abs(direction.y) > abs(direction.x):
 		if direction.y > 0:
@@ -74,25 +75,16 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 		
-		if collider and collider.name == "Downplayer":
+		if collider and collider.name == "Player":
 			# 根据玩家的相对方向播放攻击动画
 			play_attack_animation(collider.global_position)
 			# 玩家扣血
-			damage_player(collider)
-			# 播放攻击声音
-			play_attack_sound()
+			damage_player()
 			# 骷髅被击晕
 			stun_skeleton()
 
-func damage_player(player_node):
-	# 直接对碰撞的玩家对象使用UpdateHp
-	if player_node.has_method("UpdateHp"):
-		# 确保至少扣1点血
-		var damage_amount = max(1, int(damage))
-		player_node.UpdateHp(-damage_amount)
-		print("直接对玩家造成伤害: ", damage_amount)
-	else:
-		print("无法对玩家造成伤害，玩家脚本没有UpdateHp方法")
+func damage_player():
+	hurt_box.monitoring = true  # 确保攻击开始时开启监控
 
 func stun_skeleton():
 	if not is_stunned:  # 防止重复击晕
@@ -100,25 +92,7 @@ func stun_skeleton():
 		stun_timer = 0.5 # 0.5秒击晕时间
 		velocity = Vector2.ZERO  # 停止移动
 		animation_player.stop()  # 停止动画
-		# 播放击晕声音
-		play_stun_sound()
 		print("骷髅被击晕 0.5 秒")
-
-# 播放攻击声音
-func play_attack_sound():
-	if not audio_player or attack_sound == null:
-		return
-		
-	audio_player.stream = attack_sound
-	audio_player.pitch_scale = randf_range(0.9, 1.1)  # 随机音调变化
-	audio_player.play()
-
-# 播放击晕声音
-func play_stun_sound():
-	if audio_player and stun_sound:
-		audio_player.stream = stun_sound
-		audio_player.pitch_scale = randf_range(0.9, 1.1)
-		audio_player.play()
 
 # 根据玩家位置播放对应方向的攻击动画
 func play_attack_animation(player_pos: Vector2) -> void:
@@ -140,11 +114,12 @@ func play_attack_animation(player_pos: Vector2) -> void:
 	await animation_player.animation_finished
 
 func _on_area_2d_body_entered(body):
-	if body.name == "Downplayer":
+	if body.name == "Player":
 		player = body
 		is_chasing = true
 
 func _on_area_2d_body_exited(body):
-	if body.name == "Downplayer":
+	if body.name == "Player":
 		player = null
 		is_chasing = false
+		hurt_box.monitoring = false  # 确保攻击开始时开启监控

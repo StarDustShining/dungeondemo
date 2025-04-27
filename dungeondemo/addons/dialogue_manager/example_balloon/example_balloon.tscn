@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://73jm5qjy52vq"]
 
-[ext_resource type="Script" uid="uid://d1wt4ma6055l8" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_1337t"]
+[ext_resource type="Script" uid="uid://5b3w40kwakl3" path="res://addons/dialogue_manager/example_balloon/ExampleBalloon.cs" id="1_1337t"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Theme" uid="uid://ghf8dc8t3tjs" path="res://DialogueBalloon/DialogueBalloon.tres" id="2_nlsx6"]
 [ext_resource type="Texture2D" uid="uid://w76pk6xunk7c" path="res://portraits/Majun.png" id="3_1337t"]

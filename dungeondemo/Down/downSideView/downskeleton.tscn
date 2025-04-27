@@ -1,10 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://bojr2bxtd7s8e"]
+[gd_scene load_steps=23 format=3 uid="uid://bojr2bxtd7s8e"]
 
 [ext_resource type="Texture2D" uid="uid://bubwhve40d5py" path="res://Down/downSideView/skeleton_down_fames.png" id="1_76vn6"]
 [ext_resource type="Script" uid="uid://cbkah4dxqme3j" path="res://Down/scripts/downskeleton.gd" id="1_piplb"]
 [ext_resource type="PackedScene" uid="uid://bor4q8yvhquxn" path="res://Down/wander.tscn" id="3_6wme4"]
 [ext_resource type="Shader" uid="uid://tr4o1asv1u8c" path="res://Down/downSideView/eyesight.gdshader" id="3_cqhwi"]
 [ext_resource type="Texture2D" uid="uid://bqdejcmjma3ft" path="res://Down/downSideView/ChatGPT Image 2025年4月6日 11_39_43.png" id="4_lmjxb"]
+[ext_resource type="PackedScene" uid="uid://bjtmtusxv7rne" path="res://GeneralNodes/HitBox/hit_box.tscn" id="6_lmjxb"]
+[ext_resource type="PackedScene" uid="uid://cukvcvdk3pe3v" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="7_bl84l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lmjxb"]
 shader = ExtResource("3_cqhwi")
@@ -499,6 +501,12 @@ radius = 27.0185
 [sub_resource type="CircleShape2D" id="CircleShape2D_cqhwi"]
 radius = 115.004
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hjv6t"]
+radius = 15.0333
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bl84l"]
+radius = 19.105
+
 [node name="downskeleton" type="CharacterBody2D"]
 script = ExtResource("1_piplb")
 
@@ -528,10 +536,22 @@ shape = SubResource("CircleShape2D_kyauq")
 [node name="Wander" parent="." instance=ExtResource("3_6wme4")]
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2, 1)
 shape = SubResource("CircleShape2D_cqhwi")
+
+[node name="HitBox" parent="." instance=ExtResource("6_lmjxb")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_hjv6t")
+
+[node name="HurtBox" parent="." instance=ExtResource("7_bl84l")]
+monitoring = false
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_bl84l")
+debug_color = Color(0.999729, 0, 0.10323, 0.42)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -15,7 +15,7 @@ var attacking:bool=false
 ##告诉在进入这个状态时发生了什么
 func Enter()->void:
 	player.UpdateAnimation("attack_Spear")
-	player.player_animated.animation_finished.connect( EndAttack )
+	player.normal_perspective.animation_finished.connect( EndAttack )
 	audio.stream=attack_sound
 	audio.pitch_scale=randf_range(0.9,1.1)
 	audio.play()
@@ -27,7 +27,7 @@ func Enter()->void:
 	pass
 	
 func Exit()->void:
-	player.player_animated.animation_finished.disconnect( EndAttack )
+	player.normal_perspective.animation_finished.disconnect( EndAttack )
 	attacking=false
 	hurt_box.monitoring=false
 	pass

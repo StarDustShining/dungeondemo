@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://dy84ijxnfmcsk" path="res://Level/SeisomgraphLevel/seisomgraph_level.gd" id="1_5mbxw"]
 [ext_resource type="PackedScene" uid="uid://lxx60xgoecea" path="res://TileMaps/Ground.tscn" id="1_keq7b"]
 [ext_resource type="PackedScene" uid="uid://cagt3tf1gklhb" path="res://Interactables/Seisomgraph/Seisomgraph.tscn" id="2_yonlg"]
-[ext_resource type="PackedScene" uid="uid://bmw1cu6qn0dvt" path="res://Level/player_spawn.tscn" id="3_yonlg"]
 [ext_resource type="Texture2D" uid="uid://cu0ef0wt470ry" path="res://TileMaps/4.png" id="5_3cu4p"]
 [ext_resource type="Script" uid="uid://bt0d6ah04xk3o" path="res://GeneralNodes/HurtBox/hurt_box.gd" id="6_5mbxw"]
 [ext_resource type="AudioStream" uid="uid://ciytx4unh1x62" path="res://Level/SeisomgraphLevel/金属落地.mp3" id="7_v6kll"]
 [ext_resource type="PackedScene" uid="uid://ciju1j1ygnws2" path="res://Level/level_transition.tscn" id="8_daaei"]
 [ext_resource type="PackedScene" uid="uid://cg6e31t5ia08x" path="res://Interactables/BaguaTable/BaguaTable.tscn" id="9_2auto"]
 [ext_resource type="PackedScene" uid="uid://dax265t0jbtmh" path="res://NPC/Zhangheng/Zhangheng.tscn" id="11_ak2jq"]
+[ext_resource type="PackedScene" uid="uid://bmw1cu6qn0dvt" path="res://Level/player_spawn.tscn" id="11_qmxcs"]
 [ext_resource type="AudioStream" uid="uid://dp0l1vedeylr1" path="res://Music/sacred garden.mp3" id="13_ejhvg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5mbxw"]
@@ -41,9 +41,6 @@ layer_3/tile_data = PackedInt32Array(-131060, 393216, 1, -65524, 393216, 2, -131
 [node name="Seisomgraph" parent="." instance=ExtResource("2_yonlg")]
 y_sort_enabled = true
 position = Vector2(800, 392)
-
-[node name="PlayerSpawn" parent="." instance=ExtResource("3_yonlg")]
-position = Vector2(40, 448)
 
 [node name="Spike" type="Node2D" parent="."]
 
@@ -247,3 +244,6 @@ position = Vector2(336, 420)
 stream = ExtResource("13_ejhvg")
 volume_db = -9.449
 autoplay = true
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("11_qmxcs")]
+position = Vector2(45, 448)

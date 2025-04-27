@@ -12,7 +12,7 @@ config_version=5
 
 config/name="DungeonDemo"
 run/main_scene="uid://jnomgop3jc72"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 boot_splash/show_image=false
 
 [autoload]
@@ -31,6 +31,7 @@ AudioManager="*res://00_Globals/global_audio_manager.gd"
 
 runtime/balloon_path="uid://c56ss64rqdrr0"
 editor/advanced/custom_test_scene_path="uid://c56ss64rqdrr0"
+runtime/advanced/uses_dotnet=true
 
 [display]
 

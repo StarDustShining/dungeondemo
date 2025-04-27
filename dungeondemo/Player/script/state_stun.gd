@@ -24,7 +24,7 @@ func Init() -> void:
 ## 进入击晕状态
 func Enter() -> void:
 	print("玩家进入 stun 状态")
-	player.player_animated.animation_finished.connect(AnimationFinished)
+	player.normal_perspective.animation_finished.connect(AnimationFinished)
 	audio.stream=stun_sound
 	audio.pitch_scale=randf_range(0.9,1.1)
 	audio.play()
@@ -42,7 +42,7 @@ func Enter() -> void:
 
 ## 退出击晕状态
 func Exit() -> void:
-	player.player_animated.animation_finished.disconnect(AnimationFinished)
+	player.normal_perspective.animation_finished.disconnect(AnimationFinished)
 	next_state = null
 
 ## 处理 _process 更新
