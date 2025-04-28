@@ -1,5 +1,9 @@
 class_name TrebuchetLevel extends Node2D
 
+@onready var is_collapsed: PersistentDataHandler = $Wall/IsCollapsed
+@onready var wall: Sprite2D = $Wall
+
+
 func _ready() -> void:
 	self.y_sort_enabled = true
 	PlayerManager.set_as_parent(self)
@@ -9,6 +13,8 @@ func _ready() -> void:
 	PlayerManager.player._ready()  # 确保 Player 的 _ready() 函数被调用
 	LevelManager.level_load_started.connect(_free_level)
 	LevelManager.minigame_load_started.connect(_pause_level)
+	is_collapsed.data_loaded.connect(SetCollapsedState)
+	SetCollapsedState()
 
 # 不销毁场景，而是仅清除与小游戏相关的部分
 func _free_level() -> void:
@@ -25,3 +31,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	await video_player.play();
 	get_tree().paused = false
 	pass # Replace with function body.
+
+func SetCollapsedState() -> void:
+	if is_collapsed.value:
+		wall.queue_free()

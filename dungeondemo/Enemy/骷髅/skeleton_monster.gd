@@ -1,12 +1,16 @@
 class_name SkeletonMonster extends Enemy
 
 const DIR_6 = [Vector2.RIGHT, Vector2.LEFT, Vector2(-1, -1), Vector2(-1, 1), Vector2(1, -1), Vector2(1, 1)]
+@onready var is_died: PersistentDataHandler = $IsDied
 
-# 这个定时器控制怪物的消失和渐变透明
+
 func _ready() -> void:
 	state_machine.Initialize(self)
 	player = PlayerManager.player
 	hit_box.damaged.connect(TakeDamage)
+	# 连接 PersistentDataHandler 的信号
+	is_died.data_loaded.connect(SetDeathState)
+	SetDeathState()
 
 func _process(_delta):
 	# 处理怪物的透明度变化
@@ -53,4 +57,9 @@ func TakeDamage(hurt_box:HurtBox)->void:
 	if hp > 0:
 		enemy_damaged.emit(hurt_box)
 	else:
+		is_died.set_value()
 		enemy_destroyed.emit(hurt_box)
+
+func SetDeathState() -> void:
+	if is_died.value:
+		queue_free()

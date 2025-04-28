@@ -17,8 +17,8 @@ boot_splash/show_image=false
 
 [autoload]
 
-LevelManager="*res://00_Globals/global_level_manager.gd"
 PlayerHud="*res://GUI/player_hud/PlayerHud.tscn"
+LevelManager="*res://00_Globals/global_level_manager.gd"
 PlayerManager="*res://00_Globals/global_player_manager.gd"
 SceneTransition="*res://GUI/scene_transition/scene_transition.tscn"
 PauseMenu="*res://GUI/pause_menu/PauseMenu.tscn"

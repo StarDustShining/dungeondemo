@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://pmhoshnwreyi"]
+[gd_scene load_steps=20 format=3 uid="uid://pmhoshnwreyi"]
 
 [ext_resource type="Script" uid="uid://wrg28cepy71e" path="res://Level/TrebuchetLevel/trebuchet_level.gd" id="1_k2k3l"]
 [ext_resource type="PackedScene" uid="uid://lxx60xgoecea" path="res://TileMaps/Ground.tscn" id="2_f6t8b"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bilqvuqkq1mcq" path="res://Interactables/Trebuchet/Trebuchet.tscn" id="4_rlgsy"]
 [ext_resource type="PackedScene" uid="uid://buduhuydpnnhe" path="res://Interactables/Table/table.tscn" id="5_7fk3p"]
 [ext_resource type="PackedScene" uid="uid://ciju1j1ygnws2" path="res://Level/level_transition.tscn" id="6_7fk3p"]
+[ext_resource type="PackedScene" uid="uid://de52jxqemilpu" path="res://GeneralNodes/PersistentDataHandler/persistent-data-handler.tscn" id="8_6jdpv"]
 [ext_resource type="PackedScene" uid="uid://v650qkdjwpva" path="res://Enemy/石头人/StoneMonster.tscn" id="8_jsruw"]
 [ext_resource type="Texture2D" uid="uid://cb08dqkh8qcvq" path="res://TileMaps/wall.png" id="8_pufww"]
 [ext_resource type="VideoStream" path="res://Level/TrebuchetLevel/石墙倒塌.ogv" id="10_fctxj"]
@@ -59,6 +60,8 @@ texture = ExtResource("8_pufww")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/StaticBody2D"]
 visible = false
 shape = SubResource("RectangleShape2D_j1a5m")
+
+[node name="IsCollapsed" parent="Wall" instance=ExtResource("8_6jdpv")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

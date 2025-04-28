@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=3 uid="uid://drwc2rv2vhr8"]
+[gd_scene load_steps=129 format=3 uid="uid://drwc2rv2vhr8"]
 
 [ext_resource type="Texture2D" uid="uid://y14bdjyqw3l" path="res://Enemy/骷髅/骷髅皮肤/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Idle_right.png" id="1_02csh"]
 [ext_resource type="Texture2D" uid="uid://6aod5b2sm1qd" path="res://Enemy/骷髅/骷髅皮肤/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Attack1_left.png" id="1_8xpbf"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" uid="uid://d1qr6k24knqiv" path="res://Enemy/script/states/enemy_state_track.gd" id="20_jvcay"]
 [ext_resource type="Script" uid="uid://emb030tl55ba" path="res://Enemy/骷髅/skeletonMonsterInteraction.gd" id="21_h66n0"]
 [ext_resource type="Resource" uid="uid://bofn1cub5yefx" path="res://Items/bone.tres" id="22_bptbr"]
+[ext_resource type="PackedScene" uid="uid://de52jxqemilpu" path="res://GeneralNodes/PersistentDataHandler/persistent-data-handler.tscn" id="27_7fs70"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7j1my"]
 size = Vector2(23, 27)
@@ -930,6 +931,8 @@ position = Vector2(-13, -30)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_kgc2i")
 debug_color = Color(0.999729, 0, 0.10323, 0.42)
+
+[node name="IsDied" parent="." instance=ExtResource("27_7fs70")]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="EnemyStateMachine/Hurt" method="OnAnimationFinished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="EnemyStateMachine/Attack" method="EndAttack"]

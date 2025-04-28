@@ -193,10 +193,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wmca2"]
-size = Vector2(23, 8)
+size = Vector2(49, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ayhhg"]
-size = Vector2(32, 15.5)
+size = Vector2(54, 35.5)
 
 [node name="Chest" type="Node2D" groups=["Chest"]]
 script = ExtResource("1_6622b")
@@ -238,14 +238,14 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0.5, 1)
+position = Vector2(0.5, 11)
 shape = SubResource("RectangleShape2D_wmca2")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="E" type="Area2D" parent="."]
 collision_layer = 32
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="E"]
 position = Vector2(0, 1.25)
 shape = SubResource("RectangleShape2D_ayhhg")
 debug_color = Color(2.16588e-06, 0.635648, 0.414643, 0.42)

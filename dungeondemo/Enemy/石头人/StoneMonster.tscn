@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://v650qkdjwpva"]
+[gd_scene load_steps=57 format=3 uid="uid://v650qkdjwpva"]
 
 [ext_resource type="Script" uid="uid://5fjc84fj1kll" path="res://Enemy/石头人/stone_monster.gd" id="1_c2f8n"]
 [ext_resource type="Texture2D" uid="uid://btlyx7h1miha4" path="res://Enemy/石头人/No_Swoosh_VFX/Golem_1_idle.png" id="2_05r3v"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://c0ynoo1hmouv1" path="res://Enemy/石头人/hurt.mp3" id="11_lq6dd"]
 [ext_resource type="AudioStream" uid="uid://68xntfd75oam" path="res://Enemy/石头人/die.mp3" id="13_swhk3"]
 [ext_resource type="AudioStream" uid="uid://chm0wk8kxechf" path="res://Enemy/石头人/attack.mp3" id="15_8klmk"]
+[ext_resource type="PackedScene" uid="uid://de52jxqemilpu" path="res://GeneralNodes/PersistentDataHandler/persistent-data-handler.tscn" id="16_swhk3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a8a6f"]
 radius = 28.1603
@@ -356,3 +357,5 @@ script = ExtResource("11_1ucai")
 attack_sound = ExtResource("15_8klmk")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="IsDied" parent="." instance=ExtResource("16_swhk3")]

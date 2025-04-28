@@ -5,9 +5,12 @@ var value : bool = false
 
 
 func _ready() -> void:
-	get_value()
-	pass
+	if not LevelManager.level_loaded.is_connected(_on_level_loaded):
+		LevelManager.level_loaded.connect(_on_level_loaded)
 
+
+func _on_level_loaded() -> void:
+	get_value()
 
 func set_value() -> void:
 	SaveManager.AddPersistentValue( _get_name() )

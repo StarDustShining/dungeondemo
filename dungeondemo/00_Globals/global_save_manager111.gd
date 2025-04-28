@@ -7,19 +7,20 @@ signal game_saved
 
 var current_save : Dictionary = {
 	scene_path = "",
-	player = {
-		#level = 1,
-		#xp = 0,
-		hp = 1,
-		max_hp = 1,
-		#attack = 1,
-		#defense = 1,
-		pos_x = 0,
-		pos_y = 0
-	},
-	items = [],
 	persistence = [],
 }
+
+func get_save_file() -> Resource:
+	var save_path = "user://scene_data.tres"
+	if ResourceLoader.exists(save_path):
+		var save_data = ResourceLoader.load(save_path) as SceneData
+		if save_data:
+			return save_data
+		else:
+			print("错误: 无法加载保存文件")
+	else:
+		print("错误: 保存文件不存在")
+	return null
 
 func SaveGame() -> void:
 	var data=SceneData.new()
@@ -27,6 +28,9 @@ func SaveGame() -> void:
 	data.player_hp=player.hp
 	data.player_max_hp=player.max_hp
 	data.player_direction=player.direction
+	
+	# 记录当前场景路径
+	data.scene_path = get_tree().current_scene.scene_file_path
 	
 	var enemies=get_tree().get_nodes_in_group("Enemy")
 	for enemy in enemies:
@@ -64,6 +68,11 @@ func LoadGame() -> void:
 	player.max_hp=data.player_max_hp
 	player.direction=data.player_direction
 	
+	# 检查当前场景路径是否匹配
+	if data.scene_path != get_tree().current_scene.scene_file_path:
+		print("错误: 场景路径不匹配，无法加载状态")
+		return
+	
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
 		enemy.queue_free()
 	for mirror in get_tree().get_nodes_in_group("Mirror"):
@@ -90,20 +99,6 @@ func LoadGame() -> void:
 	await get_tree().create_timer(0.1).timeout
 	game_loaded.emit()
 	print("Loaded!")
-	pass
-
-func UpdatePlayerData() -> void:
-	pass
-
-
-func UpdateScenePath() -> void:
-	var p : String = ""
-	for c in get_tree().root.get_children():
-		if c is Level:
-			p = c.scene_file_path
-
-func UpdateItemData() -> void:
-	#current_save.items = PlayerManager.INVENTORY_DATA.get_save_data()
 	pass
 
 func AddPersistentValue( value : String ) -> void:

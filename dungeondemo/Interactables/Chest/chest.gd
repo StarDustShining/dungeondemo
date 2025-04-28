@@ -7,7 +7,7 @@ class_name Chest extends Node
 var is_open: bool = false
 @onready var item_sprite: Sprite2D = $ItemSprite
 @onready var label: Label = $ItemSprite/Label
-@onready var interact_area: Area2D = $Area2D
+@onready var interact_area: Area2D = $E
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var is_open_data: PersistentDataHandler = $IsOpen
 

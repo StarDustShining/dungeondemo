@@ -105,7 +105,7 @@ _data = {
 &"show_hint": SubResource("Animation_317s1")
 }
 
-[node name="Mirror" type="CharacterBody2D" groups=["PushItem"]]
+[node name="Mirror" type="CharacterBody2D" groups=["Mirror", "PushItem"]]
 y_sort_enabled = true
 texture_filter = 1
 collision_layer = 512

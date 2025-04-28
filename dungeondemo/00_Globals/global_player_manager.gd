@@ -29,13 +29,6 @@ func _ready() -> void:
 func add_player_instance() -> void:
 	player = PLAYER.instantiate()
 	add_child( player )
-	
-	# 应用之前保存的血量（如果有）
-	if _saved_max_hp > 0:
-		player.max_hp = _saved_max_hp
-		player.hp = _saved_hp
-		print("应用保存的血量：", _saved_hp, "/", _saved_max_hp)
-	
 	pass
 
 func set_health( hp: int, max_hp: int ) -> void:
@@ -50,21 +43,20 @@ func set_health( hp: int, max_hp: int ) -> void:
 	player.hp = hp
 	player.UpdateHp( 0 )
 
-func reward_xp( _xp : int ) -> void:
-	player.xp += _xp
-	# check for level advancement
-	check_for_level_advance()
-
-func check_for_level_advance() -> void:
-	if player.level >= level_requirements.size():
-		return
-	if player.xp >= level_requirements[ player.level ]:
-		player.level += 1
-		player.attack += 1
-		player.defense += 1
-		player_leveled_up.emit()
-		check_for_level_advance()
-	pass
+#func reward_xp( _xp : int ) -> void:
+	#player.xp += _xp
+	#check_for_level_advance()
+#
+#func check_for_level_advance() -> void:
+	#if player.level >= level_requirements.size():
+		#return
+	#if player.xp >= level_requirements[ player.level ]:
+		#player.level += 1
+		#player.attack += 1
+		#player.defense += 1
+		#player_leveled_up.emit()
+		#check_for_level_advance()
+	#pass
 
 func set_player_position( _new_pos : Vector2 ) -> void:
 	player.global_position = _new_pos
