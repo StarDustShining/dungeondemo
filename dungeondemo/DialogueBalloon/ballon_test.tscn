@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://77lngttgjpxq"]
-
-[ext_resource type="Script" uid="uid://cv8fdx7wukop4" path="res://DialogueBalloon/ballon_test.gd" id="1_hav1q"]
-
-[node name="BallonTest" type="Node2D"]
-script = ExtResource("1_hav1q")

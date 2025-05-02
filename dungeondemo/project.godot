@@ -30,8 +30,7 @@ AudioManager="*res://00_Globals/global_audio_manager.gd"
 
 [dialogue_manager]
 
-runtime/balloon_path="uid://c56ss64rqdrr0"
-editor/advanced/custom_test_scene_path="uid://c56ss64rqdrr0"
+editor/advanced/custom_test_scene_path="uid://ugd552efvil0"
 runtime/advanced/uses_dotnet=true
 
 [display]

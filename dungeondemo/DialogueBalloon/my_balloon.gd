@@ -49,7 +49,7 @@ var mutation_cooldown: Timer = Timer.new()
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
 
 ## The menu of responses
-@onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
+@onready var responses_menu: VBoxContainer = %ResponsesMenu
 
 @onready var portrait: TextureRect = $Balloon/Panel/Dialogue/HBoxContainer/Portrait
 

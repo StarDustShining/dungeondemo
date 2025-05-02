@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=6 format=3 uid="uid://ghf8dc8t3tjs"]
 
-[ext_resource type="Texture2D" uid="uid://bhtpepg668sj2" path="res://GUI/UI/Texture/panel-transparent-border-027.png" id="1_11tbt"]
+[ext_resource type="Texture2D" uid="uid://drnqotgsu1tk8" path="res://GUI/UI/Texture/panel-025.png" id="1_11tbt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -40,10 +40,10 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c72dq"]
 texture = ExtResource("1_11tbt")
-texture_margin_left = 16.0
-texture_margin_top = 16.0
-texture_margin_right = 16.0
-texture_margin_bottom = 16.0
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
 modulate_color = Color(0, 0, 0, 1)
 
 [resource]

@@ -457,9 +457,9 @@ func _start_balloon(balloon: Node, resource: DialogueResource, title: String, ex
 
 # Get the path to the example balloon
 func _get_example_balloon_path() -> String:
-	var is_small_window: bool = ProjectSettings.get_setting("display/window/size/viewport_width") < 400
-	var balloon_path: String = "/example_balloon/small_example_balloon.tscn" if is_small_window else "/example_balloon/example_balloon.tscn"
-	return get_script().resource_path.get_base_dir() + balloon_path
+	#var is_small_window: bool = ProjectSettings.get_setting("display/window/size/viewport_width") < 400
+	var balloon_path: String = "res://DialogueBalloon/MyBalloon.tscn"
+	return balloon_path
 
 
 #endregion
