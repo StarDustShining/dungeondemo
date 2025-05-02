@@ -28,10 +28,14 @@ func clear_inventory() -> void:
 		c.queue_free()
 	await get_tree().process_frame #等待一帧，确保上一个UI销毁
 
-
+var is_updating := false ###
 func update_inventory(i : int = -1) -> void:
 	#await clear_inventory() #等待一帧，确保UI已经清理再更新
-	clear_inventory() ###
+	if is_updating: ###
+		return
+	is_updating = true
+	
+	await clear_inventory() ###
 	await get_tree().process_frame ###
 	
 	for s in data.slots:
@@ -54,6 +58,8 @@ func update_inventory(i : int = -1) -> void:
 	else:
 		if get_child_count() > 0:
 			get_child(0).grab_focus()
+	
+	is_updating = false###
 
 func item_focused() -> void:
 	for i in get_child_count():
@@ -64,7 +70,7 @@ func item_focused() -> void:
 
 
 func on_inventory_changed() -> void:
-	clear_inventory()
+	#clear_inventory()
 	update_inventory()
 	
 ###

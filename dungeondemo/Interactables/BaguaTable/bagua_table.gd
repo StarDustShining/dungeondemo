@@ -62,8 +62,9 @@ func player_interact() -> void:
 		print("item_pickup 已成功添加到场景中。")
 		PlayerManager.shake_camera(10)
 		long_yin.play()
-		await get_tree().create_timer(5.0).timeout
+		await get_tree().create_timer(7.0).timeout ###时间长一点，玩家可以看到龙鳞
 		get_tree().paused = true  # 暂停游戏
+		BackpackMenu.hide() ###隐藏背包
 		video_stream_player.play()
 		
 	else:
