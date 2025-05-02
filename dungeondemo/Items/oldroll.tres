@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=7 format=3 uid="uid://cyu0qey3l78fc"]
+
+[ext_resource type="Script" uid="uid://b2phmux7sr3wd" path="res://Items/item_effects/item_effect.gd" id="1_t72ds"]
+[ext_resource type="Script" uid="uid://w4fnc5moq54l" path="res://Items/scripts/item_data.gd" id="2_qkme6"]
+[ext_resource type="Script" uid="uid://o6uylm6qdtbp" path="res://Items/item_effects/item_effect_read.gd" id="2_tfhry"]
+[ext_resource type="Texture2D" uid="uid://kh0hhgn53o4e" path="res://Items/sprites/oldroll32px.png" id="3_tfhry"]
+
+[sub_resource type="Resource" id="Resource_d47a5"]
+script = ExtResource("2_tfhry")
+image_path = "res://Items/sprites/oldroll.png"
+use_description = ""
+metadata/_custom_type_script = "uid://o6uylm6qdtbp"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hu0ww"]
+atlas = ExtResource("3_tfhry")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+script = ExtResource("2_qkme6")
+name = "古籍残片"
+description = "[残破的卷轴，里面写了什么呢]：点击查看，再次点击关闭"
+texture = SubResource("AtlasTexture_hu0ww")
+effects = Array[ExtResource("1_t72ds")]([SubResource("Resource_d47a5")])
+metadata/_custom_type_script = "uid://w4fnc5moq54l"

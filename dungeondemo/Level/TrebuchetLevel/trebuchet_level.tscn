@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://pmhoshnwreyi"]
+[gd_scene load_steps=23 format=3 uid="uid://pmhoshnwreyi"]
 
 [ext_resource type="Script" uid="uid://wrg28cepy71e" path="res://Level/TrebuchetLevel/trebuchet_level.gd" id="1_k2k3l"]
 [ext_resource type="PackedScene" uid="uid://lxx60xgoecea" path="res://TileMaps/Ground.tscn" id="2_f6t8b"]
@@ -9,20 +9,25 @@
 [ext_resource type="PackedScene" uid="uid://de52jxqemilpu" path="res://GeneralNodes/PersistentDataHandler/persistent-data-handler.tscn" id="8_6jdpv"]
 [ext_resource type="PackedScene" uid="uid://v650qkdjwpva" path="res://Enemy/石头人/StoneMonster.tscn" id="8_jsruw"]
 [ext_resource type="Texture2D" uid="uid://cb08dqkh8qcvq" path="res://TileMaps/wall.png" id="8_pufww"]
-[ext_resource type="VideoStream" path="res://Level/TrebuchetLevel/石墙倒塌.ogv" id="10_fctxj"]
+[ext_resource type="VideoStream" uid="uid://exj8qworq3io" path="res://Level/TrebuchetLevel/石墙倒塌.ogv" id="10_fctxj"]
 [ext_resource type="PackedScene" uid="uid://bhusmjtbcxm04" path="res://NPC/Majun/Majun.tscn" id="11_pufww"]
 [ext_resource type="AudioStream" uid="uid://dp0l1vedeylr1" path="res://Music/sacred garden.mp3" id="11_r1mw6"]
 [ext_resource type="PackedScene" uid="uid://drwc2rv2vhr8" path="res://Enemy/骷髅/skeletonMonster.tscn" id="12_r1mw6"]
-[ext_resource type="PackedScene" uid="uid://ckrtpeusv0a8g" path="res://Interactables/Chest/Chest.tscn" id="15_6jdpv"]
+[ext_resource type="PackedScene" uid="uid://ckrtpeusv0a8g" path="res://Interactables/Chest/chest.tscn" id="15_6jdpv"]
 [ext_resource type="PackedScene" uid="uid://ci3m03r376tks" path="res://Items/item_pickup/ItemPickup.tscn" id="15_k2k3l"]
 [ext_resource type="Resource" uid="uid://cdxk3v0er1l3l" path="res://Items/scroll.tres" id="16_6jdpv"]
 [ext_resource type="Resource" uid="uid://c0xo2gupsdwli" path="res://Items/potion.tres" id="16_xaa18"]
+[ext_resource type="Texture2D" uid="uid://dfv6glk00ov6x" path="res://Items/sprites/oldroll720px.png" id="18_58ag8"]
+[ext_resource type="Resource" uid="uid://cyu0qey3l78fc" path="res://Items/oldroll.tres" id="19_58ag8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1a5m"]
 size = Vector2(15, 47.2914)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k2k3l"]
 size = Vector2(40, 688)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58ag8"]
+atlas = ExtResource("18_58ag8")
 
 [node name="TrebuchetLevel" type="Node2D"]
 y_sort_enabled = true
@@ -114,3 +119,18 @@ shape = SubResource("RectangleShape2D_k2k3l")
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("4_idfcu")]
 position = Vector2(784, 1256)
+
+[node name="CanvasLayerTestItem" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayerTestItem"]
+visible = false
+offset_left = 440.0
+offset_top = 90.0
+offset_right = 1160.0
+offset_bottom = 810.0
+texture = SubResource("AtlasTexture_58ag8")
+stretch_mode = 3
+
+[node name="ItemPickupTest" parent="." instance=ExtResource("15_k2k3l")]
+position = Vector2(1174, 989)
+item_data = ExtResource("19_58ag8")

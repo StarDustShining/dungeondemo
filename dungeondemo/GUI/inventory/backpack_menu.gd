@@ -28,3 +28,8 @@ func play_audio( audio : AudioStream ) -> void:
 		return
 	audio_stream_player.stream = audio
 	audio_stream_player.play()
+	
+
+###
+func get_all_slots() -> Array:
+	return $Control/PanelContainer/GridContainer.get_children()

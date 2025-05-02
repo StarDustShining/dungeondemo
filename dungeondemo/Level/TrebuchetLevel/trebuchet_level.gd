@@ -16,6 +16,14 @@ func _ready() -> void:
 	LevelManager.minigame_load_started.connect(_pause_level)
 	is_collapsed.data_loaded.connect(SetCollapsedState)
 	SetCollapsedState()
+	
+func _physics_process(delta: float) -> void:
+	###
+	var center_image := $CanvasLayerTestItem/TextureRect
+	var backpack_menu := BackpackMenu
+	if backpack_menu.get_all_slots():
+		for slot in backpack_menu.get_all_slots():
+			slot.center_image = center_image
 
 # 不销毁场景，而是仅清除与小游戏相关的部分
 func _free_level() -> void:

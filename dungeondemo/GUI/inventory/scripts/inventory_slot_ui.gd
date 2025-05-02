@@ -1,6 +1,9 @@
 class_name InventorySlotUI extends Button
 
 var slot_data : SlotData : set = set_slot_data
+###
+var image_visible := false
+var center_image: TextureRect = null
 
 @onready var texture_rect: TextureRect = $TextureRect
 @onready var label: Label = $Label
@@ -32,15 +35,33 @@ func item_unfocused() -> void:
 	BackpackMenu.update_item_description("")
 	pass
 
+func _on_request_show_image(path: String) -> void:
+	if not center_image:
+		push_error("找不到 CenterImage 节点！")
+		return
+
+	if not center_image.texture:
+		var tex = load(path)
+		if tex:
+			center_image.texture = tex
+
+	image_visible = !image_visible
+	center_image.visible = image_visible
+
+
 
 func item_pressed() -> void:
 	if slot_data: #and outside_drag_threshold() == false:
 		if slot_data.item_data:
 			var item = slot_data.item_data
 			
-			#if item is EquipableItemData:
-				#PlayerManager.INVENTORY_DATA.equip_item( slot_data )
-				#return
+			for effect in item.effects:
+				if effect is ItemEffectRead:
+					print("使用了卷轴")
+					var cb = Callable(self, "_on_request_show_image")
+					effect.connect("request_show_image", cb)
+					if not effect.is_connected("request_show_image", cb):
+						effect.connect("request_show_image", cb)
 			
 			var was_used = item.use()
 			if was_used == false:
