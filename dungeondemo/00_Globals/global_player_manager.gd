@@ -18,6 +18,9 @@ var level_requirements = [ 0, 5, 10, 20, 40 ]
 var _saved_hp : int = 0
 var _saved_max_hp : int = 0
 
+###
+var inventory_ui_ref: InventoryUI = null
+
 func _ready() -> void:
 	# 检查当前场景，更精确地查找Down相关场景
 	var current_scene = get_tree().current_scene

@@ -10,6 +10,7 @@ func _init() -> void:
 	if slots == null:
 		slots = []
 
+var last_added_index: int = 0
 func add_item(item: ItemData, count: int = 1) -> bool:
 	if slots == null:
 		print("错误: slots 未初始化。")
@@ -19,18 +20,29 @@ func add_item(item: ItemData, count: int = 1) -> bool:
 			if s.item_data == item:
 				s.quantity += count
 				inventory_updated.emit()  # 背包更新即发送信号
+				last_added_index = slots.find(s) ###
 				return true
+	#for i in range(slots.size()):
+		#if slots[i] == null:
+			#var new = SlotData.new()
+			#new.item_data = item
+			#new.quantity = count
+			#slots[i] = new
+			#inventory_updated.emit()  # 背包更新即发送信号
+			#new.changed.connect( slot_changed )
+			#return true
 	for i in range(slots.size()):
 		if slots[i] == null:
-			var new = SlotData.new()
-			new.item_data = item
-			new.quantity = count
-			slots[i] = new
-			inventory_updated.emit()  # 背包更新即发送信号
-			new.changed.connect( slot_changed )
+			slots[i] = SlotData.new()
+			slots[i].item_data = item
+			slots[i].quantity = count
+			last_added_index = i ###
+			inventory_updated.emit()
+			slots[i].changed.connect(slot_changed)
 			return true
 	print("inventory was full!")
 	return false
+	
 
 # 添加 remove_item 方法
 func remove_item(index: int) -> void:

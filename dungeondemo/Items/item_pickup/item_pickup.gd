@@ -21,8 +21,11 @@ func _ready() -> void:
 func _on_body_entered( b ) -> void:
 	if b is Player:
 		if item_data:
-			if PlayerManager.INVENTORY_DATA.add_item( item_data ) == true:
-				item_picked_up()
+			#if PlayerManager.INVENTORY_DATA.add_item( item_data ) == true:
+			var index = PlayerManager.INVENTORY_DATA.add_item(item_data) ###
+			#if index >= 0: ###
+			item_picked_up()
+				#PlayerManager.inventory_ui_ref.update_inventory(index) ###
 	pass
 
 func item_picked_up() -> void:

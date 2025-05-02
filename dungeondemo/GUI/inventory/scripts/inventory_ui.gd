@@ -18,17 +18,21 @@ func _ready() -> void:
 	
 	if data:
 		data.inventory_updated.connect(update_inventory) #监听inventory_data
+	
+	PlayerManager.inventory_ui_ref = self ###
 	pass
 
 
 func clear_inventory() -> void:
 	for c in get_children():
 		c.queue_free()
-	#await get_tree().process_frame #等待一帧，确保上一个UI销毁
+	await get_tree().process_frame #等待一帧，确保上一个UI销毁
 
 
-func update_inventory(i : int = 0) -> void:
-	await clear_inventory() #等待一帧，确保UI已经清理再更新
+func update_inventory(i : int = -1) -> void:
+	#await clear_inventory() #等待一帧，确保UI已经清理再更新
+	clear_inventory() ###
+	await get_tree().process_frame ###
 	
 	for s in data.slots:
 		var new_slot = INVENTORY_SLOT.instantiate()
@@ -37,7 +41,19 @@ func update_inventory(i : int = 0) -> void:
 		new_slot.focus_entered.connect( item_focused )
 	
 	await get_tree().process_frame
-	get_child( i ).grab_focus()
+	#get_child( i ).grab_focus()
+	
+	###
+	var focus_i = i
+	if focus_i == -1:
+		focus_i = data.last_added_index
+	if focus_i >= 0 and focus_i < get_child_count():
+		var target = get_child(focus_i)
+		if target != null:
+			target.grab_focus()
+	else:
+		if get_child_count() > 0:
+			get_child(0).grab_focus()
 
 func item_focused() -> void:
 	for i in get_child_count():
@@ -48,6 +64,20 @@ func item_focused() -> void:
 
 
 func on_inventory_changed() -> void:
-	var i = focus_index
 	clear_inventory()
-	update_inventory( i )
+	update_inventory()
+	
+###
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			change_focus(-1)
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			change_focus(1)
+
+func change_focus(delta: int) -> void:
+	var count = get_child_count()
+	if count == 0:
+		return
+	focus_index = (focus_index + delta + count) % count
+	get_child(focus_index).grab_focus()
