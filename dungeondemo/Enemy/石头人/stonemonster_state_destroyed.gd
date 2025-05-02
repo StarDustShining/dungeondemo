@@ -71,5 +71,4 @@ func OnAnimationFinished() -> void:
 			video_stream_player.play()
 		# queue_free Wall 节点
 		if wall:
-			wall.is_collapsed.set_value()
 			wall.queue_free()

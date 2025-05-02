@@ -1525,6 +1525,7 @@ magnetic_field_size = Vector2(500, 500)
 [node name="LevelTransition" parent="." instance=ExtResource("7_u333g")]
 position = Vector2(1600, 135)
 level = "uid://bxlti7mm52e8c"
+target_transition_area = "LevelTransition2"
 size = 2
 side = 2
 

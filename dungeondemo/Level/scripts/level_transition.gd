@@ -68,10 +68,6 @@ func _player_entered(_p: Node2D) -> void:
 func _place_player() -> void:
 	if name != LevelManager.target_transition:
 		return
-	
-	# 特殊处理迷宫关卡场景
-	#var current_scene = get_tree().current_scene
-	#var scene_path = current_scene.scene_file_path if current_scene else ""
 	PlayerManager.set_player_position(global_position + LevelManager.position_offset)
 	entered_from_here.emit()
 

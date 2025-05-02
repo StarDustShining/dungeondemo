@@ -6,7 +6,6 @@ signal game_saved
 @onready var player:Player=PlayerManager.player
 
 var current_save : Dictionary = {
-	scene_path = "",
 	persistence = [],
 }
 
@@ -24,14 +23,15 @@ func get_save_file() -> Resource:
 
 func SaveGame() -> void:
 	var data=SceneData.new()
+	
+	## 保存当前场景路径
+	#data.scene_path = get_tree().current_scene.get_scene_file_path()
+	
 	data.player_position=player.global_position
 	data.player_hp=player.hp
 	data.player_max_hp=player.max_hp
 	data.player_direction=player.direction
-	
-	# 记录当前场景路径
-	data.scene_path = get_tree().current_scene.scene_file_path
-	
+
 	var enemies=get_tree().get_nodes_in_group("Enemy")
 	for enemy in enemies:
 		var enemy_sence=PackedScene.new()
@@ -62,16 +62,15 @@ func SaveGame() -> void:
 	
 func LoadGame() -> void:
 	var data=ResourceLoader.load("user://scene_data.tres") as SceneData
-	#await LevelManager.level_load_started
+	
+	## 切换到保存的场景
+	#if data.scene_path:
+		#get_tree().change_scene_to_file(data.scene_path)
+	
 	player.global_position=data.player_position
 	player.hp=data.player_hp
 	player.max_hp=data.player_max_hp
 	player.direction=data.player_direction
-	
-	# 检查当前场景路径是否匹配
-	if data.scene_path != get_tree().current_scene.scene_file_path:
-		print("错误: 场景路径不匹配，无法加载状态")
-		return
 	
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
 		enemy.queue_free()

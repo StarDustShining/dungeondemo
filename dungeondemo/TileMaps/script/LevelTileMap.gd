@@ -3,7 +3,6 @@ class_name LevelTileMap extends TileMap
 @export var tile_size : float = 32
 @export var update_bounds : bool = true
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	if update_bounds:
 		var bounds = _get_tilemap_bounds()

@@ -24,7 +24,7 @@ position = Vector2(203, 417)
 position = Vector2(1266, 188)
 
 [node name="downskeleton3" parent="." instance=ExtResource("4_idvha")]
-position = Vector2(1191, 629)
+position = Vector2(1366, 672)
 
 [node name="downskeleton4" parent="." instance=ExtResource("4_idvha")]
 position = Vector2(808, 418)
@@ -33,12 +33,12 @@ position = Vector2(808, 418)
 position = Vector2(427, 766)
 
 [node name="LevelTransition" parent="." instance=ExtResource("5_v886p")]
-position = Vector2(16, 112)
+position = Vector2(8, 122)
 level = "uid://pmhoshnwreyi"
 size = 2
 
 [node name="LevelTransition2" parent="." instance=ExtResource("5_v886p")]
-position = Vector2(96, 888)
+position = Vector2(94, 888)
 level = "res://Level/LabyrinthLevel/labyrinth_level.tscn"
 center_player = true
 side = 3

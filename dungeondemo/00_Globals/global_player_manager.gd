@@ -22,26 +22,16 @@ var _saved_max_hp : int = 0
 var inventory_ui_ref: InventoryUI = null
 
 func _ready() -> void:
-	# 检查当前场景，更精确地查找Down相关场景
-	var current_scene = get_tree().current_scene
-	var scene_path = current_scene.scene_file_path if current_scene else ""
 	add_player_instance()
 	await get_tree().create_timer(0.2).timeout
-	player_spawned = true
+	#player_spawned = true
 
 func add_player_instance() -> void:
 	player = PLAYER.instantiate()
 	add_child( player )
 	pass
 
-func set_health( hp: int, max_hp: int ) -> void:
-	# 确保玩家存在并且场景不是Down场景
-	if not player or not is_instance_valid(player):
-		# 保存值以便后续使用
-		_saved_hp = hp
-		_saved_max_hp = max_hp
-		return
-		
+func set_health( hp: int, max_hp: int ) -> void:		
 	player.max_hp = max_hp
 	player.hp = hp
 	player.UpdateHp( 0 )

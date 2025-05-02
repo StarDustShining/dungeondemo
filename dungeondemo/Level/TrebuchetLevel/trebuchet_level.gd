@@ -2,13 +2,14 @@ class_name TrebuchetLevel extends Node2D
 
 @onready var is_collapsed: PersistentDataHandler = $Wall/IsCollapsed
 @onready var wall: Sprite2D = $Wall
+@onready var player_spawn: Node2D = $PlayerSpawn
 
 
 func _ready() -> void:
 	self.y_sort_enabled = true
 	PlayerManager.set_as_parent(self)
+	PlayerManager.player.position=player_spawn.global_position
 	PlayerManager.player.visible=true
-	PlayerManager.player.position=get_node("PlayerSpawn").position
 	PlayerManager.player.top_down = false
 	PlayerManager.player._ready()  # 确保 Player 的 _ready() 函数被调用
 	LevelManager.level_load_started.connect(_free_level)
