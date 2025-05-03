@@ -17,6 +17,7 @@ func _ready() -> void:
 	is_collapsed.data_loaded.connect(SetCollapsedState)
 	SetCollapsedState()
 	
+###场景挂载道具，其他关卡添加此部分即可（注意更改节点名字），目前一个场景内只能放一个卷轴
 func _physics_process(delta: float) -> void:
 	###
 	var center_image := $CanvasLayerTestItem/TextureRect

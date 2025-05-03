@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://ci3m03r376tks" path="res://Items/item_pickup/ItemPickup.tscn" id="15_k2k3l"]
 [ext_resource type="Resource" uid="uid://cdxk3v0er1l3l" path="res://Items/scroll.tres" id="16_6jdpv"]
 [ext_resource type="Resource" uid="uid://c0xo2gupsdwli" path="res://Items/potion.tres" id="16_xaa18"]
-[ext_resource type="Texture2D" uid="uid://dfv6glk00ov6x" path="res://Items/sprites/oldroll720px.png" id="18_58ag8"]
+[ext_resource type="Texture2D" uid="uid://dowhnpjixht0k" path="res://Items/sprites/oldrolltest.png" id="18_58ag8"]
 [ext_resource type="Resource" uid="uid://cyu0qey3l78fc" path="res://Items/oldroll.tres" id="19_58ag8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1a5m"]
