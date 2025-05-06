@@ -82,6 +82,16 @@ func _ready() -> void:
 	timer.start()
 	pre_selected_spikes = [0,1,2,3,4,5,6,7]
 	_reset_beads()
+	
+	
+#场景挂载道具，其他关卡添加此部分即可（注意更改节点名字），目前一个场景内只能放一个卷轴
+func _physics_process(delta: float) -> void:
+	var center_image := $CanvasLayerTestItem/TextureRect
+	var backpack_menu := BackpackMenu
+	if backpack_menu.get_all_slots():
+		for slot in backpack_menu.get_all_slots():
+			slot.center_image = center_image
+	
 
 func _on_Timer_timeout():
 	# 重新启动定时器

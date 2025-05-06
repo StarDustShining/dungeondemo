@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://ci3m03r376tks" path="res://Items/item_pickup/ItemPickup.tscn" id="15_k2k3l"]
 [ext_resource type="Resource" uid="uid://cdxk3v0er1l3l" path="res://Items/scroll.tres" id="16_6jdpv"]
 [ext_resource type="Resource" uid="uid://c0xo2gupsdwli" path="res://Items/potion.tres" id="16_xaa18"]
-[ext_resource type="Texture2D" uid="uid://dy8kh3rkvsqss" path="res://Items/sprites/oldroll.png" id="18_58ag8"]
+[ext_resource type="Texture2D" uid="uid://cn66qmrhr8rbl" path="res://Items/sprites/rollgx1.png" id="18_58ag8"]
 [ext_resource type="Resource" uid="uid://cyu0qey3l78fc" path="res://Items/oldroll.tres" id="19_58ag8"]
 [ext_resource type="PackedScene" uid="uid://clh7iubr06c8l" path="res://Interactables/Energy/Energy.tscn" id="20_t61kk"]
 
@@ -45,7 +45,7 @@ position = Vector2(2112, 442)
 scale = Vector2(0.6, 0.6)
 
 [node name="LevelTransition" parent="." instance=ExtResource("6_7fk3p")]
-position = Vector2(2648, 437)
+position = Vector2(2647, 437)
 level = "uid://bxlti7mm52e8c"
 side = 1
 
@@ -122,9 +122,9 @@ shape = SubResource("RectangleShape2D_k2k3l")
 position = Vector2(784, 1256)
 
 [node name="CanvasLayerTestItem" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayerTestItem"]
+visible = false
 offset_left = 378.0
 offset_top = 90.0
 offset_right = 1222.0
@@ -133,7 +133,7 @@ texture = SubResource("AtlasTexture_58ag8")
 expand_mode = 2
 
 [node name="ItemPickupTest" parent="." instance=ExtResource("15_k2k3l")]
-position = Vector2(1174, 989)
+position = Vector2(1459, 979)
 item_data = ExtResource("19_58ag8")
 
 [node name="Energy" parent="." instance=ExtResource("20_t61kk")]

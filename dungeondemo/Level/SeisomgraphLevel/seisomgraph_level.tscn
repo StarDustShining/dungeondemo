@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=4 uid="uid://pqahqqlsqpcd"]
+[gd_scene load_steps=142 format=4 uid="uid://pqahqqlsqpcd"]
 
 [ext_resource type="Script" uid="uid://dy84ijxnfmcsk" path="res://Level/SeisomgraphLevel/seisomgraph_level.gd" id="1_5mbxw"]
 [ext_resource type="PackedScene" uid="uid://lxx60xgoecea" path="res://TileMaps/Ground.tscn" id="1_keq7b"]
@@ -134,6 +134,9 @@
 [ext_resource type="Texture2D" uid="uid://coqox586mo5k4" path="res://Interactables/Stele/石碑文字/117.png" id="132_s8mg2"]
 [ext_resource type="Texture2D" uid="uid://bnqp6ohmlrdfe" path="res://Interactables/Stele/石碑文字/118.png" id="133_idrwy"]
 [ext_resource type="Texture2D" uid="uid://dskd6p04tjheh" path="res://Interactables/Stele/石碑文字/119.png" id="134_skofl"]
+[ext_resource type="Texture2D" uid="uid://cbwpsmdgbg7k5" path="res://Items/sprites/rollzhangheng.png" id="135_edwuc"]
+[ext_resource type="PackedScene" uid="uid://ci3m03r376tks" path="res://Items/item_pickup/ItemPickup.tscn" id="136_p48a3"]
+[ext_resource type="Resource" uid="uid://cyu0qey3l78fc" path="res://Items/oldroll.tres" id="137_aa2p6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5mbxw"]
 texture = ExtResource("5_3cu4p")
@@ -516,6 +519,9 @@ animations = [{
 "speed": 16.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfgdg"]
+atlas = ExtResource("135_edwuc")
+
 [node name="SeisomgraphLevel" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_5mbxw")
@@ -769,5 +775,20 @@ offset_right = 1562.0
 offset_bottom = 90.0
 text = "查看完毕按~退出"
 vertical_alignment = 1
+
+[node name="CanvasLayerTestItem" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayerTestItem"]
+visible = false
+offset_left = 378.0
+offset_top = 90.0
+offset_right = 1222.0
+offset_bottom = 810.0
+texture = SubResource("AtlasTexture_tfgdg")
+expand_mode = 2
+
+[node name="ItemPickupTest" parent="." instance=ExtResource("136_p48a3")]
+position = Vector2(653, 439)
+item_data = ExtResource("137_aa2p6")
 
 [connection signal="visibility_changed" from="CanvasLayer" to="CanvasLayer" method="_on_visibility_changed"]
