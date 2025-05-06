@@ -72,6 +72,13 @@ func _process(delta: float) -> void:
 		mask_material.set_shader_parameter("radius", vision_radius / mask_size.length())
 		mask_material.set_shader_parameter("softness", 0.05)
 
+#场景挂载道具，其他关卡添加此部分即可（注意更改节点名字），目前一个场景内只能放一个卷轴
+func _physics_process(delta: float) -> void:
+	var center_image := $CanvasLayerTestItem/TextureRect
+	var backpack_menu := BackpackMenu
+	if backpack_menu.get_all_slots():
+		for slot in backpack_menu.get_all_slots():
+			slot.center_image = center_image
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	go_out_video_player.play();

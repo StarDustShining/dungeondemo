@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://kstws4i4a8fs"]
+[gd_scene load_steps=29 format=3 uid="uid://kstws4i4a8fs"]
 
 [ext_resource type="Script" uid="uid://b745662aebt1p" path="res://Level/LabyrinthLevel/labyrinth_level.gd" id="1_b44ro"]
 [ext_resource type="PackedScene" uid="uid://lxx60xgoecea" path="res://TileMaps/Ground.tscn" id="2_8l1uw"]
@@ -14,8 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://b45d5rfiimfgd" path="res://Interactables/PressurePlate/PressurePlate.tscn" id="12_sx48c"]
 [ext_resource type="PackedScene" uid="uid://dwk0fs04tthpp" path="res://NPC/Shenkuo/Shenkuo.tscn" id="13_rsbkd"]
 [ext_resource type="AudioStream" uid="uid://dp0l1vedeylr1" path="res://Music/sacred garden.mp3" id="14_jq5py"]
-[ext_resource type="PackedScene" uid="uid://ckrtpeusv0a8g" path="res://Interactables/Chest/Chest.tscn" id="15_kb5pn"]
+[ext_resource type="PackedScene" uid="uid://ckrtpeusv0a8g" path="res://Interactables/Chest/chest.tscn" id="15_kb5pn"]
 [ext_resource type="Resource" uid="uid://c0xo2gupsdwli" path="res://Items/potion.tres" id="16_8l1uw"]
+[ext_resource type="Script" uid="uid://dukjvusa3sqlh" path="res://Level/SeisomgraphLevel/canvas_layer.gd" id="17_857dv"]
+[ext_resource type="Texture2D" uid="uid://dy8kh3rkvsqss" path="res://Items/sprites/oldroll.png" id="18_v0wck"]
+[ext_resource type="PackedScene" uid="uid://ci3m03r376tks" path="res://Items/item_pickup/ItemPickup.tscn" id="19_2nj30"]
+[ext_resource type="Resource" uid="uid://cyu0qey3l78fc" path="res://Items/oldroll.tres" id="20_7enj6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ggl2s"]
 texture = ExtResource("3_mfqea")
@@ -1439,6 +1443,9 @@ shader_parameter/softness = 0.1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wmqc0"]
 size = Vector2(63.0001, 237.998)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0pi7"]
+atlas = ExtResource("18_v0wck")
+
 [node name="LabyrinthLevel" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_b44ro")
@@ -1626,5 +1633,23 @@ item_data = ExtResource("16_8l1uw")
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("4_cgswk")]
 position = Vector2(1600, 195)
+
+[node name="CanvasLayerTestItem" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("17_857dv")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayerTestItem"]
+offset_left = 378.0
+offset_top = 90.0
+offset_right = 1222.0
+offset_bottom = 810.0
+texture = SubResource("AtlasTexture_b0pi7")
+expand_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayerTestItem"]
+
+[node name="ItemPickupTest" parent="." instance=ExtResource("19_2nj30")]
+position = Vector2(1895, 388)
+item_data = ExtResource("20_7enj6")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
