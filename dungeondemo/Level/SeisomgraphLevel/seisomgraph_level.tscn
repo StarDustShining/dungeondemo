@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://pqahqqlsqpcd"]
+[gd_scene load_steps=138 format=4 uid="uid://pqahqqlsqpcd"]
 
 [ext_resource type="Script" uid="uid://dy84ijxnfmcsk" path="res://Level/SeisomgraphLevel/seisomgraph_level.gd" id="1_5mbxw"]
 [ext_resource type="PackedScene" uid="uid://lxx60xgoecea" path="res://TileMaps/Ground.tscn" id="1_keq7b"]
@@ -10,7 +10,130 @@
 [ext_resource type="PackedScene" uid="uid://cg6e31t5ia08x" path="res://Interactables/BaguaTable/BaguaTable.tscn" id="9_2auto"]
 [ext_resource type="PackedScene" uid="uid://dax265t0jbtmh" path="res://NPC/Zhangheng/Zhangheng.tscn" id="11_ak2jq"]
 [ext_resource type="PackedScene" uid="uid://bmw1cu6qn0dvt" path="res://Level/player_spawn.tscn" id="11_qmxcs"]
+[ext_resource type="PackedScene" uid="uid://c5yxcw14utr4h" path="res://Interactables/Stele/Stele.tscn" id="12_qmxcs"]
 [ext_resource type="AudioStream" uid="uid://dp0l1vedeylr1" path="res://Music/sacred garden.mp3" id="13_ejhvg"]
+[ext_resource type="Script" uid="uid://dukjvusa3sqlh" path="res://Level/SeisomgraphLevel/canvas_layer.gd" id="13_lf1h6"]
+[ext_resource type="Texture2D" uid="uid://0tdmjuwqbxu3" path="res://Level/Game01/background2.png" id="14_27pnt"]
+[ext_resource type="Texture2D" uid="uid://bj3sfoo32gcq" path="res://Interactables/Stele/steleUI.png" id="15_16y6p"]
+[ext_resource type="Texture2D" uid="uid://3v01r4dq7d6" path="res://Interactables/Stele/石碑文字/1.png" id="16_k4la3"]
+[ext_resource type="Texture2D" uid="uid://c6ou05brnog4v" path="res://Interactables/Stele/石碑文字/2.png" id="17_d4735"]
+[ext_resource type="Texture2D" uid="uid://coe7rb4t28pt" path="res://Interactables/Stele/石碑文字/3.png" id="18_o1q0e"]
+[ext_resource type="Texture2D" uid="uid://3et6kqujnnh0" path="res://Interactables/Stele/石碑文字/4.png" id="19_e41u4"]
+[ext_resource type="Texture2D" uid="uid://bi8dcpwmq0if4" path="res://Interactables/Stele/石碑文字/5.png" id="20_8japh"]
+[ext_resource type="Texture2D" uid="uid://cre73itog0e84" path="res://Interactables/Stele/石碑文字/6.png" id="21_gl0tj"]
+[ext_resource type="Texture2D" uid="uid://dkh0nadwypw81" path="res://Interactables/Stele/石碑文字/7.png" id="22_3k3tx"]
+[ext_resource type="Texture2D" uid="uid://2506kcps2bpn" path="res://Interactables/Stele/石碑文字/8.png" id="23_esuww"]
+[ext_resource type="Texture2D" uid="uid://btqfibvkbxgkv" path="res://Interactables/Stele/石碑文字/9.png" id="24_6t2ew"]
+[ext_resource type="Texture2D" uid="uid://cqmfb7k02d65r" path="res://Interactables/Stele/石碑文字/10.png" id="25_d4wac"]
+[ext_resource type="Texture2D" uid="uid://di2ycqyw10nid" path="res://Interactables/Stele/石碑文字/11.png" id="26_ymvxl"]
+[ext_resource type="Texture2D" uid="uid://brwj4eg0uvlt0" path="res://Interactables/Stele/石碑文字/12.png" id="27_a1edh"]
+[ext_resource type="Texture2D" uid="uid://cke8qy8pqmn8u" path="res://Interactables/Stele/石碑文字/13.png" id="28_jxqv8"]
+[ext_resource type="Texture2D" uid="uid://jsq18lg0peny" path="res://Interactables/Stele/石碑文字/14.png" id="29_2vh53"]
+[ext_resource type="Texture2D" uid="uid://blqkxv1ycf6iq" path="res://Interactables/Stele/石碑文字/15.png" id="30_lgy44"]
+[ext_resource type="Texture2D" uid="uid://d2juqamsnsjm8" path="res://Interactables/Stele/石碑文字/16.png" id="31_nex20"]
+[ext_resource type="Texture2D" uid="uid://dvg3k3oe81355" path="res://Interactables/Stele/石碑文字/17.png" id="32_ok128"]
+[ext_resource type="Texture2D" uid="uid://c7at5vtlwlmyd" path="res://Interactables/Stele/石碑文字/18.png" id="33_0axln"]
+[ext_resource type="Texture2D" uid="uid://dj424p8mt8mha" path="res://Interactables/Stele/石碑文字/19.png" id="34_rtf8v"]
+[ext_resource type="Texture2D" uid="uid://ckhnsjsnh0yml" path="res://Interactables/Stele/石碑文字/20.png" id="35_dlcaj"]
+[ext_resource type="Texture2D" uid="uid://idsxgsavlyba" path="res://Interactables/Stele/石碑文字/21.png" id="36_73xgx"]
+[ext_resource type="Texture2D" uid="uid://fr7681qmcnut" path="res://Interactables/Stele/石碑文字/22.png" id="37_opjdc"]
+[ext_resource type="Texture2D" uid="uid://b4550oyuaq65m" path="res://Interactables/Stele/石碑文字/23.png" id="38_ffysf"]
+[ext_resource type="Texture2D" uid="uid://bqrnyvcparx2d" path="res://Interactables/Stele/石碑文字/24.png" id="39_jwgcu"]
+[ext_resource type="Texture2D" uid="uid://dvr0lmexd5np8" path="res://Interactables/Stele/石碑文字/25.png" id="40_brmvk"]
+[ext_resource type="Texture2D" uid="uid://bqeacdf0uddvr" path="res://Interactables/Stele/石碑文字/26.png" id="41_edwuc"]
+[ext_resource type="Texture2D" uid="uid://dd5nmal1ox37c" path="res://Interactables/Stele/石碑文字/27.png" id="42_p48a3"]
+[ext_resource type="Texture2D" uid="uid://d1c14qod78lxa" path="res://Interactables/Stele/石碑文字/28.png" id="43_aa2p6"]
+[ext_resource type="Texture2D" uid="uid://b8lawbe33r12g" path="res://Interactables/Stele/石碑文字/29.png" id="44_tfgdg"]
+[ext_resource type="Texture2D" uid="uid://7tq0crjafak1" path="res://Interactables/Stele/石碑文字/30.png" id="45_qprx2"]
+[ext_resource type="Texture2D" uid="uid://kh7a4j7p8bnx" path="res://Interactables/Stele/石碑文字/31.png" id="46_56d4l"]
+[ext_resource type="Texture2D" uid="uid://dh3s2yt733ed2" path="res://Interactables/Stele/石碑文字/32.png" id="47_cd0xx"]
+[ext_resource type="Texture2D" uid="uid://c6hu18unpeq8s" path="res://Interactables/Stele/石碑文字/33.png" id="48_q6q15"]
+[ext_resource type="Texture2D" uid="uid://w70auxrfr32k" path="res://Interactables/Stele/石碑文字/34.png" id="49_q8c70"]
+[ext_resource type="Texture2D" uid="uid://d3cvjiqgpa3c2" path="res://Interactables/Stele/石碑文字/35.png" id="50_hl7sy"]
+[ext_resource type="Texture2D" uid="uid://dj5x7bu8vrv7k" path="res://Interactables/Stele/石碑文字/36.png" id="51_64bi3"]
+[ext_resource type="Texture2D" uid="uid://cp7vjkh5nnukx" path="res://Interactables/Stele/石碑文字/37.png" id="52_mm2cu"]
+[ext_resource type="Texture2D" uid="uid://b5mudmy2hj6d1" path="res://Interactables/Stele/石碑文字/38.png" id="53_y3nx2"]
+[ext_resource type="Texture2D" uid="uid://cm8a5i05kve60" path="res://Interactables/Stele/石碑文字/39.png" id="54_3381e"]
+[ext_resource type="Texture2D" uid="uid://xo5wotnhcb1n" path="res://Interactables/Stele/石碑文字/40.png" id="55_p13g8"]
+[ext_resource type="Texture2D" uid="uid://3cujv0crkx8h" path="res://Interactables/Stele/石碑文字/41.png" id="56_ricax"]
+[ext_resource type="Texture2D" uid="uid://dkw4k3cikjxfp" path="res://Interactables/Stele/石碑文字/42.png" id="57_s8mg2"]
+[ext_resource type="Texture2D" uid="uid://ce40baunr2uqx" path="res://Interactables/Stele/石碑文字/43.png" id="58_idrwy"]
+[ext_resource type="Texture2D" uid="uid://ck7h7f76grjcg" path="res://Interactables/Stele/石碑文字/44.png" id="59_skofl"]
+[ext_resource type="Texture2D" uid="uid://5mir5xeglsxc" path="res://Interactables/Stele/石碑文字/45.png" id="60_emnbx"]
+[ext_resource type="Texture2D" uid="uid://by8366my4x1yb" path="res://Interactables/Stele/石碑文字/46.png" id="61_fkbxl"]
+[ext_resource type="Texture2D" uid="uid://lv06svbv6v2r" path="res://Interactables/Stele/石碑文字/47.png" id="62_g153c"]
+[ext_resource type="Texture2D" uid="uid://ci5ij55o5kas8" path="res://Interactables/Stele/石碑文字/48.png" id="63_c4qvi"]
+[ext_resource type="Texture2D" uid="uid://dlbv2m20vonra" path="res://Interactables/Stele/石碑文字/49.png" id="64_jk522"]
+[ext_resource type="Texture2D" uid="uid://bnvqnnyic5l0k" path="res://Interactables/Stele/石碑文字/50.png" id="65_qjrwg"]
+[ext_resource type="Texture2D" uid="uid://to7dcr88ldac" path="res://Interactables/Stele/石碑文字/51.png" id="66_l16hc"]
+[ext_resource type="Texture2D" uid="uid://d2gf310cao81w" path="res://Interactables/Stele/石碑文字/52.png" id="67_dhapm"]
+[ext_resource type="Texture2D" uid="uid://brg3rnav8i0sx" path="res://Interactables/Stele/石碑文字/53.png" id="68_lcfib"]
+[ext_resource type="Texture2D" uid="uid://berflvil78p0n" path="res://Interactables/Stele/石碑文字/54.png" id="69_eqixv"]
+[ext_resource type="Texture2D" uid="uid://cjy83epqixnlx" path="res://Interactables/Stele/石碑文字/55.png" id="70_ltrev"]
+[ext_resource type="Texture2D" uid="uid://da8ir0q8xw3ep" path="res://Interactables/Stele/石碑文字/56.png" id="71_l6l52"]
+[ext_resource type="Texture2D" uid="uid://dhxx3ksyra518" path="res://Interactables/Stele/石碑文字/57.png" id="72_x01h3"]
+[ext_resource type="Texture2D" uid="uid://djjgaewm4q6jp" path="res://Interactables/Stele/石碑文字/58.png" id="73_db1nh"]
+[ext_resource type="Texture2D" uid="uid://bnbd6afae8u3q" path="res://Interactables/Stele/石碑文字/59.png" id="74_ehi1w"]
+[ext_resource type="Texture2D" uid="uid://buyx0w3ehs5mg" path="res://Interactables/Stele/石碑文字/60.png" id="75_ouj7n"]
+[ext_resource type="Texture2D" uid="uid://bjlth7u7t1t1s" path="res://Interactables/Stele/石碑文字/61.png" id="76_mtnsq"]
+[ext_resource type="Texture2D" uid="uid://dq205al5riyau" path="res://Interactables/Stele/石碑文字/62.png" id="77_lr1g7"]
+[ext_resource type="Texture2D" uid="uid://bddgp1no8oqan" path="res://Interactables/Stele/石碑文字/63.png" id="78_jnsuj"]
+[ext_resource type="Texture2D" uid="uid://dpw3e2tujusyj" path="res://Interactables/Stele/石碑文字/64.png" id="79_uqjyk"]
+[ext_resource type="Texture2D" uid="uid://ctffecofq8uwl" path="res://Interactables/Stele/石碑文字/65.png" id="80_v2qho"]
+[ext_resource type="Texture2D" uid="uid://bmlyfkm7vixw3" path="res://Interactables/Stele/石碑文字/66.png" id="81_km6hf"]
+[ext_resource type="Texture2D" uid="uid://7fqn17bmkp1a" path="res://Interactables/Stele/石碑文字/67.png" id="82_aq1ms"]
+[ext_resource type="Texture2D" uid="uid://dbakxvd0353ag" path="res://Interactables/Stele/石碑文字/68.png" id="83_rge5r"]
+[ext_resource type="Texture2D" uid="uid://bklr2i6sau72a" path="res://Interactables/Stele/石碑文字/69.png" id="84_wh6pp"]
+[ext_resource type="Texture2D" uid="uid://d32xaal68oqmn" path="res://Interactables/Stele/石碑文字/70.png" id="85_vbjwa"]
+[ext_resource type="Texture2D" uid="uid://jlo435wv2vea" path="res://Interactables/Stele/石碑文字/71.png" id="86_i01um"]
+[ext_resource type="Texture2D" uid="uid://d3aj0nlvdx054" path="res://Interactables/Stele/石碑文字/72.png" id="87_jdyi4"]
+[ext_resource type="Texture2D" uid="uid://bvhkcypi5np1i" path="res://Interactables/Stele/石碑文字/73.png" id="88_0wcmy"]
+[ext_resource type="Texture2D" uid="uid://cdooedy0ty0ic" path="res://Interactables/Stele/石碑文字/74.png" id="89_xydmj"]
+[ext_resource type="Texture2D" uid="uid://ceg6le5cy6dwy" path="res://Interactables/Stele/石碑文字/75.png" id="90_aunb4"]
+[ext_resource type="Texture2D" uid="uid://b4odryfbooet2" path="res://Interactables/Stele/石碑文字/76.png" id="91_ih3je"]
+[ext_resource type="Texture2D" uid="uid://b1n0e34wse0m6" path="res://Interactables/Stele/石碑文字/77.png" id="92_0o8v6"]
+[ext_resource type="Texture2D" uid="uid://bchuq3jhcm8i4" path="res://Interactables/Stele/石碑文字/78.png" id="93_ltp2m"]
+[ext_resource type="Texture2D" uid="uid://plmpllj15k5a" path="res://Interactables/Stele/石碑文字/79.png" id="94_apsh1"]
+[ext_resource type="Texture2D" uid="uid://6qlhpfwag26v" path="res://Interactables/Stele/石碑文字/80.png" id="95_8kuh8"]
+[ext_resource type="Texture2D" uid="uid://fonp60pj8tbw" path="res://Interactables/Stele/石碑文字/81.png" id="96_7ksig"]
+[ext_resource type="Texture2D" uid="uid://bhxdtemjo1qw3" path="res://Interactables/Stele/石碑文字/82.png" id="97_44kn3"]
+[ext_resource type="Texture2D" uid="uid://cpistargtgi5x" path="res://Interactables/Stele/石碑文字/83.png" id="98_75052"]
+[ext_resource type="Texture2D" uid="uid://c1k3k7hxkimfd" path="res://Interactables/Stele/石碑文字/84.png" id="99_7kftl"]
+[ext_resource type="Texture2D" uid="uid://bmmuohf7577e" path="res://Interactables/Stele/石碑文字/85.png" id="100_572ld"]
+[ext_resource type="Texture2D" uid="uid://34eye3dgsdqe" path="res://Interactables/Stele/石碑文字/86.png" id="101_fy2go"]
+[ext_resource type="Texture2D" uid="uid://7msryjlgltyy" path="res://Interactables/Stele/石碑文字/87.png" id="102_n316e"]
+[ext_resource type="Texture2D" uid="uid://8ckjlxdebsrj" path="res://Interactables/Stele/石碑文字/88.png" id="103_hi8yl"]
+[ext_resource type="Texture2D" uid="uid://bvfhjc3iam5mm" path="res://Interactables/Stele/石碑文字/89.png" id="104_p08dq"]
+[ext_resource type="Texture2D" uid="uid://twranhus0eho" path="res://Interactables/Stele/石碑文字/90.png" id="105_f0r7t"]
+[ext_resource type="Texture2D" uid="uid://dt30mrdmm5iny" path="res://Interactables/Stele/石碑文字/91.png" id="106_mw5tw"]
+[ext_resource type="Texture2D" uid="uid://dcfksdohfrpa2" path="res://Interactables/Stele/石碑文字/92.png" id="107_gy80s"]
+[ext_resource type="Texture2D" uid="uid://7ovb1sysm4hw" path="res://Interactables/Stele/石碑文字/93.png" id="108_qltxr"]
+[ext_resource type="Texture2D" uid="uid://dtrr1a746l6hk" path="res://Interactables/Stele/石碑文字/94.png" id="109_rfw3w"]
+[ext_resource type="Texture2D" uid="uid://ejr0b7ovo64w" path="res://Interactables/Stele/石碑文字/95.png" id="110_lcxkm"]
+[ext_resource type="Texture2D" uid="uid://chx4yhtdtkyj0" path="res://Interactables/Stele/石碑文字/96.png" id="111_d7fwh"]
+[ext_resource type="Texture2D" uid="uid://44hhrmswnexk" path="res://Interactables/Stele/石碑文字/97.png" id="112_rwygm"]
+[ext_resource type="Texture2D" uid="uid://bmrmlxhor56qc" path="res://Interactables/Stele/石碑文字/98.png" id="113_ffysf"]
+[ext_resource type="Texture2D" uid="uid://blem3vqn8jig6" path="res://Interactables/Stele/石碑文字/99.png" id="114_jwgcu"]
+[ext_resource type="Texture2D" uid="uid://c37lgvh0st40k" path="res://Interactables/Stele/石碑文字/100.png" id="115_brmvk"]
+[ext_resource type="Texture2D" uid="uid://brftwio2lmvoc" path="res://Interactables/Stele/石碑文字/101.png" id="116_edwuc"]
+[ext_resource type="Texture2D" uid="uid://cbw3nnqdxgfik" path="res://Interactables/Stele/石碑文字/102.png" id="117_p48a3"]
+[ext_resource type="Texture2D" uid="uid://deo2c04r8pqqx" path="res://Interactables/Stele/石碑文字/103.png" id="118_aa2p6"]
+[ext_resource type="Texture2D" uid="uid://dy87l5dsswrfk" path="res://Interactables/Stele/石碑文字/104.png" id="119_tfgdg"]
+[ext_resource type="Texture2D" uid="uid://coy5x1l2piref" path="res://Interactables/Stele/石碑文字/105.png" id="120_qprx2"]
+[ext_resource type="Texture2D" uid="uid://ir2uudlhafrx" path="res://Interactables/Stele/石碑文字/106.png" id="121_56d4l"]
+[ext_resource type="Texture2D" uid="uid://cmpmyvdqyj75v" path="res://Interactables/Stele/石碑文字/107.png" id="122_cd0xx"]
+[ext_resource type="Texture2D" uid="uid://b3gh5icjpw2jk" path="res://Interactables/Stele/石碑文字/108.png" id="123_q6q15"]
+[ext_resource type="Texture2D" uid="uid://bignsa6f8dili" path="res://Interactables/Stele/石碑文字/109.png" id="124_q8c70"]
+[ext_resource type="Texture2D" uid="uid://dibmsa3xysibe" path="res://Interactables/Stele/石碑文字/110.png" id="125_hl7sy"]
+[ext_resource type="Texture2D" uid="uid://m120rj1mwbuh" path="res://Interactables/Stele/石碑文字/111.png" id="126_64bi3"]
+[ext_resource type="Texture2D" uid="uid://f4lsamje214y" path="res://Interactables/Stele/石碑文字/112.png" id="127_mm2cu"]
+[ext_resource type="Texture2D" uid="uid://clmoj3n313205" path="res://Interactables/Stele/石碑文字/113.png" id="128_y3nx2"]
+[ext_resource type="Texture2D" uid="uid://bnh6dl1efk0bg" path="res://Interactables/Stele/石碑文字/114.png" id="129_3381e"]
+[ext_resource type="Texture2D" uid="uid://dmrmii1di5y8n" path="res://Interactables/Stele/石碑文字/115.png" id="130_p13g8"]
+[ext_resource type="Texture2D" uid="uid://cvkskxi2l5l11" path="res://Interactables/Stele/石碑文字/116.png" id="131_ricax"]
+[ext_resource type="Texture2D" uid="uid://coqox586mo5k4" path="res://Interactables/Stele/石碑文字/117.png" id="132_s8mg2"]
+[ext_resource type="Texture2D" uid="uid://bnqp6ohmlrdfe" path="res://Interactables/Stele/石碑文字/118.png" id="133_idrwy"]
+[ext_resource type="Texture2D" uid="uid://dskd6p04tjheh" path="res://Interactables/Stele/石碑文字/119.png" id="134_skofl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5mbxw"]
 texture = ExtResource("5_3cu4p")
@@ -27,6 +150,371 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_v6kll"]
 sources/0 = SubResource("TileSetAtlasSource_5mbxw")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eubwp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_k4la3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_d4735")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_o1q0e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_e41u4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_8japh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_gl0tj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_3k3tx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_esuww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_6t2ew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_d4wac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ymvxl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_a1edh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_jxqv8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_2vh53")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_lgy44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_nex20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_ok128")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_0axln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_rtf8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_dlcaj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_73xgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_opjdc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_ffysf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_jwgcu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_brmvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_edwuc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_p48a3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_aa2p6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_tfgdg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_qprx2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_56d4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_cd0xx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_q6q15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_q8c70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_hl7sy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_64bi3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_mm2cu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_y3nx2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_3381e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_p13g8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_ricax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_s8mg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_idrwy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_skofl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_emnbx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_fkbxl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_g153c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_c4qvi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_jk522")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_qjrwg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_l16hc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_dhapm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_lcfib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_eqixv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_ltrev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_l6l52")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_x01h3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_db1nh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_ehi1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_ouj7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_mtnsq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_lr1g7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_jnsuj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_uqjyk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_v2qho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_km6hf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_aq1ms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_rge5r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_wh6pp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_vbjwa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_i01um")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_jdyi4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_0wcmy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_xydmj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_aunb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_ih3je")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_0o8v6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_ltp2m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_apsh1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_8kuh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_7ksig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_44kn3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_75052")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_7kftl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_572ld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_fy2go")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_n316e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_hi8yl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_p08dq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_f0r7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_mw5tw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_gy80s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_qltxr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_rfw3w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_lcxkm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_d7fwh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_rwygm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_ffysf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_jwgcu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_brmvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_edwuc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_p48a3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_aa2p6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_tfgdg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_qprx2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_56d4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_cd0xx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_q6q15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_q8c70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_hl7sy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_64bi3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("127_mm2cu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_y3nx2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("129_3381e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("130_p13g8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_ricax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("132_s8mg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("133_idrwy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("134_skofl")
+}],
+"loop": false,
+"name": &"default",
+"speed": 16.0
+}]
 
 [node name="SeisomgraphLevel" type="Node2D"]
 y_sort_enabled = true
@@ -247,3 +735,39 @@ autoplay = true
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("11_qmxcs")]
 position = Vector2(45, 448)
+
+[node name="Stele" parent="." instance=ExtResource("12_qmxcs")]
+y_sort_enabled = true
+position = Vector2(2128, 288)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("13_lf1h6")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 2686.0
+offset_bottom = 1511.0
+texture = ExtResource("14_27pnt")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(832, 491)
+scale = Vector2(3.42857, 2.79868)
+texture = ExtResource("15_16y6p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(840, 612)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_eubwp")
+frame = 118
+frame_progress = 1.0
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 1433.0
+offset_top = 11.0
+offset_right = 1562.0
+offset_bottom = 90.0
+text = "查看完毕按~退出"
+vertical_alignment = 1
+
+[connection signal="visibility_changed" from="CanvasLayer" to="CanvasLayer" method="_on_visibility_changed"]

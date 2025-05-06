@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5yxcw14utr4h"]
+
+[ext_resource type="Script" uid="uid://jvqsvdy72vag" path="res://Interactables/Stele/stele.gd" id="1_i32jk"]
+[ext_resource type="Texture2D" uid="uid://cwqabutnrws32" path="res://Interactables/Stele/stele.png" id="1_r7kuf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6pwj"]
+size = Vector2(82, 66)
+
+[node name="Stele" type="Node2D"]
+script = ExtResource("1_i32jk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -48)
+texture = ExtResource("1_r7kuf")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(28, -6, 11, 3, -24, -12, -10, -22)
+
+[node name="E" type="Area2D" parent="."]
+position = Vector2(0, -11)
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="E"]
+shape = SubResource("RectangleShape2D_l6pwj")
+debug_color = Color(2.16588e-06, 0.635648, 0.414643, 0.42)

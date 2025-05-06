@@ -4,6 +4,7 @@ class_name PlayerCamera extends Camera2D
 @export_range( 0, 1, 0.05, "or_greater" ) var shake_power : float = 0.5 #Overall Strength of shake
 @export var shake_max_offset : float = 5.
 @export var shake_decay : float = 1.0
+@export var is_camera_enabled: bool = true
 
 var shake_trauma : float = 0.0
 
@@ -15,19 +16,33 @@ func _ready():
 	pass # Replace with function body.
 
 
+# func _physics_process(delta: float) -> void:
+# 	# 获取屏幕中心位置
+# 	var screen_center = Vector2(get_screen_center_position())
+	
+# 	# 设置相机位置为玩家位置减去屏幕中心偏移量
+# 	self.position = $"..".position - screen_center
+	
+# 	# 处理相机抖动
+# 	if shake_trauma > 0:
+# 		shake_trauma = max( shake_trauma - shake_decay * delta, 0 )
+# 		shake()
+
 func _physics_process(delta: float) -> void:
-	# 获取屏幕中心位置
-	var screen_center = Vector2(get_screen_center_position())
-	
-	# 设置相机位置为玩家位置减去屏幕中心偏移量
-	self.position = $"..".position - screen_center
-	
-	# 处理相机抖动
-	if shake_trauma > 0:
-		shake_trauma = max( shake_trauma - shake_decay * delta, 0 )
-		shake()
-
-
+	if is_camera_enabled:
+		# 获取屏幕中心位置
+		var screen_center = Vector2(get_screen_center_position())
+		
+		# 设置相机位置为玩家位置减去屏幕中心偏移量
+		self.position = $"..".position - screen_center
+		
+		# 处理相机抖动
+		if shake_trauma > 0:
+			shake_trauma = max(shake_trauma - shake_decay * delta, 0)
+			shake()
+	else:
+		# 相机不更新，保持静止
+		pass
 
 func add_camera_shake( val : float ) -> void:
 	shake_trauma = val

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddb0pycehgex5"]
+
+[ext_resource type="Texture2D" uid="uid://0tdmjuwqbxu3" path="res://Level/Game01/background2.png" id="1_r7oyo"]
+[ext_resource type="Texture2D" uid="uid://bj3sfoo32gcq" path="res://Interactables/Stele/steleUI.png" id="2_0s113"]
+
+[node name="SteleUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 2686.0
+offset_bottom = 1511.0
+texture = ExtResource("1_r7oyo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(832, 475)
+scale = Vector2(3.42857, 2.79868)
+texture = ExtResource("2_0s113")

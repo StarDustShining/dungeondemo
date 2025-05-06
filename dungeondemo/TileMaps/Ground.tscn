@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://lxx60xgoecea"]
+[gd_scene load_steps=15 format=3 uid="uid://lxx60xgoecea"]
 
 [ext_resource type="Texture2D" uid="uid://1jmt0nx75ogc" path="res://TileMaps/mainlevbuild.png" id="1_ax8nb"]
 [ext_resource type="Texture2D" uid="uid://df7drsbhkanak" path="res://TileMaps/decorative.png" id="1_r6ki5"]
 [ext_resource type="Texture2D" uid="uid://jgin0ctn0a1a" path="res://TileMaps/candle&torch.png" id="2_n8cvf"]
+[ext_resource type="Texture2D" uid="uid://cgisq3adqplsw" path="res://TileMaps/TX Props.png" id="4_i1hoe"]
 [ext_resource type="Texture2D" uid="uid://cu0ef0wt470ry" path="res://TileMaps/4.png" id="4_x1di5"]
 [ext_resource type="Script" uid="uid://tn0utovo7beg" path="res://TileMaps/script/LevelTileMap.gd" id="4_ys7du"]
 [ext_resource type="Texture2D" uid="uid://dyal2vxnivk2j" path="res://TileMaps/Dungeon_DecorationsC.png" id="5_xop88"]
@@ -1547,6 +1548,12 @@ texture = ExtResource("1_ax8nb")
 23:11/0 = 0
 23:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 1, -8, 1)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_an4rs"]
+texture = ExtResource("4_i1hoe")
+texture_region_size = Vector2i(32, 16)
+7:7/size_in_atlas = Vector2i(1, 2)
+7:7/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3r45m"]
 texture = ExtResource("4_x1di5")
 texture_region_size = Vector2i(32, 32)
@@ -1650,6 +1657,7 @@ sources/0 = SubResource("TileSetAtlasSource_x88gw")
 sources/1 = SubResource("TileSetAtlasSource_ywuu3")
 sources/4 = SubResource("TileSetAtlasSource_3r45m")
 sources/5 = SubResource("TileSetAtlasSource_i1hoe")
+sources/3 = SubResource("TileSetAtlasSource_an4rs")
 
 [node name="Ground" type="TileMap"]
 y_sort_enabled = true

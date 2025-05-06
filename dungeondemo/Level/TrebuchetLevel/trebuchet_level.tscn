@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://ci3m03r376tks" path="res://Items/item_pickup/ItemPickup.tscn" id="15_k2k3l"]
 [ext_resource type="Resource" uid="uid://cdxk3v0er1l3l" path="res://Items/scroll.tres" id="16_6jdpv"]
 [ext_resource type="Resource" uid="uid://c0xo2gupsdwli" path="res://Items/potion.tres" id="16_xaa18"]
-[ext_resource type="Texture2D" uid="uid://dowhnpjixht0k" path="res://Items/sprites/oldrolltest.png" id="18_58ag8"]
+[ext_resource type="Texture2D" uid="uid://dy8kh3rkvsqss" path="res://Items/sprites/oldroll.png" id="18_58ag8"]
 [ext_resource type="Resource" uid="uid://cyu0qey3l78fc" path="res://Items/oldroll.tres" id="19_58ag8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1a5m"]
@@ -121,15 +121,15 @@ shape = SubResource("RectangleShape2D_k2k3l")
 position = Vector2(784, 1256)
 
 [node name="CanvasLayerTestItem" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayerTestItem"]
-visible = false
-offset_left = 440.0
+offset_left = 378.0
 offset_top = 90.0
-offset_right = 1160.0
+offset_right = 1222.0
 offset_bottom = 810.0
 texture = SubResource("AtlasTexture_58ag8")
-stretch_mode = 3
+expand_mode = 2
 
 [node name="ItemPickupTest" parent="." instance=ExtResource("15_k2k3l")]
 position = Vector2(1174, 989)
