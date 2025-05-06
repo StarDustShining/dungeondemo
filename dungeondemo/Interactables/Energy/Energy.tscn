@@ -46,9 +46,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjcef"]
-size = Vector2(135, 107)
-
 [sub_resource type="Animation" id="Animation_7f2fe"]
 length = 0.001
 tracks/0/type = "value"
@@ -139,6 +136,9 @@ _data = {
 &"show_hint": SubResource("Animation_317s1")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6bq4"]
+size = Vector2(112, 80)
+
 [node name="Energy" type="Node2D"]
 script = ExtResource("1_f6bq4")
 
@@ -148,14 +148,6 @@ scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_cufj2")
 autoplay = "default"
 frame_progress = 0.776603
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 32
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_rjcef")
-debug_color = Color(2.16588e-06, 0.635648, 0.414643, 0.42)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -176,3 +168,8 @@ theme_override_font_sizes/font_size = 14
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_f6bq4")
