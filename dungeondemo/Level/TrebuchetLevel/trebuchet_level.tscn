@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://pmhoshnwreyi"]
+[gd_scene load_steps=24 format=3 uid="uid://pmhoshnwreyi"]
 
 [ext_resource type="Script" uid="uid://wrg28cepy71e" path="res://Level/TrebuchetLevel/trebuchet_level.gd" id="1_k2k3l"]
 [ext_resource type="PackedScene" uid="uid://lxx60xgoecea" path="res://TileMaps/Ground.tscn" id="2_f6t8b"]
@@ -19,6 +19,7 @@
 [ext_resource type="Resource" uid="uid://c0xo2gupsdwli" path="res://Items/potion.tres" id="16_xaa18"]
 [ext_resource type="Texture2D" uid="uid://dy8kh3rkvsqss" path="res://Items/sprites/oldroll.png" id="18_58ag8"]
 [ext_resource type="Resource" uid="uid://cyu0qey3l78fc" path="res://Items/oldroll.tres" id="19_58ag8"]
+[ext_resource type="PackedScene" uid="uid://clh7iubr06c8l" path="res://Interactables/Energy/Energy.tscn" id="20_t61kk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1a5m"]
 size = Vector2(15, 47.2914)
@@ -134,3 +135,6 @@ expand_mode = 2
 [node name="ItemPickupTest" parent="." instance=ExtResource("15_k2k3l")]
 position = Vector2(1174, 989)
 item_data = ExtResource("19_58ag8")
+
+[node name="Energy" parent="." instance=ExtResource("20_t61kk")]
+position = Vector2(2104, 959)
