@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://ckrtpeusv0a8g" path="res://Interactables/Chest/chest.tscn" id="15_kb5pn"]
 [ext_resource type="Resource" uid="uid://c0xo2gupsdwli" path="res://Items/potion.tres" id="16_8l1uw"]
 [ext_resource type="Script" uid="uid://dukjvusa3sqlh" path="res://Level/SeisomgraphLevel/canvas_layer.gd" id="17_857dv"]
-[ext_resource type="Texture2D" uid="uid://dy8kh3rkvsqss" path="res://Items/sprites/oldroll.png" id="18_v0wck"]
+[ext_resource type="Texture2D" uid="uid://7hdw1h817yuw" path="res://Items/sprites/rollshenkuo.png" id="18_857dv"]
 [ext_resource type="PackedScene" uid="uid://ci3m03r376tks" path="res://Items/item_pickup/ItemPickup.tscn" id="19_2nj30"]
 [ext_resource type="Resource" uid="uid://cyu0qey3l78fc" path="res://Items/oldroll.tres" id="20_7enj6"]
 
@@ -1444,7 +1444,7 @@ shader_parameter/softness = 0.1
 size = Vector2(63.0001, 237.998)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b0pi7"]
-atlas = ExtResource("18_v0wck")
+atlas = ExtResource("18_857dv")
 
 [node name="LabyrinthLevel" type="Node2D"]
 y_sort_enabled = true
@@ -1635,10 +1635,10 @@ item_data = ExtResource("16_8l1uw")
 position = Vector2(1600, 195)
 
 [node name="CanvasLayerTestItem" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("17_857dv")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayerTestItem"]
+visible = false
 offset_left = 378.0
 offset_top = 90.0
 offset_right = 1222.0

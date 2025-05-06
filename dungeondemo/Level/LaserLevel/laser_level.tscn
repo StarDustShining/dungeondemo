@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://blcy1w5cxc0fa"]
+[gd_scene load_steps=16 format=3 uid="uid://blcy1w5cxc0fa"]
 
 [ext_resource type="Script" uid="uid://crp8vqsm8autk" path="res://Level/LaserLevel/laser_level.gd" id="1_ee0xp"]
 [ext_resource type="PackedScene" uid="uid://lxx60xgoecea" path="res://TileMaps/Ground.tscn" id="2_y4jql"]
@@ -11,6 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://ciju1j1ygnws2" path="res://Level/level_transition.tscn" id="10_ocd5v"]
 [ext_resource type="VideoStream" uid="uid://s0sismpmn8i3" path="res://Level/LaserLevel/齿轮转动.ogv" id="10_tt5wj"]
 [ext_resource type="AudioStream" uid="uid://dp0l1vedeylr1" path="res://Music/sacred garden.mp3" id="11_tt5wj"]
+[ext_resource type="Texture2D" uid="uid://c2ufuhm8rmpoa" path="res://Items/sprites/rollgx2.png" id="12_wo74f"]
+[ext_resource type="PackedScene" uid="uid://ci3m03r376tks" path="res://Items/item_pickup/ItemPickup.tscn" id="13_772xm"]
+[ext_resource type="Resource" uid="uid://cyu0qey3l78fc" path="res://Items/oldroll.tres" id="14_qbywj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qksmk"]
+atlas = ExtResource("12_wo74f")
 
 [node name="LaserLevel" type="Node2D"]
 y_sort_enabled = true
@@ -112,3 +118,18 @@ autoplay = true
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("5_tt5wj")]
 position = Vector2(400, 80)
+
+[node name="CanvasLayerTestItem" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayerTestItem"]
+visible = false
+offset_left = 378.0
+offset_top = 90.0
+offset_right = 1222.0
+offset_bottom = 810.0
+texture = SubResource("AtlasTexture_qksmk")
+expand_mode = 2
+
+[node name="ItemPickupTest" parent="." instance=ExtResource("13_772xm")]
+position = Vector2(461, 271)
+item_data = ExtResource("14_qbywj")

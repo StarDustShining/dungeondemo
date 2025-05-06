@@ -27,6 +27,16 @@ func _ready() -> void:
 	video_player.finished.connect(_on_video_player_finished)
 
 
+#场景挂载道具，其他关卡添加此部分即可（注意更改节点名字），目前一个场景内只能放一个卷轴
+func _physics_process(delta: float) -> void:
+	var center_image := $CanvasLayerTestItem/TextureRect
+	var backpack_menu := BackpackMenu
+	if backpack_menu.get_all_slots():
+		for slot in backpack_menu.get_all_slots():
+			slot.center_image = center_image
+
+
+
 func _on_Laser_receive_area_detected():
 	# 检查动画是否已经播放过
 	if not stone_door_opened:
