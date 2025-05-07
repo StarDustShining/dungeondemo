@@ -83,7 +83,6 @@ func on_splash_finished() -> void:
 		audio_stream_player.stream = music
 		audio_stream_player.play()
 
-
 func _on_button_pressed() -> void:
 	video_player.stop()
 	video_player.visible = false

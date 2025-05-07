@@ -68,7 +68,7 @@ position = Vector2(920, 275)
 scale = Vector2(0.6, 0.6)
 
 [node name="Mozi" parent="." instance=ExtResource("9_f5q44")]
-position = Vector2(661, 694)
+position = Vector2(136, 433)
 
 [node name="LevelTransition" parent="." instance=ExtResource("10_ocd5v")]
 position = Vector2(400, 16)

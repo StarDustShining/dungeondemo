@@ -1,6 +1,6 @@
 class_name Mozi extends CharacterBody2D
 
-@onready var interact_area: Area2D = $Area2D
+@onready var interact_area: Area2D = $E
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
