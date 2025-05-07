@@ -11,8 +11,14 @@ const START_LEVEL : String = "res://Level/TrebuchetLevel/trebuchet_level.tscn"
 @onready var button_continue: Button = $CanvasLayer/Control/ButtonContinue
 @onready var video_player: VideoStreamPlayer = $CanvasLayer/Control/VideoStreamPlayer
 @onready var splash_player: VideoStreamPlayer = $CanvasLayer/Control/SplashPlayer
+@onready var button: Button = $CanvasLayer/Control/VideoStreamPlayer/Button
+
+
 
 func _ready() -> void:
+	# 启用输入处理
+	set_process_input(true)
+
 	get_tree().paused = true
 	PlayerManager.player.visible=false
 	PlayerHud.visible = false
@@ -25,7 +31,8 @@ func _ready() -> void:
 	# 播放 splash_player
 	splash_player.play()
 	splash_player.finished.connect(on_splash_finished)
-	
+
+
 func setup_title_screen() -> void:
 	button_new.pressed.connect( start_game )
 	button_continue.pressed.connect( load_game )
@@ -37,6 +44,9 @@ func setup_title_screen() -> void:
 func start_game() -> void:
 	print("start!")
 	play_audio(button_press_audio)
+	button.visible=true
+	button_new.disabled=true
+	button_continue.disabled=true
 	video_player.play()
 
 func exit_title_screen() -> void:
@@ -54,6 +64,7 @@ func play_audio( _a : AudioStream ) -> void:
 	audio_stream_player.play()
 
 func on_video_finished() -> void:
+	button.visible=false
 	LevelManager.load_new_level(START_LEVEL, "", Vector2.ZERO)
 	exit_title_screen()
 
@@ -71,3 +82,10 @@ func on_splash_finished() -> void:
 	if music:
 		audio_stream_player.stream = music
 		audio_stream_player.play()
+
+
+func _on_button_pressed() -> void:
+	video_player.stop()
+	video_player.visible = false
+	button.visible = false
+	on_video_finished()

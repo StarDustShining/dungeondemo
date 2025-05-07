@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://jnomgop3jc72"]
+[gd_scene load_steps=63 format=3 uid="uid://jnomgop3jc72"]
 
 [ext_resource type="Script" uid="uid://du0wksg8wruyo" path="res://GUI/TitleScreen/title_screen.gd" id="1_itps4"]
 [ext_resource type="Texture2D" uid="uid://cm1lw6as7r476" path="res://GUI/TitleScreen/标题画面/Image1.jpg" id="2_sh2vs"]
@@ -57,8 +57,9 @@
 [ext_resource type="StyleBox" uid="uid://cir4e5iigt4pu" path="res://GUI/UI/Theme/TitleScreen/title_normal_button.tres" id="55_xdwtx"]
 [ext_resource type="Texture2D" uid="uid://bau75bj58us87" path="res://GUI/UI/Texture/panel-border-010.png" id="56_7ios8"]
 [ext_resource type="Texture2D" uid="uid://ckd5mbl65cqxs" path="res://GUI/TitleScreen/游戏标题.png" id="57_7ios8"]
-[ext_resource type="VideoStream" uid="uid://cm1e2mtlxm2ue" path="res://GUI/TitleScreen/进入画面/进入游戏(1).ogv" id="58_7ios8"]
+[ext_resource type="VideoStream" uid="uid://d1dqj2kngq5u" path="res://GUI/TitleScreen/进入画面/剧情引入(1).ogv" id="58_7ios8"]
 [ext_resource type="VideoStream" uid="uid://owyt565s1mou" path="res://GUI/TitleScreen/splash.ogv" id="58_xdwtx"]
+[ext_resource type="Theme" uid="uid://bsjmjg1v76kin" path="res://GUI/UI/Theme/global_theme.tres" id="59_siwej"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_32obj"]
 animations = [{
@@ -350,6 +351,21 @@ mouse_filter = 2
 stream = ExtResource("58_7ios8")
 expand = true
 
+[node name="Button" type="Button" parent="CanvasLayer/Control/VideoStreamPlayer"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -312.0
+offset_top = 48.0
+offset_right = 96.0
+offset_bottom = 139.0
+grow_horizontal = 0
+scale = Vector2(0.633088, 0.633088)
+theme = ExtResource("59_siwej")
+text = "点击此按钮跳过剧情"
+
 [node name="SplashPlayer" type="VideoStreamPlayer" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 15
@@ -364,3 +380,4 @@ expand = true
 
 [connection signal="pressed" from="CanvasLayer/Control/ButtonNew" to="." method="start_game"]
 [connection signal="pressed" from="CanvasLayer/Control/ButtonContinue" to="." method="load_game"]
+[connection signal="pressed" from="CanvasLayer/Control/VideoStreamPlayer/Button" to="." method="_on_button_pressed"]
