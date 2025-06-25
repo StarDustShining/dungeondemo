@@ -1,18 +1,13 @@
-[gd_scene load_steps=110 format=3 uid="uid://b138fa4ked6ko"]
+[gd_scene load_steps=109 format=3 uid="uid://b138fa4ked6ko"]
 
-[ext_resource type="Texture2D" uid="uid://bdhlcalo5kndn" path="res://Level/Game03/编钟背景（模糊）.png" id="1_xjrih"]
-[ext_resource type="Texture2D" uid="uid://b6lckppms6r7c" path="res://Level/Game03/编钟.png" id="2_r4awa"]
+[ext_resource type="Script" uid="uid://0ndawy65yqpd" path="res://Level/Game03/game_03.gd" id="1_4tagl"]
+[ext_resource type="Texture2D" uid="uid://bdhlcalo5kndn" path="res://Level/Game03/elements/编钟背景（模糊）.png" id="1_xjrih"]
+[ext_resource type="Texture2D" uid="uid://b6lckppms6r7c" path="res://Level/Game03/elements/编钟.png" id="2_r4awa"]
 [ext_resource type="Texture2D" uid="uid://djlgslo2t145e" path="res://Level/Game03/output/split-images/1.png" id="3_b1jwp"]
-[ext_resource type="Texture2D" uid="uid://kux8b360vbhl" path="res://Level/Game03/亮X.png" id="3_sgtcr"]
 [ext_resource type="Texture2D" uid="uid://1b5hxrx8ymog" path="res://Level/Game03/output/split-images/2.png" id="4_0iqm8"]
-[ext_resource type="Texture2D" uid="uid://5h13d7xextvp" path="res://Level/Game03/亮V.png" id="4_6i7g7"]
-[ext_resource type="Texture2D" uid="uid://d0d3xkg8yylox" path="res://Level/Game03/亮C.png" id="5_8wh1p"]
 [ext_resource type="Texture2D" uid="uid://bjiv6c4k0xj5b" path="res://Level/Game03/output/split-images/3.png" id="5_lwpqq"]
 [ext_resource type="Texture2D" uid="uid://dxk3fmka7pdm7" path="res://Level/Game03/output/split-images/4.png" id="6_0owrb"]
-[ext_resource type="Texture2D" uid="uid://s4gbvq2jeutp" path="res://Level/Game03/亮B.png" id="6_6f7me"]
 [ext_resource type="Texture2D" uid="uid://d4h58itepg6kp" path="res://Level/Game03/output/split-images/5.png" id="7_0basq"]
-[ext_resource type="Texture2D" uid="uid://fkis1k4ts4r7" path="res://Level/Game03/亮N.png" id="7_ppfbm"]
-[ext_resource type="Texture2D" uid="uid://dveqhookcnec2" path="res://Level/Game03/亮M.png" id="8_5gu1w"]
 [ext_resource type="Texture2D" uid="uid://b5o8i5w1illr2" path="res://Level/Game03/output/split-images/6.png" id="8_yovp4"]
 [ext_resource type="Texture2D" uid="uid://bnpf1utljqp0b" path="res://Level/Game03/output/split-images/7.png" id="9_tcbun"]
 [ext_resource type="Texture2D" uid="uid://y1b4rai808ht" path="res://Level/Game03/output/split-images/8.png" id="10_w642r"]
@@ -108,6 +103,9 @@
 [ext_resource type="Texture2D" uid="uid://cas5fc4imhyd8" path="res://Level/Game03/output/split-images/98.png" id="100_dtyof"]
 [ext_resource type="Texture2D" uid="uid://cmrrw8kha7hvb" path="res://Level/Game03/output/split-images/99.png" id="101_gbs2m"]
 [ext_resource type="Texture2D" uid="uid://cc2rxegaf3v7d" path="res://Level/Game03/output/split-images/100.png" id="102_oiv76"]
+[ext_resource type="PackedScene" uid="uid://rcl6ehdfjdqi" path="res://Level/Game03/KeyListener.tscn" id="103_epsaa"]
+[ext_resource type="PackedScene" uid="uid://cnja57sg6idse" path="res://Level/Game03/Score.tscn" id="105_vbglw"]
+[ext_resource type="AudioStream" uid="uid://s31dlkh0d14g" path="res://Level/Game03/编钟演奏.mp3" id="106_xeqtk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8ylm8"]
 animations = [{
@@ -417,14 +415,22 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="Game03" type="Node2D"]
+[sub_resource type="Environment" id="Environment_vbglw"]
+background_mode = 3
+glow_enabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Game03" type="Node2D"]
+script = ExtResource("1_4tagl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(800, 450)
+
+[node name="Background" type="Sprite2D" parent="."]
 position = Vector2(800, 448)
 scale = Vector2(0.835792, 0.835792)
 texture = ExtResource("1_xjrih")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Chime" type="Sprite2D" parent="."]
 position = Vector2(800, 576)
 scale = Vector2(5, 5)
 texture = ExtResource("2_r4awa")
@@ -436,77 +442,104 @@ scale = Vector2(5, 5)
 [node name="Orbit1" type="AnimatedSprite2D" parent="Orbit"]
 modulate = Color(1, 1, 1, 0.584314)
 texture_filter = 1
-position = Vector2(-72, -21.9999)
-scale = Vector2(0.24, 0.2)
+position = Vector2(-72, -34.75)
+scale = Vector2(0.24, 0.235966)
 sprite_frames = SubResource("SpriteFrames_8ylm8")
-frame_progress = 0.021778
+autoplay = "default"
+frame = 89
+frame_progress = 0.79523
 
 [node name="Orbit2" type="AnimatedSprite2D" parent="Orbit"]
 modulate = Color(1, 1, 1, 0.584314)
 texture_filter = 1
-position = Vector2(-33.6, -21.9999)
-scale = Vector2(0.24, 0.2)
+position = Vector2(-33.6, -34.75)
+scale = Vector2(0.24, 0.235966)
 sprite_frames = SubResource("SpriteFrames_8ylm8")
-frame_progress = 0.287427
+autoplay = "default"
+frame = 96
+frame_progress = 0.893593
 
 [node name="Orbit3" type="AnimatedSprite2D" parent="Orbit"]
 modulate = Color(1, 1, 1, 0.584314)
 texture_filter = 1
-position = Vector2(1.59998, -21.9999)
-scale = Vector2(0.24, 0.2)
+position = Vector2(1.59998, -34.75)
+scale = Vector2(0.24, 0.235966)
 sprite_frames = SubResource("SpriteFrames_8ylm8")
-frame_progress = 0.590817
+autoplay = "default"
+frame = 32
+frame_progress = 0.434263
 
 [node name="Orbit4" type="AnimatedSprite2D" parent="Orbit"]
 modulate = Color(1, 1, 1, 0.584314)
 texture_filter = 1
-position = Vector2(32, -21.9999)
-scale = Vector2(0.24, 0.2)
+position = Vector2(32, -34.75)
+scale = Vector2(0.24, 0.235966)
 sprite_frames = SubResource("SpriteFrames_8ylm8")
-frame_progress = 0.690847
+autoplay = "default"
+frame = 27
+frame_progress = 0.206423
 
 [node name="Orbit5" type="AnimatedSprite2D" parent="Orbit"]
 modulate = Color(1, 1, 1, 0.584314)
 texture_filter = 1
-position = Vector2(59.2, -21.9999)
-scale = Vector2(0.24, 0.2)
+position = Vector2(59.2, -34.75)
+scale = Vector2(0.24, 0.235966)
 sprite_frames = SubResource("SpriteFrames_8ylm8")
-frame_progress = 0.676161
+autoplay = "default"
+frame = 24
+frame_progress = 0.0524673
 
 [node name="Orbit6" type="AnimatedSprite2D" parent="Orbit"]
 modulate = Color(1, 1, 1, 0.584314)
 texture_filter = 1
-position = Vector2(83.2, -21.9999)
-scale = Vector2(0.24, 0.2)
+position = Vector2(83.2, -34.75)
+scale = Vector2(0.24, 0.235966)
 sprite_frames = SubResource("SpriteFrames_8ylm8")
-frame_progress = 0.111634
+autoplay = "default"
+frame = 17
+frame_progress = 0.867667
 
-[node name="亮x" type="Sprite2D" parent="."]
+[node name="Letters" type="Node2D" parent="."]
+
+[node name="X" parent="Letters" instance=ExtResource("103_epsaa")]
 position = Vector2(440, 536)
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("3_sgtcr")
+key_name = "button_X"
 
-[node name="亮v" type="Sprite2D" parent="."]
-position = Vector2(808, 536)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("4_6i7g7")
-
-[node name="亮c" type="Sprite2D" parent="."]
-position = Vector2(632, 536)
+[node name="C" parent="Letters" instance=ExtResource("103_epsaa")]
+position = Vector2(634, 536)
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("5_8wh1p")
+frame = 13
+key_name = "button_C"
 
-[node name="亮b" type="Sprite2D" parent="."]
-position = Vector2(960, 536)
+[node name="V" parent="Letters" instance=ExtResource("103_epsaa")]
+position = Vector2(810, 536)
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("6_6f7me")
+frame = 14
+key_name = "button_V"
 
-[node name="亮n" type="Sprite2D" parent="."]
+[node name="B" parent="Letters" instance=ExtResource("103_epsaa")]
+position = Vector2(962, 536)
+scale = Vector2(0.8, 0.8)
+frame = 15
+key_name = "button_B"
+
+[node name="N" parent="Letters" instance=ExtResource("103_epsaa")]
 position = Vector2(1096, 536)
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("7_ppfbm")
+scale = Vector2(0.8, 0.8)
+frame = 16
+key_name = "button_N"
 
-[node name="亮m" type="Sprite2D" parent="."]
+[node name="M" parent="Letters" instance=ExtResource("103_epsaa")]
 position = Vector2(1216, 536)
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("8_5gu1w")
+scale = Vector2(0.8, 0.8)
+frame = 17
+key_name = "button_M"
+
+[node name="Score" parent="." instance=ExtResource("105_vbglw")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vbglw")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("106_xeqtk")

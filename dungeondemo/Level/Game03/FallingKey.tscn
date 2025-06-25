@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://buieyia3rr1rl"]
+
+[ext_resource type="Texture2D" uid="uid://cels4drolxnl0" path="res://Level/Game03/elements/sprite.png" id="1_3tb18"]
+[ext_resource type="Script" uid="uid://bkhcan4s5gt44" path="res://Level/Game03/script/falling_key.gd" id="2_hwytj"]
+
+[node name="FallingKey" type="Sprite2D"]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_3tb18")
+hframes = 6
+vframes = 3
+script = ExtResource("2_hwytj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="DestroyTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
