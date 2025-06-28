@@ -13,6 +13,7 @@ var ammo_weight = 0.0  # 炸药重量
 func _ready():
 	self.visible = true  # 隐藏小游戏
 	animated_sprite_2d.visible=false
+	player.get_node("Camera2D").enabled = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("退出"):
@@ -24,6 +25,7 @@ func end_minigame():
 	minigame_finished.emit()
 	var table = get_node("/root/TrebuchetLevel/Table")
 	table._on_game01_completed()
+	player.get_node("Camera2D").enabled = true
 	
 # 函数来更新每个瓶子实例化物品的数量
 func increment_charcoal_count():

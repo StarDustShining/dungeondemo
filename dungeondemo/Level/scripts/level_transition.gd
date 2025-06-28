@@ -59,7 +59,7 @@ func _player_entered(_p: Node2D) -> void:
 			#player_manager.set_health(_p.hp, _p.max_hp)
 			#print("保存玩家血量:", _p.hp, "/", _p.max_hp)
 	# 短暂等待，防止重复触发
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(1).timeout
 	LevelManager.load_new_level(level, target_transition_area, get_offset())
 	pass
 
@@ -99,16 +99,16 @@ func _update_area() -> void:
 	
 	if side == SIDE.TOP:
 		new_rect.x *= size
-		new_position.y -= 32
+		new_position.y -= 48
 	elif side == SIDE.BOTTOM:
 		new_rect.x *= size
-		new_position.y += 32
+		new_position.y += 48
 	elif side == SIDE.LEFT:
 		new_rect.y *= size
-		new_position.x -= 32
+		new_position.x -= 48
 	elif side == SIDE.RIGHT:
 		new_rect.y *= size
-		new_position.x += 32
+		new_position.x += 48
 	
 	if collision_shape == null:
 		collision_shape = get_node("CollisionShape2D")

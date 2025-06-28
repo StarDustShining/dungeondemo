@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://un2ulp6mmxq4"
+path="res://.godot/imported/Zhuzaiyu.dialogue-78e36b296571dd620d196d053c34f1d3.tres"
+
+[deps]
+
+source_file="res://NPC/Zhuzaiyu/Zhuzaiyu.dialogue"
+dest_files=["res://.godot/imported/Zhuzaiyu.dialogue-78e36b296571dd620d196d053c34f1d3.tres"]
+
+[params]
+
+defaults=true

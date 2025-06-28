@@ -17,7 +17,6 @@ func _process(delta):
 	
 	# Find out how long it takes for arrow to reach critical spot
 	if global_position.y > pass_threshold and not $Timer.is_stopped():
-		print($Timer.wait_time - $Timer.time_left)
 		$Timer.stop()
 		has_passed = true
 

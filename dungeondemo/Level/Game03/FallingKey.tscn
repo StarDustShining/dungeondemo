@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bkhcan4s5gt44" path="res://Level/Game03/script/falling_key.gd" id="2_hwytj"]
 
 [node name="FallingKey" type="Sprite2D"]
+process_mode = 3
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_3tb18")
 hframes = 6

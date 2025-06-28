@@ -48,3 +48,4 @@ func spawn_skeleton_monster():
 		# 将怪物添加到主场景
 		get_tree().current_scene.add_child(monster)
 		spawned_monsters.append(monster)  # 存储生成的怪物
+		

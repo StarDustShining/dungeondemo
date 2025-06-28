@@ -45,7 +45,7 @@ position = Vector2(2112, 442)
 scale = Vector2(0.6, 0.6)
 
 [node name="LevelTransition" parent="." instance=ExtResource("6_7fk3p")]
-position = Vector2(2647, 437)
+position = Vector2(2636, 448)
 level = "uid://bxlti7mm52e8c"
 side = 1
 
@@ -119,7 +119,7 @@ position = Vector2(4, 117)
 shape = SubResource("RectangleShape2D_k2k3l")
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("4_idfcu")]
-position = Vector2(784, 1256)
+position = Vector2(777, 1266)
 
 [node name="CanvasLayerTestItem" type="CanvasLayer" parent="."]
 

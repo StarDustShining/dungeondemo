@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpitpscrf1ka3"]
+
+[ext_resource type="Texture2D" uid="uid://b26s58f7ri0j1" path="res://Level/ChimeBellLevel/Sprites/图层 2.png" id="1_cahe0"]
+[ext_resource type="Script" uid="uid://b85q25ahwmiw3" path="res://Level/Game03/chime.gd" id="1_s5f5x"]
+[ext_resource type="Texture2D" uid="uid://cstvf8trrowci" path="res://Level/ChimeBellLevel/Sprites/图层 1.png" id="2_s5f5x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ydhyn"]
+size = Vector2(216, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vh8pj"]
+size = Vector2(82, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cncvm"]
+size = Vector2(110, 32)
+
+[node name="Chime" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(0, 8)
+script = ExtResource("1_s5f5x")
+
+[node name="Sprite" type="Node2D" parent="."]
+position = Vector2(0, -8)
+
+[node name="front" type="Sprite2D" parent="Sprite"]
+position = Vector2(0, -9.53674e-07)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_cahe0")
+offset = Vector2(-2.5, -68.8333)
+
+[node name="left" type="Sprite2D" parent="Sprite"]
+position = Vector2(-169.5, 38.7)
+texture = ExtResource("2_s5f5x")
+offset = Vector2(24, -64)
+
+[node name="right" type="Sprite2D" parent="Sprite"]
+position = Vector2(168, 40)
+texture = ExtResource("2_s5f5x")
+offset = Vector2(-25.5, -65.3)
+flip_h = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -64)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 67)
+shape = SubResource("RectangleShape2D_ydhyn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-136, 83)
+rotation = -0.368776
+shape = SubResource("RectangleShape2D_vh8pj")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(136, 83)
+rotation = 0.368264
+shape = SubResource("RectangleShape2D_vh8pj")
+
+[node name="E" type="Area2D" parent="."]
+position = Vector2(0, -64)
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="E"]
+position = Vector2(0, 67)
+shape = SubResource("RectangleShape2D_cncvm")
+debug_color = Color(2.16588e-06, 0.635648, 0.414643, 0.42)
