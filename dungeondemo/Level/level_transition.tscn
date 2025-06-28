@@ -12,7 +12,7 @@ collision_layer = 0
 script = ExtResource("1_rygna")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-56, 0)
+position = Vector2(-48, 0)
 scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_r6m4q")
 debug_color = Color(0.653727, 0.325407, 1, 0.8)

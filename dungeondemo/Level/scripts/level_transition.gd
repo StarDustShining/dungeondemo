@@ -36,20 +36,15 @@ func _ready() -> void:
 	_place_player()
 	
 	await LevelManager.level_loaded
+	await get_tree().physics_frame
+	await get_tree().physics_frame
 
-	await get_tree().physics_frame
-	await get_tree().physics_frame
-	
 	monitoring = true
-	
+
 	# 断开之前的连接，确保不会重复连接
 	if area_entered.is_connected(_player_entered):
 		area_entered.disconnect(_player_entered)
-		
-	# 重新连接信号
 	area_entered.connect(_player_entered)
-	
-	pass
 
 func _player_entered(_p: Node2D) -> void:
 	# 如果是 player，保存其血量到全局
@@ -59,7 +54,7 @@ func _player_entered(_p: Node2D) -> void:
 			#player_manager.set_health(_p.hp, _p.max_hp)
 			#print("保存玩家血量:", _p.hp, "/", _p.max_hp)
 	# 短暂等待，防止重复触发
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.5).timeout
 	LevelManager.load_new_level(level, target_transition_area, get_offset())
 	pass
 
@@ -67,7 +62,18 @@ func _player_entered(_p: Node2D) -> void:
 func _place_player() -> void:
 	if name != LevelManager.target_transition:
 		return
-	PlayerManager.set_player_position(global_position + LevelManager.position_offset)
+	var offset = LevelManager.position_offset
+	# 让玩家出生点远离传送门一格
+	match side:
+		SIDE.LEFT:
+			offset.x += 64
+		SIDE.RIGHT:
+			offset.x -= 64
+		SIDE.TOP:
+			offset.y += 64
+		SIDE.BOTTOM:
+			offset.y -= 64
+	PlayerManager.set_player_position(global_position + offset)
 	entered_from_here.emit()
 
 func get_offset() -> Vector2:

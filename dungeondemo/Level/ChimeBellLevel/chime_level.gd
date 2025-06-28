@@ -34,7 +34,6 @@ func on_game03_failed():
 	seisomgraph_video.play()
 	# 在玩家周围实例化骷髅怪
 	var player = PlayerManager.player
-	spawn_skeleton_monster()
 
 # 游戏成功后调用
 func on_game03_successed():

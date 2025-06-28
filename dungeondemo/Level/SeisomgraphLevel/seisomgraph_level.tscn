@@ -698,10 +698,9 @@ polygon = PackedVector2Array(-11.8384, -7.77685, 6.81602, 12.443, 6.81602, -7.77
 stream = ExtResource("7_v6kll")
 
 [node name="LevelTransition" parent="." instance=ExtResource("8_daaei")]
-position = Vector2(144, 872)
+position = Vector2(144, 880)
 level = "uid://bu7mpdx2bwga2"
 target_transition_area = "LevelTransition2"
-size = 2
 side = 3
 
 [node name="Markers" type="Node2D" parent="."]

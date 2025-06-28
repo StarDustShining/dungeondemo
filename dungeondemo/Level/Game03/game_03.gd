@@ -23,7 +23,7 @@ var beatmap = []
 var beatmap_index = 0
 var fall_time = 1.40227272727275
 var game_started := false
-var min_score = 7000
+var min_score = 10000
 
 var key_map = {
 	"button_M": 1,

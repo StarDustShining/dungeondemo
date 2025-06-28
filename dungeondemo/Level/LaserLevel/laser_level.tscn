@@ -79,12 +79,12 @@ target_transition_area = "LevelTransition2"
 side = 2
 
 [node name="LevelTransition2" parent="." instance=ExtResource("10_ocd5v")]
-position = Vector2(1329, 122)
+position = Vector2(1328, 152)
 scale = Vector2(0.6, 0.6)
 monitorable = false
-level = "uid://pqahqqlsqpcd"
+level = "uid://bu7mpdx2bwga2"
 size = 4
-side = 3
+side = 2
 
 [node name="LevelTransition3" parent="." instance=ExtResource("10_ocd5v")]
 position = Vector2(1268, 756)
@@ -117,7 +117,7 @@ volume_db = -9.449
 autoplay = true
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("5_tt5wj")]
-position = Vector2(400, 80)
+position = Vector2(1228, -62)
 
 [node name="CanvasLayerTestItem" type="CanvasLayer" parent="."]
 
